@@ -10,3 +10,7 @@ There are several reasons for this project to exists:
 
 There well may be other goals to achieve but it is enough to get the idea of what this repository contains.
 
+## License
+
+- **Code** is licensed under the [MIT License](LICENSE).
+- **Documentation and all HyperMarkDown (HMD) content** are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CC-BY-4.0).
