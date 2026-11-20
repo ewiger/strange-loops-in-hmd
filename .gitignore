@@ -1,2 +1,45 @@
+# Local notes, not part of the vault
 discussion/*
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.DocumentRevisions-V100
+Icon?
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Editors and IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+.history/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+.env
+.env.*
