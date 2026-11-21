@@ -1,0 +1,119 @@
+---
+tags: [strange-loops/core]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [01-hofstadter-definition, 05-not-every-dynamic-system, 06-formal-definition-godel, 08-humans-extend-axioms]
+---
+# Object level and meta level
+
+The **object level** of a system is what the system talks about or operates
+on. The **meta level** is talk about, or operation on, the system itself: its
+symbols, its rules, its proofs. The distinction is what a [[strange-loop]]
+needs in order to exist and then violates. Without two levels there is nothing
+to cross, and the loop is only a cycle.
+
+## Description
+
+The distinction is relative. Arithmetic has numbers as its object level, and
+statements such as "this formula is provable" as its meta level. For a
+document system the object level is the content of the cards, and the meta
+level is the rules by which cards are read and run.
+
+The discussion uses the distinction in three places, and each time it does the
+deciding work.
+
+**Where the levels collapse.** Gödel's construction is the reference case. It
+proceeds in the order shown.
+
+```mermaid
+flowchart TD
+ A[Arithmetic talks about numbers] --> B[Numbers encode arithmetic formulas]
+ B --> C[Arithmetic represents proof relations]
+ C --> D[Sentence expresses property of its own code]
+ D -.self-reference.-> A
+```
+
+After the second step, a statement about formulas is also a statement about
+numbers. The meta level has been folded into the object level by
+[[godel-numbering]]. The discussion names the result the "unexpected collapse
+of object-level and metalevel separation" and makes it the test for a strange
+loop in place of dynamism or repetition.
+
+**Where the levels stay apart.** The same discussion insists on a distinction
+that is easy to lose when building such a construction in software:
+*executing the construction externally* is different from *proving that the
+theory represents the construction internally*. A program that computes Gödel
+numbers stands outside the theory, at the meta level, the whole time. The loop
+closes only when the theory itself can express the relation. An experiment in
+HQL that runs an encoder has not yet shown that anything refers to itself.
+
+**Where the meta level itself moves.** When a person or agent extends a theory
+with a new axiom, the meta level acts on the object level from outside. When
+the criteria for choosing axioms are themselves revised, there is a level
+above that one. The discussion writes this as a pair, theory and revision
+rule, changing together, and separates *static reflection*, in which a theory
+expresses properties of its own syntax, from *evolving reflection*, in which
+those results change the rules.
+
+There is also a formal limit on the collapse. A theory can represent its own
+provability, and it cannot define its own truth; that is the content of
+[[tarski-undefinability]]. The levels can be folded together only so far.
+
+## Relations
+
+- It is the precondition of a [[level-crossing]] {relation: part-of}: a crossing is a passage between these two levels.
+- A [[strange-loop]] {relation: uses} is what results when the two levels collapse into each other and return.
+- In arithmetic the collapse is achieved by [[godel-numbering]] {relation: uses}, which makes statements about formulas into statements about numbers.
+- A [[reflective-formal-system]] {relation: example-of} is a theory that carries part of its own meta level inside itself.
+- A [[metacircular-interpreter]] {relation: example-of} holds both levels in one language: the interpreter and the program interpreted.
+- A [[reflection-progression]] {relation: example-of} moves the boundary step by step, each theory serving as object for the next.
+- A [[feedback-loop]] {relation: contrasts} has no meta level: every signal in it is of the same kind.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}: the collapse of this separation is the criterion.
+
+## Neighbouring concepts
+
+- **[[level-crossing]].** The passage of something from one of these levels to
+  the other. The present card describes the two sides; that card describes the
+  act of going between them.
+- **[[godel-numbering]].** An effective coding of formulas and proofs as
+  numbers. It is the device that puts the meta level of arithmetic inside its
+  object level.
+- **[[reflective-formal-system]].** A proposed name for a theory together with
+  an encoding of its syntax and internal representations of its proof
+  relations. It is the object-and-meta distinction built into one structure.
+- **[[reflection-progression]].** A chain of theories, each extending the
+  previous one by a statement the previous one could not decide. Each stage
+  looks down on the one before as its object.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[object-and-meta-level]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[object-and-meta-level]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] needs each
+card in a cycle to be assigned a level before it can say whether the cycle
+crosses one.
+
+## Sources
+
+- Discussion: "Original definition in Gödel, Escher, Bach", the three-level
+  diagram [01-hofstadter-definition].
+- Discussion: "Why a dynamic system is not necessarily a strange loop"
+  [05-not-every-dynamic-system].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  part on a possible formal experiment in HQL [06-formal-definition-godel].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].

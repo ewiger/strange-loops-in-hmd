@@ -1,0 +1,134 @@
+---
+tags: [hmd/design]
+metadata:
+  category: concept
+  cluster: hmd
+  status: draft
+  established: false
+  questions: [building-a-loop-in-hmd, ai-support-in-hql, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 05-not-every-dynamic-system, ai-oriented-pl]
+---
+# HMD feedback loop
+
+The **HMD feedback loop** is the cycle in which a HyperMarkDown card is
+evaluated, the result is written beside the cell that produced it, a person
+or agent interprets the result, and an accepted revision becomes the next
+version of the card. It is a design proposed in the discussion, not an
+established term. The discussion is explicit about its status: it is ordinary
+feedback, and becomes a candidate [[strange-loop]] only under a further
+condition.
+
+## Description
+
+### The parts
+
+The proposal assigns one job to each piece of the system.
+
+- **Cards** are persistent units of knowledge. They hold prose, links and
+  instructions.
+- **HQL cells** inside cards are executable computations.
+- **Output** is written next to the cell, inside the same document.
+- **Git** is the record of successive revisions.
+
+```mermaid
+flowchart TD
+ A[HMD card: knowledge and instructions] --> B[Execute HQL cell]
+ B --> C[Persist result beside cell]
+ C --> D[Human or agent interprets result]
+ D --> E[Propose and review revision]
+ E -->|new revision in Git| A
+```
+
+As a formula, with $H_n$ the vault at revision $n$:
+
+$$H_{n+1}=\operatorname{Integrate}(H_n,\operatorname{Eval}(H_n)).$$
+
+### Why this alone is not a strange loop
+
+A cycle of document, code, output and document again is a [[feedback-loop]].
+Every stage is the same kind of thing as the next: a text, a result, a new
+text. The discussion made this correction twice. An earlier, looser
+statement had equated iterative self-modification with strange loops, and was
+withdrawn: an HMD card repeatedly rewriting another card need not collapse
+any distinction between levels.
+
+The essay on AI-oriented languages draws the same line. Software development
+already runs from intention to specification to program to execution to
+observation and back to a revised specification. That is the same loop at
+larger scale, and it is still only feedback.
+
+### The condition
+
+The loop becomes interesting when two things hold together.
+
+1. A document can represent the mechanism that interprets it: its own cells,
+   the rules by which it is evaluated, the criteria by which revisions are
+   accepted.
+2. The interpretation feeds back into that same mechanism, so that the
+   representation takes part in changing what it represents.
+
+The stated scientific target is "reflective level crossing, rather than
+recursive execution for its own sake". The essay's version: knowledge becomes
+code, code produces knowledge, and both take part in revising their own
+representations. Even then the system is called a reflective programming
+substrate, and counts as a strange loop only once the cross-level
+self-reference has been demonstrated.
+
+### Output as new source
+
+Because output may be Markdown, a result can contain headings, links and new
+cells. Data becomes code, which becomes data. That makes the loop more
+capable and more dangerous, and is why rendering, integration and execution
+are kept as separate steps in [[render-integrate-execute]].
+
+## Relations
+
+- It is a [[feedback-loop]] {relation: is-a} made of cards, cells and revisions.
+- It is not yet a [[strange-loop]] {relation: distinguished-from}: the cycle has no change of level by itself.
+- What it would need is a [[level-crossing]] {relation: uses}, a card that represents its own interpreter.
+- Its smallest test is the [[observer-card-experiment]] {relation: generalizes}.
+- Its safety discipline is [[render-integrate-execute]] {relation: uses}.
+- Its interpretation step is held by a [[human-in-the-loop]] {relation: uses} or a [[reflective-agent]] {relation: uses}.
+- Its closing step is [[revision]] {relation: uses}, recorded as a commit.
+- It mirrors the [[reasoning-cycle]] {relation: analogous-to}: run, observe, revise.
+- It is this vault's answer in progress to [[building-a-loop-in-hmd]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[feedback-loop]].** Output influencing later input, with no change of
+  level. It is what this loop is until shown otherwise.
+- **[[observer-card-experiment]].** A single card that links to itself and
+  is inspected by its own cell at a pinned revision. It is the minimal case
+  in which the condition above can be tested.
+- **[[render-integrate-execute]].** Three operations on generated content,
+  each requiring its own decision. It is what keeps this loop from running
+  itself.
+- **[[level-crossing]].** Treating something at one level of description as
+  belonging to another. It is the missing ingredient.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[hmd-feedback-loop]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[hmd-feedback-loop]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] is the
+attempt to check the condition above on this vault's own link cycles.
+
+## Sources
+
+- Discussion: "HMD and HQL as executable documents"
+  [03-hmd-hql-executable-documents].
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].
+- Discussion: "Why a dynamic system is not necessarily a strange loop", the
+  withdrawn equivalence [05-not-every-dynamic-system].
+- Essay: "What is an AI-oriented programming language?", the part on
+  Hofstadter and strange loops [ai-oriented-pl].

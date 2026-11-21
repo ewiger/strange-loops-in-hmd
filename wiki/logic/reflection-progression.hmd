@@ -1,0 +1,168 @@
+---
+tags: [logic/godel, agents/reflection]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: false
+  questions: [strange-loop-meaning, building-a-loop-in-hmd, learning-the-formalism]
+  sources: [08-humans-extend-axioms, 13-seven-definitions]
+---
+# Reflection progression
+
+A **reflection progression** is a sequence of theories in which each stage
+extends the previous one by a statement the previous one could not decide
+about itself. The name is the one used in the discussion behind this vault,
+and the second half of the card, where the rule for choosing extensions is
+itself revised, is the discussion's own proposal. The mathematical core is
+established under other names: Turing's ordinal logics (1939) and Feferman's
+transfinite recursive progressions of theories (1962).
+
+## Description
+
+### The thesis: put the human in
+
+Neither of the two rigorous examples, the Gödel sentence and the
+constructible universe, involves self-modification or feedback over time.
+Both are static. The thesis that opened this part of the discussion was that
+the missing ingredient is a person. A human can see that a theory leaves a
+statement undecided, add axioms, and so expand the formalism, acting as a
+thinking machine. On this view the human may be what makes the definition of
+a strange loop essential and not merely formal.
+
+### The progression
+
+Written out, the proposal is
+
+$$T_0\subseteq T_1\subseteq T_2\subseteq\cdots,\qquad T_{n+1}=T_n+\{G_n\},$$
+
+where $G_n$ is the [[godel-sentence]] of $T_n$. Three facts qualify it.
+
+- **Each step is outside the reach of the stage it extends.** $T_n$ does not
+  prove $G_n$, so no deduction in $T_n$ yields $T_{n+1}$. The step is taken by
+  someone who accepts $T_n$ and reflects on it. Seen from inside $T_n$ it is
+  not deduction at all. See [[induction]].
+- **It never ends in a complete theory.** Every stage that is still
+  consistent, computably axiomatized and strong enough has a Gödel sentence of
+  its own. The [[incompleteness-theorems]] apply again at each stage.
+- **It is not automatically safe.** If $T_n$ proves only true arithmetical
+  sentences, so does $T_{n+1}$. Consistency alone is not enough: there are
+  consistent theories that prove their own inconsistency, and adding the
+  Gödel sentence to one of those gives an inconsistent theory. The step is
+  justified by trust in $T_n$, which is more than $T_n$ can express.
+
+Turing and Feferman carried such sequences through the transfinite. Their
+results limit what can be hoped for. Along suitable paths every true
+arithmetical sentence becomes provable, but choosing the path requires
+recognising which notations denote ordinals, and that is as hard as the
+problem the progression was meant to solve. The incompleteness is moved, not
+removed.
+
+### The second loop: revising how to revise
+
+The more interesting step in the discussion is to let the rule of extension
+change as well.
+
+$$(T_n,R_n)\longrightarrow(T_{n+1},R_{n+1})$$
+
+Here $R_n$ encodes the current criteria for revising the theory: which
+candidate axioms are admissible, and on what grounds.
+
+```mermaid
+flowchart TD
+ A[Object theory T] --> B[Prove, test, inspect consequences]
+ B --> C[Reflect on theory and its limits]
+ C --> D[Human or agent selects revised axioms]
+ D --> A
+ C --> E[Reflect on criteria for revision]
+ E --> D
+```
+
+The inner cycle revises the theory. The outer one revises the standards by
+which the theory is revised. The plain progression has a fixed $R$: always
+add the Gödel sentence.
+
+### Static and evolving reflection
+
+| | Static reflection | Evolving reflection |
+|---|---|---|
+| What happens | a theory expresses properties of its own syntax and proofs | reflective results change the rules or the criteria |
+| Time | none | a sequence of stages |
+| Vault card | [[reflective-formal-system]] | this one |
+| Entry among the seven definitions | third and fourth | sixth, "evolving reflective" |
+
+### The correction: the human is not required
+
+The thesis was answered in two parts. A human is not a mathematical
+requirement for a strange loop: a program can implement a theory progression,
+and the definition of the progression does not mention who takes the step.
+And what a human can do here that an algorithm cannot is a philosophical and
+scientific question, not a corollary of Gödel's theorem.
+
+What survives of the thesis is its structural half. The examples became
+dynamic once something stood outside each stage and extended it. That role
+can be filled by a person or by an agent. The cards [[human-in-the-loop]] and
+[[reflective-agent]] take up the two cases.
+
+### Why this matters for the vault
+
+A vault that is evaluated, read and revised has the same two cycles. Cards
+and cells are the theory. The conventions for accepting a revision are the
+criteria. A revision that changes a card is the inner cycle. A revision that
+changes how revisions are accepted is the outer one, and it is the outer one
+that separates a reflective system from a [[feedback-loop]].
+
+## Relations
+
+- Each stage adds the [[godel-sentence]] {relation: uses} of the stage before.
+- It never completes, by the [[incompleteness-theorems]] {relation: uses} applied at every stage.
+- It is the evolving case, against the static [[reflective-formal-system]] {relation: contrasts}.
+- Each extension is a non-deductive step of the kind described under [[induction]] {relation: uses}.
+- Its inner cycle is [[revision]] {relation: example-of} of a theory in the light of [[reflection]] {relation: uses} on it.
+- The step can be taken by a [[human-in-the-loop]] {relation: uses}, who is not mathematically required.
+- The step can equally be taken by a [[reflective-agent]] {relation: uses}.
+- It removes one instance of [[undecidability]] {relation: uses} at each stage and acquires another.
+- It differs from a [[feedback-loop]] {relation: distinguished-from} by the outer cycle, in which the criteria of revision are revised.
+- It is the sixth entry of [[definitions-of-strange-loop]] {relation: part-of}.
+- It is the formal model for the cycle described in [[hmd-feedback-loop]] {relation: analogous-to}.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: the target is the outer cycle, not the inner one.
+
+## Neighbouring concepts
+
+- **[[godel-sentence]].** The sentence a theory cannot decide about its own
+  provability. Here it is the material each new stage is made from.
+- **[[reflective-formal-system]].** A theory that encodes its own syntax and
+  proofs. It is one stage of a progression, considered alone.
+- **[[human-in-the-loop]].** A person placed at the point where a result is
+  judged and a change accepted. In a progression that point is the choice of
+  the next axiom.
+- **[[revision]].** Updating a model in the light of evidence. A progression
+  is revision where the model is a theory and the evidence is the theory's
+  own limit.
+- **[[induction]].** Inference from observations to a hypothesis, always
+  paired with deduction. Adopting an axiom is the step in mathematics that
+  resembles it most.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[reflection-progression]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[reflection-progression]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Discussion: "Seven candidate definitions of a strange loop", the evolving
+  reflective entry and its equation [13-seven-definitions].
+- Alan Turing, "Systems of logic based on ordinals" (1939).
+- Solomon Feferman, "Transfinite recursive progressions of axiomatic
+  theories" (1962).

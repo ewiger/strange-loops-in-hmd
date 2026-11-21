@@ -1,0 +1,176 @@
+---
+tags: [logic/set-theory, strange-loops/examples]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [07-constructible-universe, 09-taxonomy-self-reference, 13-seven-definitions]
+---
+# Constructible universe
+
+The **constructible universe** $L$ is Gödel's inner model of set theory,
+built in stages by admitting at each stage only the sets definable from the
+stage before. It was brought into the discussion as "an even better example"
+of a strange loop than the incompleteness proof. The verdict was narrower:
+it is a second rigorous example, of a *different form* of self-description.
+It reconstructs itself from inside, $L^L=L$, without any sentence that refers
+to itself.
+
+## Description
+
+### The construction
+
+$$\begin{aligned}
+L_0&=\varnothing,\\
+L_{\alpha+1}&=\operatorname{Def}(L_\alpha),\\
+L_\lambda&=\bigcup_{\alpha<\lambda}L_\alpha\quad(\lambda\text{ a limit ordinal}),\\
+L&=\bigcup_{\alpha\in\mathrm{Ord}}L_\alpha.
+\end{aligned}$$
+
+$\operatorname{Def}(X)$ is the collection of subsets of $X$ that are
+definable over the structure $(X,\in)$ by a first-order formula with
+parameters from $X$. Where the full power set would add every subset, this
+adds only those that can be described.
+
+The hierarchy is defined by transfinite recursion along the ordinals, and
+facts about it are proved by transfinite induction. See
+[[mathematical-induction]].
+
+### What Gödel proved with it
+
+$L$ is an inner model: a transitive class containing all ordinals that
+satisfies the axioms of ZF. Moreover
+
+$$L\models\mathrm{ZFC}+\mathrm{GCH}+(V=L).$$
+
+So the axiom of choice and the generalized continuum hypothesis hold in $L$,
+and therefore
+
+$$\operatorname{Con}(\mathrm{ZF})\ \Rightarrow\ \operatorname{Con}(\mathrm{ZFC}+\mathrm{GCH}).$$
+
+This is a relative consistency result. It shows that ZF cannot refute choice
+or the continuum hypothesis. It does not show that they are true. The other
+half, that ZFC cannot prove the continuum hypothesis either, is Cohen's
+(1963) and uses a different method. See [[undecidability]].
+
+### Where the self-description is
+
+Two things in the construction cross a level.
+
+- **Definability is made into an operation on sets.** "Definable by a
+  formula" is a notion about language, which is to say a meta-level notion.
+  Gödel showed that for a *set* structure $(X,\in)$ the relation "this
+  formula holds in $X$ of these elements" can itself be defined inside set
+  theory, so $\operatorname{Def}$ is an ordinary set operation. The universe
+  $L$ is built by a function that takes the theory's own notion of description
+  as its building rule. Definability over the whole universe cannot be
+  internalised in this way, which is the content of [[tarski-undefinability]].
+  The stage-by-stage construction is what gets around it.
+- **The construction gives the same result inside its own output.** Carry out
+  the definition of $L$ within $L$, as $L$'s inhabitants would, and the result
+  is $L$:
+
+  $$L^L=L.$$
+
+  The reason is absoluteness: the formula defining the hierarchy means the
+  same in $L$ as in the full universe. This is why $L$ satisfies $V=L$, the
+  statement "every set is constructible".
+
+The discussion sums up the mechanism as definability, internal
+reconstruction and absoluteness.
+
+### Why it is a different form, and whether it is a loop at all
+
+| | Gödel sentence | Constructible universe |
+|---|---|---|
+| Mechanism | a diagonal [[fixed-point]] | definability and absoluteness |
+| What refers to what | a sentence to its own code | a universe to its own generating rule |
+| Self-referring sentence | yes | no |
+| Result | a limitation: something the theory cannot prove | a positive model: something the theory cannot refute |
+| Structure | one sentence | a well-founded hierarchy of stages |
+
+Two cautions were attached to the claim that this is the better example.
+
+- **It is not feedback.** The hierarchy is well-founded. Each stage depends
+  only on earlier ones and nothing is revised. The index $\alpha$ is an
+  ordinal and not a moment in time. Read as a process, $L$ is as far from a
+  [[feedback-loop]] as a construction can be.
+- **The loop is in the identity, not in the stages.** What returns to its
+  starting point is the operation "form the constructible universe", applied
+  to its own result. This places $L$ in class D of the taxonomy of
+  self-reference, internally definable universes, and makes it the motivating
+  example for the fifth, "generative", candidate definition: a system that
+  internally describes or reconstructs the principles of its own generation.
+
+Neither this example nor the Gödel sentence involves change over time. That
+observation is what led the discussion on to the [[reflection-progression]].
+
+### The analogy to a vault, and its limit
+
+The analogy drawn in the discussion is a knowledge world defined by rules
+that can themselves be represented and reconstructed inside the world. A
+vault whose cards describe how cards are produced, such that regenerating the
+vault from those cards yields the same vault, would have the form $L^L=L$.
+
+The discussion adds that this needs precise criteria before it becomes a
+theorem. Two would have to be supplied: what counts as "definable" from a
+set of cards, and an argument, playing the part of absoluteness, that the
+rules read the same from inside as from outside.
+
+## Relations
+
+- It is a second rigorous example of a [[strange-loop]] {relation: example-of}, of a different form from the first.
+- It differs in mechanism from the [[godel-sentence]] {relation: contrasts}: reconstruction against diagonal self-reference.
+- Its building rule is [[definability]] {relation: uses}, turned into an operation on sets.
+- It is built and reasoned about by the transfinite form of [[mathematical-induction]] {relation: uses}.
+- Its central identity has the form of a [[fixed-point]] {relation: analogous-to}, reached without [[diagonalization]] {relation: distinguished-from}.
+- It is not a [[feedback-loop]] {relation: distinguished-from}: it is well-founded and nothing in it is revised.
+- It is class D of the [[taxonomy-of-self-reference]] {relation: part-of}.
+- It motivates the generative entry of [[definitions-of-strange-loop]] {relation: part-of}.
+- It establishes a [[relative-consistency]] {relation: uses} result, half of an instance of [[undecidability]] {relation: uses}.
+- It falls outside the definition of a [[reflective-formal-system]] {relation: distinguished-from}, which asks for a diagonal fixed point.
+- It works around [[tarski-undefinability]] {relation: uses} by defining truth only for set-sized stages.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: a vault that regenerates itself from its own rules is the analogue to aim at.
+
+## Neighbouring concepts
+
+- **[[godel-sentence]].** A sentence provably equivalent to its own
+  unprovability. It is the other rigorous example, and it works by a
+  mechanism this one does not use.
+- **[[fixed-point]].** An object a transformation sends to itself. The
+  identity $L^L=L$ is one, for the transformation "build the constructible
+  universe inside".
+- **[[mathematical-induction]].** Proof by base case and step, extended to
+  limit stages. It is the only kind of reasoning the hierarchy needs, which
+  is why the hierarchy does not loop.
+- **[[reflection-progression]].** A sequence of theories extended one
+  undecided statement at a time. It is where the discussion went to find the
+  time and revision that this construction lacks.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[constructible-universe]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[constructible-universe]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Gödel's constructible universe L"
+  [07-constructible-universe].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  class D of the table [09-taxonomy-self-reference].
+- Discussion: "Seven candidate definitions of a strange loop", the generative
+  entry [13-seven-definitions].
+- Kurt Gödel, *The Consistency of the Axiom of Choice and of the Generalized
+  Continuum Hypothesis with the Axioms of Set Theory* (1940).
+- Thomas Jech, *Set Theory*, the chapter on constructible sets.

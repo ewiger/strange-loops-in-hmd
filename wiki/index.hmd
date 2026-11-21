@@ -1,0 +1,132 @@
+---
+tags: [index]
+metadata:
+  category: index
+  status: draft
+---
+# Strange loops in HMD
+
+This vault is a net of concept cards built from the project's discussions
+about strange loops, formal self-reference, and the operations of thinking
+that people and AI agents perform. Each card defines one concept, describes
+it, and declares how it relates to others. The declared relations are data, so
+the net can be queried.
+
+## The five questions
+
+Everything here is in service of the five questions of the project README.
+
+1. [[ai-oriented-language]]: what is an AI-oriented programming language?
+2. [[strange-loop-meaning]]: what does "strange loop" mean, after Hofstadter, and for AI work?
+3. [[building-a-loop-in-hmd]]: can such a loop be built from executable cards with human feedback?
+4. [[ai-support-in-hql]]: what AI support does the query language need?
+5. [[learning-the-formalism]]: what is there to learn about thinking with agents?
+
+Which cards declare that they bear on which question:
+
+```hql
+graph.edges
+| filter(e => match e.data.relation { some(String r) => r == "answers", _ => false })
+| group(by = e => e.target)
+| sort(by = g => g.key)
+| map(g => {question: g.key, cards: g.items | map(e => e.source) | sort(by = n => n)})
+```
+
+## The clusters
+
+**Strange loops.** The term, its defining feature, and what it is confused
+with: [[strange-loop]], [[level-crossing]], [[object-and-meta-level]],
+[[self-reference]], [[self-similarity]], [[feedback-loop]], [[recursion]],
+[[definitions-of-strange-loop]].
+
+**Logic.** The one case that is exact, and a second of a different kind:
+[[godel-numbering]], [[diagonalization]], [[diagonal-lemma]],
+[[godel-sentence]], [[incompleteness-theorems]], [[fixed-point]],
+[[undecidability]], [[reflective-formal-system]], [[reflection-progression]],
+[[constructible-universe]], [[mathematical-induction]].
+
+**Computation.** Self-reference in programs, and the limits of shortcuts:
+[[quine]], [[metacircular-interpreter]], [[taxonomy-of-self-reference]],
+[[computational-irreducibility]].
+
+**Thinking.** The operations and the cycles they form:
+[[cognitive-operation]], [[induction]], [[deduction]], [[abduction]],
+[[reasoning-cycle]], [[analogy]], [[abstraction]], [[generalization]],
+[[summarization]], [[prediction]], [[evaluation]], [[reflection]],
+[[revision]], [[typed-transformation]].
+
+**Agents.** Who or what closes the loop: [[reflective-agent]],
+[[human-in-the-loop]], [[compression-and-prediction]].
+
+**HMD.** The loop as it would be built here: [[hmd-feedback-loop]],
+[[observer-card-experiment]], [[render-integrate-execute]].
+
+Cards per cluster:
+
+```hql
+cards
+| filter(c => c.metadata.category == "concept")
+| group(by = c => match c.metadata.cluster { some(String s) => s, _ => "none" })
+| sort(by = g => g.key)
+| map(g => {cluster: g.key, cards: size(g.items)})
+```
+
+## The relations
+
+Every relation between two cards is one of ten kinds: `is-a`, `instance-of`,
+`part-of`, `example-of`, `contrasts`, `distinguished-from`, `generalizes`,
+`uses`, `analogous-to`, `answers`. After `uses`, the most frequent kind is
+`distinguished-from`, which reflects the discussions: much of their work was
+telling apart things that look alike.
+
+```hql
+graph.edges
+| group(by = e => match e.data.relation { some(String r) => r, _ => "untyped" })
+| sort(by = g => g.key)
+| map(g => {relation: g.key, count: size(g.items)})
+| Table(columns = ["relation", "count"])
+| format(as = Markdown)
+```
+
+## Proposed terms
+
+Some cards name things the discussions coined. They are marked, and each says
+so in its first paragraph.
+
+```hql
+cards
+| filter(c => c.metadata.established == false)
+| sort(by = c => c.name)
+| map(c => {card: c.name, cluster: c.metadata.cluster})
+```
+
+## The backlog
+
+Cards link to concepts that have no card yet. Those links are the backlog,
+listed with the number of mentions.
+
+```hql
+names = cards | map(c => c.name)
+cards
+| flat_map(c => c | uplinks | map(e => e.target))
+| filter(t => not contains(names, t))
+| group(by = t => t)
+| sort(by = g => g.key)
+| map(g => {concept: g.key, mentions: size(g.items)})
+```
+
+## Future lenses
+
+Four cards describe queries that need AI support the query language does not
+have yet. They carry `import future` and are never rendered.
+
+- [[semantic-neighbours]]: related cards a card does not link yet.
+- [[neighbour-summary]]: each neighbour restated from the current card's point of view.
+- [[classify-operation]]: a passage labelled with the cognitive operation it performs.
+- [[find-level-crossings]]: which link cycles in this vault cross levels.
+
+## The whole net
+
+```hql
+cards | filter(c => c.metadata.category == "concept") | Graph | mermaid
+```

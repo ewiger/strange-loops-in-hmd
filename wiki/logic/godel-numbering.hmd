@@ -1,0 +1,124 @@
+---
+tags: [logic/godel]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [05-not-every-dynamic-system, 06-formal-definition-godel, 10-operations-dualities-generalization]
+---
+# Gödel numbering
+
+A **Gödel numbering** is an effective assignment of a natural number to every
+formula and every proof of a formal theory, so that statements about formulas
+and proofs become statements about numbers. It is the step that lets
+arithmetic, a theory about numbers, carry a description of itself. In this
+vault it is the one place where a [[level-crossing]] is carried out by an
+explicit, checkable construction.
+
+## Description
+
+The discussion arrived here from a demand for precision: the only strange loop
+that is "precise and mathematical" is the one built from Gödel numerals and
+the incompleteness proof, so the definition should be reproduced with the
+rigour of a set theory textbook. Gödel numbering is the first of the steps to
+reproduce.
+
+The construction runs in three moves.
+
+1. **Code the syntax.** Fix a consistent, computably axiomatizable theory $T$
+   extending Robinson arithmetic $Q$. Give each symbol a number, and each
+   finite string of symbols a number computed from those. The code of a
+   formula $\varphi$ is written $\ulcorner\varphi\urcorner$. The coding must
+   be effective: from a number one can compute which string it codes, if any.
+2. **Arithmetize the operations.** Under the coding, syntactic operations
+   such as substituting a term for a variable become computable functions on
+   numbers, and "$p$ codes a proof in $T$ of the formula coded by $x$" becomes
+   a computable relation on numbers.
+3. **Represent them inside the theory.** Every computable relation is
+   representable in $Q$. So there is a formula $\operatorname{Proof}_T(p,x)$
+   of arithmetic that $T$ itself can use, and from it the provability
+   predicate
+
+$$\operatorname{Prov}_T(x):=\exists p\,\operatorname{Proof}_T(p,x).$$
+
+After the third move the hierarchy has been folded. The discussion drew it as
+four stages.
+
+```mermaid
+flowchart TD
+ A[Arithmetic talks about numbers] --> B[Numbers encode arithmetic formulas]
+ B --> C[Arithmetic represents proof relations]
+ C --> D[Sentence expresses property of its own code]
+ D -.self-reference.-> A
+```
+
+Gödel numbering supplies the first three stages. The fourth needs the
+[[diagonal-lemma]].
+
+Two points from the discussion fix what the numbering is and is not.
+
+- **It is a representation, not yet a self-reference.** In the discussion's
+  table of knowledge transformations it sits in the class "representation",
+  next to the Fourier transform: an encoding of objects in a new language.
+  An encoding by itself says nothing about itself. Self-reference appears
+  only when a fixed point is taken over it.
+- **Running it is not the same as the theory representing it.** A program can
+  compute Gödel numbers, substitute and check proofs. That executes the
+  construction from outside. The theorem needs the further fact that the
+  theory represents those computations internally. The proposed experiment in
+  HQL has to keep the two apart.
+
+The choice of coding does not matter, provided it is effective. Gödel's own
+used products of prime powers; any computable, decodable scheme gives the same
+theorems.
+
+## Relations
+
+- It is the explicit mechanism of a [[level-crossing]] {relation: example-of}: object-level numbers come to stand for meta-level syntax.
+- It collapses the separation described in [[object-and-meta-level]] {relation: uses} without abolishing it.
+- It is the input to the [[diagonal-lemma]] {relation: part-of}, which adds the fixed point.
+- It makes the [[godel-sentence]] {relation: part-of} expressible at all.
+- It is the encoding component of a [[reflective-formal-system]] {relation: part-of}.
+- It defines the [[provability-predicate]] {relation: uses}, the formula through which a theory speaks of its own proofs.
+- It is not yet [[self-reference]] {relation: distinguished-from}: an encoding refers to syntax in general, not to itself.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: a card that is retrieved as data by a cell on the same card is the vault's counterpart of a formula and its code.
+
+## Neighbouring concepts
+
+- **[[diagonal-lemma]].** For every property of codes there is a sentence
+  provably equivalent to the claim that its own code has the property. It
+  turns the encoding into self-reference.
+- **[[godel-sentence]].** The fixed point of "is not provable". It is what the
+  numbering was built to make possible.
+- **[[reflective-formal-system]].** The discussion's schematic for a theory
+  that carries an encoding of its own syntax and proofs. The numbering is its
+  third component.
+- **[[level-crossing]].** Treating something on one level of description as
+  belonging to another. Elsewhere it is an impression; here it is a function.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[godel-numbering]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[godel-numbering]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  question and the part on arithmetization [06-formal-definition-godel].
+- Discussion: "Why a dynamic system is not necessarily a strange loop", for
+  the four-stage diagram [05-not-every-dynamic-system].
+- Discussion: "Before recursion: operators, dualities and inference", for the
+  class "representation" [10-operations-dualities-generalization].
+- Kurt Gödel, "Über formal unentscheidbare Sätze der Principia Mathematica und
+  verwandter Systeme I" (1931).

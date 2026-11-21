@@ -1,0 +1,112 @@
+---
+tags: [logic/godel]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning]
+  sources: [06-formal-definition-godel, 13-seven-definitions, 14-diagonalization-distinction]
+---
+# Diagonal lemma
+
+The **diagonal lemma**, also called the fixed-point lemma, states that in any
+theory able to represent its own syntax, every property of formulas has a
+sentence that provably asserts the property of itself. It is the exact
+statement behind the phrase "a sentence that talks about itself", and the
+step that closes the loop opened by [[godel-numbering]].
+
+## Description
+
+Let $T$ be a theory extending Robinson arithmetic $Q$, with a Gödel numbering
+of its formulas. For every formula $\varphi(x)$ with one free variable there
+is a sentence $G$ such that
+
+$$T\vdash G\leftrightarrow\varphi(\ulcorner G\urcorner).$$
+
+Three things about the statement matter for the discussion.
+
+- **The self-reference is indirect.** $G$ does not contain itself. It contains
+  a description from which its own code can be computed, and the theory proves
+  the equivalence. "Refers to itself" is shorthand for a provable
+  biconditional.
+- **It is a lemma about existence, with no consequence yet.** It holds for
+  every $\varphi$. Choosing $\varphi$ as "is a formula with fewer than a
+  thousand symbols" gives a self-describing sentence that is merely true or
+  false. The discussion separated the *existence of self-reference* from *a
+  theorem about its consequences*: the lemma is the first, and the
+  [[incompleteness-theorems]] are the second.
+- **It needs no consistency assumption.** The lemma holds in inconsistent
+  theories too, trivially. Consistency enters only when a particular fixed
+  point is examined.
+
+The proof is a [[diagonalization]]. Define the function that takes the code of
+a formula $\alpha(x)$ to the code of $\alpha(\ulcorner\alpha\urcorner)$, the
+formula applied to its own code. This function is computable, so it is
+representable in $T$. Let $\beta(x)$ say "the diagonalization of $x$ has
+property $\varphi$". Applying $\beta$ to its own code gives $G$. The table of
+all formulas against all codes is being read down its diagonal, as in Cantor's
+argument, but here the diagonal entry is fed back in rather than negated.
+
+The choice that produces the celebrated case is
+$\varphi(x)=\neg\operatorname{Prov}_T(x)$, which yields the
+[[godel-sentence]]. Other choices give other classical results: the negation
+of a supposed truth predicate gives Tarski's undefinability of truth, and
+$\operatorname{Prov}_T(x)$ itself, unnegated, gives the sentence studied by
+Löb.
+
+Among the seven candidate definitions collected in this vault, the fourth, the
+Gödelian one, is the diagonal lemma plus a consequence: a theory that supports
+diagonal self-reference *and* whose fixed points have formal consequences such
+as incompleteness.
+
+## Relations
+
+- It is a [[fixed-point]] {relation: instance-of} theorem: the sentence is fixed, up to provable equivalence, by the operation "assert the property of my code".
+- Its proof is a [[diagonalization]] {relation: uses}, applied to formulas and their codes.
+- It presupposes [[godel-numbering]] {relation: uses}: without codes there is nothing for a formula to be applied to.
+- Its best-known instance is the [[godel-sentence]] {relation: generalizes}.
+- It is the lemma from which the [[incompleteness-theorems]] {relation: part-of} are derived.
+- It is the formal counterpart of [[self-reference]] {relation: example-of} in arithmetic.
+- The same lemma gives [[tarski-undefinability]] {relation: generalizes} when applied to a truth predicate.
+- Its computational twin is the [[kleene-recursion-theorem]] {relation: analogous-to}: programs in place of sentences.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}: it shows self-reference alone is cheap, and the strangeness lies in what follows from it.
+
+## Neighbouring concepts
+
+- **[[godel-sentence]].** The fixed point for "is not provable in $T$". It is
+  the lemma with one particular property plugged in.
+- **[[fixed-point]].** A value that an operation returns unchanged. The lemma
+  says the operation of predicating something of one's own code always has
+  one.
+- **[[diagonalization]].** The method of applying an enumerated family to its
+  own index. The lemma is its self-referential form, Cantor's argument its
+  escaping form.
+- **[[incompleteness-theorems]].** What follows when the lemma is applied to
+  unprovability in a consistent theory: a sentence the theory cannot decide.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[diagonal-lemma]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[diagonal-lemma]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  part on the diagonal lemma [06-formal-definition-godel].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?", for the
+  distinction between self-reference and its consequences
+  [14-diagonalization-distinction].
+- Discussion: "Seven candidate definitions of a strange loop", the Gödelian
+  definition [13-seven-definitions].
+- George Boolos, John Burgess and Richard Jeffrey, *Computability and Logic*,
+  for the statement and proof.

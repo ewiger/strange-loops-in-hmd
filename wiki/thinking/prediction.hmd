@@ -1,0 +1,141 @@
+---
+tags: [thinking/reasoning]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-oriented-language]
+  sources: [06-formal-definition-godel, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+---
+# Prediction
+
+**Prediction** is the derivation of expected observations from a history and a
+model. It is the point at which a model commits itself to something that can
+turn out false. In this vault the word covers two things: a consequence drawn
+from a hypothesis, which is a step of reasoning, and a probability assigned to
+the next symbol, which is what a language model computes. The discussion links
+the second to compression and declines to equate either with intelligence.
+
+| | Prediction as consequence | Prediction as probability |
+|---|---|---|
+| Comes from | a hypothesis, by [[deduction]] | a sequence model, by computation |
+| Has the form | "if the model holds, this will be observed" | $P(x_t\mid x_{<t})$ |
+| Is judged by | a test that confirms or refutes | the loss accumulated over a sequence |
+| Lives in | the [[reasoning-cycle]] | [[compression-and-prediction]] |
+
+## Description
+
+### Lane one: a prediction is what a hypothesis is worth
+
+In the discussion's table of operations, prediction takes a history and a
+model and returns predicted observations. In the reasoning cycle it is the
+product of the downward arc: [[induction]] or [[abduction]] proposes a model,
+[[deduction]] unfolds it, and what comes out are predictions. Testing them is
+the only contact the model has with anything outside itself.
+
+This is the sense in which induction is never done alone. A hypothesis from
+which nothing can be predicted cannot be wrong, and so cannot be supported
+either. Prediction is the hinge between the two arcs.
+
+### Lane two: a prediction is a code length
+
+The question that opened the taxonomy of self-reference proposed a conjecture:
+predictability is equivalent to compressibility, and compression is equivalent
+to intelligence. The reply kept the part that is a theorem. For a
+probabilistic sequence model the total code length of a sequence is
+approximately its accumulated logarithmic loss,
+
+$$L(x_{1:n})\approx-\sum_{t=1}^n\log_2 P(x_t\mid x_{<t}).$$
+
+A model that predicts each next symbol well yields a short code, and a short
+code yields a model that predicts well. That is a precise link between
+predictive performance under logarithmic loss and code length under suitable
+coding assumptions. It does not establish a universal equivalence of
+predictability and compressibility, and it does not show that compression is
+intelligence. The full argument belongs to [[compression-and-prediction]].
+
+A language model is a predictor in this second sense by construction. Whether
+it predicts in the first sense, by deriving consequences from a model it could
+state, is a separate matter, and treating the two as one is the confusion the
+two lanes are meant to prevent.
+
+### Where prediction runs out
+
+Prediction presupposes a shortcut: computing what will happen in less effort
+than letting it happen. The discussion separates three ways the shortcut can
+fail, which are easily run together.
+
+- [[computational-irreducibility]]: there may be no substantial shortcut to
+  the outcome of a computation other than running it.
+- [[undecidability]]: no procedure answers the question for every case.
+- Ambiguity: the requirements are incomplete, so there is nothing definite to
+  predict.
+
+None of these is escaped by using a language model, which is itself a
+computational system. The essay draws the same conclusion when it rejects the
+tempting formula that programs solve reducible problems and language models
+irreducible ones.
+
+There is also a limit of a different kind. A system that predicts its own
+behaviour is a system that models itself, and the cycle drawn in the
+discussion adds exactly this box: "build a model of the modeling process".
+What such a self-model can and cannot contain is the subject of
+[[reflection]].
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: history and model in, predicted observations out.
+- It is produced by [[deduction]] {relation: uses} from a hypothesis that [[induction]] {relation: uses} supplied.
+- It is the hinge of the [[reasoning-cycle]] {relation: part-of}.
+- Its probabilistic form is one side of [[compression-and-prediction]] {relation: part-of}.
+- It is checked by [[evaluation]] {relation: uses}, and a failed prediction triggers [[revision]] {relation: uses}.
+- It is limited by [[computational-irreducibility]] {relation: contrasts}, where no shortcut to the outcome exists.
+- It is limited differently by [[undecidability]] {relation: contrasts}, where no procedure decides every case.
+- Turned on the predictor itself it becomes [[reflection]] {relation: generalizes}.
+- It is not [[generation]] {relation: distinguished-from}: a prediction is a claim that can be wrong, a generated instance is merely new.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: what a language model can shortcut and what it cannot.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[compression-and-prediction]].** The link between a model's logarithmic
+  loss and the length of the code it yields. It is the theorem that survives
+  from the conjecture about intelligence.
+- **[[reasoning-cycle]].** Observations, hypothesis, predictions, test. A
+  prediction is the output of its downward arc and the input of its return.
+- **[[computational-irreducibility]].** The absence of any shortcut to the
+  result of a computation. It bounds prediction from one side, as
+  undecidability does from another.
+- **[[evaluation]].** Assessing a claim against a criterion. For a prediction
+  the criterion is the observation that arrives.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[prediction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[prediction]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] would have to
+tell a prediction in the first lane from mere continuation of a text.
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the question and the part on compression and prediction
+  [09-taxonomy-self-reference].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  correction on irreducibility [06-formal-definition-godel].
+- Essay: "What is an AI-oriented programming language?", the part asking
+  whether programming languages and LLMs solve different kinds of problems
+  [ai-oriented-pl].

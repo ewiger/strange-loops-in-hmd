@@ -1,0 +1,4 @@
+# The HQL project for this vault. The cards live under wiki/ (see
+# .hmd/config.toml); the query library is .hql/queries/.
+[modules]
+import = ["hmd"]

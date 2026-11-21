@@ -1,0 +1,154 @@
+---
+tags: [thinking/design]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: false
+  questions: [ai-support-in-hql, ai-oriented-language]
+  sources: [06-formal-definition-godel, 12-llm-cognitive-operations, ai-oriented-pl]
+---
+# Typed transformation
+
+A **typed transformation** is a cognitive operation given a signature: a
+declared type of input, a declared type of output, and a requirement on what
+must accompany the result, whether a confidence, the evidence used, or a proof
+that can be checked. The term is this vault's name for a design proposed in
+the discussion, not established usage. It is the proposed answer to one
+caution: asking a language model to deduce is not the same as a formally
+checked deduction.
+
+## Description
+
+### The problem it answers
+
+The discussion's table of operations lists seventeen things a language model
+can be asked to do, each with an input and an output. The table is a
+description. A model asked for any of them returns text, and the text for a
+deduction looks like the text for a guess. The reply that restored induction
+to the table ended on this point and on a proposal: a rigorous HQL system
+could model cognitive operations as typed transformations, then attach
+confidence, evidence, or verifiable proof requirements.
+
+### The signatures
+
+The discussion gives three, marked as conceptual and not as available HQL
+syntax.
+
+```text
+Induce: Examples -> Hypotheses
+Deduce: (Theory, Premises) -> Conclusions
+Analogize: (StructureA, StructureB) -> Correspondences
+```
+
+The rest of the table extends in the same manner. Evaluation would take a
+claim and a criterion and return an assessment; revision a model and evidence
+and return a model; summarization a source and a purpose and return a text.
+
+A signature does two things a prompt does not.
+
+- **It says what kind of thing came back.** A hypothesis is not a conclusion.
+  Code that receives `Hypotheses` cannot pass them on as established facts
+  without an explicit step, in the way a typed language does not let a string
+  be used as a number.
+- **It says what the result owes.** The three kinds of requirement named in
+  the discussion fit the three kinds of inference.
+
+| Operation | What the result should carry | Why |
+|---|---|---|
+| [[induction]], [[abduction]], [[analogy]] | the evidence used and a confidence | the conclusion goes beyond the premises and may be wrong |
+| [[deduction]] | a proof or derivation that a checker accepts | the conclusion is claimed to follow necessarily |
+| [[summarization]] | the source and the stated purpose | faithfulness can only be judged against them |
+| [[evaluation]] | the criterion applied | an assessment without its criterion cannot be reviewed |
+
+The requirement for deduction is the strict one. It turns "the model says this
+follows" into "this derivation was checked", and it moves the trust from the
+model to the checker.
+
+### Where the idea comes from
+
+The essay arrives at the same place from programming languages. Its argument
+for Rust and Lean is that the compiler or proof checker acts as a feedback
+mechanism: the stricter the checker, the more a model learns from each
+rejection. Its discussion of agent instructions asks for contracts that can be
+verified and not merely read. A typed transformation applies that argument to
+the operations of reasoning themselves, so that the verifier checks not only
+generated code but each inferential step.
+
+The discussion draws a related line for formal experiments: executing a
+construction externally is different from proving that a theory represents the
+construction internally. Types make the same line visible in ordinary use. An
+operation that was merely run has one type, and an operation whose result was
+verified has another.
+
+### What it does not do
+
+Types constrain the form of a result and what accompanies it. They do not make
+an induction correct or an analogy apt. A hypothesis with evidence and a
+confidence attached can still be false; it can now be seen to be a hypothesis.
+The design also inherits every formal limit of the systems it is built on, and
+claims none of them is overcome.
+
+### In HQL
+
+HQL is a typed language whose programs are checked before anything runs, and
+agent features are design only at the time of writing. The lens cards in this
+vault sketch what such operations could look like as queries, and each is
+marked as a future design. [[classify-operation]] is the nearest: it labels a
+passage with the operation it performs and returns the label with evidence and
+a confidence.
+
+## Relations
+
+- It gives a signature to each [[cognitive-operation]] {relation: generalizes} in the table.
+- It requires of [[deduction]] {relation: uses} a proof that a checker accepts.
+- It requires of [[induction]] {relation: uses}, [[abduction]] {relation: uses} and [[analogy]] {relation: uses} their evidence and a confidence.
+- It makes [[evaluation]] {relation: uses} carry its criterion and [[summarization]] {relation: uses} its purpose.
+- It applies the argument of [[verifier-as-feedback]] {relation: analogous-to} to reasoning steps.
+- It narrows the [[specification-intent-gap]] {relation: contrasts} by saying what each step must deliver.
+- It is the kind of operation a [[reflective-agent]] {relation: uses} would need in order to inspect its own reasoning.
+- It keeps apart what the [[reasoning-cycle]] {relation: uses} keeps apart: proposals on the upward arc, consequences on the downward.
+- It is sketched as a query in the lens [[classify-operation]] {relation: example-of}.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: AI support as typed operations with obligations, not free-form prompts.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: a language in which formal computation and informal reasoning meet through types.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[cognitive-operation]].** The table of seventeen operations with their
+  inputs and outputs. A typed transformation is one row of it turned into a
+  signature with obligations.
+- **[[deduction]].** Inference to what must follow. It is the operation for
+  which the difference between asking a model and checking a derivation is
+  sharpest.
+- **[[induction]].** Inference from observations to a hypothesis. Its type
+  records that the output is a hypothesis and what it rests on.
+- **[[evaluation]].** Assessment against a criterion. It is both one of the
+  typed operations and the thing the others' obligations make possible.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[typed-transformation]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[typed-transformation]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] is a first
+typed transformation written as a future query.
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy", the LLM
+  caution and the conceptual signatures [12-llm-cognitive-operations].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  distinction between external execution and internal representation
+  [06-formal-definition-godel].
+- Essay: "What is an AI-oriented programming language?", the parts on Rust,
+  Lean and verifiable agent contracts [ai-oriented-pl].

@@ -1,0 +1,98 @@
+---
+tags: [questions]
+metadata:
+  category: question
+  status: open
+  order: 5
+  sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+---
+# What is there to learn about thinking with agents?
+
+**The question.** Learn as much as possible in the process, next to the newly
+developed dynamic formalism for interacting with AI agents. This is the fifth
+of the five questions in the project README.
+
+## Where the answer stands
+
+The part of the discussion that left strange loops behind is the part that
+answers this. It began from the remark that mathematics is full of
+"connections" that come before recursion, and ended as a map of the
+operations a mind or a model performs.
+
+**Three layers.** The map sorts everything discussed into three levels.
+
+1. *Operations*: iteration, inversion, induction, abstraction, generation.
+2. *Structural relationships*: duality, invariance, equivalence, fixed
+   points, reconstruction.
+3. *Reflective phenomena*: self-description, diagonalization, semantic
+   limits, reflective revision.
+
+Strange loops belong to the third layer. Most of what an agent does belongs to
+the first.
+
+**Seventeen operations.** For work mediated by a language model the first
+layer is spelled out as seventeen operations, each with an input and an
+output. The list was corrected once in the discussion: induction had been left
+out and was restored beside deduction and abduction.
+
+**Distinctions that were insisted on.** The lessons are mostly of the form
+"these two are not the same".
+
+- Abstraction is not summarization. Thinking abstractly finds structure
+  independent of detail. Writing an abstract condenses a text.
+- Induction is not generalization. One infers from evidence, the other widens
+  a claim.
+- Induction as inference is not mathematical induction, which is deductive.
+- Generation is the little brother of generalization and not a form of it.
+- Duality is not self-reference. Two descriptions can reconstruct each other
+  with no loop.
+- An analogy is not an isomorphism. It preserves selected relations only, and
+  has to be tested for where it breaks.
+
+**Operations come in cycles.** No operation is useful alone. Induction and
+abduction give hypotheses, deduction gives predictions, testing gives
+observations. Compressing observations gives a model, the model predicts, and
+a second loop builds a model of the modelling itself.
+
+**What stays conjecture.** That compression is intelligence. That every
+sufficiently reflective mind meets its own incompleteness. That a description
+of the whole can never be the whole, as the opening of the *Tao Te Ching* has
+it. The discussion keeps all three as analogies and proves none.
+
+## Cards that bear on it
+
+- The map: [[cognitive-operation]], [[typed-transformation]], [[taxonomy-of-self-reference]].
+- The inference family: [[induction]], [[deduction]], [[abduction]], [[reasoning-cycle]], [[mathematical-induction]].
+- Working with structure: [[analogy]], [[abstraction]], [[generalization]], [[summarization]].
+- The judging and correcting operations: [[prediction]], [[evaluation]], [[reflection]], [[revision]].
+- The conjectures: [[compression-and-prediction]], [[reflective-agent]].
+- The second layer: [[fixed-point]], and not yet written [[duality]], [[stone-duality]].
+- Not yet written, from the first layer: [[generation]], [[specialization]], [[simplification]], [[idealization]], [[synthesis]], [[decomposition]], [[translation]], [[iteration]], [[hyperoperation]], [[derivative]], [[daoist-analogy]], [[epistemic-limits]].
+
+## Still open
+
+- Whether the seventeen are a basis or a list. Several look reducible to
+  others.
+- Which of them a language model performs and which it imitates.
+- What the second layer, the dualities, contributes to working with agents.
+  The discussion lists it and does not use it.
+
+## Queries
+
+Cards that declare they bear on this question:
+
+```hql
+@[[learning-the-formalism]] | downlinks | filter(e => match e.data.relation { some(String r) => r == "answers", _ => false }) | map(e => e.source)
+```
+
+## Sources
+
+- Project README, the fifth listed reason for the project.
+- Discussion: "Before recursion: operators, dualities and inference"
+  [10-operations-dualities-generalization].
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence"
+  [09-taxonomy-self-reference].

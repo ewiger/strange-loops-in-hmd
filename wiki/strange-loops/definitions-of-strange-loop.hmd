@@ -1,0 +1,171 @@
+---
+tags: [strange-loops/core]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: false
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [06-formal-definition-godel, 07-constructible-universe, 08-humans-extend-axioms, 13-seven-definitions, 14-diagonalization-distinction]
+---
+# Definitions of a strange loop
+
+The **definitions of a strange loop** are seven candidate definitions, ordered
+from Hofstadter's original wording to a deliberately philosophical one. Only
+the first is established usage. The other six were proposed in the discussion
+this vault is built on, as refinements that differ in what they include in the
+system and what they leave out. None of them is a standard technical term.
+
+## Description
+
+The request behind the list was to close the discussion with a series of
+definitions: start from Hofstadter's, add four to seven options "depending on
+what we have included or excluded from that system", and let the highlight
+resemble the Daoist definition of the Dao, the incompleteness of a consistent
+system, and a generalization of that.
+
+### The seven
+
+| | Name | Definition | Adds | Reference case |
+|---|---|---|---|---|
+| 1 | Hofstadter | Moving up or down through the levels of an apparent hierarchy unexpectedly returns to the starting level | The original | Gödel, Escher, Bach |
+| 2 | Structural | The representation of a structure takes part in a closed relation that returns to that structure | Drops the hierarchy; keeps representation and closure | Escher's hands |
+| 3 | Reflective | A system can internally encode and interpret aspects of its own structure or operation | An encoding and an interpreter inside the system | A reflective formal system; a metacircular interpreter |
+| 4 | Gödelian | An effective, sufficiently strong formal theory supports diagonal self-reference, yielding fixed-point statements with formal consequences such as incompleteness | A theorem about the consequences | The Gödel sentence |
+| 5 | Generative | A system internally describes or reconstructs the principles of its own generation | Reconstruction in place of a sentence | The constructible universe |
+| 6 | Evolving reflective | A system uses a model of itself to revise its future models, rules, or criteria for revision | Time and change | A progression of theories; a reflective agent |
+| 7 | Epistemically bounded | A system represents aspects of itself but is subject to intrinsic limits on complete, internally justified self-description | A limit claimed for every such system | A conjecture |
+
+Each has a card where its mechanism is worked out: [[level-crossing]] for the
+first two, [[reflective-formal-system]] for the third and fourth,
+[[constructible-universe]] for the fifth, [[reflection-progression]] for the
+sixth.
+
+### The core equations
+
+Three of the definitions can be written down exactly.
+
+The Gödelian one is a diagonal fixed point:
+
+$$T\vdash G\leftrightarrow\neg\operatorname{Prov}_T(\ulcorner G\urcorner).$$
+
+The generative one is internal reconstruction:
+
+$$L_{\alpha+1}=\operatorname{Def}(L_\alpha),\qquad L^L=L.$$
+
+The evolving reflective one is a step that changes both the theory and the
+rule for changing it:
+
+$$(T_n,R_n)\longrightarrow(T_{n+1},R_{n+1}).$$
+
+### What the ordering shows
+
+The seven are not rival answers to one question. Reading down the table, each
+keeps self-representation and changes one other thing.
+
+- From one to two, the hierarchy is dropped. What remains is a representation
+  that closes on what it represents.
+- From two to three, the representation moves inside the system, which now
+  needs a way to encode itself and a way to read the encoding.
+- From three to four, the system is required to prove something as a result.
+  This is the difference between the existence of self-reference and a theorem
+  about its consequences.
+- Four and five are the two rigorous cases, and they work by different
+  mechanisms. Four is diagonalization. Five is definability and absoluteness
+  in a well-founded hierarchy, with no diagonal sentence and no feedback.
+- Neither four nor five involves time. Six adds it, in answer to the proposal
+  that a human who extends the axioms is what makes the loop essential. The
+  correction recorded with it is that a human is not required: a program can
+  run a progression of theories.
+- Seven turns the result of four into a claim about every reflective system.
+
+### Why the seventh is philosophy and not a theorem
+
+Gödel and Tarski establish exact limitations under explicit hypotheses: an
+effectively axiomatized, consistent, sufficiently strong theory is incomplete,
+and arithmetical truth is not definable in arithmetic. The statement that
+*every* sufficiently reflective intelligence faces an analogous limit is an
+interesting conjecture. It does not follow from either theorem.
+
+The Daoist line, that the Tao which can be spoken is not the enduring Tao,
+says something of the same shape about descriptions and what they describe. It
+is a philosophical analogy, and it proves nothing either. The seventh
+definition is where the vault keeps that intuition, labelled as what it is.
+
+### The definition preferred for work
+
+The single definition the discussion settles on combines three, five and
+seven, and guards the last with one word:
+
+> A strange loop is a reflective structure in which a system becomes an object
+> of its own representation, allowing it to describe, interpret or reconstruct
+> aspects of itself, potentially exposing intrinsic limitations of its
+> descriptive or reasoning framework.
+
+*Potentially* prevents the false claim that every self-referential cycle is
+incomplete or inconsistent. It is quoted and used on the [[strange-loop]]
+card.
+
+## Relations
+
+- It refines the concept of the [[strange-loop]] {relation: generalizes}, whose card keeps the original sense.
+- The first two definitions rest on [[level-crossing]] {relation: uses}.
+- The third is the definition of a [[reflective-formal-system]] {relation: uses}.
+- The fourth is realised by the [[godel-sentence]] {relation: example-of} and proved by [[diagonalization]] {relation: uses}.
+- The fourth's formal consequence is stated in the [[incompleteness-theorems]] {relation: uses}.
+- The fifth is realised by the [[constructible-universe]] {relation: example-of}.
+- The sixth is realised by a [[reflection-progression]] {relation: example-of} and embodied in a [[reflective-agent]] {relation: example-of}.
+- The seventh leans on [[tarski-undefinability]] {relation: analogous-to} and on the [[daoist-analogy]] {relation: analogous-to}, and concerns [[epistemic-limits]] {relation: uses}.
+- It complements the [[taxonomy-of-self-reference]] {relation: contrasts}: the taxonomy sorts examples, these definitions state conditions.
+- It is the vault's direct answer to the question [[strange-loop-meaning]] {relation: answers}.
+- The sixth is the one an executable-document experiment has to meet, which bears on [[building-a-loop-in-hmd]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[strange-loop]].** Hofstadter's notion of a return to the starting level
+  through a crossing of levels. It is the first row of the table and the thing
+  the other six try to sharpen.
+- **[[godel-sentence]].** A sentence provably equivalent to the statement of
+  its own unprovability. It is the reference case of the fourth definition
+  and the only one with a theorem attached.
+- **[[constructible-universe]].** Gödel's hierarchy of definable sets, which
+  reconstructs itself when built inside itself. It is the reference case of
+  the fifth definition.
+- **[[reflection-progression]].** A sequence of theories, each extending the
+  last, in which the criteria for extension may themselves be revised. It is
+  the reference case of the sixth.
+- **[[taxonomy-of-self-reference]].** Eight classes of self-referential
+  systems, sorted by mechanism. It was the other response to the lack of a
+  formal definition.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[definitions-of-strange-loop]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[definitions-of-strange-loop]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] needs one of
+these definitions as its test, and the sixth is the candidate for cycles of
+cards that revise each other.
+
+## Sources
+
+- Discussion: "Seven candidate definitions of a strange loop"
+  [13-seven-definitions].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization"
+  [06-formal-definition-godel].
+- Discussion: "Gödel's constructible universe L"
+  [07-constructible-universe].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].
+- Douglas Hofstadter, *Gödel, Escher, Bach: An Eternal Golden Braid* (1979).

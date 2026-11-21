@@ -1,0 +1,145 @@
+---
+tags: [hmd/design]
+metadata:
+  category: concept
+  cluster: hmd
+  status: draft
+  established: false
+  questions: [building-a-loop-in-hmd, ai-support-in-hql, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, ai-oriented-pl]
+---
+# Render, integrate, execute
+
+**Render, integrate, execute** names three operations that the discussion
+separates when the output of a computation is itself a document: rendering a
+result as Markdown, integrating that Markdown into the vault, and executing
+any cells it contains. Each is a distinct step that needs its own decision.
+The separation is a design proposed in the discussion, not an established
+term.
+
+## Description
+
+### The observation that prompted it
+
+The starting remark was short: output can be Markdown as well. If a cell
+evaluates to Markdown or HMD, its result may contain headings, links, whole
+cards, and new fenced cells. Data has become code, and running that code
+yields data again.
+
+````markdown
+# Observation 4
+The previous experiment revealed a discrepancy.
+
+## Proposed next step
+```text
+(a generated cell, pending validation)
+```
+````
+
+A system in which this happens without control executes whatever it writes.
+The three operations are how control is kept.
+
+### The three operations
+
+1. **Render.** Turn a computational result into Markdown. Nothing changes in
+   the vault. The output is inert text.
+2. **Integrate.** Accept the Markdown as knowledge, or as a proposed revision
+   of a source. The vault changes, under version control.
+3. **Execute.** Run cells from the new content, and only those intentionally
+   selected.
+
+```mermaid
+flowchart TD
+ A[HMD source] --> B[HQL evaluation]
+ B --> C[Generated HMD]
+ C --> D{Approved for integration?}
+ D -->|yes| E[Versioned HMD graph]
+ D -->|no| F[Keep as inert output]
+ E --> G{Explicit next execution?}
+ G -->|yes| B
+```
+
+There are two gates. Generated content does not enter the vault unless
+approved, and content that has entered does not run unless explicitly chosen.
+Output that fails the first gate is kept, as output.
+
+### The formal model
+
+$$H_{n+1}=\operatorname{Integrate}(H_n,\operatorname{Eval}(H_n)).$$
+
+The next state of the vault is the current state together with whatever was
+accepted from its own evaluation. Rendering is hidden inside
+$\operatorname{Eval}$, and execution is the fact that $H_{n+1}$ may be
+evaluated in turn. This is the [[hmd-feedback-loop]] stated as a recurrence.
+
+### What it amounts to
+
+The discussion's verdict is measured. This is a "reflective programming
+substrate", a base on which reflection can be built. It qualifies as a
+[[strange-loop]] only when the relevant cross-level self-reference is
+demonstrated. A vault that generates and re-runs its own cells may still be
+plain feedback.
+
+The essay on AI-oriented languages meets the same design from the other side.
+Its chain from intention to specification to program to execution to
+observation to revised specification has the same joints, and it names the
+engineering questions that the gates answer: validation, permissions,
+provenance, versioning, and the limits of self-modification. It also supplies
+the reason the first gate cannot be automated away. A checker can prove that
+a program follows a specification. It cannot prove that the specification is
+what was wanted.
+
+### In this vault
+
+Rendering a card prints its cells' results and changes nothing, which is the
+first operation alone. Writing results back into the card is a deliberate
+option of the renderer, and running a query marked as a future design is
+forbidden outright. The convention that a future query is never run is the
+third gate applied by hand.
+
+## Relations
+
+- It is the safety discipline of the [[hmd-feedback-loop]] {relation: part-of}.
+- Its two gates are held by a [[human-in-the-loop]] {relation: uses} or an agent under review.
+- Its integrate step is a [[revision]] {relation: is-a} of the vault.
+- Its gates are acts of [[evaluation]] {relation: uses}: a claim, a criterion, an assessment.
+- It generalizes the boundaries of the [[observer-card-experiment]] {relation: generalizes}.
+- It is not by itself a [[strange-loop]] {relation: distinguished-from}: a substrate for reflection, not reflection.
+- Without the gates it would be a self-executing [[feedback-loop]] {relation: contrasts}.
+- It keeps apart [[object-and-meta-level]] {relation: uses}: text that is about the vault, and text that is the vault.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: any agent output in a cell passes these gates.
+
+## Neighbouring concepts
+
+- **[[hmd-feedback-loop]].** Card, cell, output, interpretation, revision.
+  This card describes what must happen between its output and revision
+  steps.
+- **[[human-in-the-loop]].** A person at the step where a result is
+  interpreted. Here the person has two precise decisions: integrate, and
+  execute.
+- **[[observer-card-experiment]].** One card inspecting a pinned revision of
+  itself. Its five execution boundaries are these gates in a single card.
+- **[[revision]].** The operation from a model and evidence to an updated
+  model. Integration is revision with a version history.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[render-integrate-execute]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[render-integrate-execute]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].
+- Discussion: "HMD and HQL as executable documents", the execution
+  boundaries [03-hmd-hql-executable-documents].
+- Essay: "What is an AI-oriented programming language?", the parts on the
+  compiler as a feedback mechanism and on strange loops [ai-oriented-pl].

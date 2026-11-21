@@ -1,0 +1,118 @@
+---
+tags: [strange-loops/distinctions]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning]
+  sources: [02-fractals-and-self-similarity, 06-formal-definition-godel, 09-taxonomy-self-reference]
+---
+# Self-similarity
+
+**Self-similarity** is the property of a structure that resembles itself at
+other scales: a part looks like the whole, or like a transformed copy of it.
+It is the signature of a [[fractal]]. In this vault its role is that of the
+first thing a [[strange-loop]] gets mistaken for, and the answer is short:
+self-similarity is not [[self-reference]].
+
+## Description
+
+The question that prompted this card was whether a strange loop differs from a
+fractal or merely resembles one. Both invite the phrase "it contains itself",
+and both are usually produced by repeating a rule. The resemblance stops
+there.
+
+| Property | Fractal | Strange loop |
+|---|---|---|
+| Signature | Repetition related by scale | Self-reference through a crossing of levels |
+| Usual mechanism | Iteration, recursive geometry | Encoding, interpretation, reflective closure |
+| Example | The Mandelbrot set | The Gödel sentence, Escher's hands |
+| Is recursion enough? | Not by itself | No |
+
+The Mandelbrot set comes from iterating
+
+$$z_{n+1}=z_n^2+c.$$
+
+The rule is applied to its own output again and again, and the picture that
+results repeats its shapes at every magnification. Nothing in it says
+anything about the rule. The set does not encode its own definition, and no
+part of it stands for the whole. It *looks like* itself; it does not *refer
+to* itself.
+
+The two movements can be drawn side by side.
+
+```mermaid
+flowchart LR
+ subgraph Similarity
+ A[Pattern] --> B[Smaller related pattern] --> C[Another scale]
+ end
+ subgraph Reflection
+ D[Formal object] --> E[Encoded description] --> F[Statement about the object] --> D
+ end
+```
+
+Similarity runs in one direction, down the scales, and never comes back.
+Reflection passes through a description and returns to the thing described.
+The first stays on one level of description throughout: every stage is a
+shape. The second changes level twice, from object to code and from code to a
+statement about the object.
+
+The two properties are independent. A structure can have both, since nothing
+stops a self-referential system from also repeating across scales, but
+neither implies the other.
+
+For this reason fractals appear on every list of anti-examples drawn up in the
+discussion, beside the factorial function and ordinary cyclic feedback. In the
+[[taxonomy-of-self-reference]] they fall into the first class, recursive
+generation, where a rule repeats on its own results and no representation is
+involved.
+
+## Relations
+
+- It is not [[self-reference]] {relation: distinguished-from}: resembling oneself is not referring to oneself.
+- It is not a [[strange-loop]] {relation: distinguished-from}: it descends through scales without crossing a level of description.
+- It is the defining property of a [[fractal]] {relation: part-of}.
+- It is usually produced by [[recursion]] {relation: uses} or by iterating a rule.
+- It lacks [[level-crossing]] {relation: contrasts}: every stage is the same kind of object as the last.
+- It belongs to the class of recursive generation in the [[taxonomy-of-self-reference]] {relation: instance-of}.
+- Its reflective counterpart in the comparison is the [[godel-sentence]] {relation: contrasts}.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}, as a boundary case.
+
+## Neighbouring concepts
+
+- **[[self-reference]].** A statement, program or system that refers to or
+  represents itself. Self-similarity is the weakest thing the word is used
+  for, and strictly it does not qualify.
+- **[[strange-loop]].** A return to the starting level after crossing levels
+  of description. A fractal has the repetition and none of the crossing.
+- **[[recursion]].** Definition through a smaller instance of the same thing.
+  It is the mechanism behind most self-similar structures and, like them, an
+  anti-example.
+- **[[level-crossing]].** The step from an object to its description or back.
+  Its absence is what the comparison table above records.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[self-similarity]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[self-similarity]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Fractals versus strange loops"
+  [02-fractals-and-self-similarity].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  list of anti-examples [06-formal-definition-godel].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and
+  intelligence", the class of recursive generation
+  [09-taxonomy-self-reference].
+- Benoit Mandelbrot, *The Fractal Geometry of Nature* (1982).

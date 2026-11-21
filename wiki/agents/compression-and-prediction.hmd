@@ -1,0 +1,135 @@
+---
+tags: [agents/intelligence]
+metadata:
+  category: concept
+  cluster: agents
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-oriented-language]
+  sources: [06-formal-definition-godel, 09-taxonomy-self-reference]
+---
+# Compression and prediction
+
+**Compression and prediction** are linked by an exact result: a model that
+predicts a sequence well, measured by logarithmic loss, yields a short code
+for that sequence, and the reverse. The link is a theorem of coding. The
+larger claim often attached to it, that predictability, compressibility and
+intelligence are one and the same, is a conjecture, and this card keeps the
+two apart.
+
+## Description
+
+### The conjecture as it was raised
+
+The discussion reached this topic from quines. A program that prints itself,
+or translates itself into another language, is a feat of construction, and
+with language models one no longer needs that trick: a model continues or
+translates a text without any self-reproducing design. That led to the
+conjecture that predictability is equivalent to compressibility, with
+compression in turn conjectured to be equivalent to intelligence.
+
+A related intuition had appeared earlier, among the proposed criteria for a
+[[strange-loop]]: such a system would be "irreducible in some sense", unable
+to be compressed to rudimentary computations, while still capturing the
+patterns it describes.
+
+### What is exact
+
+For a probabilistic model $P$ of a sequence, the length in bits of the code
+it induces is
+
+$$L(x_{1:n})\approx-\sum_{t=1}^n\log_2 P(x_t\mid x_{<t}).$$
+
+Each symbol costs the negative logarithm of the probability the model gave
+it. A model that assigns high probability to what actually comes next spends
+few bits. Under suitable coding assumptions, good [[prediction]] under
+logarithmic loss and short description are the same quantity read two ways.
+
+### What is not established
+
+The reply set three limits on the conjecture.
+
+- The formula does not prove a universal equivalence of predictability and
+  compressibility. It relates one loss to one kind of code.
+- It does not show that compression is identical to intelligence. That
+  remains a conjecture.
+- "Irreducible" is ambiguous. Algorithmic incompressibility, which is about
+  the shortest description of an object, is a different notion from
+  [[computational-irreducibility]], which is about shortcuts to a
+  computation, and both differ from [[undecidability]]. Gödel's theorem
+  concerns formal incompleteness and says nothing general about compression.
+
+### The cycle with a second loop
+
+What survives is a picture of how the operations fit together.
+
+```mermaid
+flowchart TD
+ A[Observations] --> B[Discover regularities]
+ B --> C[Compress / build model]
+ C --> D[Predict outcomes]
+ D --> E[Choose action and evaluate]
+ E --> A
+ E --> F[Build a model of the modeling process]
+ F --> B
+```
+
+The outer loop is the [[reasoning-cycle]] in other words. Discovering
+regularities is [[induction]], and a discovered regularity is a shorter
+description, which is a model, which predicts.
+
+The inner loop is the part that matters for this vault. The system models
+its own modelling and uses that to change how it finds regularities. The
+outer loop alone is a [[feedback-loop]]. The inner one passes through a
+representation of the process itself, which is the mark of a
+[[reflective-agent]] and the place a [[level-crossing]] could occur.
+
+## Relations
+
+- Its exact half is a statement about [[prediction]] {relation: uses} under logarithmic loss.
+- Its model-building step is [[induction]] {relation: uses}: to discover a regularity is to compress.
+- Its outer loop is the [[reasoning-cycle]] {relation: analogous-to} in the vocabulary of coding.
+- Its inner loop is a small [[reflective-agent]] {relation: example-of}.
+- It is not [[computational-irreducibility]] {relation: distinguished-from}: incompressible data and unshortenable computation are different limits.
+- It is not [[undecidability]] {relation: distinguished-from}, which concerns what no procedure settles.
+- It was reached from the [[quine]] {relation: contrasts}: reproduction by construction, against continuation by a model.
+- Its outer loop alone is a [[feedback-loop]] {relation: is-a}.
+- It bears on the question [[learning-the-formalism]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[prediction]].** The operation from a history and a model to expected
+  observations. Here it is the measure by which a compressing model is
+  scored.
+- **[[induction]].** Inference from observations to a hypothesis, always
+  paired with deduction. It is the step this card calls discovering
+  regularities.
+- **[[computational-irreducibility]].** The absence of a substantial
+  shortcut to the outcome of a computation. It is one of three notions hidden
+  in the word "irreducible", and not the one compression measures.
+- **[[reflective-agent]].** A system that revises its own rules from a model
+  of itself. The second loop of the diagram is its simplest form.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[compression-and-prediction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[compression-and-prediction]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and
+  intelligence", the question and the part on compression and prediction
+  [09-taxonomy-self-reference].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  fourth proposed criterion and its correction [06-formal-definition-godel].
+- Claude Shannon, "A Mathematical Theory of Communication" (1948), for code
+  length as negative log probability.

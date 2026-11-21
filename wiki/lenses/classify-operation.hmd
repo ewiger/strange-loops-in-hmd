@@ -1,0 +1,77 @@
+---
+tags: [lenses/future]
+metadata:
+  category: lens
+  status: design
+  future: true
+  query: .hql/queries/future/classify-operation.hql
+  questions: [ai-support-in-hql, learning-the-formalism]
+---
+# Classify operation
+
+**Classify operation** is a future lens: a query that labels a passage with
+the cognitive operation it performs, and returns the label as a typed result
+with evidence and a confidence. The labels are the operation cards of this
+vault. It is a design and does not run on the current HQL; this card must not
+be rendered.
+
+## What it would do
+
+Asking a model to deduce is not a checked deduction. The discussion's answer
+is to stop treating operations as words in a prompt and to make each one a
+[[typed-transformation]]: a function with a declared input, a declared output,
+and an obligation to show evidence.
+
+This lens applies that to the simplest case, recognition. Given a passage, an
+agent says which operation it is: [[induction]], [[deduction]],
+[[abduction]], [[analogy]] and the rest. The possible answers are not a list
+in the prompt. They are the cards that declare themselves an instance of
+[[cognitive-operation]], each supplying its own description as the definition
+of its label. The taxonomy in the vault is the schema of the answer, so
+changing a card changes the classifier.
+
+## The design
+
+```hql
+import future
+import ai
+
+type Operation = {
+  label: Card,
+  evidence: List<String>,
+  confidence: Float
+}
+
+operations = @[[cognitive-operation]] | downlinks
+  | filter(e => e.data.relation == "instance-of")
+  | map(e => e.source)
+
+fn classify(passage: String) : Operation =
+  Agent(@[[classifier]])
+  | ask(
+      Prompt("Which cognitive operation does this passage perform? Quote the evidence."),
+      Context(passage = passage, labels = operations | map(c => {name: c.name, definition: c.sections["Description"]}))
+    )
+  | validate<Operation>
+```
+
+The same file sketches the signatures proposed in the discussion:
+
+```text
+induce:    Examples -> Hypotheses
+deduce:    (Theory, Premises) -> Conclusions
+analogize: (StructureA, StructureB) -> Correspondences
+```
+
+## What current HQL lacks
+
+- The `ai` module and agents defined by cards.
+- Validation of an agent's answer against a declared type.
+- Access to one section of a card.
+
+## Relations
+
+- It makes each operation a [[typed-transformation]] {relation: uses} with evidence and confidence.
+- Its labels are the instances of [[cognitive-operation]] {relation: uses} declared in the vault.
+- Its judgement is itself an [[evaluation]] {relation: is-a} of a passage against a criterion.
+- It serves the question [[ai-support-in-hql]] {relation: answers}.

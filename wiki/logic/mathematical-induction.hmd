@@ -1,0 +1,95 @@
+---
+tags: [logic/proof]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [learning-the-formalism]
+  sources: [07-constructible-universe, 10-operations-dualities-generalization]
+---
+# Mathematical induction
+
+**Mathematical induction** is a proof scheme: if a statement holds for zero,
+and holds for $n+1$ whenever it holds for $n$, then it holds for every natural
+number. Despite the name it is a form of [[deduction]]. Its conclusion is
+certain, it uses no observations, and it lives entirely inside a formal
+theory. It is a different concept from [[induction]] as inference from
+evidence.
+
+## Description
+
+The scheme has two premises and one conclusion.
+
+$$\bigl(P(0)\ \wedge\ \forall n\,(P(n)\rightarrow P(n+1))\bigr)\ \rightarrow\ \forall n\,P(n).$$
+
+In first-order arithmetic this is an axiom schema, one axiom for each formula
+$P$. A proof by induction is an ordinary derivation that uses one of those
+axioms. Nothing in it goes beyond what the theory already contains, which is
+the sense in which it is deductive.
+
+It belongs with the step-by-step constructions that the discussion placed
+"before recursion": repeating one operation, as in the first, second and third
+derivative, or lifting an operation to the next one, as addition gives
+multiplication and multiplication gives exponentiation. Those are things built
+one stage at a time. Mathematical induction is how one proves something about
+everything built that way.
+
+Its twin is [[recursion]]. Recursion defines an object for $n+1$ from the
+object for $n$. Induction proves a property for $n+1$ from the property for
+$n$. The two have the same shape, and each needs a base case to stand on.
+
+The scheme extends past the natural numbers. Transfinite induction runs along
+the ordinals and adds a third case for limit stages. The
+[[constructible-universe]] is the example in this vault: its hierarchy is
+defined by transfinite recursion, successor stage by successor stage with
+unions at the limits, and every fact about it is proved by transfinite
+induction along the same stages.
+
+Because it works strictly downward from a base, mathematical induction is
+well-founded. It does not loop, and it is one of the standard anti-examples
+when asking what counts as a [[strange-loop]].
+
+## Relations
+
+- It is a form of [[deduction]] {relation: is-a}, not of inference from evidence.
+- It is a different concept from [[induction]] {relation: distinguished-from}, with which it shares only the name.
+- It is the proof-side twin of [[recursion]] {relation: analogous-to}: one defines stage by stage, the other proves stage by stage.
+- Its transfinite form is the working tool of the [[constructible-universe]] {relation: uses}.
+- It is not a [[strange-loop]] {relation: distinguished-from}: it is well-founded and crosses no level.
+- It is one of the axioms assumed when stating the [[incompleteness-theorems]] {relation: part-of} for arithmetic.
+
+## Neighbouring concepts
+
+- **[[induction]].** Inference from observations to a hypothesis that may
+  turn out false, always paired with deduction in a cycle. Mathematical
+  induction is on the deduction side of that pairing.
+- **[[recursion]].** Definition of a thing through a smaller instance of
+  itself, ending at a base case. It is the construction that mathematical
+  induction reasons about.
+- **[[constructible-universe]].** Gödel's hierarchy of sets built by taking
+  definable subsets at each stage. Every stage is reached, and every property
+  proved, by transfinite recursion and induction.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[mathematical-induction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[mathematical-induction]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question and the note that mathematical induction is deductive
+  [10-operations-dualities-generalization].
+- Discussion: "Gödel's constructible universe L", for the hierarchy built by
+  stages [07-constructible-universe].
+- Thomas Jech, *Set Theory*, for transfinite induction and recursion.

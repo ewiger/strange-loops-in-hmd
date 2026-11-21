@@ -1,0 +1,141 @@
+---
+tags: [logic/limits]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, ai-oriented-language]
+  sources: [06-formal-definition-godel, 08-humans-extend-axioms, ai-oriented-pl]
+---
+# Undecidability
+
+**Undecidability** is the absence of a method that settles a question. The
+word is used for two different absences: a *sentence* that a given theory can
+neither prove nor refute, and a *problem* that no algorithm solves for every
+input. In this vault the card exists to take apart one proposed criterion for
+a strange loop, that such a system is "irreducible in some sense". That
+phrase hides three notions, of which undecidability is one.
+
+## Description
+
+### Where the card starts: "irreducible in some sense"
+
+The fourth of the five properties proposed for a formal definition of a
+strange loop read: the system is irreducible, it cannot be compressed to
+rudimentary computations, but it can capture the patterns it is trying to
+describe. The correction was that "irreducibility" is ambiguous, and that
+Gödel's theorem concerns only one of its readings.
+
+| Notion | What cannot be done | About | Card |
+|---|---|---|---|
+| Undecidability | settle the question at all, by proof or by algorithm | a sentence relative to a theory, or a problem | this one |
+| Algorithmic incompressibility | describe an object by a program shorter than the object | one finite string | none yet |
+| Computational irreducibility | predict the outcome faster than by running the computation | one computation | [[computational-irreducibility]] |
+
+They come apart in both directions. A cellular automaton may be
+computationally irreducible while every question about its state after $n$
+steps is decidable: run it for $n$ steps. A random string is incompressible
+and raises no decision problem at all. Gödel's theorem is about formal
+incompleteness and says nothing general about the impossibility of
+compression.
+
+The essay on AI-oriented languages adds a fourth thing that is commonly
+mistaken for the other three: a problem whose requirements are ambiguous or
+incomplete. That is a missing specification, not a limit of computation.
+
+### Two lanes inside the word
+
+| | Undecidable sentence | Undecidable problem |
+|---|---|---|
+| Also called | independent of the theory | unsolvable, non-computable |
+| Relative to | a particular theory $T$ | nothing: it is absolute |
+| Means | $T$ proves neither $\sigma$ nor $\neg\sigma$ | no algorithm answers every instance correctly |
+| Can be removed? | yes, by adding an axiom | no |
+| Example | the [[godel-sentence]] of $T$; the continuum hypothesis over ZFC | the halting problem |
+
+The second lane is the stronger one, and the first follows from it. If a
+consistent, computably axiomatized theory extending Robinson arithmetic
+decided every sentence of arithmetic, a program could answer any halting question by searching through
+proofs. No program does that (Turing, 1936), so no such theory is complete.
+This is a route to the [[incompleteness-theorems]] that does not mention a
+self-referring sentence, though the unsolvability of the halting problem is
+itself proved by [[diagonalization]].
+
+The difference in the fourth row is what the discussion built on. Because a
+sentence is undecidable only relative to its theory, somebody can decide it
+from outside by adopting a new axiom. Then the larger theory has undecidable
+sentences of its own. The sequence of theories produced this way is the
+[[reflection-progression]]. Nothing comparable is available for the halting
+problem: there is no larger notion of algorithm to move to.
+
+The continuum hypothesis shows that undecidable sentences are not confined to
+self-reference. Gödel's [[constructible-universe]] proves that ZFC cannot
+refute it. Cohen's forcing (1963) proves that ZFC cannot prove it. No
+diagonal sentence is involved.
+
+### What this means for the definition of a strange loop
+
+Irreducibility was dropped as a criterion. What replaced it in the Gödelian
+definition is a *provable limitation*: a statement about the system, obtained
+from its own self-reference, that the system demonstrably cannot settle. That
+is undecidability in the first lane, produced by a fixed point. It is narrower
+than "cannot be compressed" and it is something one can check.
+
+It also bounds what any tool can be asked to do. A language model is a
+computational system and does not escape the second lane. What it can help
+with is the fourth thing above, turning an ambiguous requirement into a
+specification, which is a different kind of difficulty.
+
+## Relations
+
+- It is not [[computational-irreducibility]] {relation: distinguished-from}: no shortcut to an answer, against no answer.
+- Its sentence form is what the [[incompleteness-theorems]] {relation: generalizes} establish for arithmetic.
+- Its standard example of an undecided sentence is the [[godel-sentence]] {relation: example-of}.
+- Its problem form is proved by [[diagonalization]] {relation: uses}.
+- It is what each stage of a [[reflection-progression]] {relation: uses} removes for one sentence and regains for another.
+- The [[constructible-universe]] {relation: uses} supplies half of the independence of the continuum hypothesis.
+- It is the provable limitation required of a Gödelian [[reflective-formal-system]] {relation: part-of}.
+- It is distinct from [[tarski-undefinability]] {relation: distinguished-from}, a limit on defining truth and not on deciding.
+- It bounds, without being the same as, the [[epistemic-limits]] {relation: analogous-to} conjectured for reflective agents.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: the line between programs and models is not the line between decidable and undecidable.
+
+## Neighbouring concepts
+
+- **[[computational-irreducibility]].** A computation whose outcome cannot be
+  had substantially faster than by performing it. The answer exists and is
+  reachable. It is only expensive.
+- **[[incompleteness-theorems]].** Every consistent, effective, sufficiently
+  strong theory leaves some arithmetical sentence undecided. It is
+  undecidability of the first lane, guaranteed.
+- **[[reflection-progression]].** Theories extended by the sentences they
+  could not decide. It is what one does about an undecidable sentence, and
+  why doing it never finishes.
+- **[[godel-sentence]].** The sentence equivalent to its own unprovability.
+  It is the undecidable sentence a theory writes about itself.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[undecidability]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[undecidability]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  fourth proposed property and its correction [06-formal-definition-godel].
+- Discussion: "Human in the loop and evolving formal theories", for deciding
+  an undecided statement by a new axiom [08-humans-extend-axioms].
+- Essay: "What is an AI-oriented programming language?", the part asking
+  whether programming languages and LLMs solve different kinds of problems
+  [ai-oriented-pl].
+- Alan Turing (1936), for the halting problem; Paul Cohen (1963), for the
+  independence of the continuum hypothesis.

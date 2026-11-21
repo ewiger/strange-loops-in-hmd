@@ -1,0 +1,136 @@
+---
+tags: [thinking/reasoning]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, building-a-loop-in-hmd, ai-oriented-language]
+  sources: [08-humans-extend-axioms, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+---
+# Reasoning cycle
+
+The **reasoning cycle** is the loop in which observations lead to a
+hypothesis, the hypothesis leads to predictions, and testing the predictions
+leads to new observations. It is the smallest unit in which [[induction]] and
+[[deduction]] make sense, because each supplies what the other lacks. It is a
+[[feedback-loop]], and by itself it is nothing more than that.
+
+## Description
+
+### The cycle
+
+```mermaid
+flowchart TD
+ A[Observations] -->|Induction / abduction| B[Hypotheses or model]
+ B -->|Deduction| C[Predictions]
+ C -->|Testing| D[New observations]
+ D --> A
+```
+
+The upward arc, from observations to a model, is taken by [[induction]] when
+there are many cases and by [[abduction]] when there is one surprising case.
+The downward arc, from the model to its consequences, is [[deduction]]. The
+return, from consequences to the world, is testing, which is a form of
+[[evaluation]]. What comes back is used for [[revision]] of the model.
+
+The cycle was drawn in the discussion at the moment induction was restored to
+the list of operations. Its point there was that the three inference methods
+are not a list of alternatives. They are positions on one loop.
+
+### The same cycle in other clothes
+
+The discussion and the essay draw this loop four times, with different labels.
+
+| Where | Upward arc | Downward arc | Return |
+|---|---|---|---|
+| Scientific inference | induction, abduction | deduction | testing |
+| Compression | discover regularities, build model | predict outcomes | choose action and evaluate |
+| Theories | select new axioms | prove, inspect consequences | reflect on the theory and its limits |
+| AI-assisted programming | intention to specification | program to execution | observations to revised specification |
+
+The last row is the chain *natural-language intention, formal specification,
+generated program, execution, observations, revised specification*. Its
+downward arc is what a conventional program does well, and its upward arc is
+where a language model is useful. The line between executing an established
+formalization and discovering or revising one runs between the two arcs.
+
+### The second loop
+
+Two of the drawings in the discussion have a second, outer loop. In the
+compression version the evaluation step feeds a box labelled "build a model of
+the modeling process", which feeds back into the discovery of regularities. In
+the theory version, reflection on the theory feeds "reflect on criteria for
+revision", which changes how new axioms are selected.
+
+```mermaid
+flowchart TD
+ A[Observations] --> B[Model]
+ B --> C[Predictions]
+ C --> D[Evaluate]
+ D --> A
+ D --> E[Model of the modelling process]
+ E --> B
+```
+
+The inner loop revises the model. The outer loop revises the way models are
+made. This is where [[reflection]] enters, and it is the difference between a
+cycle that merely runs and one that could become a [[strange-loop]]: only the
+outer loop passes through a representation of the cycle itself. A reasoning
+cycle without the outer loop is ordinary feedback however many times it turns.
+
+## Relations
+
+- It is a [[feedback-loop]] {relation: is-a}: its output, new observations, becomes its next input.
+- It is not by itself a [[strange-loop]] {relation: distinguished-from}: every turn stays on the level of the model and its data.
+- Its upward arc is [[induction]] {relation: uses} or, for a single surprising case, [[abduction]] {relation: uses}.
+- Its downward arc is [[deduction]] {relation: uses}.
+- Its consequences are [[prediction]] {relation: uses}, and its return step is [[evaluation]] {relation: uses}.
+- Each turn ends in [[revision]] {relation: uses} of the model.
+- Its outer loop is [[reflection]] {relation: uses}: a model of the modelling process.
+- It is the pattern behind [[compression-and-prediction]] {relation: generalizes} and behind the [[hmd-feedback-loop]] {relation: generalizes}.
+- Applied to theories and their axioms it is a [[reflection-progression]] {relation: analogous-to}.
+- It arranges the [[cognitive-operation]] {relation: uses} list into an order of use.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: the experiment has to implement the outer loop, not only the inner one.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[induction]].** Inference from observations to a general hypothesis. In
+  the cycle it is the arc that produces something for deduction to work on.
+- **[[deduction]].** Inference from premises to what must follow. In the cycle
+  it turns a hypothesis into predictions that can fail.
+- **[[feedback-loop]].** Output influencing later input, with no change of
+  level. The reasoning cycle is the instance whose signal is evidence.
+- **[[reflection]].** Analysis of a process by the system that runs it. It is
+  the outer loop of the cycle, and the only part that looks at the cycle.
+- **[[revision]].** Updating a model in the light of evidence. It closes each
+  turn, and in the outer loop it is applied to the rules of revision too.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[reasoning-cycle]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[reasoning-cycle]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] would have to
+tell the inner loop from the outer one in any cycle it finds.
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy", the part
+  on a reasoning cycle [12-llm-cognitive-operations].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the cycle drawn under compression and prediction [09-taxonomy-self-reference].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Essay: "What is an AI-oriented programming language?", the chain from
+  intention to revised specification [ai-oriented-pl].

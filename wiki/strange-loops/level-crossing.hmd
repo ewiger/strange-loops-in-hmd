@@ -1,0 +1,122 @@
+---
+tags: [strange-loops/core]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [01-hofstadter-definition, 03-hmd-hql-executable-documents, 05-not-every-dynamic-system, 14-diagonalization-distinction]
+---
+# Level crossing
+
+A **level crossing** is the step in which something that belongs to one level
+of description is treated as belonging to another: a description becomes one
+of the things described, or a thing described turns out to be the describer.
+It is the feature that makes a loop strange. A cycle with no level crossing is
+a [[feedback-loop]]; a level crossing that leads back to where it started is a
+[[strange-loop]]. Hofstadter's name for a system built of such crossings is a
+*tangled hierarchy*.
+
+## Description
+
+Every correction in the discussion comes down to this one criterion. Asked
+whether a fractal is a strange loop, whether any dynamic system is one, and
+whether a document that rewrites itself is one, the answer each time was the
+same: it depends on whether a level is crossed, and repetition, change over
+time and self-modification do not settle it.
+
+The discussion states the criterion as the "unexpected collapse of
+object-level and metalevel separation". A crossing therefore needs levels to
+exist first. The schematic case has three.
+
+```mermaid
+flowchart TD
+ A[Object-level symbols] --> B[Representations of symbols]
+ B --> C[Metalevel interpretation]
+ C -->|refers back to| A
+```
+
+The first two arrows climb. The third is the crossing: something at the top
+turns out to be about, or to act on, the bottom.
+
+What does the crossing differs from case to case, which is why the concept is
+wider than any one mechanism.
+
+| Case | The levels | What crosses |
+|---|---|---|
+| Gödel | numbers; formulas; statements about provability | a number that encodes a formula, so that arithmetic speaks of its own sentences |
+| Escher, *Drawing Hands* | the drawing; the hand that draws | a drawn hand that draws |
+| Bach, endlessly rising canon | each key; the ascent through keys | an ascent that arrives at its starting key |
+| A reflective document | card text; the rules that interpret cards | a card that describes, and then changes, those rules |
+
+Only the first row is a formal construction. There the crossing is carried by
+[[godel-numbering]], and the return by the [[diagonal-lemma]]. The other rows
+cross levels with no diagonal argument at all, which is the reason a strange
+loop is not the same thing as [[diagonalization]].
+
+### Crossing as an experimental target
+
+For the executable-document experiment the discussion names the scientific
+target as "reflective level crossing, rather than recursive execution for its
+own sake". A card whose cell rewrites another card has a cycle and no
+crossing. The crossing would occur when a card represents the mechanism that
+interprets it and the interpretation feeds back into that mechanism. Whether a
+given vault achieves this has to be demonstrated case by case; running the
+loop more times does not produce it.
+
+## Relations
+
+- It is the defining part of a [[strange-loop]] {relation: part-of}: a strange loop is a level crossing that returns.
+- It presupposes [[object-and-meta-level]] {relation: uses}, the separation that it collapses.
+- It is what a [[feedback-loop]] {relation: contrasts} lacks: feedback stays on one level.
+- It is not [[recursion]] {relation: distinguished-from}: recursion descends through smaller instances on the same level.
+- It is not [[self-similarity]] {relation: distinguished-from}: scales of a pattern are not levels of description.
+- In arithmetic it is carried by [[godel-numbering]] {relation: uses}, which lets numbers stand for formulas.
+- It is wider than [[diagonalization]] {relation: generalizes}: Escher and Bach cross levels without a diagonal argument.
+- The [[observer-card-experiment]] {relation: example-of} is the attempt to produce one with cards and cells.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: it is what the experiment must demonstrate.
+
+## Neighbouring concepts
+
+- **[[object-and-meta-level]].** The distinction between what a system talks
+  about and talk about the system. A level crossing is the event in which that
+  distinction fails to hold.
+- **[[strange-loop]].** A structure that returns to its starting level after
+  moving through a hierarchy. Level crossing is the single criterion that
+  separates it from every other kind of loop.
+- **[[godel-numbering]].** The assignment of a number to each formula and
+  proof. It is the only fully formal vehicle for a level crossing that the
+  discussion examines.
+- **[[feedback-loop]].** Output influencing later input. It is the result of
+  taking a strange loop and removing the crossing.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[level-crossing]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[level-crossing]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] walks the link
+cycles of this vault and asks which of them cross between object level and
+meta level.
+
+## Sources
+
+- Douglas Hofstadter, *Gödel, Escher, Bach* (1979), for "tangled hierarchy".
+- Discussion: "Original definition in Gödel, Escher, Bach"
+  [01-hofstadter-definition].
+- Discussion: "Why a dynamic system is not necessarily a strange loop"
+  [05-not-every-dynamic-system].
+- Discussion: "HMD and HQL as executable documents", the closing statement of
+  the scientific target [03-hmd-hql-executable-documents].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].

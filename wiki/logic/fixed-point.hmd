@@ -1,0 +1,147 @@
+---
+tags: [logic/godel, computation/reflection]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [10-operations-dualities-generalization, 06-formal-definition-godel, 09-taxonomy-self-reference, 13-seven-definitions, 04-markdown-as-output]
+---
+# Fixed point
+
+A **fixed point** of a transformation is an object the transformation sends
+to itself: $f(x)=x$. The discussion gives it a sharper reading for this vault.
+In its table of transformations, the row "fixed point / reflection" is
+described as *folding a transformation onto its representation*. On that
+reading a fixed point is the formal shape that self-reference takes: the
+place where applying an operation to a description gives back the thing
+described.
+
+## Description
+
+### Two lanes
+
+The word covers two situations that behave differently.
+
+| | Fixed point reached by iteration | Fixed point built by self-application |
+|---|---|---|
+| How it is found | apply $f$ again and again until nothing changes | apply a description to its own code, once |
+| What it needs | a process in time that converges | a system that can name its own members |
+| Typical case | a stable state of a [[feedback-loop]] | the [[godel-sentence]] |
+| Level crossed | none | from an object to its representation and back |
+
+The first lane is where a dynamic system settles. Nothing in it refers to
+anything. The second lane is the one that matters for strange loops, and the
+rest of this card is about it.
+
+### One construction, four appearances
+
+The discussion names four fixed points of the second kind. They are the same
+construction in different settings: take something that expects a description
+as input and hand it a description of that very application.
+
+- **In logic.** The [[diagonal-lemma]]: for every formula $\varphi(x)$ there
+  is a sentence $G$ with
+  $T\vdash G\leftrightarrow\varphi(\ulcorner G\urcorner)$. The sentence is a
+  fixed point of $\varphi$ up to provable equivalence. It is not equal to
+  $\varphi(\ulcorner G\urcorner)$, only provably equivalent to it.
+- **In the lambda calculus.** The fixed-point combinator $Y$ satisfies
+  $Y\,f = f\,(Y\,f)$ for every $f$. It is how a language with no built-in
+  [[recursion]] obtains it: a recursive function is the fixed point of its
+  own defining equation.
+- **In computability.** Kleene's recursion theorem: for every total computable
+  $f$ there is a program $e$ such that $e$ and $f(e)$ compute the same
+  function. Any computable transformation of programs leaves the behaviour of
+  some program unchanged.
+- **In programs.** A [[quine]] is a program whose output is its own source.
+  It is the recursion theorem applied to the transformation "print this text".
+
+The four are listed together in the taxonomy of self-reference, as class B
+(self-reproduction) and class C (formal diagonalization). What the fixed
+point contributes to each is existence without a search: the self-referring
+object is constructed outright, not found by trial.
+
+### What a fixed point does not give
+
+A fixed point is the *existence* of self-reference. It is not yet a
+consequence of it. The Gödel sentence exists for every theory that can encode
+its syntax, but it yields incompleteness only under hypotheses on the theory.
+A quine exists in every reasonable programming language and implies nothing
+about the limits of that language. The discussion makes the same point about
+quines and reflective interpreters: neither inherently implies incompleteness.
+
+In the discussion's three-layer organisation, fixed points sit in the middle
+layer, structural relationships, beside duality, invariance and equivalence.
+The reflective phenomena of the top layer are what some fixed points lead to.
+
+### Fixed points of a document
+
+The model of an executable vault is written in the discussion as
+
+$$H_{n+1}=\operatorname{Integrate}(H_n,\operatorname{Eval}(H_n)).$$
+
+A vault $H$ with $\operatorname{Integrate}(H,\operatorname{Eval}(H))=H$ is a
+fixed point of the first lane: evaluating it and integrating the result
+changes nothing. That is stability, not self-reference. A second-lane fixed
+point would be a card whose evaluated content is a statement about that card's
+own evaluation. The observer card experiment is an attempt to build the
+second kind and to tell it apart from the first.
+
+The identity $L^L=L$ of the constructible universe has the same form: the
+operation "build the constructible universe inside" leaves $L$ unchanged. It
+is reached by absoluteness and not by diagonalization.
+
+## Relations
+
+- Its logical form is the [[diagonal-lemma]] {relation: example-of}.
+- Its best known instance is the [[godel-sentence]] {relation: example-of}, a fixed point of unprovability.
+- Its programming instance is the [[quine]] {relation: example-of}, a fixed point of printing.
+- It is how [[recursion]] {relation: uses} is obtained in a language without it, through the [[y-combinator]] {relation: example-of}.
+- Its computability form is the [[kleene-recursion-theorem]] {relation: example-of}.
+- It is built by the inward form of [[diagonalization]] {relation: uses}.
+- It is the formal shape of [[self-reference]] {relation: is-a}.
+- It differs from the resting state of a [[feedback-loop]] {relation: distinguished-from}, which is reached in time and refers to nothing.
+- The identity at the centre of the [[constructible-universe]] {relation: analogous-to} has the same form and a different mechanism.
+- The [[observer-card-experiment]] {relation: uses} looks for one in a vault.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: a stable vault and a self-describing card are different targets.
+
+## Neighbouring concepts
+
+- **[[diagonal-lemma]].** Every property of codes has a sentence that
+  provably says "my code has this property". It is the fixed-point theorem of
+  formal logic.
+- **[[quine]].** A program that prints its own source. Seen from here it is a
+  fixed point one can run.
+- **[[diagonalization]].** Going down the diagonal of a table. Its
+  self-applying form is the standard way to construct a fixed point of the
+  second lane.
+- **[[self-reference]].** A description that includes its own subject. Fixed
+  points are how self-reference is made exact without circular definition.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[fixed-point]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[fixed-point]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  table row on fixed point and reflection and the three-layer organisation
+  [10-operations-dualities-generalization].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  part on the diagonal lemma [06-formal-definition-godel].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  classes B and C [09-taxonomy-self-reference].
+- Discussion: "HQL output can itself be Markdown", for the equation of the
+  evolving vault [04-markdown-as-output].
+- Stephen Kleene (1938), for the recursion theorem.

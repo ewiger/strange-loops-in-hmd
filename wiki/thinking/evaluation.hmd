@@ -1,0 +1,150 @@
+---
+tags: [thinking/control]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [ai-support-in-hql, building-a-loop-in-hmd, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+---
+# Evaluation
+
+**Evaluation** is the assessment of a claim against a criterion. It takes
+something proposed, a hypothesis, a summary, a program, a revision, and
+returns a judgement of it. In the cycles this vault describes it is the step
+that lets anything from outside the model back in. The same word names the
+running of a program to obtain its value, and since this vault is about
+documents that both judge and execute, the two senses are kept in two lanes.
+
+| | Evaluation as assessment | Evaluation as execution |
+|---|---|---|
+| Input | a claim and a criterion | an expression and an environment |
+| Output | a judgement | a value |
+| Can it be wrong? | yes, the judgement may be mistaken | no, the value is what the rules give |
+| Kind of step | return arc of the [[reasoning-cycle]] | [[deduction]] made mechanical |
+| In a card | a person or agent reading an output | an HQL cell being run |
+
+## Description
+
+### Lane one: assessment
+
+In the discussion's table of operations, evaluation takes a claim and a
+criterion and returns an assessment. It appears wherever a loop is drawn.
+
+- In the reasoning cycle it is *testing*: predictions are compared with new
+  observations.
+- In the compression cycle it is *choose action and evaluate*, the box from
+  which both the inner loop and the outer loop start.
+- In the document flow it is the diamond *approved for integration?*, the
+  point where generated Markdown either enters the versioned graph or stays
+  inert output.
+- In the essay it is the compiler, type checker or proof checker that accepts
+  or rejects what a model wrote.
+
+The cases differ in who holds the criterion. A proof checker holds it
+formally, and its judgement is itself a checked [[deduction]]. A test holds it
+as an expected observation. A person approving a revision holds it as
+judgement, which is the role described in [[human-in-the-loop]]. The stricter
+and more explicit the criterion, the more each turn of a loop teaches, which
+is the essay's argument for languages with strong verifiers.
+
+Evaluation is what the other operations lack. The discussion's caution about
+language models is that asking a model to deduce is not a checked deduction,
+and the same holds across the table: an induced hypothesis, a proposed
+analogy, a summary are all candidates until something evaluates them. An
+evaluation performed by a model is one more candidate, an assessment that
+needs its own evidence. This is why the discussion proposes attaching
+confidence, evidence or proof requirements to each operation, the design
+described in [[typed-transformation]].
+
+### Lane two: execution
+
+To evaluate an HQL cell is to run it. The discussion's formal model of an
+executable document uses the word in this sense:
+
+$$H_{n+1}=\operatorname{Integrate}(H_n,\operatorname{Eval}(H_n)).$$
+
+$\operatorname{Eval}$ computes; it does not judge. The result is whatever the
+rules of the language give for the document as it stands. The discussion
+surrounds this step with boundaries: the source revision is fixed while it
+runs, generated code does not silently execute itself, and the output records
+which cell, commit and dependencies produced it.
+
+### Where the lanes meet
+
+The two lanes meet in the gap between $\operatorname{Eval}$ and
+$\operatorname{Integrate}$. Execution produces an output. Whether that output
+becomes part of the next document is an assessment. The discussion's
+separation of three operations, in [[render-integrate-execute]], exists to
+keep that assessment from being skipped.
+
+The meeting point is also where a [[strange-loop]] could arise. A document
+whose cells evaluate, in the second sense, the criteria by which its own
+revisions are evaluated, in the first, has a criterion that is an object of
+its own computation. That is the outer loop of the reasoning cycle, and it is
+what the experiment in [[observer-card-experiment]] aims at. Evaluation that
+only judges outputs, however often, is plain [[feedback-loop]].
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: claim and criterion in, assessment out.
+- It is the return arc of the [[reasoning-cycle]] {relation: part-of}, where predictions meet observations.
+- It checks [[prediction]] {relation: uses} directly and, through it, the results of [[induction]] {relation: uses} and [[abduction]] {relation: uses}.
+- In its second sense it is [[deduction]] {relation: is-a} carried out by a machine.
+- Its outcome drives [[revision]] {relation: uses}.
+- Turned on the process that produced the claim it becomes [[reflection]] {relation: generalizes}.
+- A person performing it is the [[human-in-the-loop]] {relation: example-of}.
+- It sits between the steps of [[render-integrate-execute]] {relation: part-of}.
+- It is the feedback mechanism described as [[verifier-as-feedback]] {relation: example-of} when the criterion is a compiler or proof checker.
+- Its results should be carried by a [[typed-transformation]] {relation: uses}, with evidence attached.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: an agent cell needs a criterion its output is held to.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[reasoning-cycle]].** Observations, hypothesis, predictions, test. The
+  test is an evaluation, and without it the cycle is only speculation.
+- **[[revision]].** Updating a model in the light of evidence. It acts on what
+  evaluation returns.
+- **[[human-in-the-loop]].** A person placed at the step where results are
+  interpreted and approved. That step is an evaluation whose criterion is not
+  written down.
+- **[[render-integrate-execute]].** Three operations kept apart: showing a
+  result, admitting it as knowledge, running what it contains. Assessment
+  stands between the second and third.
+- **[[reflection]].** Analysis of a process and its outcomes by the system
+  itself. It is evaluation with the evaluator's own procedure as the claim.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[evaluation]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[evaluation]] | downlinks | map(e => e.source)
+```
+
+Rendering this card is an evaluation in the second lane: the two cells above
+are run and their values written out. Reading the result and deciding whether
+the card's relations are right is an evaluation in the first.
+
+Future lens that applies to this card: [[classify-operation]] returns a label
+with evidence and a confidence, which is this operation given a type.
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the cycle drawn under compression and prediction [09-taxonomy-self-reference].
+- Discussion: "HMD and HQL as executable documents", the execution boundaries
+  [03-hmd-hql-executable-documents].
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].
+- Essay: "What is an AI-oriented programming language?", the part on Rust,
+  Lean and the compiler as a feedback mechanism [ai-oriented-pl].

@@ -1,0 +1,56 @@
+---
+tags: [lenses/future]
+metadata:
+  category: lens
+  status: design
+  future: true
+  query: .hql/queries/future/semantic-neighbours.hql
+  questions: [ai-support-in-hql]
+---
+# Semantic neighbours
+
+**Semantic neighbours** is a future lens: a query that, placed on any card,
+lists the cards closest to it in meaning that it does not link yet. It turns
+the gaps of the net into a visible list. It is a design and does not run on
+the current HQL; this card must not be rendered.
+
+## What it would do
+
+The relations on a card are written by hand, so a card links only what its
+author thought of. Two cards can say nearly the same thing in different words
+and never meet. This lens ranks all cards by closeness of meaning to the body
+of the current card, removes the ones already linked, and shows the rest as
+candidates for a new relation.
+
+The result is a proposal and never an edit. A score may suggest that two
+concepts belong together; a person decides whether they do and which relation
+holds. That is the same division of labour as in [[human-in-the-loop]].
+
+## The design
+
+```hql
+import future
+
+linked = this | uplinks | map(e => e.target)
+cards
+| semantic(this.body)
+| filter(h => h.value.name != this.name and not contains(linked, h.value.name))
+| take(5)
+| map(h => {card: h.value, score: h.score})
+```
+
+## What current HQL lacks
+
+- `this`, the card a cell is written in. Today a cell has to name its card.
+- `semantic` over a question that was not pinned when the embedding index was
+  built. Today it answers only questions embedded in advance.
+
+Until then the runnable stand-in is the word-overlap query
+`lexical-neighbours.hql` in the query library.
+
+## Relations
+
+- It proposes links between cards by [[analogy]] {relation: uses} of meaning, where declared relations rely on the author.
+- Its output is material for [[revision]] {relation: uses} of the net.
+- It keeps the decision with a person, as [[human-in-the-loop]] {relation: uses} requires.
+- It serves the question [[ai-support-in-hql]] {relation: answers}.

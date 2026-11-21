@@ -1,0 +1,164 @@
+---
+tags: [thinking/taxonomy]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: false
+  questions: [learning-the-formalism, ai-support-in-hql]
+  sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+---
+# Cognitive operation
+
+A **cognitive operation** is a named kind of step in thinking, described by
+what it takes in and what it gives out: [[induction]] takes examples and gives
+a hypothesis, [[summarization]] takes a long source and gives a short one. The
+list of seventeen operations on this card is a taxonomy proposed in the
+discussion behind this vault, not an established classification. It was built
+to answer one question: where do the things a language model is asked to do
+sit among the things mathematics and logic already do?
+
+## Description
+
+### How the list came about
+
+The list grew in three steps, each a correction of the one before.
+
+1. **Connections before recursion.** The starting observation was that
+   mathematics is full of "connections" simpler than self-reference: position,
+   speed and acceleration as successive derivatives; addition lifted to
+   multiplication and then to exponentiation; inverse and complementary
+   notions such as a set and its complement or a vector space and its dual.
+   To these were added the tasks given to language models, generalization and
+   summarization, with generation as "a little brother of generalization",
+   and induction and deduction from logic and philosophy.
+2. **Abstraction is not summarization.** Simplifying, thinking abstractly and
+   writing an abstract of a paper were being run together. They were
+   separated, and analogy was singled out as the powerful one.
+3. **Why is induction not there?** The table of model tasks had left
+   induction out. It was restored, together with deduction and abduction, as
+   the central family of inference.
+
+### The seventeen operations
+
+| Operation | Input | Output |
+|---|---|---|
+| [[induction]] | Observations, examples | General hypothesis |
+| [[deduction]] | Premises and rules | Logical consequences |
+| [[abduction]] | Surprising observations | Candidate explanations |
+| [[analogy]] | Two domains | Proposed structural correspondences |
+| [[abstraction]] | Concrete structures | Common abstract structure |
+| [[generalization]] | Specific cases or concepts | Broader applicable principle |
+| [[specialization]] | General concept and constraints | Restricted formulation |
+| [[simplification]] | Complex model | Simpler approximation |
+| [[summarization]] | Large source | Condensed information |
+| [[generation]] | Prompt, model or rule | New instances |
+| [[decomposition]] | Complex task | Parts, subtasks |
+| [[synthesis]] | Components | Combined structure |
+| [[translation]] | Source representation | Target representation |
+| [[prediction]] | History and a model | Predicted observations |
+| [[evaluation]] | Claim and a criterion | Assessment |
+| [[reflection]] | Process and its outcomes | Self-analysis |
+| [[revision]] | Model and evidence | Updated model |
+
+The operations fall into families. Induction, deduction and abduction are
+inference. Abstraction, generalization, specialization, simplification and
+summarization change the level of detail or scope. Generation, decomposition,
+synthesis and translation build or rearrange. Prediction, evaluation,
+reflection and revision are the steps by which a model is used, judged and
+changed, and the last two are where a reasoner turns on itself.
+
+### The wider frame: ten classes of transformation
+
+The seventeen operations are the inquiry end of a broader table that also
+covers mechanical mathematics.
+
+| Class | Example | What changes |
+|---|---|---|
+| Basic operator | Negation, addition, derivative | A defined transformation is applied |
+| Iteration | Repeated differentiation | A transformation is repeated |
+| Operator lifting | Addition to multiplication to exponentiation | An operation becomes input to a higher one |
+| Inversion | Integrals, logarithms | An operation is reversed where possible |
+| Duality, complement | A vector space and its dual, set complement | Two descriptions are related |
+| Composition | Functions, pipelines | Maps are combined |
+| Abstraction, generalization | Groups, modules, categories | Structure is identified or extended |
+| Representation | Gödel numbering, Fourier transform | Objects are encoded in a new language |
+| Fixed point, reflection | Fixed-point combinators, quines | A transformation is folded onto its own representation |
+| Induction, deduction, abduction | Scientific inference | Claims are derived or hypothesised |
+
+### Three layers
+
+The classes sort into three layers, and the third is where this vault's main
+subject lives.
+
+1. **Operations:** iteration, inversion, induction, abstraction, generation.
+2. **Structural relationships:** duality, invariance, equivalence, fixed
+   points, reconstruction.
+3. **Reflective phenomena:** self-description, diagonalization, semantic
+   limits, reflective revision.
+
+A [[strange-loop]] is a third-layer phenomenon. Most of thinking, and most of
+what a language model does, happens in the first.
+
+### What the list is for
+
+Naming an operation does not make a model perform it reliably. Asking a model
+to deduce is not a checked deduction. The practical use of the list is as a
+set of signatures: each operation becomes a [[typed-transformation]] whose
+result carries evidence, a confidence, or a proof obligation.
+
+## Relations
+
+- Each operation is meant to become a [[typed-transformation]] {relation: generalizes} with declared input and output.
+- [[induction]] {relation: example-of} is the operation whose absence prompted the revised list.
+- [[deduction]] {relation: example-of} and [[abduction]] {relation: example-of} complete the family of inference.
+- [[analogy]] {relation: example-of} is the operation singled out as the most powerful.
+- The operations are chained into the [[reasoning-cycle]] {relation: part-of}.
+- The reflective layer of the taxonomy is the subject of the [[taxonomy-of-self-reference]] {relation: contrasts}, which classifies kinds of self-reference where this card classifies kinds of step.
+- [[fixed-point]] {relation: distinguished-from} and [[diagonalization]] {relation: distinguished-from} are structures and methods in the upper layers, not operations of inquiry.
+- [[duality]] {relation: distinguished-from} relates two descriptions without any self-reference.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: the list is a candidate vocabulary of agent operations for a query language.
+- It bears on the question [[learning-the-formalism]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[typed-transformation]].** An operation given a signature and a result
+  that carries its own justification. It turns this list from a vocabulary
+  into something a system can check.
+- **[[reasoning-cycle]].** Observation, hypothesis, prediction and test in a
+  loop. It shows that the operations are not a menu but a circuit, with
+  induction and deduction as its two arcs.
+- **[[taxonomy-of-self-reference]].** Eight classes of self-reference, from
+  recursive generation to self-modelling cognition. It is the companion list
+  for the reflective layer.
+- **[[strange-loop]].** A structure in which a hierarchy of representation is
+  crossed and returned through. It belongs to the third layer and is not an
+  operation.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[cognitive-operation]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[cognitive-operation]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] labels a passage
+with one of the seventeen operations and would take its label set from the
+table above.
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question, the table of transformation classes and the three-layer
+  organisation [10-operations-dualities-generalization].
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].

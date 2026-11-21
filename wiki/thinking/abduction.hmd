@@ -1,0 +1,121 @@
+---
+tags: [thinking/reasoning]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql]
+  sources: [08-humans-extend-axioms, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+---
+# Abduction
+
+**Abduction** is the inference from a surprising observation to a candidate
+explanation: something unexpected is seen, and a hypothesis is proposed under
+which it would have been expected. It is the third member of the reasoning
+triad with [[induction]] and [[deduction]], and like induction it produces
+hypotheses, not certainties. The term is due to Charles Sanders Peirce.
+
+## Description
+
+In the discussion the triad is stated in one line each: induction goes from
+observations to general hypotheses, deduction from premises to logical
+consequences, abduction from observations to plausible explanations. In the
+table of operations abduction has surprising observations as input and
+candidate explanations as output. The plural matters. Abduction returns
+several candidates and does not choose among them.
+
+It shares the upward arc of the [[reasoning-cycle]] with induction, and the
+two are easy to merge. They differ in what they start from and what they
+produce.
+
+| | Induction | Abduction |
+|---|---|---|
+| Starts from | many cases that agree | one case that does not fit |
+| Produces | a rule covering the cases | a story explaining the case |
+| Typical failure | the next case breaks the rule | a different story explains it as well |
+
+Like induction, abduction is never complete on its own. A candidate
+explanation is worth nothing until consequences are deduced from it that
+differ from the consequences of its rivals, and those are tested. Abduction
+proposes, [[deduction]] unfolds, [[evaluation]] selects.
+
+Three places in the discussion are abductive in this sense.
+
+- **Recognising an undecided statement.** A mathematician who sees that a
+  theory does not settle a statement, weighs outside justifications and
+  proposes a new axiom is explaining a gap and offering a candidate repair.
+  That step is what moves a [[reflection-progression]] from one theory to the
+  next.
+- **Interpreting a vague intention.** The essay behind this vault notes that a
+  language model is useful exactly when the problem is not fully specified:
+  it interprets intentions, proposes hypotheses and generates alternatives.
+  Reading a loose requirement and proposing what was meant is abduction over
+  the requirement.
+- **Debugging.** A failing test or a compiler error is a surprising
+  observation. The candidate causes proposed for it are abductions, and the
+  next run of the checker tests them.
+
+Models are fluent at abduction, which makes the caution attached to the other
+operations sharper here: a plausible explanation is the easiest thing to
+generate and the hardest to tell from a correct one. As an operation in a
+system it should return its candidates as a list, each with the evidence it
+accounts for.
+
+## Relations
+
+- It shares the upward arc of the [[reasoning-cycle]] {relation: part-of} with induction.
+- It contrasts with [[induction]] {relation: contrasts}: one surprising case to an explanation, against many cases to a rule.
+- It contrasts with [[deduction]] {relation: contrasts}: its conclusion does not follow from its premises and may be false.
+- Its candidates are selected among by [[evaluation]] {relation: uses}.
+- An accepted candidate enters the model through [[revision]] {relation: uses}.
+- It is one [[cognitive-operation]] {relation: instance-of}.
+- It often works through [[analogy]] {relation: uses}: an explanation is borrowed from a domain where a similar surprise is understood.
+- It is the kind of step that proposes each new axiom in a [[reflection-progression]] {relation: example-of}.
+- As an operation offered by an agent it should be a [[typed-transformation]] {relation: is-a} returning ranked candidates.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[induction]].** Inference from many agreeing observations to a general
+  rule. It and abduction are the two ways a hypothesis enters the cycle.
+- **[[deduction]].** Inference to what must follow from premises. It is what
+  turns an abduced explanation into something testable.
+- **[[evaluation]].** Assessment of a claim against a criterion. Abduction
+  leaves several candidates standing, and evaluation is the step that ranks
+  them.
+- **[[reflection-progression]].** A sequence of theories each extending the
+  last by a new axiom. The choice of the axiom is a hypothesis about what the
+  earlier theory was missing.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[abduction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[abduction]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] labels a passage
+with the cognitive operation it performs; separating abduction from induction
+is the hardest case for it.
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  part on the reasoning triad [10-operations-dualities-generalization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Essay: "What is an AI-oriented programming language?", the part asking
+  whether programming languages and LLMs solve different kinds of problems
+  [ai-oriented-pl].
+- Charles Sanders Peirce, for the term and the three-way division of
+  inference.

@@ -1,0 +1,161 @@
+---
+tags: [strange-loops/core]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [01-hofstadter-definition, 05-not-every-dynamic-system, 09-taxonomy-self-reference, 13-seven-definitions, 14-diagonalization-distinction]
+---
+# Strange loop
+
+A **strange loop** is a structure in which moving upward or downward through
+the levels of an apparent hierarchy unexpectedly returns to the level where the
+movement began. The term was introduced by Douglas Hofstadter in *Gödel,
+Escher, Bach* (1979) and developed further in *I Am a Strange Loop* (2007). It
+is an interpretive notion, not a defined class of mathematical objects: what
+makes a loop strange is that it crosses levels of description, not that it
+goes round in a circle.
+
+## Description
+
+A strange loop needs three ingredients.
+
+1. **Levels.** There is a hierarchy in which one level describes, represents
+   or produces another: symbols and what they stand for, a drawing and the hand
+   that draws it, a theory and statements about that theory.
+2. **A crossing.** Something at one level acts as, or refers to, something at
+   another level. The separation between the thing described and the
+   description gives way.
+3. **A return.** Following the crossings leads back to the starting point, so
+   the system ends up as an object of its own representation.
+
+Hofstadter's canonical examples each supply all three.
+
+- **Gödel.** Arithmetic talks about numbers; numbers can encode formulas and
+  proofs; so a sentence of arithmetic can state a property of its own code.
+- **Escher, *Drawing Hands*.** Each drawn hand draws the other, so the picture
+  contains what appears to be its own maker.
+- **Bach, the endlessly rising canon** of the *Musical Offering*. Each
+  repetition modulates upward, yet after six steps the piece is back in its
+  opening key.
+- **Consciousness.** Hofstadter's own proposal is that the self is a pattern
+  in which a symbolic system's model of itself takes part in the activity it
+  models.
+
+### Defined by example, never formally
+
+Hofstadter had a concept that he hoped would explain intelligence, or one form
+of it, and he defined it case by case: Gödel, then Escher, then Bach, then the
+self. He never arrived at a formal definition. That is the reading this vault
+starts from, and it explains the shape of everything that follows. The
+juxtaposition of the three is itself an [[analogy]]: a structure recognised
+across logic, drawing and music. An analogy can be strong without showing that
+the three share a theorem.
+
+Two responses to the missing definition were tried in the discussion.
+
+- **Sort the examples instead of forcing one definition.** The result is the
+  [[taxonomy-of-self-reference]], eight classes that overlap and are not all
+  strange loops.
+- **Take the one precise case as the reference.** Gödel numbering and the
+  incompleteness proof are the only example that is fully mathematical, so the
+  formal definitions are modelled on it. The results are collected in
+  [[definitions-of-strange-loop]].
+
+### What it is not
+
+An early step in the discussion equated strange loops with any system that
+iteratively modifies itself. That was withdrawn as too loose: if it held,
+every dynamic system would be a strange loop. A thermostat, a recursive
+function and a document that rewrites another document all loop, and none of
+them has to cross a level to do it. The key is the unexpected collapse of the
+separation between object level and meta level, not dynamism as such.
+
+Nor is a strange loop simply [[diagonalization]]. Gödel's sentence is built by
+diagonalization and is a strange loop. Escher's hands and Bach's canon are
+strange loops with no diagonal lemma in them. Cantor's diagonal argument is
+diagonalization and is not a strange loop. The two notions overlap in exactly
+one of the canonical examples.
+
+### The definition this vault works with
+
+The working formulation reached in the discussion is: a strange loop is a
+self-referential structure arising through representational level crossing,
+and Gödelian diagonalization provides a canonical formal realization of it.
+
+The preferred longer form is:
+
+> A strange loop is a reflective structure in which a system becomes an object
+> of its own representation, allowing it to describe, interpret or reconstruct
+> aspects of itself, potentially exposing intrinsic limitations of its
+> descriptive or reasoning framework.
+
+The word *potentially* carries weight. Without it the definition would claim
+that every self-referential cycle is incomplete or inconsistent, which is
+false. Limitation is something a strange loop may expose, as Gödel's does, and
+not something every strange loop has.
+
+## Relations
+
+- Its defining feature is [[level-crossing]] {relation: uses}: without a crossing there is only a cycle.
+- It presupposes the distinction of [[object-and-meta-level]] {relation: uses}, which the loop then collapses.
+- It is a kind of [[self-reference]] {relation: is-a}, though not every self-reference is a strange loop.
+- It is not the same as a [[feedback-loop]] {relation: distinguished-from}: feedback stays on one level.
+- It is not the same as [[recursion]] {relation: distinguished-from}: recursion descends to smaller instances and stops.
+- It is not the same as [[self-similarity]] {relation: distinguished-from}: a fractal resembles itself without referring to itself.
+- It overlaps with [[diagonalization]] {relation: distinguished-from}: diagonalization is a proof method, a strange loop an interpretive structure.
+- Its sharpest formal instance is the [[godel-sentence]] {relation: example-of}.
+- The refinements proposed in this vault are collected in [[definitions-of-strange-loop]] {relation: generalizes}.
+- It is one region of the [[taxonomy-of-self-reference]] {relation: part-of}, which sorts the examples without defining the term.
+- Hofstadter's way of introducing it is an [[analogy]] {relation: uses} across logic, drawing and music.
+- It is the subject of the question [[strange-loop-meaning]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[level-crossing]].** The step in which something at one level of
+  description is treated as belonging to another. It is what separates a
+  strange loop from a plain cycle.
+- **[[godel-sentence]].** A sentence of arithmetic that is provably equivalent
+  to the statement of its own unprovability. It is the one example in which
+  every part of the loop can be written down exactly.
+- **[[feedback-loop]].** A cycle in which output influences later input. It is
+  the concept most often mistaken for a strange loop, including in descriptions
+  of executable documents.
+- **[[definitions-of-strange-loop]].** Seven candidate definitions, from
+  Hofstadter's original to an epistemically bounded one, ordered by what each
+  includes or leaves out.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[strange-loop]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[strange-loop]] | downlinks | map(e => e.source)
+```
+
+Future lenses that apply to this card: [[find-level-crossings]] asks which link
+cycles in the vault are themselves strange loops, and [[semantic-neighbours]]
+looks for related cards that this card does not link yet.
+
+## Sources
+
+- Douglas Hofstadter, *Gödel, Escher, Bach: An Eternal Golden Braid* (1979).
+- Douglas Hofstadter, *I Am a Strange Loop* (2007).
+- Discussion: "Original definition in Gödel, Escher, Bach"
+  [01-hofstadter-definition].
+- Discussion: "Why a dynamic system is not necessarily a strange loop"
+  [05-not-every-dynamic-system].
+- Discussion: "Seven candidate definitions of a strange loop"
+  [13-seven-definitions].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and
+  intelligence", the question [09-taxonomy-self-reference].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].

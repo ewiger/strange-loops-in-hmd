@@ -1,0 +1,134 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [ai-support-in-hql, learning-the-formalism]
+  sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+---
+# Summarization
+
+**Summarization** is the condensing of a large source into a shorter text that
+keeps what matters for a given purpose. The summary is about the same thing as
+the source and says less of it. It is the operation a language model is most
+readily asked to perform, and for that reason it is the one most often
+mistaken for the others: for [[abstraction]], for [[generalization]], and for
+compression in the technical sense.
+
+## Description
+
+### What it is
+
+In the discussion's table of operations, summarization takes a large source
+and returns condensed information. Two things define it.
+
+- **It is lossy on purpose.** Something is left out, and what is left out is
+  chosen.
+- **It is relative to a purpose.** The same paper has one summary for a
+  referee and another for a newcomer. There is no summary without a reader in
+  mind, which is why the definition says "what matters for its purpose".
+
+### What it is not
+
+The thread on this operation began with an objection: abstract thinking and
+generating an abstract summary of a paper are not the same thing. The
+distinctions that followed are the content of this card.
+
+| Compared with | Summarization | The other operation |
+|---|---|---|
+| [[abstraction]] | shortens a text about the same subject | identifies a structure that applies beyond the source |
+| [[generalization]] | covers the same cases in fewer words | covers more cases |
+| [[simplification]] | stays true to the source, omitting | replaces the source with an easier, approximate model |
+| compression | discards content judged unimportant | shortens the encoding and loses nothing |
+
+The last row needs care, because the discussion also treats compression at
+length. In [[compression-and-prediction]], compression means a shorter code
+from which the data can be recovered exactly, and its length is tied to how
+well a model predicts. A summary cannot be expanded back into its source. The
+two share the word "shorter" and little else. A good summary may still rest on
+a good model of the source, since deciding what matters requires
+understanding it, but that is a claim about how summaries get made and not a
+definition.
+
+The word "abstract" is the other trap. The abstract at the head of a paper is
+a summary. It need not contain a single abstraction.
+
+### As a task for a language model
+
+The question that brought summarization into the discussion named it, with
+generalization, as one of the tasks language models are given. It is a task
+they perform fluently, and fluency is the difficulty: a summary reads well
+whether or not it is faithful. Among the operations in the table it has the
+weakest built-in check. A deduction can be verified step by step and a
+prediction can be tested, while a summary can only be compared with its source
+against a stated purpose. A system that offers summarization as an operation
+should therefore carry the purpose as an input and the source as provenance,
+so that the comparison remains possible.
+
+### In this vault
+
+Every card here has a section of neighbouring concepts in which linked cards
+are restated in two sentences from the point of view of the card at hand. Those
+are summaries written for a purpose, the purpose being the reader of that one
+card. The future lens [[neighbour-summary]] proposes to have an agent generate
+them. The distinction above then becomes practical: such a lens produces
+summaries, and it should not be expected to discover the relations between
+cards, which is a matter of abstraction and [[analogy]].
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: large source in, condensed information out.
+- It is not [[abstraction]] {relation: distinguished-from}: a shorter text, against a structure.
+- It is not [[generalization]] {relation: distinguished-from}: the same cases in fewer words, against more cases.
+- It is not the compression of [[compression-and-prediction]] {relation: distinguished-from}: a summary cannot be decoded back into its source.
+- It is not [[simplification]] {relation: distinguished-from}: omission, against approximation.
+- It is not [[analogy]] {relation: distinguished-from}, which relates two sources and shortens neither.
+- Its faithfulness is a matter for [[evaluation]] {relation: uses} against a stated purpose.
+- It is the operation the lens [[neighbour-summary]] {relation: uses} would automate.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: it is the first operation one would ask an agent cell to perform, and the hardest to check.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[abstraction]].** Identifying structure apart from incidental detail. It
+  is the operation that the word "abstract" wrongly suggests a summary
+  performs.
+- **[[generalization]].** Widening a concept or claim to more cases. It was
+  named together with summarization as a model's task, and goes the opposite
+  way: outward where a summary goes inward.
+- **[[compression-and-prediction]].** The link between code length and
+  predictive performance. It concerns exact encoding, where summarization
+  concerns chosen omission.
+- **[[evaluation]].** Assessing a claim against a criterion. For a summary the
+  criterion is its purpose and the evidence is its source.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[summarization]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[summarization]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[neighbour-summary]] is this
+operation written as an agent query over the links of a card.
+
+## Sources
+
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question, which names generalization and summarization as tasks
+  [10-operations-dualities-generalization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the part on compression and prediction [09-taxonomy-self-reference].
