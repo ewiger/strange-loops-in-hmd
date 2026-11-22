@@ -10,12 +10,17 @@ exist yet.
 - `.hql/` is the HQL project directory (configuration lives in
   `.hql/config.toml` once we add one).
 - `.hql/queries/` is the library of HQL queries.
-- `wiki/` holds the articles, written as HMD cards. The user writes these by
-  hand: do not create or rewrite cards unless asked.
+- `knowledge/` holds the knowledge base: the articles, written as HMD cards.
+  It is the default vault (`.hmd/config.toml` points at it). The user writes
+  these by hand: do not create or rewrite cards unless asked.
 - `agents/` is a second HMD vault (it has its own `.hmd/`), holding agent
   cards. It is bound to the project as `[endpoint.agents]` in
-  `.hql/config.toml` and read with `source("agents")`. Links do not cross
-  between the two vaults.
+  `.hql/config.toml` and read with `source("agents")`.
+- `future/` is a third HMD vault, holding lens cards: designs that carry
+  `import future`. It is bound as `[endpoint.future]` and read with
+  `source("future")`. Never render a card in it.
+- Links do not cross between vaults. A card that names a card of another vault
+  names it, and a query joins the two by name.
 
 ## Future queries: `import future`
 

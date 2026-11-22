@@ -1,5 +1,6 @@
-# The HQL project for this vault. The cards live under wiki/ (see
-# .hmd/config.toml); the query library is .hql/queries/.
+# The HQL project for this repository. The default vault is the knowledge
+# base, whose cards live under knowledge/ (see .hmd/config.toml); the query
+# library is .hql/queries/.
 [modules]
 import = ["hmd"]
 
@@ -8,6 +9,12 @@ import = ["hmd"]
 [endpoint.agents]
 kind = "vault"
 root = "agents"
+
+# The future vault: lens cards, each a design that does not run on the
+# current HQL. Its cards are read with source("future") and never rendered.
+[endpoint.future]
+kind = "vault"
+root = "future"
 
 # The knowledge base by id, for programs whose default vault is another one
 # (for example those run with --vault agents).

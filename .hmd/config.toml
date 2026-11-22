@@ -1,2 +1,2 @@
-# The cards start in wiki/.
-wiki = "wiki"
+# The cards of the knowledge base start in knowledge/.
+wiki = "knowledge"
