@@ -1,0 +1,196 @@
+# 0002 — Typed links: querying and seeing the edges of the knowledge graph
+
+Status: backlog
+Related: [base agent](../../agents/base-agent.hmd),
+[wiki index](../../wiki/index.hmd) (its part "The relations"),
+[relations-by-kind query](../../.hql/queries/relations-by-kind.hql),
+[question-coverage query](../../.hql/queries/question-coverage.hql),
+[agent-coverage query](../../.hql/queries/agent-coverage.hql),
+[agent-tools query](../../.hql/queries/agent-tools.hql),
+[issue 0001](0001-agents-vault.hmd) (its part on dangling `performs` links);
+in the HQL project: the book chapter "Graphs", the wiki card "The link
+operator", the `graph` extension (`uplinks`, `downlinks`, `expand`);
+in the HMD project: the VS Code extension's graph tab (HMD-0025) and the
+TypeScript core's graph
+
+The goal is for HQL to query, and the editor to show, the knowledge graph as
+the graph it actually is. That graph has typed edges. Most of what this vault
+says lives on the links between cards and not inside them. Today the edges
+can be written and read, but only with boilerplate, nothing checks them, and
+the editor can't display them at all. This issue starts with edges, because
+they are the part of the graph the rest depends on.
+
+## What a typed link is
+
+In a card body,
+
+```hmd
+[[induction]] {relation: performs}
+```
+
+is one link with data attached. `[[induction]]` is a plain wikilink: an edge
+from the card it sits in to the card `induction`. The braces after it are a
+map carried on that edge. HQL's link operator card spells out the
+expansion: written in `base-agent`, the line means
+
+```hql
+@[[base-agent]] -> @[[induction]] { relation: performs }
+```
+
+A query sees the map as `e.data`, so `e.data.relation` is `"performs"`. A link
+without braces is the same edge with empty data. To a reader the text is
+still a link; to a query it is a typed fact.
+
+## Why this vault relies on it
+
+A plain link says only that two cards are connected. The base agent links to
+`induction` because it performs it, to `hmd-agent` because it is one, to
+`human-in-the-loop` because it relies on it, and to `strange-loop` to say it is
+*not* one. Without a type those four links are indistinguishable.
+
+The [wiki index](../../wiki/index.hmd) fixes the vocabulary: ten kinds
+between concept cards (`is-a`, `instance-of`, `part-of`, `example-of`,
+`contrasts`, `distinguished-from`, `generalizes`, `uses`, `analogous-to`,
+`answers`), plus `performs` in the agents vault. Queries build on those
+kinds:
+
+- [relations-by-kind](../../.hql/queries/relations-by-kind.hql) counts the
+  edges of each kind, with unlabelled ones counted as `untyped`.
+- [question-coverage](../../.hql/queries/question-coverage.hql) follows
+  `answers` edges.
+- [agent-coverage](../../.hql/queries/agent-coverage.hql) compares the base
+  agent's `performs` edges with the cards declared `instance-of`
+  cognitive-operation.
+- [agent-tools](../../.hql/queries/agent-tools.hql) gives the agent a
+  `relations(name)` tool that returns lines such as `"performs induction"`.
+
+## Where it falls short
+
+### 1. Every query re-implements "edges of kind K"
+
+`e.data.relation` is optional, so each query unwraps it by hand:
+
+```hql
+match e.data.relation { some(String r) => r == kind, _ => false }
+```
+
+This line, or a variant of it, appears in seven queries. `uplinks` and
+`downlinks` take no arguments, and `expand` filters by direction but not by
+kind. Asking a card for its `performs` edges takes a helper function in every
+file that needs it.
+
+### 2. Nothing checks the vocabulary
+
+The relation is a free string. A typo such as `perfroms` creates a twelfth
+kind, and every `== "performs"` filter skips that edge without a word. The
+vocabulary exists only as prose in the wiki index. No query or schema holds
+it. The only defence today is to read relations-by-kind and spot a kind with
+a count of 1.
+
+### 3. One pair of cards has one edge, and the last annotation wins
+
+HQL's `build_edges` (in `src/knowledge.rs`) identifies a link edge by its two
+ends. Every mention of the same target on a card goes into that one edge, and
+the `{…}` maps are merged key by key, with later mentions overwriting earlier
+ones. So a card that writes
+
+```hmd
+[[feedback-loop]] {relation: uses} … [[feedback-loop]] {relation: distinguished-from}
+```
+
+ends up with one edge whose relation is `distinguished-from`. The `uses` is
+lost and nothing reports it. No card in either vault does this today (checked
+on 2026-11-22), but the vocabulary encourages it: a card can easily use a
+concept and also want to set itself apart from it.
+
+Relation cards (`knowledge.type: Relation`) are the exception. Each one is an
+edge of its own and never merges, even when two of them join the same pair. So
+HQL already has a way to give a pair several relations, just not through
+inline links.
+
+### 4. Declared relations and passing mentions look the same
+
+Every `[[…]]` on a card is an uplink, whatever section it sits in. A link in
+a paragraph is as much an edge as one in a card's Relations list. It just has
+no `relation` unless the same target is annotated elsewhere on the card,
+because of the merge above. A "Relations" section is a convention, not
+syntax. A query can only separate the two by checking whether
+`e.data.relation` is present. That works, but it means "declared" and
+"annotated at least once, anywhere" are the same thing.
+
+### 5. Edges that leave the vault dangle
+
+The base agent's seventeen `performs` links point into the knowledge base,
+which is a separate vault. In the agents vault's own graph they are unwritten
+links. [Issue 0001](0001-agents-vault.hmd) owns the decision about what a
+`performs` link is. This issue only records that, whatever that decision is,
+the graph tools must show it.
+
+HQL itself keeps these edges: a link to a card that doesn't exist is still
+an edge whose target doesn't resolve. The editor drops them (next part).
+
+### 6. The editor's webview can't see edge data
+
+The HMD VS Code extension draws a graph tab in a webview. Its model loses
+everything this vault puts on edges:
+
+- **No data.** The TypeScript core's `GraphEdge` holds `source`, `target`,
+  `kind` (`link` or `embed`), the raw text and a position, but no data map.
+  The relation never reaches the webview, so every edge is drawn the same.
+- **One edge per pair here too.** The graph view treats edges as duplicates
+  when their source, target and `kind` match, the same rule HQL uses (part
+  3), so a webview that drew relations would still draw only one per pair.
+- **Dangling edges are dropped.** Unresolved targets are left out on purpose,
+  so in the agents vault the graph tab shows none of the seventeen `performs`
+  edges, which are the base agent's main content.
+- **The rendered tab:** to verify how `{relation: performs}` appears in
+  rendered text: as literal braces, hidden, or styled.
+
+So HQL's parser knows about link data and HMD's editor tooling doesn't. The
+two halves of the toolchain disagree about what an edge is.
+
+## Work
+
+Most of the fixes belong upstream. This repository is where the need shows up
+and where it gets tested. Issues get filed in the projects that own the code.
+
+1. **Here, runs today:** a vocabulary check query. It lists every edge whose
+   relation is not one of the declared kinds, with the card and the link that
+   carries it. Because of the merge in part 3, a query can't see an
+   overwritten relation. Catching conflicting annotations of one target needs
+   a check over the card text, not the graph, until HQL reports them. The declared kinds move from prose in the wiki index into data
+   that the query reads. Where that data lives (the index's header, or a small
+   file under `.hql/`) is part of the work.
+2. **Here, runs today:** one shared `is_kind` / `edges_of` helper used by all
+   seven queries, if HQL lets a query library share functions. If it doesn't,
+   that becomes part of the HQL request in step 3.
+3. **HQL:** filter a traversal by edge kind, for example
+   `@[[base-agent]] | uplinks(relation = "performs")`. Also decide whether
+   `relation` stays an ordinary data key or becomes a named part of an edge.
+   Also how typed links relate to relation cards (`knowledge.type: Relation`,
+   in the book chapter "Graphs"), which are the other way the language can
+   state a relation. On merging (part 3), ask for at least a load warning
+   when two mentions give one key different values. Better still, decide
+   whether a pair may carry several relations through inline links, for
+   example by keying link edges on (source, target, relation). Whether a link
+   can be marked as a declaration rather than a mention (part 4) is the
+   related HMD question.
+4. **HMD:** carry link data through the core's `GraphEdge`. In the graph
+   tab, label or colour edges by relation, merge edges by relation as well
+   as by target, and optionally show unresolved edges as stubs. Settle how
+   the rendered tab shows the braces.
+5. **After 0001 decides:** make cross-vault `performs` edges appear in the
+   graph tab in whatever form 0001 settles on.
+
+## Done when
+
+- A misspelled relation anywhere in either vault is reported by a query that
+  runs today.
+- Asking a card for its edges of one kind takes one step, not a hand-written
+  `match`.
+- Two relations written on one pair of cards are either both kept or reported,
+  never silently reduced to one.
+- The graph tab shows the relation on every typed edge, and the base agent's
+  `performs` edges are visible in the agents vault.
+- Every part that this repository cannot do is filed as an issue in HQL or
+  HMD and linked from here.

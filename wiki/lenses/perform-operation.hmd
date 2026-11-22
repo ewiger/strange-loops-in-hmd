@@ -1,0 +1,158 @@
+---
+tags: [lenses/future]
+metadata:
+  category: lens
+  status: design
+  future: true
+  query: .hql/queries/future/perform-operation.hql
+  questions: [ai-support-in-hql, ai-oriented-language, building-a-loop-in-hmd]
+---
+# Perform operation
+
+**Perform operation** is a future design for the agent as a language
+construct: a capability, written as a trait, by which any agent applies any
+cognitive operation to an input and returns a typed result. The operations
+are not functions in the language. They are cards, so the list is open. It is
+a design and does not run on the current HQL; this card must not be rendered.
+
+## The idea
+
+There are two obvious ways to give an agent seventeen operations, and both are
+wrong for this vault.
+
+- **Seventeen functions.** `induce`, `deduce`, `analogize` and the rest,
+  each written in code. The list is then closed: an eighteenth operation needs
+  a change to the language or a library.
+- **One prompt.** A single instruction listing all seventeen. The list is
+  open but nothing is typed, and "deduce" is a word in a prompt again.
+
+The design here separates what varies from what does not.
+
+| Part | What it is | Where it lives |
+|---|---|---|
+| An operation | a definition with an input and an output | a card that declares itself an instance of [[cognitive-operation]] |
+| The agent | instructions for performing *any* operation | the card `base-agent` in the agents vault, an [[hmd-agent]] |
+| The capability | `perform(operation, input)` returning a typed result | a trait in the language |
+| The obligation | support, confidence, what was not done | the result type |
+
+Adding an operation is writing a card. Adding an agent is writing a card.
+Only the capability and the result type are language, and they are written
+once.
+
+## The construct
+
+```hql
+import future
+import ai
+
+type Operation = Card
+
+type Performed<O> = {
+    operation: Operation,
+    input: String,
+    output: O,
+    support: List<String>,
+    confidence: String,
+    not_done: List<String>,
+    run: Run
+}
+
+trait Performs {
+    fn perform<O>(self, operation: Operation, input: Seq<ContextItem>) : Performed<O>
+    fn performable(self) : List<Operation>
+}
+
+impl Performs for Agent {
+    fn perform<O>(self, operation: Operation, input: Seq<ContextItem>) : Performed<O> =
+        [operation]
+        | Context("operation")
+        | concat(input)
+        | Prompt("Perform the operation defined in `operation` on `input`.")
+        | run(self, tools = tools)
+        | validate<Performed<O>>
+
+    fn performable(self) : List<Operation> =
+        operations() | map(n => @[[n]])
+}
+```
+
+The operation's card goes in as context, the agent's card is the
+instructions, and the answer is checked against the declared shape before it
+is a value. `Performed` keeps the whole run, so what reached the model and
+what it called stay readable.
+
+Operations with a stable signature get a typed entry point on top. These are
+the three signatures the discussion wrote down.
+
+```hql
+import future
+
+fn induce(a: Agent, examples: List<String>) : Performed<List<Hypothesis>> =
+    a.perform(@[[induction]], examples | Context("input"))
+
+fn deduce(a: Agent, theory: Card, premises: List<String>) : Performed<List<Conclusion>> =
+    a.perform(@[[deduction]], concat([theory] | Context("theory"), premises | Context("input")))
+
+fn analogize(a: Agent, left: Card, right: Card) : Performed<List<Correspondence>> =
+    a.perform(@[[analogy]], [left, right] | Context("input"))
+```
+
+## Extending it
+
+- **A new operation.** Write a card with a definition, an input and an
+  output, and one line declaring it an instance of the cognitive-operation
+  card. `performable` returns it on the next run.
+- **A new agent.** Write a card with an `agent` header and narrower
+  instructions. It is an `Agent`, so it has `perform`.
+- **A specialised agent built on the base one.** Not expressible yet. The
+  agents chapter of the HQL book lets a card list other agents to delegate
+  to. A card that *inherits* another agent's instructions would need a new
+  header key, and the book's rule is that an unknown key is refused.
+
+## The agent applied to itself
+
+Because the agent is a card and an operation takes cards, the agent can be an
+input to its own operations.
+
+```hql
+import future
+import ai
+
+base = @[[agents:base-agent]] | Agent
+found = base | induce(["...", "..."])
+
+critique = base.perform(@[[reflection]], concat([@[[agents:base-agent]]] | Context("process"), [found.run] | Context("results")))
+proposal = base.perform(@[[revision]], concat([@[[agents:base-agent]]] | Context("model"), [critique.output] | Context("evidence")))
+```
+
+`proposal` is a value. Nothing has been written. Integrating it is a separate
+step taken by a person, and the next run then reads a card the previous run
+helped to write. Whether that is more than feedback is the question of
+[[find-level-crossings]], asked of the agent.
+
+## What runs today
+
+The three tools on the agent's card are ordinary read-only functions and run
+on the current HQL: see `agent-tools.hql` in the query library. That query
+also compares what the agent's card says it can perform with the operation
+cards that exist.
+
+## What current HQL lacks
+
+- The `ai` module: `Agent`, `Context`, `Prompt`, `Tool`, `run`.
+- Validation of a run's answer against a declared type.
+- A trait implemented for `Agent`, and a generic method on it.
+- A card reference built from a name held in a variable.
+- A reference into another vault. The agent lives in the agents vault, and
+  today a second vault is reached only as `source("agents")`, never by a link.
+
+## Relations
+
+- It gives the [[hmd-agent]] {relation: uses} its place in the language; the base agent in the agents vault is the instance it is written for.
+- It makes every operation a [[typed-transformation]] {relation: uses} through one result type.
+- Its operations are the instances of [[cognitive-operation]] {relation: uses} that exist in the vault.
+- It generalizes [[classify-operation]] {relation: generalizes}: recognising an operation is one case of performing one.
+- Its self-application is a case of [[reflection]] {relation: example-of} followed by [[revision]] {relation: example-of}.
+- It keeps integration with a person, as [[render-integrate-execute]] {relation: uses} requires.
+- It serves the question [[ai-support-in-hql]] {relation: answers}.
+- It serves the question [[ai-oriented-language]] {relation: answers}: operations as cards and capability as a type is one answer to what such a language holds.

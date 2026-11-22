@@ -2,3 +2,15 @@
 # .hmd/config.toml); the query library is .hql/queries/.
 [modules]
 import = ["hmd"]
+
+# The agents vault, a second namespace beside the knowledge base. Its cards
+# are reached with source("agents") and are never merged into `cards`.
+[endpoint.agents]
+kind = "vault"
+root = "agents"
+
+# The knowledge base by id, for programs whose default vault is another one
+# (for example those run with --vault agents).
+[endpoint.knowledge]
+kind = "vault"
+root = "."

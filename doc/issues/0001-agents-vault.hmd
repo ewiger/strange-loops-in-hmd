@@ -1,0 +1,162 @@
+# 0001 — The agents vault: from a card that is read to an agent that runs
+
+Status: todo
+Related: [base agent](../../agents/base-agent.hmd),
+[agent](../../wiki/agents/agent.hmd),
+[HMD agent](../../wiki/agents/hmd-agent.hmd),
+[perform-operation lens](../../wiki/lenses/perform-operation.hmd),
+[perform-operation query](../../.hql/queries/future/perform-operation.hql),
+[agent-coverage query](../../.hql/queries/agent-coverage.hql),
+[agent-tools query](../../.hql/queries/agent-tools.hql),
+[project configuration](../../.hql/config.toml);
+in the HQL project: HQL-0020 (the vault and its namespace),
+HQL-0022 (the AI harness extension, on branch `feat/ai-ext`),
+HQL-0027 (generic traits), the book's chapters "Agents and runs" and
+"Agents inside documents"
+
+The project has an agent written as a card, a second vault to hold it, and a
+future query that says how it would run. It does not have an agent that runs.
+This issue lists what is missing and how to build each part, so that
+[perform-operation](../../.hql/queries/future/perform-operation.hql) can drop
+`import future`.
+
+## Where things stand
+
+The change staged on `wiki/core-net` is one story in four steps:
+
+1. **The operation list is complete.** Six operation cards (specialization,
+   simplification, generation, decomposition, synthesis, translation) join the
+   existing eleven, each `instance-of` cognitive-operation.
+2. **The concept of an agent enters the graph.** [agent](../../wiki/agents/agent.hmd)
+   is whatever can perform the operations; [HMD agent](../../wiki/agents/hmd-agent.hmd)
+   is an agent written as a card.
+3. **Agents get a vault of their own.** `agents/` holds the
+   [base agent](../../agents/base-agent.hmd), a prompt written as a card that
+   performs any operation by reading that operation's card. The
+   [project configuration](../../.hql/config.toml) binds it as
+   `[endpoint.agents]`, and the knowledge base back as `[endpoint.knowledge]`.
+4. **Queries.** [agent-coverage](../../.hql/queries/agent-coverage.hql) and
+   [agent-tools](../../.hql/queries/agent-tools.hql) run today;
+   [perform-operation](../../.hql/queries/future/perform-operation.hql) is
+   the design.
+
+What already works: reading one vault from another. `kind = "vault"`
+endpoints and `source("agents")` are implemented. agent-coverage, run on
+2026-11-22 with `--vault agents --project .`, returned 17 operations declared,
+17 available, none missing on either side.
+
+## What is missing
+
+Each part below names what perform-operation uses, what exists for it, and
+the work.
+
+### 1. The `ai` module is not on `main`
+
+perform-operation uses `import ai`, `Agent`, `Tool`, `Context`, `Prompt`,
+`run` and `Run`.
+
+- **Exists:** all of these, on the HQL branch `feat/ai-ext` (HQL-0022, a
+  first harness with agent sessions). `Agent(card)` takes a card and reads
+  its `agent` header, which is the header the base agent card already has.
+  The `main` README marks the module "design only".
+- **Work:** merge or release `feat/ai-ext`, then run the base agent with
+  plain `run` and no trait, typed results or cross-vault syntax: its card,
+  one operation card as context, the three tools from agent-tools. This is
+  the first runnable step and does not wait for parts 2 to 4.
+
+### 2. A card in another vault cannot be named as `@[[agents:base-agent]]`
+
+- **Conflict:** HQL-0020 rules this out. A wikilink in one vault never
+  resolves into another, another vault's cards are never merged into
+  `cards`, and a relation between cards of two vaults is the result of a
+  join, not a link. The design and the implemented rule disagree.
+- **Works today:** the same card, reached as a source:
+
+  ```hql
+  base = source("agents").cards | filter(c => c.name == "base-agent") | first | Agent
+  ```
+
+- **Work:** decide one of:
+  - **(a) Keep HQL-0020.** Rewrite perform-operation to reach the agent
+    through `source("agents")`, and add a small helper, such as
+    `card_in(source, name)`, to the agent-tools query.
+  - **(b) Amend HQL-0020.** Add a qualified reference `@[[agents:base-agent]]`
+    that resolves through a configured endpoint id. It is a value reference
+    only, never an edge, so the vault rule stands. This needs an HQL proposal.
+
+  Recommendation: (a) now, since it costs nothing; (b) only if qualified
+  references keep recurring.
+
+### 3. Links from the agents vault into the knowledge base dangle
+
+The base agent's `[[induction]] {relation: performs}` and the sixteen other
+`performs` links point at cards that do not exist in the agents vault. In
+the agents vault's own graph they are unwritten links.
+
+- **Work:** decide what a `performs` link is:
+  - **(a)** A name, joined by a query, as agent-coverage does now. Exclude
+    `performs` from the agents vault's unwritten-links report and document it
+    as the eleventh relation kind in the wiki index.
+  - **(b)** A real edge between two vaults. That depends on part 2 (b) and
+    still breaks HQL-0020's rule that cross-vault relations are join results.
+  - Also decide whether the declared table stays, because the card tells the
+    agent to call `operations()` and not trust the table. Options: keep it
+    and let agent-coverage check it; generate it with a query cell; drop it.
+
+### 4. Agent results are text, not typed values
+
+perform-operation ends a run with `validate<Performed<O>>`, which turns the
+model's answer into a checked record.
+
+- **Exists:** `Run` and its result. Validator traits (HQL-0039) and generic
+  traits (HQL-0027) are implemented for ordinary values.
+- **Missing:** a step that parses a run's answer into a declared type and
+  fails as data when it does not fit, and a way to tell the model the
+  expected shape, either structured output or a schema in the prompt.
+- **Work:** an HQL-0022 addition (typed run results) and tests in
+  `tests/ai.rs`. Until then, the base agent's fixed answer headings
+  (Operation, Input, Output, Support, Confidence, Not done) are the contract,
+  and a query can check them as text.
+
+### 5. A user trait implemented for `Agent`
+
+perform-operation declares `trait Performs` and `impl Performs for Agent`,
+with a method-level type parameter `perform<O>`.
+
+- **Exists:** traits, `impl`, generic traits and record types.
+- **To verify:** whether `impl` accepts a type from an extension (`Agent`),
+  and whether a trait method can take its own type parameter. Check both
+  against the checker on `feat/ai-ext` before changing the design.
+- **Work:** if either is unsupported, file it with HQL. If only the method
+  type parameter is missing, the typed entry points (`induce`, `deduce`,
+  `analogize`) already work as plain functions and need no trait.
+
+### 6. Tools read the wrong vault when the agent vault is the default
+
+agent-tools reads `cards`, which is the default vault. Run with
+`--vault agents`, as agent-coverage is, `operations()` and `definition()`
+would search the agents vault and find nothing.
+
+- **Work:** make the tools read `source("knowledge")` explicitly, so they
+  give the same answer whichever vault is the default. Add the check to
+  agent-coverage.
+
+## Order of work
+
+1. Part 6: make the tools independent of the default vault. Runs today.
+2. Part 2 (a) and part 3 (a): rewrite perform-operation to reach the agent
+   through a source, and settle what `performs` means. The query keeps
+   `import future`.
+3. Part 1: once `feat/ai-ext` is available, a first runnable query that runs
+   the base agent on one operation, without traits or typed results. It
+   ships without `import future`.
+4. Parts 4 and 5: typed results and the trait, as HQL issues or additions to
+   HQL-0022. When both land, remove `import future` from perform-operation.
+
+## Done when
+
+- The base agent performs one operation from a query on current HQL, and
+  the run is inspectable.
+- perform-operation runs without `import future`, or every part it still
+  needs is filed in the HQL project.
+- The agents vault's graph has no unexplained dangling links.

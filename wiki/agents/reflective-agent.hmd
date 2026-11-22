@@ -94,6 +94,7 @@ incompleteness result.
 - The second loop of [[compression-and-prediction]] {relation: example-of} is a reflective agent in miniature.
 - Its operations should be offered as a [[typed-transformation]] {relation: uses} so that revisions carry evidence.
 - It bears on the question [[ai-support-in-hql]] {relation: answers}: this is the kind of agent a card would host.
+- It is a kind of [[agent]] {relation: is-a}: one that uses a model of itself to revise itself.
 
 ## Neighbouring concepts
 

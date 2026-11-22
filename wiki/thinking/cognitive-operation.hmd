@@ -119,6 +119,7 @@ result carries evidence, a confidence, or a proof obligation.
 - [[duality]] {relation: distinguished-from} relates two descriptions without any self-reference.
 - It bears on the question [[ai-support-in-hql]] {relation: answers}: the list is a candidate vocabulary of agent operations for a query language.
 - It bears on the question [[learning-the-formalism]] {relation: answers}.
+- Taken together the operations define what an [[agent]] {relation: part-of} is: whatever can perform them.
 
 ## Neighbouring concepts
 

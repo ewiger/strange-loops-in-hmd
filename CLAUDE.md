@@ -12,6 +12,10 @@ exist yet.
 - `.hql/queries/` is the library of HQL queries.
 - `wiki/` holds the articles, written as HMD cards. The user writes these by
   hand: do not create or rewrite cards unless asked.
+- `agents/` is a second HMD vault (it has its own `.hmd/`), holding agent
+  cards. It is bound to the project as `[endpoint.agents]` in
+  `.hql/config.toml` and read with `source("agents")`. Links do not cross
+  between the two vaults.
 
 ## Future queries: `import future`
 

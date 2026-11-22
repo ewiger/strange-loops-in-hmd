@@ -53,9 +53,11 @@ with: [[strange-loop]], [[level-crossing]], [[object-and-meta-level]],
 [[cognitive-operation]], [[induction]], [[deduction]], [[abduction]],
 [[reasoning-cycle]], [[analogy]], [[abstraction]], [[generalization]],
 [[summarization]], [[prediction]], [[evaluation]], [[reflection]],
-[[revision]], [[typed-transformation]].
+[[revision]], [[typed-transformation]], and the six remaining operations
+[[specialization]], [[simplification]], [[generation]], [[decomposition]],
+[[synthesis]], [[translation]].
 
-**Agents.** Who or what closes the loop: [[reflective-agent]],
+**Agents.** Who or what closes the loop: [[agent]], [[hmd-agent]], [[reflective-agent]],
 [[human-in-the-loop]], [[compression-and-prediction]].
 
 **HMD.** The loop as it would be built here: [[hmd-feedback-loop]],
@@ -71,13 +73,36 @@ cards
 | map(g => {cluster: g.key, cards: size(g.items)})
 ```
 
+## Agents
+
+What an agent is, in this project, is the concept [[agent]]. Its
+sub-specification [[hmd-agent]] is an agent defined as a card: the text is the
+instructions, and the operations it performs are whatever operation cards
+exist here.
+
+Agent cards do not live in this knowledge base. They are a vault of their own,
+the top-level `agents/` folder, bound to the project by id. Its first card is
+the base agent, which performs any cognitive operation. The agent cards that
+exist, and the operations available to them:
+
+```hql
+fn is_kind(e: Edge, kind: String) : Bool =
+    match e.data.relation { some(String r) => r == kind, _ => false }
+{
+    agents: source("agents").cards | map(c => c.title),
+    operations: @[[cognitive-operation]] | downlinks | filter(e => is_kind(e, "instance-of")) | size
+}
+```
+
+Running an agent is a future design, described in [[perform-operation]].
+
 ## The relations
 
-Every relation between two cards is one of ten kinds: `is-a`, `instance-of`,
+Every relation between two concept cards is one of ten kinds: `is-a`, `instance-of`,
 `part-of`, `example-of`, `contrasts`, `distinguished-from`, `generalizes`,
 `uses`, `analogous-to`, `answers`. After `uses`, the most frequent kind is
 `distinguished-from`, which reflects the discussions: much of their work was
-telling apart things that look alike.
+telling apart things that look alike. Agent cards, in their own vault, add an eleventh, `performs`.
 
 ```hql
 graph.edges
@@ -117,13 +142,14 @@ cards
 
 ## Future lenses
 
-Four cards describe queries that need AI support the query language does not
+Five cards describe queries that need AI support the query language does not
 have yet. They carry `import future` and are never rendered.
 
 - [[semantic-neighbours]]: related cards a card does not link yet.
 - [[neighbour-summary]]: each neighbour restated from the current card's point of view.
 - [[classify-operation]]: a passage labelled with the cognitive operation it performs.
 - [[find-level-crossings]]: which link cycles in this vault cross levels.
+- [[perform-operation]]: the agent as a language construct that performs any operation card.
 
 ## The whole net
 

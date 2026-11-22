@@ -1,0 +1,162 @@
+---
+tags: [agents/core]
+metadata:
+  category: concept
+  cluster: agents
+  status: draft
+  established: false
+  questions: [ai-support-in-hql, building-a-loop-in-hmd, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 12-llm-cognitive-operations, hql-book-agents-and-runs]
+---
+# HMD agent
+
+An **HMD agent** is an [[agent]] defined as a HyperMarkDown card. The text of
+the card is the agent's instructions, the header of the card is its
+configuration, and the operations it performs are other cards. The term is
+this project's, and names a sub-specification of the general concept: it says
+in what form an agent is written down here. Nothing in it is code.
+
+## Description
+
+### The specification
+
+An HMD agent satisfies seven conditions.
+
+1. **It is a card.** A card with an `agent` table in its header is an agent,
+   and a card without one is not. The body of the card is what the agent is
+   told. This much is the design of the query language's own book.
+2. **Its header is its configuration.** The `agent` table names a model by a
+   key of the project's configuration, never a vendor, lists the tools the
+   agent may call, and bounds the number of turns. An unknown key is refused.
+3. **Its operations are cards.** The agent's text contains no account of any
+   single operation. An operation is a card that declares itself an instance
+   of [[cognitive-operation]], and the agent performs it by reading that card.
+   Writing a new operation card extends every HMD agent.
+4. **Its tools are read-only functions.** The tools listed on the card are
+   ordinary functions of the query language that read the vault. The agent
+   has no tool that writes.
+5. **Its results are typed and carry support.** Each result states the
+   operation, the input as understood, the output, what supports it, how far
+   to trust it, and what was not done. This is the obligation of a
+   [[typed-transformation]].
+6. **It proposes and does not act.** What it generates is inert until someone
+   integrates it, and anything executable in it is inert until someone runs
+   it. These are the separate steps of [[render-integrate-execute]].
+7. **It describes itself.** Its card is written to the agent, about the
+   agent. Because the agent is a card and operations take cards as input, the
+   agent can be given its own card, and can reflect on it or propose a
+   revision of it.
+
+### Where it lives
+
+Agent cards are kept apart from the knowledge they work on. In this project
+they are a vault of their own, the top-level folder `agents/`, beside the
+knowledge base. The two are separate namespaces.
+
+- A link in an agent card to a concept, and a link here to an agent card, do
+  not resolve as links. A wikilink never crosses from one vault into another.
+- The connection is made by the program that runs the agent. It reads the
+  agent from one vault and the operation cards from the other, and matches
+  them by name.
+- The project has one configuration, which binds each vault by an id.
+
+The separation has a purpose beyond tidiness. The knowledge base is what
+agents read and propose changes to. The agents vault is what they are. An
+agent that proposes a change to a concept and an agent that proposes a change
+to an agent are doing two different things, and the second is the one that
+bears on strange loops.
+
+### As a language construct
+
+In the language the agent is a value of a type, and the specification above
+becomes a capability of that type: perform this operation on this input,
+returning a typed result. The capability is written once. Operations and
+agents are added by writing cards. The design is the future lens
+[[perform-operation]].
+
+### What exists and what is design
+
+| Part | State |
+|---|---|
+| The agent card, with header and instructions | written, in the agents vault |
+| The seventeen operation cards | written, in this knowledge base |
+| The three read-only tools | run on the current query language |
+| A second vault bound to the project by id | runs today |
+| Reading a card as an agent, running it, typed results | design |
+| A link from one vault into another | design |
+
+### Why it matters for strange loops
+
+An HMD agent is a document that an interpreter reads in order to act, and
+that can be handed to that same interpreter as the thing to act on. If a
+proposal the agent makes about its own card is accepted, the next run is made
+under a description the previous run helped to write.
+
+That is not yet a [[strange-loop]]. A run, an edit and another run are a
+[[feedback-loop]]. It becomes a candidate only where the agent's
+representation of itself takes part in changing what it represents, and where
+that can be shown from the record of runs and revisions. The specification is
+written so that the record exists.
+
+## Relations
+
+- It is a kind of [[agent]] {relation: is-a}: the form in which this project writes one down.
+- Its operations are the instances of [[cognitive-operation]] {relation: uses} that exist as cards.
+- Each of its results is a [[typed-transformation]] {relation: uses}.
+- It performs only the first step of [[render-integrate-execute]] {relation: part-of}.
+- Its proposals are decided by a person, as [[human-in-the-loop]] {relation: uses} describes.
+- It may become a [[reflective-agent]] {relation: distinguished-from}, but is one only if its self-description changes it.
+- It differs from a [[quine]] {relation: distinguished-from}: a quine reproduces its description, an HMD agent reads its description and can reason about it.
+- It is the agent of the [[observer-card-experiment]] {relation: part-of}, with itself as the observed card.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: instructions, operations and knowledge in one inspectable form.
+
+## Neighbouring concepts
+
+- **[[agent]].** Whatever can perform the cognitive operations in an open
+  list. This card adds only the form: written as a card, with operations as
+  cards.
+- **[[cognitive-operation]].** The catalogue of operations with inputs and
+  outputs. For an HMD agent it is not documentation but the set of things the
+  agent can be asked to do.
+- **[[render-integrate-execute]].** Three steps kept apart so that generated
+  text never runs itself. An HMD agent stops after the first.
+- **[[reflective-agent]].** An agent that revises itself through a model of
+  itself. An HMD agent has the model, its own card, and whether the revising
+  happens is a matter of what is done with its proposals.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[hmd-agent]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[hmd-agent]] | downlinks | map(e => e.source)
+```
+
+The HMD agents that exist, read from the agents vault:
+
+```hql
+source("agents").cards | map(c => {agent: c.name, title: c.title})
+```
+
+Future lens that applies to this card: [[perform-operation]].
+
+## Sources
+
+- The HQL book, chapter "Agents and runs", the part "An agent is a card", for
+  conditions one and two [hql-book-agents-and-runs].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy", for
+  operations as typed transformations [12-llm-cognitive-operations].
+- Discussion: "HMD and HQL as executable documents" and "HQL output can
+  itself be Markdown", for the rule that generated text does not run itself
+  [03-hmd-hql-executable-documents] [04-markdown-as-output].
+- Project notes of 22 November 2026: the generic agent, operations described
+  as cards and not code, the agent as a type with an open list, and agents as
+  a vault of their own.

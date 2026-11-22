@@ -1,0 +1,32 @@
+# Kanban board
+
+`doc/issues/` is this project's active-work layer: a lightweight **Kanban
+board** of numbered **issues**, following the convention of the HQL project's
+`doc/issues/`. Each issue is one flat hyper-markdown card named
+`NNNN-slug.hmd`. The folder stays flat, except `archive/`, which holds finished
+issues.
+
+`doc/` sits outside the `wiki/` vault, so issues are not concept cards and do
+not appear in the knowledge graph.
+
+## The index is `kanban.yaml`
+
+The board's index is `doc/issues/kanban.yaml`. It is a YAML `board` mapping:
+`title` and `description` name it, `columns` declares the swimlanes in flow
+order, `last_id` tracks the highest issue number assigned, and `items` maps each
+column to an ordered list of issue cards, highest priority first. Each card
+carries `id`, `title` and `file`; the `id` is quoted so leading zeros survive. A
+card's column mirrors the `Status:` line inside its issue file.
+
+## Columns
+
+- **backlog**: captured, not yet scheduled.
+- **todo**: ready to pick up.
+- **doing**: in progress.
+- **done**: resolved; archive it.
+
+## Archiving
+
+When an issue is done, move its file to `doc/issues/archive/` and delete its
+card from `kanban.yaml`. Its `Status:` line stays `done`, and its number is not
+reused.

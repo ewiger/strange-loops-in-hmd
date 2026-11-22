@@ -1,0 +1,95 @@
+---
+tags: [thinking/production]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql, building-a-loop-in-hmd]
+  sources: [04-markdown-as-output, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+---
+# Generation
+
+**Generation** is the production of new instances from instructions, rules or
+context: text, code, structures. The discussion introduces it as "a little
+brother of generalization". [[generalization]] goes from instances to a rule;
+generation goes from a rule to instances, and so needs the rule to exist
+already.
+
+## Description
+
+| | Input | Output |
+|---|---|---|
+| Generation | instructions, rules, or context | new instances, text, code, or structures |
+
+### Two lanes
+
+- **Generating from a rule.** A recursive definition generates a sequence, an
+  iteration generates the points of a fractal, a [[quine]] generates its own
+  source. Nothing is uncertain here: the output is fixed by the rule.
+- **Generating as a model's task.** A language model produces a candidate from
+  a prompt and context. The output is one of many possible, and nothing in the
+  act of producing it says whether it is right.
+
+The second lane is what a language model does most fluently, which is why the
+discussion ranks it below generalization. Fluent output is easy to mistake
+for the harder operation that found the rule being spent.
+
+### Generated output is not yet anything
+
+Two parts of the discussion deal with what happens after generation.
+
+- **Generate, then verify.** In the essay a model generates a candidate
+  program, a compiler or verifier rejects it, and the model tries again. The
+  value comes from the pair. Generation alone settles nothing, which is the
+  same pairing as induction with deduction.
+- **Generated text must not run itself.** A cell's output may be Markdown
+  holding new cells, so generation can produce code. The discussion separates
+  rendering that output, integrating it, and executing what it contains, with
+  approval between the steps. That separation is
+  [[render-integrate-execute]].
+
+Beyond these points the discussion gives generation one table row.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: instructions or rules in, new instances out.
+- It is the little brother of [[generalization]] {relation: contrasts}: rule to instances, against instances to rule.
+- It is close to [[specialization]] {relation: distinguished-from}: specialization narrows a principle, generation produces instances of it.
+- Its output is judged by [[evaluation]] {relation: uses} before it counts as a result.
+- When its output is a document with cells, it is gated by [[render-integrate-execute]] {relation: uses}.
+- A [[quine]] {relation: example-of} is generation whose output is the generator.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[generalization]].** Widening a concept or claim to more cases. It earns
+  the rule that generation spends.
+- **[[evaluation]].** Assessing a claim or candidate against a criterion. It
+  is what turns a generated candidate into an accepted one.
+- **[[render-integrate-execute]].** Three separated steps for handling
+  generated documents, so that generated cells run only when chosen.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[generation]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[generation]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question [10-operations-dualities-generalization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].
+- Essay: "What is an AI-oriented programming language?", the part on the
+  compiler as a feedback mechanism [ai-oriented-pl].
