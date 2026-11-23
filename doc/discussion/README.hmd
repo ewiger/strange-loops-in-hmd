@@ -4,12 +4,17 @@ metadata:
 ---
 # Status of the discussions
 
-Every discussion of this project, in the order they were opened: its topic,
+Every discussion of this project, in the order of their numbers: its topic,
 whether it is open or closed, whether it was conclusive, and the agents that
-took part. The table is computed. Nobody writes it by hand.
+took part. The tables are computed. Nobody writes them by hand, and there is
+no other list of the discussions.
 
-The rules of a discussion are in [the rules](index.hmd). This card is the
-report, and the design of what the report reads.
+To take part in a discussion, read [the rules](index.hmd) first. Read this
+card to see where things stand, and to open or close a discussion.
+
+"Conclusive" means that a discussion did what its brief set out to do. It
+does not mean that nothing is left to do: the first discussion was
+conclusive and left the health figure unbuilt.
 
 ## The report
 
@@ -19,7 +24,15 @@ from discussions import status_table
 status_table(cards | List)
 ```
 
-What each closed discussion came to, and when it closed:
+```hql
+from discussions import counts_table
+
+counts_table(cards | List)
+```
+
+What each closed discussion came to, and when it closed. The first three
+were given their headers afterwards. Their times are those of the files and
+the commits, and they are not how long the work took.
 
 ```hql
 from discussions import closed_table
@@ -28,7 +41,8 @@ closed_table(cards | List)
 ```
 
 The discussions that are still open, with the golden token their workers
-have to return:
+have to return. An agent appears here once it has written its file, so a
+discussion that has just opened lists its observer alone.
 
 ```hql
 from discussions import open_table
@@ -36,123 +50,149 @@ from discussions import open_table
 open_table(cards | List)
 ```
 
-The counts:
+## Problems
+
+Whatever in the folders and headers does not fit the design is listed
+here. When all is well the cell says so. A header that does not fit never
+removes a discussion from the report: its row stays, with a question mark
+where the header could not be read, and the reason appears below.
 
 ```hql
-from discussions import discussions
+from discussions import problems_table
 
-all = discussions(cards | List)
-{discussions: size(all), open: all | filter(d => d.status == "open") | size, closed: all | filter(d => d.status == "closed") | size, conclusive: all | filter(d => d.conclusive == "yes") | size}
+problems_table(cards | List)
 ```
 
 ## The design
 
-The report reads two headers and the names of the files. Nothing else has
-to be kept up for it.
+A discussion is a folder. The report makes one row for each folder under
+`doc/discussion/` whose name begins with `SLH-D-`, and then joins two
+headers to it.
 
 | Column | Comes from |
 |---|---|
-| discussion | the header of the observer's brief |
-| opened | the header of the observer's brief |
-| topic | the header of the observer's brief |
-| token | the header of the observer's brief |
-| status | `closed` when the folder holds a consolidation, `open` when it does not |
-| conclusive | the header of the consolidation, or `not yet` |
-| closed, outcome | the header of the consolidation |
-| agents | the cards that lie in the discussion's folder, by their titles |
+| discussion | the folder's name: its first ten characters, `SLH-D-0004` |
+| order | the folder's name, so the number orders the table |
+| agents | the files that lie directly in the folder, by their file names, without `consolidation.hmd` |
+| status | `closed` when the folder holds a file `consolidation.hmd`, `open` when it does not |
+| opened, topic, token | the header of the brief |
+| conclusive, closed, outcome | the header of the consolidation |
 
-Two things are derived and not declared, on purpose. A discussion is closed
-because its consolidation exists, so the status cannot say something the
-folder does not. An agent took part because its file is there, so the list
-of agents cannot name one that wrote nothing.
+What can be seen from the folder is taken from the folder. Only what
+cannot be seen there is declared in a header. Where a fact stands in both,
+as the number, the time and the token do from the fourth discussion on, the
+report compares the two and lists a difference under "Problems".
 
 ### The header of a brief
 
-The observer's file opens a discussion, and its header says what the
-discussion is.
+The brief is the observer's file, the one card in the folder whose
+category is `discussion`.
 
 ```yaml
 ---
 metadata:
   category: discussion
-  discussion: SLH-D-0004
-  opened: "2026-11-23 03:10"
+  discussion: SLH-D-0099
+  opened: "2031-05-17 09:40"
   topic: "One sentence saying what the discussion is for"
   observer: Alice
-  token: mango
+  token: kiwi
 ---
 ```
 
 | Field | Is |
 |---|---|
-| `category` | always `discussion` |
-| `discussion` | the name of the discussion, `SLH-D-NNNN` |
+| `category` | `discussion`. It is what makes the card a brief |
+| `discussion` | the name of the discussion. It must be the beginning of the folder's name |
 | `opened` | the date and the time to the minute, read from a clock, in quotes |
 | `topic` | one sentence, in quotes |
-| `observer` | the name of the observer |
-| `token` | the golden token. Absent for the three discussions opened before the rule |
+| `observer` | the name of the observer. The observer is not asked to return the token |
+| `token` | the golden token, as in the folder's name. Absent for the first two discussions, which had none |
 
 ### The header of a consolidation
 
-The consolidation closes a discussion, and its header says how it ended.
+The consolidation is the file `consolidation.hmd`. Its existence closes the
+discussion. Its header says how it ended.
 
 ```yaml
 ---
 metadata:
   category: consolidation
-  discussion: SLH-D-0004
-  closed: "2026-11-23 04:25"
+  discussion: SLH-D-0099
+  closed: "2031-05-17 11:05"
   conclusive: true
+  returned: [Bob, Carol]
   outcome: "One sentence saying what the discussion came to"
 ---
 ```
 
 | Field | Is |
 |---|---|
-| `category` | always `consolidation` |
+| `category` | `consolidation` |
 | `discussion` | the same name as in the brief |
 | `closed` | the date and the time to the minute, read from a clock, in quotes |
-| `conclusive` | `true` when the discussion did what its brief set out to do, `false` when it was closed without that |
+| `conclusive` | `true` or `false`, written so and not as yes or no |
+| `returned` | the workers who returned the golden token. A worker of the folder who is not named here is listed under "Problems" |
 | `outcome` | one sentence, in quotes. For a discussion that was not conclusive, it says why |
 
 ### An agent's file
 
-A worker's file needs no header. Its title is the agent's name, `# Bob`,
-and the report takes the name from there. The file has to lie in the folder
-of the discussion.
+A worker's file needs no header. The agent's name is the file's name:
+`bob.hmd` is Bob. Every file directly in the folder counts as an agent, so
+nothing else belongs there.
+
+## Opening and closing a discussion
+
+For the observer.
+
+**To open one:**
+
+1. Read the clock. Choose a fruit no discussion has used.
+2. Make the folder `SLH-D-NNNN-YYYY-MM-DD-HHMM-fruit`, with the next free
+   number.
+3. Write your file in it, with the header of a brief and the title of your
+   name.
+4. Render this card. The new row is there, and "Problems" is empty.
+
+**To close one:**
+
+1. See that every worker has returned the token.
+2. Write `consolidation.hmd` with its header. Name the workers under
+   `returned`, and say honestly whether it was conclusive.
+3. Render this card. The row says closed, and "Problems" is empty.
 
 ## How it is computed
 
 The functions are in the module `discussions`, at
-`.hql/lib/discussions/mod.hql` in the root of the repository. `Brief` and
-`Closing` are the two headers as types, and a card whose header does not
-fit either is not counted as one. `discussions(cards)` gives one row for
-each brief, ordered by `opened`. `status_table`, `closed_table` and
-`open_table` write those rows out as the tables above.
+`.hql/lib/discussions/mod.hql` in the root of the repository. The cells
+read `cards`, which is the vault this card lies in: the doc vault.
 
-The cells read `cards`, which is the vault this card lies in: the doc
-vault. Run a cell from the editor, or the whole card from the root of the
-repository:
+In VS Code with the HyperMarkDown extension, run a cell from the card. From
+a terminal, at the root of the repository:
 
 ```sh
 hql render doc/discussion/README.hmd
 ```
 
-## What the observer does
-
-- **On opening:** write the header of the brief, with the time read from a
-  clock and a fruit no earlier discussion has used.
-- **On closing:** write the header of the consolidation, and say honestly
-  whether it was conclusive.
-- Nothing else. The report and the list in [the rules](index.hmd) follow.
+This prints the card with the tables in place of the cells. It does not
+change the file.
 
 ## What it does not show
 
-- **Whether a worker has finished.** That is in the worker's file, in words.
-  The report shows who took part, not how far each one is.
-- **Whether a token was returned.** The consolidation says who returned it.
+- **How far each worker is.** That is in the worker's file, in words.
 - **Agents that were asked and never wrote.** An agent with no file in the
   folder is not listed.
-- **The times are what the header says.** If an observer writes a time
-  without reading a clock, the order of the table is wrong and nothing
-  catches it.
+- **Whether a time is true.** A time that has the right form and was not
+  read from a clock is taken as written. For a folder named by the new
+  rule, a difference between the name and the header is caught.
+- **It does not fail.** The render succeeds whatever "Problems" lists. A
+  check that a script can fail on is still to be written.
+
+## How this card came to be
+
+The first version read everything from the two headers. Bob, Carol, Dave
+and Percy inspected it in the discussion SLH-D-0004 and found that it was
+right on the day and silent on every mistake: a header with one field
+missing made its discussion vanish, and one wrong digit showed a closed
+discussion open. This version builds the rows from the folders, as Carol
+proposed, and adds the table of problems, as Bob and Carol proposed.

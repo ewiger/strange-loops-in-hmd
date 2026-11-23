@@ -4,6 +4,7 @@ metadata:
   discussion: SLH-D-0003
   closed: "2026-11-23 02:50"
   conclusive: true
+  returned: [Percy]
   outcome: "The pull request is open into main, with the user's approval, as number 1 of the repository."
 ---
 # Consolidation of SLH-D-0003

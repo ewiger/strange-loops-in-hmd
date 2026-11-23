@@ -1,0 +1,243 @@
+# Carol
+
+Hello, I am Carol. I act as a worker, and my job in this discussion is to
+inspect the design of the status report of the discussions. My session is
+`strange-loops-in-hmd-49`.
+
+## Report, 02:52
+
+**Goal.** Inspect "The design" in [the status report](../README.hmd): are
+the two headers the right ones, is anything declared that should be derived
+or derived that will go wrong, and do the card and
+[the rules](../index.hmd) say the same thing.
+
+**Done.** I read the card, the module and the rules, and rendered the card.
+It runs, and its four tables agree with the headers. I then tried six cases
+on a copy of the vault in my scratch folder. The repository was not touched
+and the copy is deleted.
+
+**Touches.** This file only.
+
+**Needs.** Nothing from the user. The findings are for Alice.
+
+## The finding in one sentence
+
+The card states a principle, that what exists is read from the folder and
+only the description is declared, and then follows it for two facts out of
+four. Most of what is below is the same remedy applied to the other two.
+
+| Fact | The card says | The code does |
+|---|---|---|
+| who took part | from the folder | from the folder |
+| the discussion is closed | from the folder | from a declared name |
+| the discussion exists | not said | from a declared header |
+| the order | from a declared time | from a declared time |
+
+## Findings, the most serious first
+
+### 1. "Closed" is not derived from the folder, though the card says it is
+
+The table under "The design" says the status is `closed` "when the folder
+holds a consolidation". The function `row` in the module does something
+else: it looks through every card of the vault for a closing header whose
+field `discussion` equals the brief's. The folder is not consulted.
+
+So the status rests on a name written by hand twice, and the sentence "the
+status cannot say something the folder does not" is not true of the code.
+
+Tried: in the consolidation of SLH-D-0003, the field `discussion` changed to
+`SLH-D-0004`, as a slip of one digit would.
+
+```
+SLH-D-0003   open     not yet     the folder holds its consolidation
+SLH-D-0004   closed   yes         the folder holds none
+```
+
+Nothing reported it. The outcome of 0003 also appeared as the outcome of
+0004.
+
+There are now three tests for "closed", and they can disagree:
+
+| Where | Test |
+|---|---|
+| the join prompt, `.loops/join-discussion.md` | the folder holds `consolidation.hmd` |
+| the module | some card carries a closing header with this discussion's name |
+| the list at the end of the rules | a word typed by hand |
+
+**I would change:** the closing of a discussion is the consolidation that
+lies in the folder of its brief, `folder(k) == folder(c)`. The field
+`discussion` in the consolidation's header then stops deciding anything. It
+can stay as a check, see finding 4.
+
+### 2. A header with one field missing makes its discussion disappear
+
+The list of discussions is built from the cards that carry a well-formed
+brief. A discussion therefore exists for the report only while its header is
+well formed. The folder, the files and the agents are all still there, and
+the report shows no row and no warning.
+
+Tried: the line `topic:` removed from the brief of SLH-D-0002. The report
+shows three discussions. The closed table still shows the outcome of 0002,
+which now belongs to no row above it.
+
+The same happens at closing. Tried: the line `conclusive:` removed from the
+consolidation of SLH-D-0002.
+
+```
+SLH-D-0002   open   not yet   Alice, Bob, Carol, Consolidation of SLH-D-0002, Dave
+```
+
+A closed discussion is shown as open, and its consolidation is listed as an
+agent that took part. Those are two wrong cells from one missing line, and
+both are silent.
+
+Bob looks at how the code fails. The design point is that existence is
+declared where it could be derived.
+
+**I would change:** build the rows from the folders. Every folder under
+`discussion/` whose name begins `SLH-D-` is a discussion. Then join the
+headers to it, and show what is missing in the row itself:
+
+| The folder holds | Status | Topic or conclusive |
+|---|---|---|
+| a brief with a good header | as today | as today |
+| no card with a good brief | open | `no brief` |
+| `consolidation.hmd` with a good header | closed | yes or no |
+| `consolidation.hmd` with a bad header | closed | `header missing` |
+
+The consolidation is then known by its file name, as the rules and the join
+prompt already know it, and is left out of the agents by that name.
+
+### 3. The order is taken from a time someone typed, when the number already gives it
+
+The rules say the number is the next free one, so the numbers are the order
+of opening by construction. The module sorts by the string `opened`. The
+card admits the weakness under "What it does not show": a time written
+without a clock puts the table in the wrong order "and nothing catches it".
+
+Tried: the brief of SLH-D-0004 with `02:05` in place of `02:50`.
+
+```
+SLH-D-0001, SLH-D-0004, SLH-D-0002, SLH-D-0003
+```
+
+Two discussions opened in the same minute also have no defined order, and a
+time written as `2:50` sorts wrongly as a string.
+
+**I would change:** sort by the name of the discussion. Then add one check
+to the report: the discussions whose `opened` is earlier than that of the
+discussion before them. The weakness the card admits becomes a row somebody
+sees.
+
+### 4. Three facts are written twice, and nothing compares the two writings
+
+From SLH-D-0004 on, the name of the folder holds the number, the time of
+opening and the token: `SLH-D-0004-2026-11-23-0250-mango`. The header of the
+brief declares all three again: `discussion`, `opened`, `token`. The
+consolidation declares `discussion` a third time.
+
+Each pair can disagree. Finding 1 is what one such disagreement does.
+
+**I would change:** keep the header as the place the report reads, since the
+first three folders carry no time and no token. Add a table to the report,
+"Disagreements", that is empty when all is well. Its rows:
+
+- a header whose `discussion` is not the beginning of its folder's name;
+- a brief whose `opened` or `token` differs from its folder's name, where
+  the name carries them;
+- a discussion out of order, from finding 3;
+- a token used by two discussions. The rules forbid it and nothing checks
+  it.
+
+### 5. The condition for closing is the one thing the header does not carry
+
+The rules say the observer closes a discussion only when every worker has
+returned the token, and that the consolidation names who did. The card
+lists "whether a token was returned" under what the report does not show.
+
+So the report can show `closed` and `conclusive: yes` for a discussion that
+was closed against the rule, and the two documents do not meet at the point
+where the rule has its teeth.
+
+**I would change:** one more field in the header of a consolidation,
+`returned`, a list of names. The report derives who is missing: the agents
+of the folder, without the observer, without those named. A closed
+discussion with somebody missing shows it in its row.
+
+### 6. Any card in the folder is an agent
+
+The agents are the titles of all cards in the folder that carry no closing
+header. The card says the list "cannot name one that wrote nothing". It can
+name things that are not agents.
+
+Tried: a card titled "Draft of the pull request" saved in the folder of
+SLH-D-0003.
+
+```
+SLH-D-0003   Alice, Draft of the pull request, Percy
+```
+
+A folder where agents work will collect such files.
+
+The name also has two sources. The rules say a file is "named by the agent",
+`bob.hmd`. The card says the title is the name, `# Bob`. A file `bob.hmd`
+titled "Bob's findings" is listed under the second.
+
+**I would change:** say in both documents which of the two is the name, and
+that the title is the name and nothing more. Then show an agent that is not
+on the roster as such. That needs the roster as data, in the header of the
+rules, which also ends its being typed in two places.
+
+### 7. `observer` is declared and never read, and `category` is declared and never checked
+
+- **`observer`** is required by the type `Brief` and used nowhere. It is
+  also derivable: the observer is the agent whose file carries the brief,
+  that card's title. As declared, it can name somebody else and nothing
+  notices. I would drop the field and derive it, or use it: show the
+  observer in the table and list it among the disagreements when it differs
+  from the title.
+- **`category`** is "always `discussion`" and "always `consolidation`" in
+  the card. The types do not contain it, so a card is a brief by the shape
+  of its fields alone. Tried: the brief of SLH-D-0004 with
+  `category: recipe`. The report did not change. I would either test it in
+  the module or say in the card that the report does not read it.
+
+### 8. Where the card and the rules do not say the same thing
+
+- **The list in the rules does not follow.** The card says, under "What the
+  observer does": "Nothing else. The report and the list in the rules
+  follow." The rules say of the same list: "The list here is kept by hand."
+  The second is true, and the list has already drifted: its "About" for
+  SLH-D-0001 and SLH-D-0004 is not the `topic` of their briefs. I asked for
+  that table in SLH-D-0002, with the columns "About" and "State", before
+  there was a report. Those two columns are now the duplicate. I would keep
+  the links in the rules and drop both columns.
+- **The token of SLH-D-0003.** The card says the token is "absent for the
+  three discussions opened before the rule". The brief of SLH-D-0003 carries
+  `token: banana`. It is absent for two. The rules say the first three "keep
+  their names", which is about names and is right.
+- **The examples.** The card's example of a brief is `SLH-D-0004`, opened
+  `03:10`, token `mango`. The rules' example of a name is
+  `SLH-D-0004-2026-11-23-0310-mango`. The real SLH-D-0004 opened at 02:50.
+  Both examples use a real number and a real token with a time that is not
+  theirs. I would write the examples with `NNNN` and `HH:MM`.
+- **"The rules and the roster".** The folder picture in the rules still
+  describes `index.hmd` alone and does not show `README.hmd`, and its example
+  folder is the old form of the name.
+
+## What I found in order
+
+- The two headers are the right two. One for opening and one for closing,
+  each on the file the observer writes anyway, is the least that can carry
+  a topic and an outcome. No worker's header is needed.
+- `topic`, `outcome` and `conclusive` are rightly declared. They are
+  judgments, and no folder holds them.
+- Deriving the agents and the status is the right choice. Findings 1 and 2
+  ask for more of it, not less.
+
+## Entry, 02:52
+
+The inspection is complete. I changed no file but this one, and staged and
+committed nothing.
+
+Finished: yes. Golden token: mango.
