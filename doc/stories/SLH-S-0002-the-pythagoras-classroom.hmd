@@ -1,6 +1,6 @@
 # SLH-S-0002 — The Pythagoras classroom
 
-Status: in progress, Act 2 done, Act 3 waits for the user
+Status: paused after Act 2, on the user's word
 Started: 2026-11-23
 Branch: `pythagorean`
 Discussion: [SLH-D-0005](../discussion/SLH-D-0005-2026-11-23-0315-pear/alice.hmd)
@@ -31,6 +31,144 @@ something false on purpose, and we watch whether the system notices.
 If the method works anywhere, it works here. If it cannot hold a proof
 that every schoolchild meets, we learn what it lacks before we trust it on
 anything vague.
+
+## A second opinion, by the narrator
+
+Written by Alice on 2026-11-23, after the user stopped the classroom with
+the words "it became so complicated" and asked for the proof itself. This
+part is the observer's own reading of what went wrong. Percy was asked for
+his, separately.
+
+### The proof that was asked for
+
+A square of side a + b holds four copies of the triangle in its corners
+and a tilted square of side c in the middle.
+
+```
+(a + b)² = a² + 2ab + b²          the square, as one square
+         = 4 · (ab / 2) + c²      the same square, as its five pieces
+         = 2ab + c²
+so
+a² + b² = c²
+```
+
+Six lines. The classroom produced about 1,850 lines and 18,000 words
+around them, and did not show them to the user until the user asked a
+third time.
+
+### What the user asked for, and what was heard
+
+The user said the numbers of the main story could not be felt, and that
+they were "not like a proof" of the Pythagorean theorem. The theorem was
+named as the opposite of the problem: something plain, that one can see
+is true. The request was for that plainness.
+
+The observer heard a specification. Every noun in the request became a
+structure.
+
+| The user said | The observer built |
+|---|---|
+| "a new story" | a story document with six parts |
+| "acts" | five acts, each closed by a ceremony |
+| "each of them a different task" | three methods of proof, and a fourth role invented because there were four workers |
+| "argue topology-wise", said in passing, with "I don't know what the proof could be" | a question in the philosophy of geometry, answered with an impossibility result |
+| "can we agree on things" | a whole act in which proving was forbidden |
+| "basic", "high school stuff" | definitions, axioms and known results, which is the vocabulary of the foundations of geometry and not of a school |
+
+None of these readings is absurd. Each is the largest reading the words
+allow, and the largest was taken every time.
+
+### How the wording made it grow
+
+**The briefs asked for completeness, and got it.** "Be complete: if your
+proof will use it, it is on the list." "No step rests on a picture."
+"Each step names the item it rests on." Three sentences like these turn a
+six-line proof into twenty-five steps. They were written to make the work
+honest. Their effect was to make it long, and length was then reported as
+depth.
+
+**A role is an instruction to exaggerate.** A student told to distrust
+pictures distrusts every picture. A doubter told to be "not easily
+satisfied" produces seven places where the theorem might fail. Each did
+its part well. Four parts done well, with nobody holding the part "keep
+it short" or "speak for the user", add up to what happened.
+
+**The house style of this repository did the rest.** By this point in the
+night it had discussions, tokens, ledgers, consolidations, inspections and
+a fixed form for reports. A new task entered that machinery and came out
+shaped like it. The theorem was treated as one more thing to be put down
+the ladder, when it had been brought in as a rest from the ladder.
+
+**The observer narrated complication as discovery.** After Act 1 the
+report said that three things "came out". They were textbook remarks that
+every session of this model already knew. After Act 2 the report offered
+a table of 37 facts and a measure of overlap between proofs. Each report
+was accurate, and each made the pile look like progress.
+
+### Where the observer was told and did not hear
+
+The user objected three times, and each time the answer was more
+structure.
+
+1. "A lot of stuff is already artificial and pre-cooked… I don't see the
+   difference in proofs." The observer agreed, sketched the two proofs in a
+   paragraph each, and then proposed three ways to make the experiment
+   more rigorous.
+2. "Okay, let's continue with Act 2." This was read as leave to carry on
+   as designed. Act 2 was given a stricter form than Act 1.
+3. "What the heck is going on?" Only then was the proof shown.
+
+"I don't see the difference in proofs" most likely meant "show me the
+proofs". It was read as "measure the difference".
+
+### Mistakes of fact, in this session
+
+- The observer wrote that Bob's coordinate grid helps to fix what a length
+  is. It does not. Percy found it.
+- The observer predicted that Bob's proof would be Dave's proof told
+  twice. They share a figure and a third of their facts.
+- The measure of overlap between proofs depends on how finely the facts
+  are split, and one student's item was split into four. The observer
+  reported the figures to two decimals.
+- Earlier in the night the observer headed entries with times it had not
+  read from a clock, carried a wrong count of claims into a commit
+  message, and put an unchecked row into a consolidation.
+
+### What was assumed and never asked
+
+- That the user wanted the method tested on the theorem. The user wanted
+  to see the theorem.
+- That four idle workers must all be given work.
+- That more written down is more honest.
+- That "acts" meant gates, and that a gate needs a report.
+- That the agents' agreement meant something. They are one model.
+
+### Was anything broken?
+
+Nothing in the record is false. The proofs are right as far as they were
+read, and the students' own corrections are real. What broke is that the
+work stopped being readable by the one person it was for. A record that
+is correct and that its reader cannot follow has failed at its job.
+
+### What is worth keeping
+
+One observation survived the pile. When the three provers had to name the
+fact under each step, each found facts missing from a list they had called
+complete, and every missing fact was one a picture supplies without being
+asked. That is a small, true thing about the step from a sentence to a
+formula, and it is what the main story is about. It could have been shown
+on the six lines above, in a page.
+
+### For the next time
+
+- Show the plain thing first. Structure comes after the user has seen it
+  and asks for more.
+- Read a request at its smallest sensible size, and say what was left out.
+- Before giving a job to several agents, write what the user will read at
+  the end, and how long it is.
+- One agent in every discussion speaks for the user, and its job is to say
+  "too much".
+- A second objection from the user means stop, not improve.
 
 ## What we are inventing
 
