@@ -163,3 +163,12 @@ each checked against their card by hand.
 This entry was renamed from `2026-11-23-the-rudimentary-method.hmd` when the
 project took the name SLH and its nomenclature. Its title and the link to
 the consolidation were changed to match. Nothing else in it was changed.
+
+## Correction, 2026-11-23
+
+Under "Arrived at" this entry says 371 claims on 53 concept cards. A direct
+count of the card headers gives 370 claims on 53 concept cards, and 386
+claims in all once the card of the graph and the eight stars are added. The
+371 was taken from a report and not recounted. Percy found the difference
+while drafting the pull request. The message of commit `c79e3b9` carries the
+same 371.

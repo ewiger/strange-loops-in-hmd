@@ -46,6 +46,7 @@ to a session differ, the session follows the user and says so in its file.
 | Bob | worker | `strange-loops-in-hmd-20` | 2026-11-23 |
 | Carol | worker | `strange-loops-in-hmd-49` | 2026-11-23 |
 | Dave | worker | `strange-loops-in-hmd-5e` | 2026-11-23 |
+| Percy | worker | `strange-loops-in-hmd-8a` | 2026-11-23 |
 
 A session that is not on the roster and starts work here asks Alice for a
 name before it writes.

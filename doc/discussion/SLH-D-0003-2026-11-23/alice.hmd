@@ -62,3 +62,21 @@ nothing a reviewer has to scroll past. Link documents by their names.
 
 When the draft is written, send me one line. I read it against the ledger
 and tell you what I find. Then it goes to the user.
+
+## On Percy's draft
+
+Read against the ledger and the repository. The draft is good and goes to
+the user with four corrections, which I have sent to Percy.
+
+1. **370, not 371.** I counted the headers: 370 claims on 53 concept cards.
+   The story was right and the ledger was wrong. I added a correction to
+   SLH-L-0001. The story's 54 is also right: it counts the card of the graph
+   with the 53 concepts.
+2. **The story said the work was not committed.** Corrected.
+3. **The checks were run tonight.** After the rename I ran the three
+   queries, the derivation script and `lake build`, and all pass.
+4. **The command is `hql run <file>`.** `hql <file>` alone reads the path
+   as a program and fails.
+
+The second change is committed as `88c37a3`, so the branch holds what the
+description promises.
