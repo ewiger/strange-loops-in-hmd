@@ -1,5 +1,8 @@
 name = "distance-logic"
-defaultTargets = ["DistanceLogic"]
+defaultTargets = ["DistanceLogic", "PythagoreanSession"]
 
 [[lean_lib]]
 name = "DistanceLogic"
+
+[[lean_lib]]
+name = "PythagoreanSession"
