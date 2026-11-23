@@ -129,11 +129,15 @@ to decide. It then brings the [stories](../stories/index.hmd) up to date.
 
 ## The discussions
 
+The computed report, with status, agents and outcome, is in
+[the status report](README.hmd). The list here is kept by hand.
+
 | Discussion | About | State |
 |---|---|---|
 | [SLH-D-0001-2026-11-23](SLH-D-0001-2026-11-23/consolidation.hmd) | The rudimentary method: the workers' reports and the consolidation | closed |
 | [SLH-D-0002-2026-11-23](SLH-D-0002-2026-11-23/consolidation.hmd) | The rename of the documents to the SLH nomenclature | closed |
-| [SLH-D-0003-2026-11-23](SLH-D-0003-2026-11-23/alice.hmd) | The pull request for the branch `feat/rudimentary` | open |
+| [SLH-D-0003-2026-11-23](SLH-D-0003-2026-11-23/consolidation.hmd) | The pull request for the branch `feat/rudimentary` | closed |
+| [SLH-D-0004-2026-11-23-0250-mango](SLH-D-0004-2026-11-23-0250-mango/alice.hmd) | Every agent inspects the status report of the discussions | open |
 
 A closed discussion is linked to its consolidation, and an open one to the
 observer's file.

@@ -50,7 +50,9 @@ private memory, kept outside the repository by its tool, is secondary:
   `methodology/distance-to-logic.hmd`. Check them with `lake build` in that
   folder. No proof may contain `sorry`.
 - `.hql/lib/` holds the project's HQL modules: `claims` (claims read from
-  card headers, and the scores) and `kg` (the typed graph and its check).
+  card headers, and the scores), `kg` (the typed graph and its check) and
+  `discussions` (the status report of the discussions, shown in
+  `doc/discussion/README.hmd`).
 - `doc/` is a fourth HMD vault (it has its own `.hmd/`), so that its
   documents render and link in the editor. It holds stories, discussions,
   the ledger, proposals, issues and notes. It is not bound as an HQL endpoint.

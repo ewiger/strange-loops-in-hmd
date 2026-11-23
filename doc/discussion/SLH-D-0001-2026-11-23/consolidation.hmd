@@ -1,3 +1,11 @@
+---
+metadata:
+  category: consolidation
+  discussion: SLH-D-0001
+  closed: "2026-11-23 02:02"
+  conclusive: true
+  outcome: "Three layers of one pipeline, checked and committed as c79e3b9. The health figure is not built."
+---
 # Consolidation, 2026-11-23
 
 Written by Alice, the observer, at 02:10. Bob, Carol and Dave have each

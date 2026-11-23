@@ -1,0 +1,158 @@
+---
+metadata:
+  category: status
+---
+# Status of the discussions
+
+Every discussion of this project, in the order they were opened: its topic,
+whether it is open or closed, whether it was conclusive, and the agents that
+took part. The table is computed. Nobody writes it by hand.
+
+The rules of a discussion are in [the rules](index.hmd). This card is the
+report, and the design of what the report reads.
+
+## The report
+
+```hql
+from discussions import status_table
+
+status_table(cards | List)
+```
+
+What each closed discussion came to, and when it closed:
+
+```hql
+from discussions import closed_table
+
+closed_table(cards | List)
+```
+
+The discussions that are still open, with the golden token their workers
+have to return:
+
+```hql
+from discussions import open_table
+
+open_table(cards | List)
+```
+
+The counts:
+
+```hql
+from discussions import discussions
+
+all = discussions(cards | List)
+{discussions: size(all), open: all | filter(d => d.status == "open") | size, closed: all | filter(d => d.status == "closed") | size, conclusive: all | filter(d => d.conclusive == "yes") | size}
+```
+
+## The design
+
+The report reads two headers and the names of the files. Nothing else has
+to be kept up for it.
+
+| Column | Comes from |
+|---|---|
+| discussion | the header of the observer's brief |
+| opened | the header of the observer's brief |
+| topic | the header of the observer's brief |
+| token | the header of the observer's brief |
+| status | `closed` when the folder holds a consolidation, `open` when it does not |
+| conclusive | the header of the consolidation, or `not yet` |
+| closed, outcome | the header of the consolidation |
+| agents | the cards that lie in the discussion's folder, by their titles |
+
+Two things are derived and not declared, on purpose. A discussion is closed
+because its consolidation exists, so the status cannot say something the
+folder does not. An agent took part because its file is there, so the list
+of agents cannot name one that wrote nothing.
+
+### The header of a brief
+
+The observer's file opens a discussion, and its header says what the
+discussion is.
+
+```yaml
+---
+metadata:
+  category: discussion
+  discussion: SLH-D-0004
+  opened: "2026-11-23 03:10"
+  topic: "One sentence saying what the discussion is for"
+  observer: Alice
+  token: mango
+---
+```
+
+| Field | Is |
+|---|---|
+| `category` | always `discussion` |
+| `discussion` | the name of the discussion, `SLH-D-NNNN` |
+| `opened` | the date and the time to the minute, read from a clock, in quotes |
+| `topic` | one sentence, in quotes |
+| `observer` | the name of the observer |
+| `token` | the golden token. Absent for the three discussions opened before the rule |
+
+### The header of a consolidation
+
+The consolidation closes a discussion, and its header says how it ended.
+
+```yaml
+---
+metadata:
+  category: consolidation
+  discussion: SLH-D-0004
+  closed: "2026-11-23 04:25"
+  conclusive: true
+  outcome: "One sentence saying what the discussion came to"
+---
+```
+
+| Field | Is |
+|---|---|
+| `category` | always `consolidation` |
+| `discussion` | the same name as in the brief |
+| `closed` | the date and the time to the minute, read from a clock, in quotes |
+| `conclusive` | `true` when the discussion did what its brief set out to do, `false` when it was closed without that |
+| `outcome` | one sentence, in quotes. For a discussion that was not conclusive, it says why |
+
+### An agent's file
+
+A worker's file needs no header. Its title is the agent's name, `# Bob`,
+and the report takes the name from there. The file has to lie in the folder
+of the discussion.
+
+## How it is computed
+
+The functions are in the module `discussions`, at
+`.hql/lib/discussions/mod.hql` in the root of the repository. `Brief` and
+`Closing` are the two headers as types, and a card whose header does not
+fit either is not counted as one. `discussions(cards)` gives one row for
+each brief, ordered by `opened`. `status_table`, `closed_table` and
+`open_table` write those rows out as the tables above.
+
+The cells read `cards`, which is the vault this card lies in: the doc
+vault. Run a cell from the editor, or the whole card from the root of the
+repository:
+
+```sh
+hql render doc/discussion/README.hmd
+```
+
+## What the observer does
+
+- **On opening:** write the header of the brief, with the time read from a
+  clock and a fruit no earlier discussion has used.
+- **On closing:** write the header of the consolidation, and say honestly
+  whether it was conclusive.
+- Nothing else. The report and the list in [the rules](index.hmd) follow.
+
+## What it does not show
+
+- **Whether a worker has finished.** That is in the worker's file, in words.
+  The report shows who took part, not how far each one is.
+- **Whether a token was returned.** The consolidation says who returned it.
+- **Agents that were asked and never wrote.** An agent with no file in the
+  folder is not listed.
+- **The times are what the header says.** If an observer writes a time
+  without reading a clock, the order of the table is wrong and nothing
+  catches it.

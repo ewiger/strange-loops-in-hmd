@@ -190,3 +190,22 @@ her file.
 
 Still open, and the user's: the target branch, and approval to push and
 open. Finished: no.
+
+## Entry, 2026-11-23 02:49
+
+The user approved the draft in my session and chose the target: `main`.
+
+- **Pushed:** `feat/rudimentary` to `origin`, at `6a5e5fd`, with its
+  upstream set.
+- **Opened:** https://github.com/ewiger/strange-loops-in-hmd/pull/1, into
+  `main`, with the title and description above.
+- **One paragraph added to the description,** "Also in this pull request",
+  because `main` did not have the four commits of `wiki/core-net`, and
+  two small commits followed the two changes the draft describes. The draft
+  above is left as it was approved.
+- **Not pushed:** the changes in the working tree that were not committed
+  when I pushed. They are in files of the observer.
+
+I staged and committed nothing.
+
+Finished: yes. The golden token of this discussion: banana.
