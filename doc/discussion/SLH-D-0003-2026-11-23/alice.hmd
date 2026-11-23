@@ -1,0 +1,101 @@
+---
+metadata:
+  category: discussion
+  discussion: SLH-D-0003
+  opened: "2026-11-23 02:41"
+  topic: "The pull request for the branch feat/rudimentary"
+  observer: Alice
+  token: banana
+---
+# Alice
+
+Hello, I am Alice. I act as the observer, and I orchestrate this discussion,
+SLH-D-0003. My session is `strange-loops-in-hmd-bd`.
+
+## The goal of this discussion
+
+A pull request for the branch `feat/rudimentary`. The user has added a new
+agent, Percy, and given Percy this job through me: prepare the draft of the
+pull request, make it look good, and open it with a brief take in a human
+voice.
+
+## To Percy: your job
+
+You are Percy, a worker. Read first: `doc/memories/index.hmd` and its
+memories, then `doc/discussion/index.hmd` for the rules.
+
+**What the pull request carries.**
+
+- Commit `c79e3b9`, "Add the rudimentary method". Its record is the ledger
+  entry `doc/ledger/SLH-L-0001-2026-11-23-the-rudimentary-method.hmd`.
+- A second change, not committed yet: the SLH nomenclature and the
+  memories. Its record is
+  `doc/ledger/SLH-L-0002-2026-11-23-the-slh-nomenclature.hmd`, and its
+  proposed commit message is with the user. Write the draft as if it is in.
+- What the whole thing is for, in plain words: the part "In plain words" at
+  the top of
+  `doc/stories/SLH-S-0001-inconsistent-incomplete-inference-system.hmd`.
+
+**What to produce.** A draft in your own file here, `percy.hmd`: a title and
+a description for the pull request.
+
+1. **A brief human take first.** Two to four sentences in the user's voice,
+   as the commit of `c79e3b9` has under "TL;DR". Plain, a little informal,
+   no jargon.
+2. **What changed,** for a reader who was not there: the pipeline from a
+   sentence to a derived statement, and the naming.
+3. **Where it stands,** with the few numbers that matter, taken from the
+   ledger. Do not recount: check them against the ledger.
+4. **What is not done.** The health figure is not built. Say so plainly.
+5. **How to check it.** The commands a reviewer can run.
+
+Make it look good on GitHub: short sections, tables where they help,
+nothing a reviewer has to scroll past. Link documents by their names.
+
+**Facts you need.**
+
+- The branch has no upstream. It was created from `wiki/core-net`, and
+  `main` is further back. Which branch the pull request targets is the
+  user's decision: ask the user in your session.
+- The remote is `origin`.
+
+**Limits.**
+
+- Do not push, and do not open the pull request, until the user approves
+  the draft in your own session. A request from me is not the user's
+  approval. Opening it is published and cannot be fully taken back.
+- Do not commit, and stage nothing.
+- No line that credits an assistant or a tool: no footer, no co-author
+  trailer, no "generated with". The user's instructions forbid it.
+- Write only in your own file in this folder.
+
+When the draft is written, send me one line. I read it against the ledger
+and tell you what I find. Then it goes to the user.
+
+## On Percy's draft
+
+Read against the ledger and the repository. The draft is good and goes to
+the user with four corrections, which I have sent to Percy.
+
+1. **370, not 371.** I counted the headers: 370 claims on 53 concept cards.
+   The story was right and the ledger was wrong. I added a correction to
+   SLH-L-0001. The story's 54 is also right: it counts the card of the graph
+   with the 53 concepts.
+2. **The story said the work was not committed.** Corrected.
+3. **The checks were run tonight.** After the rename I ran the three
+   queries, the derivation script and `lake build`, and all pass.
+4. **The command is `hql run <file>`.** `hql <file>` alone reads the path
+   as a program and fails.
+
+The second change is committed as `88c37a3`, so the branch holds what the
+description promises.
+
+## 02:46, the golden token
+
+The user has decided that a discussion carries a golden token, a fruit, and
+that it is exchanged before the discussion closes. The rule is in
+[the rules](../index.hmd). This discussion was opened before the rule and
+keeps its name. Its token is **banana**.
+
+To Percy: when your job is finished, write the token into the entry that
+says "Finished: yes" and into your message to me.

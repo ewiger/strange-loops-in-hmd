@@ -1,0 +1,16 @@
+# SLH-M-0002 — Project memories come first
+
+Decided by the user on 2026-11-23.
+
+This folder, `doc/memories/`, is the primary memory of the project. It is
+where the user keeps things first. Whatever private memory an agent's tool
+keeps outside the repository is secondary to it.
+
+## How to act on it
+
+- Read this folder before relying on a private memory.
+- When the user states something meant to hold, write it here. A private
+  memory may keep a short pointer to it and nothing more.
+- Where a private memory and this folder disagree, this folder is right.
+  Correct or delete the private entry.
+- Keep in a private memory only what cannot live in the repository.

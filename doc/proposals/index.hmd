@@ -1,0 +1,61 @@
+# Proposals
+
+A proposal records one decision: what was to be decided, the options that
+were weighed, what was chosen and what follows from it. It is the place to
+look when the question is "why is it done this way?".
+
+A proposal differs from the other documents of this repository.
+
+| Document | Says | Place |
+|---|---|---|
+| Proposal | one decision, its options and its consequences | `doc/proposals/` |
+| Story | what is being invented, why, and how it got to where it is | `doc/stories/` |
+| Issue | one piece of work to be done, and its state on the board | `doc/issues/` |
+| Methodology | how one step of the method works today | `methodology/` |
+
+## Naming
+
+A proposal is one file, named
+
+```
+SLH-P-NNNN-short-name.hmd
+```
+
+- `NNNN` is the next free number, four digits. A number is never reused.
+- The short name is what the decision is about, as a noun phrase in lower
+  case with hyphens: `formal-system-for-claims`.
+- The title inside the file begins with the name of the document,
+  `SLH-P-NNNN`, followed by the decision written out.
+
+## Status
+
+The line `Status:` under the title says where the decision stands.
+
+| Status | Means |
+|---|---|
+| `proposed` | written and not yet decided; nothing in it is in force |
+| `accepted` | the user has decided for it |
+| `rejected` | the user has decided against it; the file is kept as the record |
+| `superseded` | a later proposal replaces it, and names it |
+
+Only the user accepts or rejects a proposal.
+
+## Parts of a proposal
+
+1. **Context.** What is the case today, and what stands in the way.
+2. **Decision.** What is proposed, as numbered decisions.
+3. **Options considered.** What else could be done, and why it was or was
+   not chosen.
+4. **Consequences.** What changes if the decision is taken.
+5. **Not decided here.** What the proposal leaves open on purpose.
+6. **Outcome.** Added on acceptance: what was built, what was settled along
+   the way, and what was not done.
+
+The first five parts are the proposal as it was decided on and are not
+rewritten afterwards. What happened next goes under "Outcome".
+
+## The proposals
+
+| Proposal | Decides | Status |
+|---|---|---|
+| [SLH-P-0001](SLH-P-0001-formal-system-for-claims.hmd) | That the atoms become a formal system: a concept card for it, rules of inference as data, derivation that keeps a contradiction where it is found, and two pilots of heavier provers. | accepted |

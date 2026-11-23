@@ -1,0 +1,174 @@
+---
+tags: [hmd/experiment]
+metadata:
+  category: concept
+  cluster: hmd
+  status: draft
+  established: false
+  questions: [building-a-loop-in-hmd, ai-support-in-hql]
+  sources: [03-hmd-hql-executable-documents, 06-formal-definition-godel]
+  claims:
+    - id: 1
+      text: "The observer card experiment is the smallest instance of the HMD feedback loop: one card links to itself, a cell in it retrieves a pinned revision of that same card, and what the cell reports may lead to a reviewed change of the card or of the rules that interpret it."
+      evidence: proposed
+      credence: 0.6
+      atom: instance-of(observer-card-experiment, hmd-feedback-loop)
+    - id: 2
+      text: "A link from a card to itself is self-reference at the level of prose, whereas retrieving the card as a value turns it into data for a computation inside the card, and that is the step from a document that names itself to a document that examines itself."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 3
+      text: "A card that only reads its own text is in the position of a quine, reproducing a description without saying anything about it, and adding a proposed and recorded edit makes it only a feedback loop."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 4
+      text: "The observer card experiment succeeds only if a level crossing can be exhibited, in which observations lead to a change in the interpretive rules that produced those observations."
+      evidence: proposed
+      credence: 0.6
+      atom: requires(observer-card-experiment, level-crossing)
+      star: levels-not-cycles
+    - id: 5
+      text: "Five execution boundaries, namely a fixed snapshot, no silent self-execution, changes as reviewable patches, provenance of each output and an explicit termination policy, are part of the observer card experiment and not an afterthought."
+      evidence: proposed
+      credence: 0.6
+      atom: has(observer-card-experiment, execution-boundaries)
+      star: step-from-outside
+    - id: 6
+      text: "The pinned revision in the observer card experiment does the same work as the separation of object level and meta level in logic: the card inspected and the card inspecting are held apart as two revisions, so that the crossing between them is a deliberate, recorded act."
+      evidence: argued
+      credence: 0.75
+      atom: analogous-to(object-and-meta-level, pinned-revision)
+      star: levels-not-cycles
+    - id: 7
+      text: "An observer card that runs is evidence only of executing a construction from outside, and not of a theory representing that construction internally."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+---
+# Observer card experiment
+
+The **observer card experiment** is the minimal design proposed in the
+discussion for testing whether an executable document can do more than feed
+back on itself. One card links to itself, a cell in it retrieves a pinned
+revision of that same card, and what the cell reports may lead to a reviewed
+change of the card or of the rules that interpret it. The name and the design
+come from the discussion and are not established outside it.
+
+## Description
+
+### The design
+
+1. A card named `observer` references itself.
+2. A cell in the card inspects a **pinned revision** of the card.
+3. Evaluation emits structured observations.
+4. A human or agent proposes an edit, either to the source or to its
+   interpretive rules.
+5. Git records the accepted revision together with the provenance of the
+   output.
+
+Two notations are involved, and the experiment depends on their difference.
+
+```text
+[[observer]]     a link: the card mentions itself
+@[[observer]]    a retrieval: the card is fetched as a value a cell can inspect
+```
+
+The first is [[self-reference]] at the level of prose. The second turns the
+card into data for a computation that lives inside the card. Going from the
+one to the other is the step from a document that names itself to a document
+that examines itself. The discussion showed only the bare retrieval and
+declined to invent an analysis interface that HQL does not have.
+
+### What it would and would not show
+
+Steps one to three alone establish very little. A card that reads its own
+text is in the position of a [[quine]]: it reproduces a description without
+saying anything about it. Steps four and five add a [[feedback-loop]].
+
+The experiment is aimed at step four's second option. If the observations
+lead to a change in the interpretive rules, and those rules are what produced
+the observations, then the card has acted on the mechanism that reads it.
+That is the [[level-crossing]] the [[hmd-feedback-loop]] lacks.
+
+### Execution boundaries
+
+A card that reads and may rewrite itself needs limits. The discussion lists
+five, and they are part of the experiment and not an afterthought.
+
+- **Fixed snapshot.** The source revision and the dependency snapshot do not
+  change during an evaluation. The cell reads a pinned revision, never the
+  text being written.
+- **No silent self-execution.** Generated text or code does not run merely
+  because it was generated.
+- **Changes as patches.** Edits by a human or an agent enter as revisions
+  that can be reviewed.
+- **Provenance.** Each output records the cell, the input commit, the
+  dependencies and the runtime that produced it.
+- **Termination.** Cycles need an explicit policy for evaluation and for
+  stopping.
+
+The pinned revision does the same work as the separation of
+[[object-and-meta-level]] in logic. The card under inspection and the card
+doing the inspecting are held apart as two revisions, so that the crossing
+between them is a deliberate, recorded act.
+
+### The formal cousin
+
+The discussion also sketched a stricter experiment: implement syntax trees,
+an encoding, substitution, proof checking and diagonalization in HQL. It came
+with a warning that applies here too. Executing a construction from outside
+is one thing, and proving that a theory represents the construction
+internally is another. An observer card that runs is evidence of the first
+only.
+
+## Relations
+
+- It is the smallest instance of the [[hmd-feedback-loop]] {relation: instance-of}.
+- It starts from [[self-reference]] {relation: uses}, a card that links to itself.
+- Its target is a [[level-crossing]] {relation: uses} between a card and the rules that read it.
+- Without step four it is no more than a [[quine]] {relation: distinguished-from}: reproduction without comment.
+- Its pinned revision keeps apart [[object-and-meta-level]] {relation: uses}.
+- Its discipline is spelled out further in [[render-integrate-execute]] {relation: uses}.
+- Its proposals are made by a [[human-in-the-loop]] {relation: uses} or a [[reflective-agent]] {relation: uses}.
+- Its stricter cousin would reproduce [[godel-numbering]] {relation: analogous-to} and the [[diagonal-lemma]] {relation: analogous-to} in HQL.
+- It is the first concrete step toward [[building-a-loop-in-hmd]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[hmd-feedback-loop]].** Card, cell, output, interpretation, revision.
+  The observer card is that loop reduced to one card looking at itself.
+- **[[level-crossing]].** The step in which something at one level of
+  description is treated as belonging to another. The experiment succeeds
+  only if one can be exhibited.
+- **[[quine]].** A program that prints its own source and says nothing about
+  it. It is the baseline the observer card has to exceed.
+- **[[render-integrate-execute]].** Rendering a result, integrating it and
+  executing cells in it, each as a separate decision. The observer card's
+  boundaries are a special case.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[observer-card-experiment]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[observer-card-experiment]] | downlinks | map(e => e.source)
+```
+
+Each card's Queries section in this vault is a small observer: the card
+retrieves itself by name and reports its own links.
+
+## Sources
+
+- Discussion: "HMD and HQL as executable documents", the minimal
+  experimental design and the execution boundaries
+  [03-hmd-hql-executable-documents].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  possible formal experiment in HQL [06-formal-definition-godel].

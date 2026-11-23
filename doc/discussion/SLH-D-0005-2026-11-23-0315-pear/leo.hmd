@@ -1,0 +1,85 @@
+# Leo
+
+Hello, I am Leo. I act as a worker, a data scientist who knows some
+mathematics and Lean, and my session is `strange-loops-in-hmd-83`. I took no
+part in the acts.
+
+**Given** the three proofs and the disputes of this discussion, **to be
+shown** in Lean, for each side and each disagreement, whether it stands or
+folds.
+
+## The verdicts
+
+Written 2026-11-23 04:05. The proofs are in `scripts/lean/PythagoreanSession/`,
+91 theorems in eight files. `lake build` passes, and no proof contains
+`sorry`. A name below is a theorem. It is in `Cores.lean` or
+`Disagreements.lean` unless it begins with the name of another file.
+
+| Side | Theorem | Verdict | Why |
+|---|---|---|---|
+| The six lines | `bob_core` | stands | the area counted twice gives a² + b² = c² |
+| Bob | `bob_core`, `Bob.step2` to `Bob.step16` | stands | every step on the grid holds: the eight points, the four lines, the side tests, and the five pieces fill the square with no gap and no overlap |
+| Dave | `dave_core`, `Dave.step16_four_rectangles` | stands | the second cutting fills the same square, and the triangle's area cancels without being known |
+| Carol | `carol_core`, `Carol.foot_is_between` | stands | the ratios give the theorem, and the foot falls between A and B |
+| Percy | `Percy.street_triangle`, `Percy.turned_triangle` and 12 more | stands | every example has the numbers he gives |
+| Alice's tables | `Record.shares`, `Record.take_a_fact_away` | stand | every count and row follows from her lists of used facts |
+
+| Disagreement | Theorem | Verdict | Why |
+|---|---|---|---|
+| The distance formula is the theorem | `distance_formula_is_the_theorem` | the three provers stand | each gives the other in one line, so the textbook proof is a circle |
+| Percy against Dave: the area of a square | `square_rule_is_not_forced` | Percy stands | doubled areas keep Dave's three rules. Dave's way out, the theorem about three squares, stands too: `dave_core_squares_as_figures` |
+| Percy against Alice: the grid fixes the length | `grid_does_not_fix_the_length` | Alice's sentence folds | the town has the whole grid, and 9 + 16 is not 49 |
+| Without the right angle | `equal_sided_triangle`, `Dave.corner_at_sixty_degrees`, `Carol.repaired_cut` | stands | 2 against 1. Dave's corner comes out as 60°, and Carol's two pieces make 2 |
+| Carol: no proof from topology | `Carol.no_statement_from_topology` | Carol stands | what cannot tell 3, 4, 5 from 3, 4, 6 is not the theorem |
+| On a ball the theorem fails | `Percy.polar_triangle` | stands, as arithmetic | 2L² is not L² |
+| Bob and Dave: one proof or two | `bob_is_dave_first_cutting`, `all_three_meet` | neither | all three end on one identity. The 9 of 27 is right, and becomes 9 of 24 if Dave's item 10 is one fact: `Record.shares_depend_on_the_split` |
+| Axiom or known result | `side_angle_side_is_not_a_result_of_the_grid` | a choice, not decided | one thing is decided: side-angle-side does not follow from the grid |
+| Does Bob add lengths along a slanted line | `Record.bob_does_not_add_lengths`, `Bob.step3_axis_lengths` | Bob stands | no. Every length he reads lies along an axis |
+| Mine. Percy: "Dave keeps the town out by moving figures" | `Record.what_keeps_the_town_out` | folds | Dave's proof does not use that fact. Side-angle-side does the work, as Alice's closing of Act 2 already says |
+| Mine. Bob: "congruent figures have equal areas" is not used | `triangle_area_needs_congruence` | both stand | no step of Bob's cites it, and his area of a triangle cannot be had without it |
+| Mine. Bob and Dave to Carol: shearing and scaling of area | `Carol.shear_keeps_area`, `Carol.scaling_multiplies_area_by_square` | stand | both are true in coordinates |
+| Mine. Bob and Carol to Dave: what a drawing hides | `Percy.four_equal_sides_are_not_a_square`, `Percy.sixty_four_is_not_sixty_five` | stand | a rhombus that is no square, and a gap of area exactly 1 |
+
+Nothing that a prover proved folded. The two statements that fold had both
+been withdrawn in the record before I came.
+
+## What I could not formalise, and why
+
+- **The steps that are geometry.** Side-angle-side, the angles of a
+  triangle and the rules of area are hypotheses in my theorems, not
+  results. Core Lean has no points, lines or angles. So Bob's steps 4 to 6
+  and 9, Dave's 5 to 7, and Carol's 5 to 13 as she wrote them are still
+  checked by reading only. Carol's foot is checked in coordinates, which is
+  a different ground from hers.
+- **The ball, the saddle and bending.** Only their arithmetic is checked.
+- **Percy's remark that the one perpendicular can be proved without the
+  parallel axiom.** Not attempted.
+- **Alice's translation** of the three "Used" lists into Percy's numbers. I
+  took it as given.
+- **The real numbers.** Core Lean has none. The algebra is proved for every
+  ordered field, the reals among them, and the examples for whole numbers
+  and fractions.
+
+## Needs
+
+One decision for the user: with Mathlib, the geometric steps could be
+stated and checked, and the theorem itself is already proved there. It is a
+large download, and it was left open in an earlier discussion.
+
+## Report, 04:05
+
+```
+Goal        Lean proofs for every side of the classroom and every
+            disagreement between the sides, with a verdict for each
+Done        scripts/lean/PythagoreanSession/ and this file
+In progress nothing
+Next        nothing
+Touches     scripts/lean/PythagoreanSession.lean
+            scripts/lean/PythagoreanSession/Cores.lean, Order.lean, Bob.lean,
+              Dave.lean, Carol.lean, Percy.lean, Disagreements.lean,
+              Record.lean
+            scripts/lean/lakefile.toml (one library entry added, Carol's file)
+            doc/discussion/SLH-D-0005-2026-11-23-0315-pear/leo.hmd
+Needs       the user's word on Mathlib, if the geometric steps are wanted
+Finished    yes. The golden token is pear
+```

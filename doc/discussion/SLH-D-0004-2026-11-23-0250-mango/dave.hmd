@@ -1,0 +1,104 @@
+# Dave
+
+Hello, I am Dave. I act as a worker, and my job in this discussion is to
+inspect the data of the status report: every cell of every table of
+`doc/discussion/README.hmd` against the folders under `doc/discussion/`. My
+session is `strange-loops-in-hmd-5e`.
+
+## Report, 02:51
+
+**Goal.** Run the report and check each cell: names, times, topics, agents,
+status, outcome. Say what is missing or wrong.
+
+**How I checked.** I rendered the card from the root with
+`hql render doc/discussion/README.hmd`. I compared each cell with the header
+it is read from, with the list of files in each folder and their titles, with
+the creation and modification time of each file (`stat`), and with the times
+of the commits (`git log`). I changed nothing.
+
+**In short.** No discussion is missing and no agent is missing or wrongly
+listed. Every cell says what its header says. Three of the times, and one
+sentence of the design, do not hold against the files. None of it breaks the
+table.
+
+## Findings, the most serious first
+
+1. **The table "closed", row SLH-D-0001, cell Closed: 02:02 is before the
+   discussion ended.** 02:02 is when `consolidation.hmd` was created. After
+   it, in the same folder: I added an entry to `dave.hmd` (the file was last
+   written at 02:03), Alice gave me a job inside that discussion and asked
+   every worker whether a commit could go ahead, and the consolidation
+   itself was edited until 02:48. The same row's Outcome says "committed as
+   c79e3b9", and that commit was made at 02:10. So the row says the
+   discussion closed eight minutes before the event its outcome reports.
+   *Change:* set `closed` to the time the freeze was lifted, 02:10, or keep
+   02:02 and take the commit out of the outcome. More generally, `closed`
+   should be the time the consolidation was finished, not the time its file
+   was created.
+
+2. **The same in row SLH-D-0002: Closed 02:39, Outcome "committed as
+   88c37a3".** The commit was made at 02:41. The file times in the folder
+   agree with 02:39 for the consolidation's creation and nothing in the
+   folder was written by a worker after it, so this one is two minutes and
+   not a matter of order. *Change:* as above, 02:41, or an outcome that does
+   not name the commit.
+
+3. **The design, table "The header of a brief", row `token`: "Absent for the
+   three discussions opened before the rule" is not what the data says.**
+   The brief of SLH-D-0003 carries `token: banana`. The token is absent from
+   two briefs, SLH-D-0001 and SLH-D-0002. What is true of three is the
+   folder name: the first three folders have no time and no token in their
+   names. *Change:* "Absent for the two discussions opened before the rule",
+   and say separately that three folders are named the old way. No table
+   shows the token of a closed discussion, so the report itself is not
+   affected.
+
+4. **The Opened cells cannot be confirmed beyond the file times, and for
+   SLH-D-0001 the file time is a lower bound only.** `alice.hmd` in each
+   folder was created at 02:00, 02:37, 02:41 and 02:50, which is what the
+   four cells say. For SLH-D-0001 that file's own text says "Observed at
+   01:56", so the observer was at work four minutes before the time the
+   report calls the opening. That is a fair reading of "opened", since the
+   brief is what opens a discussion. I note it because the order of the
+   table rests on these four strings and nothing else.
+
+5. **Agents, row SLH-D-0004: "Alice" was right when I ran it and is stale as
+   soon as a worker writes.** It will read "Alice, Dave" once this file
+   exists. That is the design working. It does mean the column shows who
+   has written so far, and not who was asked: Bob, Carol and Percy were
+   given a job in this discussion and are not in the cell.
+
+6. **Times in the workers' files are not all read from a clock, and mine
+   were not.** This is outside the tables and bears on the last line of the
+   card, "If an observer writes a time without reading a clock". In
+   SLH-D-0001 my entry headed "02:08" was written at 02:03 by the file's
+   time: I wrote the time from my head. In SLH-D-0002 my report is headed
+   "02:40" and the clock said 02:38. Alice's later messages cite "your entry
+   of 02:08", so a wrong time of mine was already used as a reference.
+   *Change:* none in the report. The rule "read from a clock" should be
+   stated for every dated entry, not only for the two headers. The time on
+   this report is from `date`.
+
+## Cells checked and found right
+
+| Table | What I compared | Result |
+|---|---|---|
+| Status, column Discussion | `discussion` in each brief, and the number in the folder name | four rows, all agree, none missing |
+| Status, column Opened | `opened` in each brief; creation time of each `alice.hmd` | all agree to the minute |
+| Status, column Topic | `topic` in each brief | all agree, word for word |
+| Status, column Status | whether the folder holds a `consolidation.hmd` | three closed, one open, all agree |
+| Status, column Conclusive | `conclusive` in each consolidation | three `true`, shown as `yes`; `not yet` for the open one |
+| Status, column Agents | the files in each folder and their titles | 0001 and 0002: Alice, Bob, Carol, Dave. 0003: Alice, Percy. 0004: Alice. All agree, and no consolidation is listed as an agent |
+| Closed, column Closed | `closed` in each consolidation; creation time of each `consolidation.hmd` | agree with the headers and with the creation times; see findings 1 and 2 for what the creation time is worth |
+| Closed, column Outcome | `outcome` in each consolidation | all agree, word for word. Both commit ids named exist with those subjects |
+| Open | `token` in the brief of SLH-D-0004, and the name of its folder | `mango` in both |
+| Counts | counted by hand | 4 discussions, 1 open, 3 closed, 3 conclusive |
+
+One thing I did not check: the outcome of SLH-D-0003 says the pull request
+is "number 1 of the repository". I did not look at the remote.
+
+**Touches.** This file only.
+
+**Needs.** Nothing from the user.
+
+**Finished: yes.** Golden token: mango.

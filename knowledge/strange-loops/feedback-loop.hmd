@@ -1,0 +1,158 @@
+---
+tags: [strange-loops/distinctions]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 05-not-every-dynamic-system, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A feedback loop is not a strange loop: it has a cycle but no change of level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(feedback-loop, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 2
+      text: "A feedback loop involves no level crossing, because every signal in the loop is the same kind of thing as every other and nothing in the loop has to represent the loop."
+      evidence: argued
+      credence: 0.75
+      atom: has(feedback-loop, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "A cycle of document, code, output and document again is feedback and nothing more, however many times it runs."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(feedback-loop, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "A feedback cycle of documents becomes a candidate strange loop only when the document represents the mechanism that interprets it and the interpretation changes that same mechanism."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 5
+      text: "The early equation of any self-modifying system with a strange loop was withdrawn, because it would make every dynamic system a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-modification, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 6
+      text: "A feedback loop is not recursion: recursion is a definition through smaller instances that terminates at a base case, while feedback is a causal cycle in time that may run indefinitely."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(feedback-loop, recursion)
+      holds: false
+    - id: 7
+      text: "The HMD feedback loop, built from cards, cells and revisions, is an instance of a feedback loop."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(hmd-feedback-loop, feedback-loop)
+---
+# Feedback loop
+
+A **feedback loop** is an arrangement in which the output of a system
+influences its own later input. The system's state at one moment is partly a
+consequence of what it produced earlier. Feedback is the ordinary mechanism of
+control, learning and iteration, and it is the concept most often confused
+with a [[strange-loop]].
+
+## Description
+
+A feedback loop has a signal path that closes on itself: act, observe the
+result, adjust, act again. Two broad kinds are distinguished.
+
+- **Negative feedback** opposes deviation and so stabilises. A thermostat
+  turns the heating off as the room approaches the set temperature.
+- **Positive feedback** reinforces deviation and so amplifies. A microphone
+  placed near its own loudspeaker howls.
+
+Software development is full of feedback loops. A compiler or proof checker
+rejects a program, the author revises it, and the checker runs again. In work
+with language models the same loop runs from intention to specification to
+program to execution to observation and back to a revised specification. The
+stricter the checker, the more information each turn of the loop returns.
+
+What a feedback loop lacks is any change of level. Every signal in the loop is
+the same kind of thing as every other: a temperature, a test result, a new
+revision of a text. Nothing in the loop has to represent the loop. For that
+reason a cycle of document, code, output and document again is feedback and
+nothing more, however many times it runs. It becomes a candidate strange loop
+only when the document represents the mechanism that interprets it and the
+interpretation changes that same mechanism.
+
+The discussion reached this point by correcting itself. An early description
+of executable documents treated any system that keeps modifying itself as a
+strange loop. The objection was immediate: then every dynamic system is one.
+The equivalence was withdrawn, and the same caution is repeated wherever the
+vault describes a loop it wants to build. A system in which a document
+describes a computation, the computation produces information, and the
+information changes the document has interacting levels, and is still only
+feedback until its representations of its own rules take part in changing
+those rules.
+
+The related notions line up by what each one adds.
+
+| Concept | What distinguishes it |
+|---|---|
+| Dynamic system | State changes over time |
+| Feedback loop | Output influences later input |
+| Recursion | A computation is defined through a smaller instance of itself |
+| Self-modifying program | The rules of behaviour can change |
+| Strange loop | A hierarchy of representation is crossed and returned through |
+
+## Relations
+
+- It is not a [[strange-loop]] {relation: distinguished-from}: it has a cycle but no change of level.
+- It is not [[recursion]] {relation: distinguished-from}: recursion is a definition through smaller instances, feedback a causal cycle in time.
+- It becomes reflective only when combined with [[level-crossing]] {relation: contrasts}.
+- The [[hmd-feedback-loop]] {relation: example-of} is the instance built from cards, cells and revisions.
+- The [[reasoning-cycle]] {relation: example-of} is the instance built from hypotheses, predictions and tests.
+- [[revision]] {relation: uses} is the step that closes the loop on a model.
+- [[human-in-the-loop]] {relation: uses} places a person at the step where the result is interpreted.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}, as the baseline the experiment has to exceed.
+
+## Neighbouring concepts
+
+- **[[strange-loop]].** A loop that passes through a representation of the
+  system that is looping, so that levels of description are crossed. Feedback
+  is the part of a strange loop that is not strange.
+- **[[hmd-feedback-loop]].** A card holds knowledge and instructions, a cell
+  is run, the result is written beside it, a person or agent interprets the
+  result, and an accepted revision becomes the next version of the card.
+- **[[reasoning-cycle]].** Observations lead by induction or abduction to a
+  hypothesis, deduction turns the hypothesis into predictions, and testing
+  returns new observations.
+- **[[recursion]].** A definition that refers to a smaller instance of what it
+  defines. It terminates at a base case, where feedback may run indefinitely.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[feedback-loop]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[feedback-loop]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] separates the
+link cycles in this vault that are plain feedback from those that cross levels.
+
+## Sources
+
+- Norbert Wiener, *Cybernetics* (1948), for feedback as a general concept.
+- Discussion: "HMD and HQL as executable documents"
+  [03-hmd-hql-executable-documents].
+- Discussion: "Why a dynamic system is not necessarily a strange loop"
+  [05-not-every-dynamic-system].
+- Essay: "What is an AI-oriented programming language?", the part on strange
+  loops [ai-oriented-pl].

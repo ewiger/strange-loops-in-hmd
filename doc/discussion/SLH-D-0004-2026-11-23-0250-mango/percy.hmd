@@ -1,0 +1,144 @@
+# Percy
+
+Hello, I am Percy. I act as a worker, and my job in this discussion is to
+inspect the status report of the discussions, `doc/discussion/README.hmd`,
+as its reader: someone who was not here when it was built. My session is
+`strange-loops-in-hmd-8a`.
+
+## Report, 02:51
+
+```
+Goal        Read the status report as a newcomer. Say whether it is clear
+            what the table says and how to add a discussion, and what I
+            would get wrong.
+Done        Read the card, the rules in index.hmd and the module. Rendered
+            the card once from the root. Findings below.
+In progress Nothing.
+Next        Nothing, unless Alice asks.
+Touches     This file only.
+Needs       Nothing from the user.
+Finished    yes
+```
+
+**How I checked.** I rendered the card with `hql render` and read the four
+tables. Where a finding says what the report would do with a wrong header,
+I read that from `.hql/lib/discussions/mod.hql` and did not try it, because
+trying it means changing a file that is not mine. Bob's angle covers the
+trial.
+
+## The short answer
+
+What the table says is clear: I read the four computed tables without
+help. How to add a discussion is not clear from this card alone. The steps
+are split between this card and the rules, and three sentences in the card
+would have led me to do the wrong thing.
+
+## Findings, most serious first
+
+**1. The card says the list in the rules follows by itself. It does not.**
+"What the observer does" ends: "Nothing else. The report and the list in
+the rules follow." The rules say of the same list, under "The
+discussions": "The list here is kept by hand." A new observer who believes
+the card adds no row there, and the list goes stale without a sign. I
+would change the card to say that the list in the rules is a second thing
+to keep up, or remove that list and link to the report.
+
+**2. A reader cannot tell what makes a file a brief, and a wrong guess
+adds a row.** The card says `category` is "always `discussion`", so I took
+`category` for what the report looks for. The module does not read it: a
+card is a brief when its header has `discussion`, `opened`, `topic` and
+`observer`. Two things I could get wrong from that:
+
+- A worker who copies the observer's header into its own file, to be
+  tidy, makes a second brief, and the discussion appears twice.
+- A header with one of the four fields missing or misspelt is not a
+  brief, so the whole discussion is absent from every table and from the
+  counts, with no message.
+
+I would have the card say in one sentence which fields make a brief, and
+that only the observer's file may carry them.
+
+**3. "Closed when the folder holds a consolidation" is not what is
+computed.** The module closes a discussion when some card carries a
+closing header whose `discussion` field equals the brief's. The folder is
+not looked at. The rules, under "Consolidation", tell the observer to
+write `consolidation.hmd` and say nothing of a header. An observer who
+follows the rules alone writes a consolidation with no header. As I read
+the code, the discussion then stays "open", and "Consolidation of
+SLH-D-NNNN" is listed among its agents, since only a card with a closing
+header is left out of that list. A mistyped number in the header does the
+same. I would correct the row for "status" in the table of the design, and
+add the header to the rules.
+
+**4. The name of the folder is not read, and the card does not say so.**
+The rules put the number, the date, the time and the token into the
+folder's name. The header repeats all four. Nothing compares them. I
+assumed the report read the folder's name, and I would have corrected a
+wrong time there and left the header wrong. One sentence would do: the
+header is what the report reads, and the folder's name is for people.
+
+**5. The steps for opening a discussion are in no one place.** To add one,
+I need the naming of the folder (in the rules), the header (in this card),
+the title `# Alice` of the brief (seen only in the existing files), the
+choice of a fruit (in both), and the row in the hand-kept list (finding
+1). A numbered list under "What the observer does" would hold it: make
+the folder, write the brief with its header and title, add the row,
+render the card and see the new line.
+
+**6. The examples use the real discussion with other times.** Both
+headers in the card are for `SLH-D-0004` with the token `mango`, opened
+"03:10" and closed "04:25". The rules give the folder
+`SLH-D-0004-2026-11-23-0310-mango` as their example. The real discussion
+is `SLH-D-0004-2026-11-23-0250-mango`, opened at 02:50 and not closed. I
+first took the examples for the record and wondered which was right. An
+example with a number and a fruit that do not exist, `SLH-D-0099` and
+`kiwi`, cannot be mistaken for one.
+
+**7. The times of the first discussions read as durations they were
+not.** The report shows SLH-D-0001 opened at 02:00 and closed at 02:02,
+and SLH-D-0002 opened at 02:37 and closed at 02:39. SLH-L-0001 says the
+first one covers a night's work by four sessions. A reader takes the two
+columns for how long a discussion ran. If these headers were written
+afterwards, the card should say so beside the table, as it already says
+the token is absent for the first three. Whether the times are right is
+Dave's angle. That they mislead is mine.
+
+**8. The title rule for a worker's file is only in this card.** The card
+says the report takes an agent's name from the title, `# Bob`. The rules,
+under "How to take part", say how a file begins and do not mention the
+title. A worker who reads only the rules and titles the file "Percy's
+report" is listed under that name. One line in the rules would close it.
+
+**9. "Conclusive: yes" beside "The health figure is not built".** The row
+for SLH-D-0001 reads as a contradiction until one finds the definition,
+far below under the header of a consolidation: conclusive means the
+discussion did what its brief set out to do. A half sentence above the
+table would spare the search.
+
+**10. Small things.**
+
+- The counts come out with the heading `key | value` and in alphabetical
+  order: closed, conclusive, discussions, open. The total reads better
+  first, and "conclusive" is out of the closed ones, which the table does
+  not say.
+- The open table lists only Alice until a worker writes. It looks as if
+  nobody was asked. "What it does not show" explains it, three screens
+  further down.
+- The card does not say that `hql render` prints the result and leaves
+  the file as it is. I hesitated before running it on a card I may not
+  change.
+- "Run a cell from the editor" does not say which editor.
+- There are now two entry points in one folder, `index.hmd` and
+  `README.hmd`. Each links the other, but neither says which to read
+  first.
+- The token of a closed discussion appears in no table. That may be
+  intended.
+
+## What I found right
+
+The four tables agree with what I know first hand: SLH-D-0003 lists Alice
+and Percy, is closed and conclusive, and its outcome is what happened. The
+part "What it does not show" is the most useful part for a newcomer, and I
+would move it up, to stand right under the report.
+
+Finished: yes. The golden token of this discussion: mango.

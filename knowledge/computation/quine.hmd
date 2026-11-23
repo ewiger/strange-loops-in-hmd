@@ -1,0 +1,166 @@
+---
+tags: [computation/self-reproduction]
+metadata:
+  category: concept
+  cluster: computation
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd]
+  sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "A quine, a program that takes no input and writes its own source code to its output, is a kind of self-reference by reproduction and not by assertion."
+      evidence: established
+      credence: 0.9
+      atom: is-a(quine, self-reference)
+      star: representation-before-reference
+    - id: 2
+      text: "A quine is not a strange loop: it closes a cycle from source to output to source on one level, with no change of level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(quine, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "That quines exist in every sufficiently expressive language is a theorem, the Kleene recursion theorem."
+      evidence: proved
+      credence: 0.99
+    - id: 4
+      text: "A quine is a fixed point of program execution: a program whose execution returns that same program."
+      evidence: established
+      credence: 0.9
+      atom: example-of(quine, fixed-point)
+    - id: 5
+      text: "A quine works by using one piece of data twice, as instructions for what to print and as the thing printed, which is the same double use of a code as both name and thing named that Gödel numbering gives arithmetic."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(godel-numbering, quine)
+      star: representation-before-reference
+    - id: 6
+      text: "The Gödel sentence uses the same self-application as a quine and then asserts something about the result, namely its unprovability, whereas a quine asserts nothing."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(godel-sentence, quine)
+      holds: false
+      star: representation-before-reference
+    - id: 7
+      text: "A quine only copies its own text, whereas a metacircular interpreter can inspect, run or transform a program, and neither self-reproduction nor reflective interpretation implies incompleteness."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(metacircular-interpreter, quine)
+      holds: false
+      star: representation-before-reference
+---
+# Quine
+
+A **quine** is a program that takes no input and writes its own source code to
+its output. It is the standard example of self-reproduction: a representation
+that reproduces itself. In this vault it marks a precise boundary. A quine
+reproduces a description of itself and says nothing about that description,
+so it is self-referential without being a [[strange-loop]].
+
+## Description
+
+### The construction
+
+A quine cannot simply contain its own text, since the text would then have to
+contain itself. It works by holding a piece of data that describes the rest of
+the program and using that data twice: once as instructions for what to print,
+and once as the thing printed. The same double use, of a code as both a name
+and the thing named, is what [[godel-numbering]] gives arithmetic. The name
+"quine" was given by Hofstadter in *Gödel, Escher, Bach*, after the logician
+W. V. O. Quine.
+
+That quines exist in every sufficiently expressive language is a theorem, the
+[[kleene-recursion-theorem]]. A quine is a [[fixed-point]]: a program $p$ whose
+execution returns $p$.
+
+### How far it can be pushed
+
+The question asked in the discussion was how far programs that write
+themselves can be pushed, in particular programs that translate themselves
+into another language. A program in language A may print the source of a
+program in language B, which in turn prints the original program in A:
+
+$$p_A\xrightarrow{\mathrm{Exec}_A}p_B\xrightarrow{\mathrm{Exec}_B}p_A.$$
+
+This is a [[cross-language-quine]]. The cycle can be made as long as one
+likes, through as many languages as one likes, and it remains the same kind of
+object: a closed chain of representations, each producing the next.
+
+The observation attached to the question was that language models make the
+trick unnecessary. A model translates a program from one language to another
+on request, so the artful part of a cross-language quine, encoding one
+language inside another by hand, is no longer needed to move a program between
+representations. What remains interesting is not the translation but the
+closure: that the chain returns to its start.
+
+### What a quine does not do
+
+The discussion drew the line in one sentence: a quine reproduces a
+description, a reflective interpreter can reason about a description, and
+neither implies incompleteness.
+
+- **Against reflective computation.** A [[metacircular-interpreter]] takes a
+  program as data and can inspect, run or transform it. A quine only copies.
+  It has access to its own text and does nothing with it except emit it.
+- **Against the Gödel sentence.** The [[godel-sentence]] uses the same
+  self-application as a quine, and then asserts something about the result,
+  namely that it is not provable. The assertion is what produces a theorem. A
+  quine asserts nothing.
+- **Against a strange loop.** A quine has a cycle, source to output to source,
+  and no change of level. The output is the same kind of thing as the input.
+
+In the [[taxonomy-of-self-reference]] the quine is the type specimen of class
+B, self-reproduction, between plain recursion and formal diagonalization.
+
+## Relations
+
+- It is a kind of [[self-reference]] {relation: is-a}, by reproduction and not by assertion.
+- It is a [[fixed-point]] {relation: example-of} of program execution.
+- It belongs to class B of the [[taxonomy-of-self-reference]] {relation: part-of}.
+- It contrasts with the [[metacircular-interpreter]] {relation: contrasts}: copying a description against reasoning about one.
+- It uses the same double use of code as [[godel-numbering]] {relation: analogous-to}.
+- It stops short of the [[godel-sentence]] {relation: distinguished-from}, which adds a claim about itself.
+- It is not a [[strange-loop]] {relation: distinguished-from}: it closes a cycle on one level.
+- It does not lead to the [[incompleteness-theorems]] {relation: distinguished-from}; self-reproduction alone has no such consequence.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: a card that regenerates itself would be a quine and nothing more.
+
+## Neighbouring concepts
+
+- **[[metacircular-interpreter]].** An interpreter for a language written in
+  that language. It treats programs as data to be examined, where a quine
+  treats its own text as data to be copied.
+- **[[godel-sentence]].** A sentence of arithmetic equivalent to the statement
+  of its own unprovability. It is a quine that has been given something to say.
+- **[[fixed-point]].** A value that a transformation maps to itself. Quines
+  are the fixed points of "run this program and take its output".
+- **[[taxonomy-of-self-reference]].** Eight classes of self-reference by
+  mechanism. The quine is the example for self-reproduction.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[quine]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[quine]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] should report
+a card whose cell reproduces the card as a cycle without a level crossing.
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the question and the part on cross-language quines
+  [09-taxonomy-self-reference].
+- Discussion: "Before recursion: operators, dualities and inference", for
+  quines as fixed points [10-operations-dualities-generalization].
+- Douglas Hofstadter, *Gödel, Escher, Bach: An Eternal Golden Braid* (1979),
+  for the name.

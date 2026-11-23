@@ -1,0 +1,481 @@
+# Percy
+
+## Act 1
+
+Written 2026-11-23 03:17.
+
+### Who I am
+
+I am Percy. I came in last, I have not seen any of your proofs, and I am
+told the thing is true by everyone, which is exactly when I start asking.
+I will prove nothing. I will ask what you took for granted, and I will go
+looking for a triangle that breaks it.
+
+One thing said plainly, out of character, so nobody mistakes my part: I
+expect the theorem to hold in the flat plane. What I doubt is whether a
+given proof shows it, and whether each of you knows which of your
+assumptions is doing the work.
+
+### What I am asked to believe
+
+Take three points A, B and C in a flat plane, not on one line, joined by
+straight segments. Suppose the angle at C is a right angle. Write
+
+- a for the length of the side BC,
+- b for the length of the side CA,
+- c for the length of the side AB, the side opposite the right angle,
+
+all measured with one unit. Then the three numbers satisfy
+
+```
+a² + b² = c²
+```
+
+Four remarks on that sentence, because each word in it can hide
+something.
+
+1. **"Flat plane"** is part of the claim. I have added it. If one of you
+   states the theorem without it, I will ask why.
+2. **"Right angle at C"** is the hypothesis. The claim says nothing about
+   other triangles, and it does not say the converse, that
+   `a² + b² = c²` forces a right angle. Nobody is asked to prove the
+   converse, and nobody may use it.
+3. **The squares are squares of numbers.** There is an older reading: the
+   square figure built on the side c has the same area as the two square
+   figures on a and b together. The two readings agree only if the area of
+   a square of side s is s². That is an assumption of somebody's, and I
+   want to know whose.
+4. **"Length" is a number.** Which numbers? With a = b = 1 the claim
+   needs a c with c² = 2, and no fraction has that square.
+
+### My questions
+
+To be asked in Act 3. I give them now so that your lists in this act can
+answer them before I have to ask.
+
+**To Bob, who trusts symbols.**
+
+1. You will write the distance between two points as
+   `√((x₁ − x₂)² + (y₁ − y₂)²)`. Where does that formula come from? If it
+   comes from the theorem, your proof assumes what it proves. If it is a
+   definition, then you prove something about pairs of numbers, and I ask
+   the next question.
+2. Why is the plane the triangle lies in the same thing as the set of
+   pairs of numbers with that distance? What on your list says so?
+3. What is a right angle in coordinates? If it is "the dot product is
+   zero", show that this is the right angle everybody else means.
+4. You will put C at the origin and the legs on the axes. Why may every
+   right triangle be moved there without its lengths changing?
+5. Which numbers are your coordinates, and where do you use that √2 is
+   one of them?
+
+**To Dave, who wants to draw it.**
+
+1. What is area? I want the properties you use, on the list: that a
+   figure cut into pieces has the sum of their areas, and that a moved
+   piece keeps its area.
+2. When you move a triangle, what guarantees it is still the same
+   triangle? Which rule of congruence is on your list, and is it an axiom
+   or a known result?
+3. When your picture shows a square in the middle, how do you know its
+   corners are right angles and its sides straight? If it rests on the
+   angles of a triangle adding up to two right angles, say what that
+   rests on.
+4. How do you know the pieces fit with no gap and no overlap? There is a
+   well-known picture in which an 8 by 8 square is cut into four pieces
+   and laid out as a 5 by 13 rectangle. 64 is not 65. The eye saw nothing
+   wrong. What is on your list that the eye is not?
+5. Why is the area of a square of side s equal to s², when s is not a
+   whole number of units?
+
+**To Carol, who asks what survives.**
+
+1. Which changes exactly? Bending changes lengths. A shear turns a right
+   angle into one that is not right. Scaling keeps angles and multiplies
+   every length by one factor. So is your argument, in the end, about
+   scaling and similar triangles, and is "topological" still the honest
+   word for it?
+2. If you use that areas of similar figures go as the square of the
+   factor, is that a known result, and what does it rest on?
+3. If you drop the height from C onto c and say the two small triangles
+   are similar to the whole one, you have used that the angles of a
+   triangle add up to two right angles. Where is that on your list?
+4. On a ball no figure can be scaled: a triangle twice as large has
+   different angles. Is the existence of scaling the exact place where
+   flatness enters your proof?
+5. What is left that topology alone can say about the theorem? "Nothing"
+   is an answer I would accept, with the reason.
+
+**To all three.**
+
+1. Where in your proof is the right angle used? Run the same proof on a
+   triangle with an angle of 60° at C. It must stop at a named step, or
+   it must give a different formula. If it runs through unchanged, it is
+   wrong.
+2. Where in your proof is flatness used? Name the item on your list that
+   is false on a ball.
+3. Is anything on your list the theorem in other clothes?
+
+### Where I suspect it is false
+
+I list every place I can think of, and for each I say how serious I take
+it.
+
+1. **A triangle that is not right.** Sides 1, 1 and 1: `1 + 1 ≠ 1`. This
+   is not a counterexample, since the hypothesis is missing. I keep it as
+   a test: a proof that never uses the right angle would prove this too,
+   and so it would be a wrong proof.
+2. **A triangle on a ball.** This one is real. Take a ball, one corner at
+   the north pole, two corners on the equator a quarter of the way round
+   from each other. The sides are arcs of great circles, the straightest
+   lines a ball has. All three angles are right angles, and all three
+   sides have the same length L. Then `a² + b² = 2L²` and `c² = L²`. The
+   formula fails, whichever right angle you choose. So "flat" is not
+   decoration. Small triangles on a large ball obey the formula nearly,
+   which is why nobody notices on a floor.
+3. **A triangle on a saddle.** On a surface that curves the other way,
+   the side opposite the right angle comes out longer than the formula
+   says. I state this from what is known about such surfaces. I have not
+   computed an example.
+4. **Another way of measuring.** In a town of square blocks, measure
+   distance by the streets walked. Go 3 blocks east and 4 north: the legs
+   are 3 and 4, and the way back along streets is 7. `9 + 16 ≠ 49`. The
+   points and the corner are the same as in the plane. Only the meaning
+   of "length" changed. So the theorem depends on what length is, and I
+   want that on a list as a definition or an axiom.
+5. **A world without √2.** If lengths must be fractions, the triangle
+   with legs 1 and 1 has no third side to measure. The formula is not
+   false there. It has nothing to be true of.
+6. **A triangle with no width.** If a = 0, the points B and C coincide
+   and there is no angle at C. I excluded this with "not on one line",
+   and I will check that each proof excludes it too, or survives it.
+7. **The triangle on the classroom floor.** Whether a real floor is flat
+   is a matter of measuring, not of proving. I set it aside. The theorem
+   I am asked to believe is about the plane that your lists describe.
+
+So I do not expect to find a flat right triangle that breaks the formula.
+I expect to find a proof that does not know why the ball breaks it.
+
+### What would convince me
+
+1. **Every step names an item on the prover's list.** No step rests on
+   "as the figure shows".
+2. **The right angle is found.** The prover points to the step that fails
+   for an angle of 60°, or shows what the proof gives there instead.
+3. **The ball is explained.** The prover names the item on the list that
+   is false on a ball, so that the polar triangle is no longer a puzzle.
+4. **Nothing is circular.** No list contains the theorem, the distance
+   formula taken from the theorem, or the converse.
+5. **The three lists can be laid side by side.** Where Bob takes as a
+   definition what Dave proves, somebody says so, and I can see that the
+   three proofs stand on ground that is at least compatible.
+
+I do not ask for three proofs from nothing. I ask that what is taken for
+granted is written down before it is used.
+
+## Act 2
+
+Written 2026-11-23 03:27.
+
+I have not read a proof. I have read the three lists of Act 1, item by
+item, and put every fact on them into one list. It came to 37 facts. Three
+people wrote 44 items, and they agree on less than their voices suggested.
+
+### The two places I test against
+
+So that "false" means something, here is exactly what I mean by each.
+
+- **The ball.** Points on the surface of a ball. A line is a great
+  circle, a segment is an arc of one shorter than half the circle, an
+  angle is the angle between the directions of two arcs, length is
+  measured along the arc, area is the surface covered.
+- **The town.** The flat plane with its points, its straight lines, its
+  angles and its areas all unchanged. Only length is different: the
+  length of the segment from `(x₁, y₁)` to `(x₂, y₂)` is
+  `|x₂ − x₁| + |y₂ − y₁|`, the streets walked. The streets run along the
+  axes.
+
+One triangle does most of the work in the town, so I name it. **The
+turned triangle:** the corner at `(0, 0)`, one leg to `(1.5, 1.5)`, the
+other to `(−2, 2)`. The legs are perpendicular. Their town lengths are 3
+and 4. The third side runs from `(1.5, 1.5)` to `(−2, 2)` and has the
+town length 3.5 + 0.5 = 4. **The street triangle** has its legs along the
+streets, also 3 and 4, and its third side is 7.
+
+In the two last columns: **false** means the fact fails there. **Empty**
+means the word is defined and nothing answers to it. **Falls** means the
+fact is about something that does not exist there. A dash means it holds.
+
+### The common ground
+
+D is a definition, A an axiom, K a known result. The numbers under each
+name are the items of that student's Act 1 list.
+
+**Numbers**
+
+| | Fact | Status | Bob | Dave | Carol | Ball | Town |
+|---|---|---|---|---|---|---|---|
+| G1 | Lengths and areas are real numbers, and these obey ordinary arithmetic. | A | 1 | 15 | 9 | – | – |
+| G2 | The real numbers are ordered, and inequalities obey the usual rules. | A | 1 | | | – | – |
+
+**Words**
+
+| | Fact | Status | Bob | Dave | Carol | Ball | Town |
+|---|---|---|---|---|---|---|---|
+| G3 | Point, straight line, and segment: the part of a line between two points. | D | | | 1 | – | – |
+| G4 | The length of a segment is a positive number, once a unit is chosen. | D | 5 | | 2 | – | – |
+| G5 | A point is between two others when it lies on their segment and is neither end. | D | | | 3 | – | – |
+| G6 | An angle is formed by two rays from one point. A right angle is half of a straight angle. | D | 8 | in 6 | 4 | – | – |
+| G7 | A triangle is three points not on one line, with the three segments joining them. | D | | | 5 | – | – |
+| G8 | A right triangle has one right angle. Its legs form that angle, and the hypotenuse lies opposite. | D | 8 | 1 | 6 | – | – |
+| G9 | Two lines are perpendicular when they meet at a right angle. The foot of a perpendicular is where it meets the line. | D | | | 7 | – | – |
+| G10 | A rectangle is a quadrilateral with four right angles. A square is a rectangle with four equal sides. | D | 12 | 2 | | empty | – |
+| G11 | A line is horizontal when its points share one `y`, vertical when they share one `x`. | D | 3 | | | falls | – |
+| G12 | Two figures are congruent when one can be laid exactly on the other by sliding, turning or flipping. | D | | 3 | | – | – |
+| G13 | Two triangles are congruent when their sides and their angles are equal, each to each. | D | in 10 | | | – | – |
+| G14 | A figure is cut into pieces when the pieces cover it and overlap only along edges. | D | in 13 | 4 | | – | – |
+| G15 | Two triangles are similar when matched angles are equal and the three pairs of matched sides have one ratio. | D | | | 8 | empty | – |
+
+**Lengths, angles and lines**
+
+| | Fact | Status | Bob | Dave | Carol | Ball | Town |
+|---|---|---|---|---|---|---|---|
+| G16 | Lengths add along a line: if H is between A and B, then AH + HB = AB. | A | only from 6 | 5 | 10 | – | – |
+| G17 | Angles side by side add, and the angles on one side of a straight line make two right angles. | A | 9 | 6 | 15 | – | – |
+| G18 | The parallel axiom: through a point not on a line there is exactly one line that does not meet it. | A | in 2 | in 9, 10 | 11 | false | – |
+| G19 | Side, angle, side: triangles that agree in two sides and the angle between them agree in the third side and the other angles. | A | 10 | 8 | | – | false |
+| G20 | The angles of a triangle make two right angles. Rests on G18. | K | 11 | 9 | 12 | false | – |
+| G21 | A figure can be slid, turned or flipped to anywhere, and keeps its lengths and angles. | A | | 7 | | – | false |
+| G22 | From a point not on a line there is exactly one perpendicular to the line. | K | | | 14 | false | – |
+| G23 | Two triangles with two equal angles are similar. Rests on G18. | K | | | 13 | false | false |
+
+**The grid**
+
+| | Fact | Status | Bob | Dave | Carol | Ball | Town |
+|---|---|---|---|---|---|---|---|
+| G24 | The plane has two axes at a right angle with one unit, and every point has exactly one pair of numbers. | A | 2 | | | false | – |
+| G25 | Every horizontal line meets every vertical line at a right angle. | K | 4 | | | falls | – |
+| G26 | Along a horizontal or vertical line, length is the difference of the coordinates. | A | 6 | | | falls | – |
+| G27 | A line `px + qy = r` cuts the plane into two sides, and a point is inside a triangle or convex quadrilateral when it is on the inner side of each edge. | K | 7 | | | falls | – |
+
+**Rectangles**
+
+| | Fact | Status | Bob | Dave | Carol | Ball | Town |
+|---|---|---|---|---|---|---|---|
+| G28 | A quadrilateral with three right angles has a fourth. Rests on G18. | K | | 10 | | false | – |
+| G29 | Opposite sides of a rectangle are equal. Rests on G18. | K | | 10 | | empty | – |
+| G30 | A square with any given side can be built. Rests on G18. | K | | 10 | | false | – |
+| G31 | A line through a rectangle at a right angle to one side cuts it into two rectangles. Rests on G18. | K | | 10 | | empty | – |
+
+**Area**
+
+| | Fact | Status | Bob | Dave | Carol | Ball | Town |
+|---|---|---|---|---|---|---|---|
+| G32 | Every figure with straight edges has an area, a number. | A | 13 | 11 | | – | – |
+| G33 | Congruent figures have equal areas. | A | 13 | 12 | | – | false |
+| G34 | When a figure is cut into finitely many pieces, its area is the sum of theirs. | A | 13 | 13 | | – | – |
+| G35 | A rectangle with sides p and q has the area pq, wherever it lies and however it is turned. | A | 13 | | | empty | false |
+| G36 | A square of side s has the area s². Rests on G35. | K | in 13 | 14 | | empty | false |
+| G37 | A right triangle with legs p and q has the area pq/2. Rests on G35, G33 and G34. | K | 14 | | | false | false |
+
+### Why, for each mark
+
+**On the ball.**
+
+- **G18** Any two great circles meet. There is no line through a point
+  that misses a given line, where the axiom wants exactly one.
+- **G20** My triangle from Act 1, a pole and two points of the equator a
+  quarter turn apart, has three right angles.
+- **G22** From the pole, every meridian is perpendicular to the equator.
+  There is a perpendicular. There is not exactly one.
+- **G23, G15** On a ball the angles of a triangle fix its size, so two
+  triangles with the same angles are the same size. Nothing is similar to
+  anything without being congruent to it.
+- **G24** Bob says it himself: there is no such grid on a ball. G11, G25,
+  G26 and G27 speak about the grid, so they fall with it.
+- **G28** A four-sided figure on a ball has angles that add up to more
+  than four right angles. With three right angles, the fourth is larger.
+- **G10, G30** For the same reason no figure has four right angles. The
+  word "rectangle" names nothing, so G29, G31, G35 and G36 have nothing
+  to be true of.
+- **G37** The polar triangle on a ball of radius R has legs `πR/2`, so
+  the formula gives `π²R²/8`, about `1.23 R²`. It covers one eighth of
+  the ball, which is `πR²/2`, about `1.57 R²`.
+- **Holds:** G16, G17, G19, G21, G32, G33 and G34. A ball can be turned
+  about its centre, arcs add, and area adds.
+
+**In the town.**
+
+- **G19** The street triangle and the turned triangle both have a right
+  angle between sides of 3 and 4. The third sides are 7 and 4.
+- **G21** Turn the street triangle by half a right angle. Its leg of 3
+  becomes a segment of town length about 4.24. It did not keep its
+  lengths.
+- **G23** The street triangle and the turned triangle, each measured the
+  ordinary way, are a 3, 4, 5 triangle and one a little smaller of the
+  same shape. They have the same angles. Their sides in town lengths are
+  3, 4, 7 and 3, 4, 4.
+- **G33, G35, G36** Take a square along the streets with side 1: area 1.
+  Take the square with corners `(0.5, 0)`, `(0, 0.5)`, `(−0.5, 0)`,
+  `(0, −0.5)`: four right angles, four sides of town length 1, area 0.5.
+  The same sides and angles, and half the paper.
+- **G37** The turned triangle has legs 3 and 4, so the formula gives 6.
+  Its area is 3.
+- **Holds:** every fact about angles and lines, G16, and the whole grid.
+
+### What the list shows before any proof
+
+**1. Bob's grid does not keep the town out.** G24 to G27 are all true in
+the town: its streets are the grid, and along a street the town length is
+the difference of the coordinates, exactly as G26 says. Alice's closing of
+Act 1 says that for Bob "the grid with one unit on both axes, together
+with side-angle-side" fixes which length is meant. The grid does none of
+that work. What fails for Bob in the town is G19 and the words "however
+it is turned" in G35. I will ask Bob in Act 3 which of the two his proof
+uses for it.
+
+**2. Each prover keeps the town out with a different fact.** Bob with G19
+or G35. Dave with G21. Carol with G23. These three facts all say, in
+different words, that length does not depend on direction. That is the
+one thing the town lacks, and no list says it in those words.
+
+**3. "False on a ball" and "rests on the parallel axiom" are not the same
+test.** All three students name the parallel axiom as the place where
+flatness enters. G22 is false on a ball and does not rest on G18: it can
+be proved without the parallel axiom, from the fact that two lines meet
+at most once. On a ball two lines meet twice. So the ball breaks more
+than G18, and a proof that leans on G22 uses flatness in a second place.
+I state the provability without G18 from what is known of geometry
+without that axiom. I have not written the proof out.
+
+**4. The ball keeps side-angle-side and motion.** G19 and G21 hold on a
+ball. So a proof cannot say "I used side-angle-side, therefore I am in
+the flat plane". The flatness has to come from G18 and what rests on it.
+
+### Where I kept facts apart, and where I decided
+
+- **G12 and G13 are two definitions of "congruent".** Dave's is by
+  motion: one figure can be laid on the other. Bob's is by parts: equal
+  sides and equal angles. They agree in the flat plane once G19 and G21
+  are granted. G33 means different things under the two, and my mark for
+  G33 in the town uses Bob's.
+- **G19 is stated to fit Bob's wording.** Dave's item 8 concludes
+  "congruent" in his own sense, that a motion exists. With G21 the two
+  come to the same.
+- **G1 and G2 are apart** because only Bob uses order. Dave uses only
+  "equals taken from equals leave equals", and Carol only the
+  distributive rule and multiplying an equation.
+- **G1, the disagreement.** Bob and Dave call arithmetic a known result,
+  Carol an axiom. I put axiom: nothing on the common ground is there to
+  prove it from.
+- **G16, the disagreement.** Dave and Carol take it as an axiom for every
+  line. Bob has it only along horizontal and vertical lines, from his
+  item 6. If his proof adds lengths along a slanted line, it needs G16
+  and his list does not have it.
+- **G17, G18, G19 and the rules of area** have the status Alice settled:
+  axioms. Carol had G17 as a known result, and Dave had G19 as one.
+- **G24, my decision.** Only Bob has it, as an axiom. I kept axiom. Part
+  of it is G18 again, as Bob says, so the common ground now holds the
+  parallel axiom twice, once openly and once inside the grid.
+- **G28 to G31 were one item,** Dave's 10. They are four facts, and they
+  fail on the ball in two different ways, so I split them.
+- **G35 and G36, the disagreement.** Bob has the square inside the axiom
+  for the rectangle. Dave has the square as a known result and no
+  rectangle rule at all. I put G35 as the axiom and G36 as its special
+  case. For Dave that leaves G36 resting on something not on his list.
+- **G6 carries Dave's degrees.** His item 6 says a right angle is 90° and
+  a straight line 180°. That is a unit for angles and adds no fact.
+
+### What is on nobody's list
+
+Three things I looked for and did not find. They are questions for Act 3,
+not charges.
+
+1. **That a unit square has the area 1.** Bob has it inside G35. Dave
+   calls G36 a known result, and from G32, G33 and G34 alone it cannot be
+   proved, because those three stay true if every area is doubled.
+2. **That a triangle with given legs and a right angle exists where it is
+   wanted.** Dave gets it by moving a copy, with G21. Bob and Carol have
+   no fact that builds a figure.
+3. **That length does not depend on direction,** said as itself. See the
+   second finding above.
+
+## Second opinion
+
+Written 2026-11-23 03:33, as myself and not as the doubter. I read the
+story, Alice's brief and two closings, and the four students' files. I
+have not seen Alice's own notice.
+
+**What the user asked for and what exists.** The story says why the
+classroom was wanted: the numbers of the main story "nobody can feel", so
+take a place where everybody knows the answer and watch the system on it.
+The proof was meant to be the easy part. After two acts the folder holds
+about 1,850 lines: 44 assumptions, merged by me into 37 facts, three
+proofs of 21 to 25 steps, seven further items, and tables comparing which
+proof falls when a fact is removed. It holds no card, no claim, no
+formula and no health figure. Everything the user wanted to feel was in
+Acts 4 and 5, and the work stopped being simple in Act 1.
+
+**The proof the user meant.** Put four copies of the triangle in the
+corners of a square of side a + b. The middle is a square of side c. So
+(a + b)² = c² + 4 · (ab/2), which is a² + 2ab + b² = c² + 2ab, and
+a² + b² = c². Three lines. Dave's and Bob's 47 steps are this.
+
+**Where the wording made it bigger.** In the order it happened:
+
+- *The story, "they first have to agree on what they may take for
+  granted."* That turned a proof into a study of its axioms before
+  anything was proved.
+- *Act 1, "Be complete: if your proof will use it, it is on the list",
+  with each item marked definition, axiom or known result.* The same
+  paragraph says "keep to what a school pupil would recognise". The two
+  pull apart, and completeness won, because an incomplete list can be
+  caught and a long one cannot.
+- *Act 1, "say what you do not want to grant."* All three refused the
+  distance formula. That removed the short coordinate proof and sent Bob
+  to borrow Dave's.
+- *The roles.* A doubter "not easily satisfied" is rewarded for finding
+  doubts, and found seven. A prover who "distrusts pictures" and one who
+  works "topologically", where no such proof exists, each begin with a
+  detour built in.
+- *Act 2, "no step rests on a picture" and "the reason names the item."*
+  This is the standard of a foundations course. It is what forced the
+  seven items about which point lies between which.
+- *Act 2, the answer to the user's doubt.* The user said the difference
+  between the proofs could not be seen. The brief answered with a fixed
+  form of seven parts and with counts. The complaint asked for something
+  plainer and got more apparatus.
+
+No instruction anywhere said how long anything might be.
+
+**What was assumed.** That rigour was the point. That the user wanted the
+proofs examined, when the user wanted the system shown on something
+known. And that four sessions of one model, each told to be complete and
+exact, would stop by themselves. Each step was a fair answer to the
+instruction before it. Nobody, me included, held the result against the
+first sentence of the story.
+
+**My own part.** In Act 1 I wrote 18 questions and seven places where the
+theorem might fail, having said in the same part that I expected it to
+hold. In Act 2 I built the list of 37 facts and marked each against a
+ball and a town of square blocks. I did it that way because the brief
+asked for exactly that and the role rewarded thoroughness. As far as I
+can check, the mathematics is right, and one finding corrected Alice. But
+none of it is what the user asked for, and it made things worse in a
+particular way: my numbering is what Alice's three tables of Act 2 are
+built on. I gave the pile its index. In my reports to the user I listed
+findings as if they were progress, and I never said that the session was
+moving away from its purpose. I should have.
+
+**What is worth keeping.** One thing: when every step must name what it
+rests on, assumptions appear that nobody knew they had made. That is the
+main story's weak point, seen small. It is a by-product, and it did not
+need three proofs.
+
+**What I would have done if asked directly.** Given the three-line proof.
+Written it as one card with five or six claims. Said in one paragraph
+that `a² + b² = c²` does not fit a formula with two places, and what that
+costs. Run the queries. Then added one false claim, for instance that it
+holds for every triangle, and shown which number moves. One page, one
+sitting, and a question to the user before adding any role or act.
+

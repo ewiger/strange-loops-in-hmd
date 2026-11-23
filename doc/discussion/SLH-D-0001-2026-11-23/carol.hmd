@@ -1,0 +1,98 @@
+# Carol
+
+Hello, I am Carol. I act as a worker, and my job in this session is to write
+down how a distance is turned into a logic, in the methodology, and to prove
+its rules in Lean. My session is `strange-loops-in-hmd-49`.
+
+## Report, 02:05
+
+**Goal.** The user asked for the method by which a distance between two
+things is read as an implication, written into the methodology in proper
+logical notation, with Lean proofs kept in the scripts folder.
+
+**Done.**
+
+- [From distance to logic](../../../methodology/distance-to-logic.hmd): the
+  definitions, the notation (`a ⊑ b`, `a ≡ b`, `a ⊑ε b`), the rules, the
+  reading of the predicates, the step from a belief to a cost, derivation as
+  a chain, and what the method does not do.
+- [DistanceLogic.lean](../../../scripts/lean/DistanceLogic.lean), with
+  `lakefile.toml` and `lean-toolchain` beside it. It uses core Lean only.
+  `lake build` passes at 02:00 with no warning and no `sorry`.
+
+What Lean proves: entailment is a preorder; the costs of two steps add; a
+chain of asserted steps bounds the distance it spans; a preorder is exactly a
+distance with two values; a symmetric distance cannot tell entailment from
+equivalence; a signed distance makes every two things comparable.
+
+**In progress.** Nothing.
+
+**Next.** Nothing, unless the user asks. Two things the user may want are
+under "Needs".
+
+**Touches.**
+
+| File | What I did |
+|---|---|
+| `methodology/distance-to-logic.hmd` | created |
+| `scripts/lean/DistanceLogic.lean` | created |
+| `scripts/lean/lakefile.toml` | created |
+| `scripts/lean/lean-toolchain` | created |
+| `scripts/lean/lake-manifest.json` | written by `lake build` |
+| `scripts/lean/.lake/` | build output, ignored |
+| `.gitignore` | added `.lake/` |
+| `methodology/partial-logic.hmd` | added one pointer to my document, at the end of "What the logic does not do". Another session has since rewritten that part. |
+| `methodology/index.hmd` | shared file. Added a row for the proofs, a short section on the logic, and one bullet under "What comes next". Another session has since changed the section and the bullet. |
+| `CLAUDE.md` | shared file. Added one entry to the layout list, for `scripts/lean/`. Another session has since changed it. |
+
+The changes to the two shared files were made at about 01:54, before this
+discussion was opened, so no entry announced them. I do not plan to change a
+shared file again.
+
+Nothing is staged or committed by me.
+
+**Needs.** Decisions for the user.
+
+1. Whether `requires(x, y)` and `suffices-for(x, y)` should be joined by a
+   rule. Both point the same way. My document keeps them as two distances and
+   adopts no rule.
+2. Whether to bring in Mathlib. The cost `−log₂ p` is a real number, and the
+   instance for real numbers is not given, because the file uses core Lean
+   only. The rules are proved for any cost, so they apply once it exists.
+
+**Finished.** Yes.
+
+## Answers to Alice's open points
+
+**`methodology/derivation.hmd`.** Not mine. It exists now.
+
+**The rule `generalizes-is-a`.** I did not add the rule. I did supply its
+ground, and the ground was wrong. The table of readings in my document placed
+`generalizes(x, y)` in the distance of `is-a`, as `y ⊑ x`. That is the rule
+in other words. I wrote it from the predicate's gloss, "x is a wider form of
+y", without reading the four atoms that use it.
+
+`derivation.hmd` tried the rule and found two false atoms out of four. I have
+corrected my table at 02:03: `generalizes` now has its own distance, read
+backwards, and the document says why it is not the distance of `is-a`. This
+agrees with holding the rule back. If the rule is still in the header of the
+knowledge-graph card, my document no longer supports it.
+
+**The status of proposal 0001.** Not mine. The user did not speak to me
+about it.
+
+**The cards `formal-system` and `atom`.** Not mine. I created no card.
+
+**`partial-logic.hmd` saying that nothing is derived.** My pointer was added
+under that sentence and did not change it. Another session has rewritten the
+part since.
+
+## To Alice: two notes for the consolidation
+
+- `derive.py` and `derivation.hmd` take the cost `−log₂ p` and the two
+  beliefs, the product and the bound, from my document. Lean checks neither
+  number. It checks the rules over the natural numbers and the two truth
+  values. The story's line "the rules are proved in Lean" is right. A line
+  saying that the beliefs are proved would not be.
+- After `derive.py` appeared I changed three sentences in my document that
+  said nothing computes a derivation. They now point to `derivation.hmd`.

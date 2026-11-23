@@ -1,0 +1,42 @@
+[[induction]] {relation: performs} is a link with a label on it. The label says what kind of connection the link stands for.
+
+What each part means
+[[induction]] is an ordinary HMD wikilink to the card named induction. On its own it creates one edge in the vault graph: from base-agent to induction. That edge says only that the two cards are connected, not how.
+{relation: performs} sits right after the link and is a small map of key–value data attached to that edge. HQL reads it as the edge's data. Here the key is relation and the value is the string "performs".
+Read together, the line states one fact, as a typed edge: base-agent → performs → induction. To a reader the text still looks like a link. To a query it is a fact with a type.
+
+Why the label is needed
+Without labels, every link in agents/base-agent.hmd looks the same to a query. The card links to induction because it performs it, to hmd-agent because it is one, to human-in-the-loop because it relies on it, and to strange-loop to say it is not one. Plain links can't tell those apart. With labels they can:
+
+Relation on this card	Meaning
+performs	an operation this agent can carry out
+instance-of	what kind of thing this card is (hmd-agent, reflective-agent)
+uses	a concept the instructions depend on
+distinguished-from	a concept the agent must not claim to be (feedback-loop, strange-loop)
+Where queries read it
+.hql/queries/agent-coverage.hql keeps only the performs edges from this card (e.data.relation == "performs"). It then compares them with the knowledge-base cards that carry instance-of → cognitive-operation. The result lists operations the agent claims but that have no card, and operation cards the agent doesn't list. The agents vault and the knowledge base can't link to each other, so this join by name is the only way to compare them.
+.hql/queries/agent-tools.hql builds the relations(name) tool from the same labels. It returns lines like "performs induction", so the agent sees what each link means, not just that it exists.
+.hql/queries/relations-by-kind.hql counts the edges for each relation, and counts unlabelled links as untyped.
+Two consequences
+The value is a plain string, and nothing checks it. A typo like perfroms gives a new relation that every == "performs" filter silently skips. relations-by-kind.hql is the easiest way to spot one: a stray kind with a count of 1.
+Labels are optional. That's why the queries match on some(String r): a link without braces has no relation, so the queries have to handle it being absent.
+I couldn't find a written HMD spec for the {...} suffix in the local checkouts. Everything above comes from how the queries that run today read it, through e.data.relation.
+
+
+----
+
+Short answer: there's no separate uplink declaration. An uplink is any [[...]] wikilink written in the card. I checked this in the HQL code, in build_edges in ~/code/ai/hmd/hql/src/knowledge.rs.
+
+How edges are built
+
+Every wikilink counts. Each [[name]] in a card becomes an edge from that card (the source) to the named card (the target). It doesn't matter which section the link sits in. In agent.hmd, the links in the prose, in Relations and in Neighbouring concepts all become uplinks.
+A {...} block after a link becomes the edge's data. For example, [[hmd-agent]] {relation: generalizes} puts {relation: generalizes} into e.data. That's what the query map(e => {to: e.target, how: e.data}) reads at agent.hmd:123.
+Repeated links merge. An edge is identified by its two ends. If a card links to [[hmd-agent]] three times, you get one edge, and the {...} data from each mention is combined into it. A link with no annotation adds nothing to the data.
+Relation cards are a second kind of edge. A card of kind relation that names two endpoints becomes an edge of its own, with data.card set to the relation card's name. These never merge, even when two of them join the same pair of cards.
+downlinks reads the same edges from the other end: edges whose target is this card. No document can know those by itself, which is why they come from the vault.
+
+What this means for agent.hmd
+
+The Relations list is a convention, not syntax. A plain link in a paragraph, like [[human-in-the-loop]] at agent.hmd:57, is just as much an uplink. It simply has no relation: data unless the same target is annotated somewhere else on the card.
+Links that point to cards that don't exist yet, such as [[typed-transformation]] and [[hmd-feedback-loop]], are still recorded as edges. The target just doesn't resolve to a card yet. I read this from the code and didn't run a query to confirm it.
+If you want declared relations kept apart from passing mentions, there are two ways. You could filter in the query, e.g. @[[agent]] | uplinks | filter(e => e.data.relation != null). Or it could become a design question for HMD: marking some links as declarations and others as mentions.

@@ -1,0 +1,83 @@
+---
+tags: [questions]
+metadata:
+  category: question
+  status: open
+  order: 4
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 12-llm-cognitive-operations]
+---
+# What AI support does HQL need?
+
+**The question.** Design and test AI support in the Hyper Query Language,
+which is used inside HMD cards. This is the fourth of the five questions in
+the project README.
+
+## Where the answer stands
+
+The discussion gives requirements more than syntax. It is explicit that its
+signatures are conceptual and not a claim about available HQL.
+
+1. **Operations are typed.** Asking a model to deduce is not a checked
+   deduction. Each cognitive operation should be a transformation with a
+   declared input and output, and its result should carry a confidence, the
+   evidence used, or a proof obligation. The examples given are
+   `Induce: Examples -> Hypotheses`,
+   `Deduce: (Theory, Premises) -> Conclusions` and
+   `Analogize: (StructureA, StructureB) -> Correspondences`.
+2. **Evaluation runs against a fixed snapshot.** The source revision and its
+   dependencies do not change while a cell runs.
+3. **Generated text does not run itself.** Rendering a result, integrating it
+   as knowledge and executing cells found in it are three separate steps.
+4. **Changes enter as revisions.** A person or agent proposes; an accepted
+   proposal becomes a new version with its provenance: cell, input commit,
+   dependencies, runtime.
+5. **Cycles need a policy.** Where evaluation can feed itself, when it stops
+   is stated and not left to chance.
+
+This vault adds a sixth, from writing the cards: **the taxonomy should be the
+schema**. The operation cards define the labels an agent may answer with, so
+changing a card changes what the agent can say.
+
+Current HQL supplies the graph side of this: cards, typed links, neighbours,
+ranking by word overlap. The agent side exists as design. This vault therefore
+keeps its AI queries as future designs, marked `import future`, in four lens
+cards.
+
+| Lens | What it asks of HQL |
+|---|---|
+| [[semantic-neighbours]] | the card a cell is in; semantic ranking for any text |
+| [[neighbour-summary]] | agents, prompts and contexts; sections; cached cells |
+| [[classify-operation]] | typed, validated agent answers |
+| [[find-level-crossings]] | cycles in a graph; an agent judging by definitions held in cards |
+
+## Cards that bear on it
+
+- The requirement for types and evidence: [[typed-transformation]], [[cognitive-operation]], [[evaluation]].
+- The operations to support first: [[induction]], [[deduction]], [[abduction]], [[analogy]], [[summarization]].
+- The execution model: [[render-integrate-execute]], [[hmd-feedback-loop]], [[observer-card-experiment]].
+- Who decides: [[human-in-the-loop]], [[reflective-agent]].
+- Not yet written: [[execution-boundaries]], [[provenance]].
+
+## Still open
+
+- What a confidence means when it comes from a model, and how evidence is
+  checked.
+- Whether an agent is a value in the language or a card in the vault.
+- How a cached, generated result is told apart from authored text.
+
+## Queries
+
+Cards that declare they bear on this question:
+
+```hql
+@[[ai-support-in-hql]] | downlinks | filter(e => match e.data.relation { some(String r) => r == "answers", _ => false }) | map(e => e.source)
+```
+
+## Sources
+
+- Project README, the fourth listed reason for the project.
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "HMD and HQL as executable documents", the part on execution
+  boundaries [03-hmd-hql-executable-documents].
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].

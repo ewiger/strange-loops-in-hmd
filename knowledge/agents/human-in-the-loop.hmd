@@ -1,0 +1,160 @@
+---
+tags: [agents/roles]
+metadata:
+  category: concept
+  cluster: agents
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 08-humans-extend-axioms, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A human in the loop is a person placed at a step of an otherwise mechanical cycle, where the person interprets a result and decides what the system does next."
+      evidence: established
+      credence: 0.9
+      star: step-from-outside
+    - id: 2
+      text: "The Gödel sentence and the constructible universe are both static examples of self-description: neither modifies itself, and neither involves feedback over time."
+      evidence: argued
+      credence: 0.75
+    - id: 3
+      text: "A human is not mathematically required to extend a formal theory by new axioms, because a program can carry out a progression of theories."
+      evidence: argued
+      credence: 0.75
+      atom: requires(reflection-progression, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 4
+      text: "The claim that a human is what makes a strange loop essential was weakened: the loop needs a step taken from outside the current formalism, and a human is one way to fill it while a reflective agent is another."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 5
+      text: "What the human supplies when extending a theory is a judgement not derivable inside the current theory, and that judgement can be wrong, since adding an undecided statement does not automatically preserve truth or consistency."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 6
+      text: "Whether human intelligence exceeds what an algorithm can do in extending formal theories is a philosophical and scientific question and not a corollary of the incompleteness theorems."
+      evidence: argued
+      credence: 0.75
+    - id: 7
+      text: "In the design for executable documents two decisions are reserved for a person or for an agent acting under review: whether generated content is integrated into the versioned knowledge, and whether any cell in that content is executed."
+      evidence: proposed
+      credence: 0.6
+      atom: uses(render-integrate-execute, human-in-the-loop)
+      star: step-from-outside
+---
+# Human in the loop
+
+A **human in the loop** is a person placed at a step of an otherwise
+mechanical cycle, where the person interprets a result and decides what the
+system does next. In this vault the phrase has a sharper origin: it was
+proposed as the ingredient that turns static self-reference into a loop that
+moves, by letting someone add axioms to a formal system from outside it.
+
+## Description
+
+### The thesis: the human makes the loop essential
+
+The two rigorous examples of self-description in the discussion, the
+[[godel-sentence]] and the [[constructible-universe]], are both static.
+Neither modifies itself, and neither involves feedback over time. Granting
+that, the proposal was to add a human. A mathematician looks at a theory, sees
+that it leaves a statement undecided, and adds a new axiom. The formalism
+grows, and the human acts as the "thinking machine" that the formalism lacks.
+On this view the human is what makes the definition of a [[strange-loop]]
+essential and not merely formal.
+
+Written out, the human's contribution is a [[reflection-progression]]: a chain
+of theories in which each extends the one before by a statement the earlier
+one could not decide. More interesting still, the human may change not only
+the axioms but the criteria by which axioms are chosen.
+
+### The correction: a human is not mathematically required
+
+The reply accepted the construction and rejected the necessity. A program can
+carry out a progression of theories. Nothing in the mathematics asks for a
+person. What the human supplies is a judgement that is not derivable inside
+the current theory, and that judgement can be wrong: adding an undecided
+statement does not automatically preserve truth or consistency. Whether human
+intelligence exceeds what an algorithm can do here is a philosophical and
+scientific question, and not a corollary of the [[incompleteness-theorems]].
+
+So the role survives and the claim is weakened. The loop needs a step taken
+from outside the current formalism. A human is one way to fill it, and a
+[[reflective-agent]] is another.
+
+### The engineering role: an approval gate
+
+In the design for executable documents the human reappears with a narrower
+job. Evaluation of a card produces output, and the output may itself contain
+new cells. Two decisions are reserved, for a person or for an agent acting
+under review.
+
+- **Integration.** Whether generated content becomes part of the versioned
+  knowledge, or stays as inert output.
+- **Execution.** Whether any cell in that content is run.
+
+Changes enter as revisions or patches, never as silent self-execution. This
+is the separation described in [[render-integrate-execute]], and it is the
+difference between a system that can be stopped and one that cannot.
+
+The essay on AI-oriented languages states the same requirement from the
+language side: an environment in which a human can "inspect, interrupt,
+understand, and redirect" the process. It also moves the human's attention.
+Where a checker verifies proofs mechanically, a person no longer reads every
+generated line and reviews the propositions instead: what was asked for, and
+not how it was done.
+
+## Relations
+
+- It was proposed as what makes a [[strange-loop]] {relation: part-of} essential, a claim the discussion then weakened.
+- Its formal form is the [[reflection-progression]] {relation: uses}, where the human chooses each new axiom.
+- It is one filler of a role that a [[reflective-agent]] {relation: contrasts} can also fill.
+- It stands at the interpretation step of the [[hmd-feedback-loop]] {relation: part-of}.
+- It holds the approval gates of [[render-integrate-execute]] {relation: part-of}.
+- Its typical operations are [[evaluation]] {relation: uses} of a result and [[revision]] {relation: uses} of the source.
+- It is one end of an ordinary [[feedback-loop]] {relation: example-of} unless levels are crossed.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: the loop is to be run "with human feedback".
+- It holds, for a person, part of the role that an [[agent]] {relation: contrasts} otherwise fills.
+
+## Neighbouring concepts
+
+- **[[reflection-progression]].** A sequence of theories, each extending the
+  last by an axiom it could not decide. The human in the loop is whoever, or
+  whatever, picks the axiom.
+- **[[reflective-agent]].** A system that uses a model of itself to revise
+  its own rules. It is the non-human candidate for the same seat.
+- **[[render-integrate-execute]].** Three operations kept apart so that
+  generated content cannot run itself. The gaps between them are where the
+  human decides.
+- **[[hmd-feedback-loop]].** Card, cell, output, interpretation, revision.
+  The interpretation step is the one a human occupies.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[human-in-the-loop]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[human-in-the-loop]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Human in the loop and evolving formal theories", the question
+  and the closing correction [08-humans-extend-axioms].
+- Discussion: "HMD and HQL as executable documents", the part on execution
+  boundaries [03-hmd-hql-executable-documents].
+- Discussion: "HQL output can itself be Markdown", the approval flow
+  [04-markdown-as-output].
+- Essay: "What is an AI-oriented programming language?", the parts on Bend
+  and Tauto and on asking the wrong question [ai-oriented-pl].

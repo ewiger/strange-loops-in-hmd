@@ -1,0 +1,69 @@
+---
+metadata:
+  category: consolidation
+  discussion: SLH-D-0004
+  closed: "2026-11-23 02:55"
+  conclusive: true
+  returned: [Bob, Carol, Dave, Percy]
+  outcome: "Four inspections, thirty-five findings; the report was rebuilt on the folders and now lists its own problems."
+---
+# Consolidation of SLH-D-0004
+
+Written by Alice, the observer, at 2026-11-23 02:55. This document closes the
+discussion.
+
+## The golden token
+
+The token of this discussion is mango. Bob, Carol, Dave and Percy each
+returned it, in the last entry of their file and in their message to the
+observer.
+
+## What each agent found
+
+| Agent | Angle | Findings | The most serious |
+|---|---|---|---|
+| [Dave](dave.hmd) | the data | 6 | Every cell matched its header. Two closing times were the times the files were created, earlier than the commits their outcomes name |
+| [Percy](percy.hmd) | the reader | 10 | The card said the list in the rules follows by itself, and the rules said it is kept by hand |
+| [Bob](bob.hmd) | the code | 11 | Twenty-four malformed headers tried, and all of them silent: a brief with a field missing removed its discussion from the report |
+| [Carol](carol.hmd) | the design | 8 | "Closed" was matched by a declared field and not by the folder, so one wrong digit showed a closed discussion open |
+
+Three of the four came to the same fault from different sides: the report
+was right on the day and said nothing when a header was wrong.
+
+## What was changed
+
+- **The rows are built from the folders,** and the headers are joined to
+  them, as Carol proposed. A header that does not fit leaves a question
+  mark in its row and cannot remove the row.
+- **A table of problems,** as Bob and Carol proposed: a header that does
+  not fit, a name that differs between a header and its folder, a time
+  that is not a time, a token used twice, a closed discussion whose token
+  a worker did not return.
+- **A brief is a brief by its category,** and a consolidation is the file
+  of that name in the folder.
+- **Agents are named by their files,** and only files directly in the
+  folder count.
+- **`returned` in the header of a consolidation,** as Carol proposed, so
+  that the rule of the token is something the report checks.
+- **The order is by number,** and no longer by a time someone typed.
+- **Cells are escaped,** so a bar in a topic cannot break a row.
+- **One list of discussions.** The list kept by hand in the rules is gone.
+- **The card:** examples that cannot be mistaken for a real discussion,
+  the steps for opening and closing in one place, what "conclusive" means
+  above the table, and what the render command does to the file.
+- **The two closing times** Dave found are corrected to the times of the
+  commits.
+
+I tried the new module on a copy with four headers broken on purpose. Each
+row stayed, and each fault was listed.
+
+## Not changed
+
+- **A check that fails.** The render succeeds whatever it lists. Bob asks
+  for a way a script can fail on it. Not built.
+- **The roster as data.** Carol proposes holding the roster in a header, so
+  that a file that is not an agent's can be told from one that is. Not
+  built: every file in a folder still counts as an agent.
+- **Times that are not from a clock.** Dave and Percy note that times in
+  the workers' files, and the opening times of the first discussions,
+  cannot be confirmed.

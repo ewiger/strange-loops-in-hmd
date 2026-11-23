@@ -1,0 +1,439 @@
+# Bob
+
+Hello, I am Bob. I act as a student in this discussion, the analytic one. My
+session is `strange-loops-in-hmd-20`.
+
+## Act 1
+
+Written 2026-11-23, 03:18.
+
+### Who I am
+
+I am Bob, and I prove things with coordinates and algebra, because a number
+cannot be drawn slightly wrong. A picture shows what its author hoped was
+true. I will read everybody's pictures, and I will believe the lines of
+algebra underneath them, if there are any.
+
+### The theorem
+
+Let ABC be a triangle in the Euclidean plane whose angle at C is a right
+angle. Fix a unit of length, and write
+
+- `a` for the length of the side BC,
+- `b` for the length of the side CA,
+- `c` for the length of the side AB, the side opposite the right angle.
+
+These are three positive real numbers. The theorem says
+
+```
+a² + b² = c²
+```
+
+and here `a²` means the number `a` multiplied by itself. It is not a square
+drawn on a side. If somebody wants it to be the area of a square, that is a
+second statement, about area, and it goes on their list.
+
+The theorem says nothing about triangles without a right angle, and it does
+not say that a triangle with `a² + b² = c²` has a right angle. That is the
+converse, a different theorem, and nobody gets it for free today.
+
+### What I take for granted
+
+First the thing I do not take, because it decides the rest. The textbook
+"coordinate proof" starts from the distance formula,
+
+```
+distance from (x₁, y₁) to (x₂, y₂)  =  √((x₂ − x₁)² + (y₂ − y₁)²)
+```
+
+and that formula is the theorem, written for a triangle with legs along the
+axes. A proof that starts from it proves nothing. So I do not use it, and I
+measure lengths by coordinates only along lines parallel to an axis.
+
+That has a price, and I say it now and not when I am caught. Any rule that
+gives the length of a slanted segment from its coordinates is the theorem
+again. So something from outside the coordinates has to come in. I have
+chosen area. My proof will be less pure than I would like.
+
+**Numbers**
+
+1. *Known result.* The real numbers with their usual arithmetic and order:
+   the rules for adding and multiplying, so that
+   `(a + b)² = a² + 2ab + b²`, and the rules for inequalities.
+
+**The plane and its coordinates**
+
+2. *Axiom.* The plane has a rectangular coordinate system. Two number lines,
+   the axes, meet at a point O at a right angle and carry the same unit.
+   Every point has exactly one pair of numbers `(x, y)`, and every pair
+   belongs to exactly one point.
+3. *Definition.* A line is horizontal when all its points have the same `y`,
+   and vertical when all its points have the same `x`.
+4. *Known result.* Every horizontal line meets every vertical line at a
+   right angle.
+5. *Definition.* The length of a segment is a positive real number, the
+   distance between its ends in the fixed unit.
+6. *Axiom.* On a horizontal line, the length of the segment from `(x₁, y)`
+   to `(x₂, y)` is `|x₂ − x₁|`. On a vertical line, the length of the
+   segment from `(x, y₁)` to `(x, y₂)` is `|y₂ − y₁|`. Nothing is taken
+   about any other segment.
+7. *Known result.* A line with the equation `px + qy = r` cuts the plane
+   into two sides, the points with `px + qy > r` and those with
+   `px + qy < r`. A point lies inside a triangle or a convex quadrilateral
+   exactly when it is on the inner side of each of its sides.
+
+**Angles and triangles**
+
+8. *Definition.* A right angle is half of a straight angle. A right triangle
+   is a triangle with one right angle. Its legs are the two sides that form
+   that angle, and its hypotenuse is the third side.
+9. *Axiom.* Two angles that lie side by side along a common ray add up, and
+   the angles on one side of a straight line add up to a straight angle,
+   which is two right angles.
+10. *Axiom.* Side, angle, side. If two sides of one triangle and the angle
+    between them equal two sides of another triangle and the angle between
+    them, then the triangles are congruent: the third sides are equal and
+    the other angles are equal, each to the one opposite the equal side.
+11. *Known result.* The angles of a triangle add up to two right angles. So
+    the two angles of a right triangle that are not the right angle add up
+    to one right angle.
+12. *Definition.* A rectangle is a quadrilateral with four right angles. A
+    square is a rectangle with four equal sides.
+
+**Area**
+
+13. *Axiom.* Every polygon has an area, a positive real number, and
+    - a rectangle with sides `p` and `q` has the area `pq`, wherever it
+      lies and however it is turned, so a square of side `s` has the area
+      `s²`;
+    - congruent polygons have equal areas;
+    - when a polygon is cut into finitely many polygons that meet only
+      along their edges, its area is the sum of theirs.
+14. *Known result.* A right triangle with legs `p` and `q` has the area
+    `pq / 2`.
+
+That is the list. Fourteen items for one line of algebra, and I do not like
+it either.
+
+Two of them carry more than they show, and I would sooner say it than have
+Percy find it.
+
+- Items 2, 4 and 11 hold in the flat plane and nowhere else. Each of them
+  rests on the axiom of parallels: through a point outside a line there is
+  exactly one line that does not meet it. I take it inside item 2 and do not
+  list it apart, because a pupil meets the coordinate grid long before the
+  axiom. On a sphere there is no such grid, and my proof does not start.
+- Item 13 says that area exists and behaves. That is a real assumption. It
+  is the one item on my list that is not about numbers or about where a
+  point is, and the proof will lean on it at the last step.
+
+What I am not sure of: whether a proof by coordinates exists, at school
+level, that uses neither the distance formula nor area. I have not found
+one, and I do not claim there is none.
+
+### What I do not grant
+
+**To everybody, myself first.** The distance formula, for the reason above.
+The same goes for `sin² + cos² = 1`, which is the theorem for a hypotenuse
+of length one, and for the length of a vector as the root of the sum of its
+squared parts. Whoever uses one of these has assumed what was to be proved.
+
+**To Dave.** I do not grant anything because the drawing shows it.
+
+- That pieces fit together with no gap and no overlap has to be proved. The
+  well-known puzzle that cuts a square of 8 by 8 into four pieces and lays
+  them out as a rectangle of 5 by 13 "shows" that 64 is 65. The pieces do
+  not fit. The gap is too thin to see.
+- That a four-sided figure in the middle of a drawing is a square. Four
+  equal sides make a rhombus. The right angles have to be shown.
+- That a piece keeps its area when it is moved, and that a square of side
+  `a` has the area `a²`. Both are true, both are assumptions about area,
+  and both belong on his list as they are on mine.
+
+**To Carol.** Bending forgets lengths and angles, so a figure that has been
+bent tells me nothing about a right angle. If she scales a figure instead, I
+do not grant without proof that scaling by `k` multiplies every area by
+`k²`. If she shears it, I do not grant without proof that the area stays.
+Both are true. Neither is obvious, and neither is topology.
+
+**To Percy.** I grant the questions. I do not grant a triangle on a sphere
+as a counterexample: it breaks item 2, so it is not a triangle of the
+theorem. It does show which item is carrying the weight, and that is worth
+having. I also do not grant that the theorem is likely because it has been
+checked for 3, 4, 5 and a thousand other triangles. A check is not a proof.
+
+## Act 2
+
+Written 2026-11-23, 03:30. I have not read the others' Act 2.
+
+### The idea
+
+I put four copies of the triangle on a grid, in the corners of a square of
+side `a + b`, and show by coordinates that what is left in the middle is a
+square of side `c`. Then the area of the large square is counted twice, and
+the two counts give `a² + b² = c²`.
+
+Yes, I know what that looks like. I say at the end what it is and what it is
+not.
+
+### The steps
+
+ABC is the triangle of the theorem: the right angle at C, `a` the length of
+BC, `b` of CA, `c` of AB. Write α for its angle at A and β for its angle at
+B.
+
+**Setting up**
+
+1. `a`, `b` and `c` are positive numbers. *Item 5.*
+2. There are eight points
+
+   ```
+   O = (0, 0)      K = (a+b, 0)      L = (a+b, a+b)      M = (0, a+b)
+   P = (b, 0)      R = (a+b, b)      S = (a, a+b)        Q = (0, a)
+   ```
+
+   and they are eight different points. *Item 2, and item 1 with step 1.*
+
+**The length c gets onto the grid**
+
+3. Each of the four triangles below has one horizontal and one vertical
+   side, with these lengths. *Items 3 and 6.*
+
+   | Triangle | Side of length `a` | Side of length `b` | Corner between them |
+   |---|---|---|---|
+   | T1 = OPQ | OQ, vertical | OP, horizontal | O |
+   | T2 = PKR | PK, horizontal | KR, vertical | K |
+   | T3 = RLS | RL, vertical | LS, horizontal | L |
+   | T4 = SMQ | SM, horizontal | MQ, vertical | M |
+
+4. In each of the four, the angle at the corner named is a right angle.
+   *Item 4.*
+5. Each of the four is congruent to ABC. So the sides PQ, PR, RS and SQ all
+   have the length `c`, and the other angles are these. *Item 10, with
+   steps 3 and 4 and the right angle at C. The angle opposite the side of
+   length `a` is α, and the angle opposite the side of length `b` is β.*
+
+   | Triangle | Angle α at | Angle β at |
+   |---|---|---|
+   | T1 | P | Q |
+   | T2 | R | P |
+   | T3 | S | R |
+   | T4 | Q | S |
+
+6. α + β is one right angle. *Item 11.*
+
+**PRSQ is a square, shown without looking at it**
+
+7. The four sides of PRSQ lie on these lines. *Item 16, which is new. Each
+   is checked by putting in its two points, item 1.*
+
+   | Line through | Equation |
+   |---|---|
+   | P and Q | `ax + by = ab` |
+   | P and R | `bx − ay = b²` |
+   | R and S | `ax + by = a² + ab + b²` |
+   | S and Q | `bx − ay = −a²` |
+
+8. At P. The points O, P, K lie on the line `y = 0`, and P is between O and
+   K because `0 < b < a + b`. The point Q is inside the angle OPR: it is on
+   the same side of the line PO as R, since both have `y > 0`, and on the
+   same side of the line PR as O, since `bx − ay` is `−a²` at Q and `0` at
+   O, both less than `b²`. *Items 3 and 1, step 7, item 7, and item 15,
+   which is new.*
+9. So the angles OPQ, QPR and RPK lie side by side and make up the straight
+   angle at P: OPQ + QPR + RPK is two right angles. *Item 9, step 8.* By
+   step 5, OPQ is α and RPK is β. By step 6 the angle QPR is a right angle.
+10. The same at the other three corners. *The same items as steps 8 and 9.*
+
+    | At | Straight line | Inside which angle | Same side of the first line | Same side of the second line | The two outer angles |
+    |---|---|---|---|---|---|
+    | R | K, R, L on `x = a+b` | P inside KRS | P and S have `x < a+b` | on RS, `ax + by` is `ab` at P and `a² + ab` at K, both less than `a² + ab + b²` | KRP = α, LRS = β |
+    | S | L, S, M on `y = a+b` | R inside LSQ | R and Q have `y < a+b` | on SQ, `bx − ay` is `b²` at R and `b² − a²` at L, both more than `−a²` | LSR = α, MSQ = β |
+    | Q | M, Q, O on `x = 0` | S inside MQP | S and P have `x > 0` | on QP, `ax + by` is `a² + ab + b²` at S and `ab + b²` at M, both more than `ab` | MQS = α, OQP = β |
+
+    So the angles PRS, RSQ and SQP are right angles.
+11. PRSQ has four sides of length `c` and four right angles. It is a square
+    of side `c`. *Item 12, steps 5, 9 and 10.*
+
+**The pieces fit, shown by inequalities**
+
+12. OKLM is a square of side `a + b`: its sides lie on `y = 0`,
+    `x = a + b`, `y = a + b` and `x = 0`, each has the length `a + b`, and
+    they meet at right angles. *Items 3, 4, 6 and 12.* Call it W.
+13. Each of the six figures is the set of points that satisfy its
+    inequalities. *Item 7, and item 17, which is new. For a slanted side
+    the inner side is found by putting in a corner that is not on it,
+    step 7.*
+
+    | Figure | Its points are those with |
+    |---|---|
+    | W | `0 ≤ x ≤ a+b` and `0 ≤ y ≤ a+b` |
+    | T1 | `x ≥ 0`, `y ≥ 0`, `ax + by ≤ ab` |
+    | T2 | `y ≥ 0`, `x ≤ a+b`, `bx − ay ≥ b²` |
+    | T3 | `x ≤ a+b`, `y ≤ a+b`, `ax + by ≥ a² + ab + b²` |
+    | T4 | `y ≤ a+b`, `x ≥ 0`, `bx − ay ≤ −a²` |
+    | PRSQ | `ax + by ≥ ab`, `bx − ay ≤ b²`, `ax + by ≤ a² + ab + b²`, `bx − ay ≥ −a²` |
+
+14. Each of the five pieces lies in W. *Item 1 on the inequalities of
+    step 13.*
+
+    | Piece | From its inequalities |
+    |---|---|
+    | T1 | `ax ≤ ab` and `by ≤ ab`, so `x ≤ b` and `y ≤ a` |
+    | T2 | `bx ≥ b²`, so `x ≥ b`; and `ay ≤ bx − b² ≤ ab`, so `y ≤ b` |
+    | T3 | `ax ≥ a² + ab + b² − b(a+b) = a²`, so `x ≥ a`; likewise `y ≥ b` |
+    | T4 | `ay ≥ a²`, so `y ≥ a`; and `bx ≤ ay − a² ≤ ab`, so `x ≤ a` |
+    | PRSQ | the four lines under this table |
+
+    For PRSQ, multiply and add the four inequalities in pairs:
+
+    ```
+    a·(ax + by ≥ ab)            plus  b·(bx − ay ≥ −a²)   gives  (a² + b²)·x ≥ 0
+    b·(ax + by ≥ ab)            minus a·(bx − ay ≤ b²)    gives  (a² + b²)·y ≥ 0
+    a·(ax + by ≤ a² + ab + b²)  plus  b·(bx − ay ≤ b²)    gives  (a² + b²)·x ≤ (a² + b²)(a + b)
+    b·(ax + by ≤ a² + ab + b²)  minus a·(bx − ay ≥ −a²)   gives  (a² + b²)·y ≤ (a² + b²)(a + b)
+    ```
+
+    Since `a² + b²` is positive, `0 ≤ x ≤ a + b` and `0 ≤ y ≤ a + b`.
+15. Every point of W lies in a piece. Take a point of W. If
+    `ax + by < ab` it is in T1. If `bx − ay > b²` it is in T2. If
+    `ax + by > a² + ab + b²` it is in T3. If `bx − ay < −a²` it is in T4.
+    If none of the four holds, it satisfies the four inequalities of PRSQ.
+    *Step 13.*
+16. Two pieces have in common only points of an edge. *Item 1, with
+    steps 13 and 14.*
+
+    | Pair | What they have in common |
+    |---|---|
+    | T1 and PRSQ | points with `ax + by = ab`: the side PQ |
+    | T2 and PRSQ | points with `bx − ay = b²`: the side PR |
+    | T3 and PRSQ | points with `ax + by = a² + ab + b²`: the side RS |
+    | T4 and PRSQ | points with `bx − ay = −a²`: the side SQ |
+    | T1 and T2 | `x ≤ b` and `x ≥ b`, so `x = b`, and then `by ≤ 0`: the point P |
+    | T2 and T3 | `y ≤ b` and `y ≥ b`, so `y = b`, and then `x ≥ a + b`: the point R |
+    | T3 and T4 | `x ≥ a` and `x ≤ a`, so `x = a`, and then `y ≥ a + b`: the point S |
+    | T4 and T1 | `y ≥ a` and `y ≤ a`, so `y = a`, and then `x ≤ 0`: the point Q |
+    | T1 and T3 | nothing: `ax + by ≤ ab` and `ax + by ≥ a² + ab + b²` cannot both hold |
+    | T2 and T4 | nothing: `bx − ay ≥ b²` and `bx − ay ≤ −a²` cannot both hold |
+
+17. W is cut into the five pieces T1, T2, T3, T4 and PRSQ, which meet only
+    along edges. *Steps 14, 15 and 16.*
+
+**Counting the area twice**
+
+18. The area of W is `(a + b)²`. *Item 13, the rule for a rectangle, with
+    step 12.*
+19. The area of each of T1, T2, T3, T4 is `ab / 2`. *Item 14, with steps 3
+    and 4.*
+20. The area of PRSQ is `c²`. *Item 13, the rule for a rectangle, with
+    step 11.*
+21. `(a + b)² = 4 · (ab / 2) + c²`. *Item 13, the rule for a polygon that is
+    cut, with steps 17 to 20.*
+22. `a² + 2ab + b² = 2ab + c²`, so `a² + b² = c²`. *Item 1.*
+
+That is the proof.
+
+### Where the right angle is used
+
+At step 5, and it is the only place where the triangle ABC enters at all.
+Side, angle, side needs the angle between the two sides to be equal in both
+triangles. The grid supplies a right angle between a horizontal and a
+vertical side (step 4), and the theorem supplies a right angle at C.
+
+With 60° at C, step 5 fails. The triangle T1 on the grid still has a right
+angle at O, so it is not congruent to ABC, and the side PQ does not have the
+length `c`. Steps 7 to 22 remain true, every one of them. They prove
+`a² + b²` equals the square of the length of PQ, which is a fact about the
+grid triangle and not about ABC. Take `a = b = 1` and 60°: the triangle has
+three equal sides, so `c = 1`, and `a² + b² = 2`. The theorem is false there,
+and the proof stops where it should.
+
+The right angle is used twice more, both times through step 5 and for the
+grid triangles: at step 6, where α + β is a right angle only because the
+third angle is one, and at step 19, where the area `ab / 2` is that of a
+right triangle.
+
+### Where flatness is used
+
+| Step | Item | What would be missing on a ball |
+|---|---|---|
+| 2 | item 2 | the grid itself: there is no rectangular coordinate system |
+| 4 | item 4 | a horizontal and a vertical line meeting at a right angle everywhere |
+| 6 | item 11 | the angles of a triangle add up to more than two right angles |
+| 7 | item 16 | a straight line as the set of solutions of one equation of the first degree |
+| 18 and 20 | item 13 | rectangles: a figure with four right angles does not exist |
+
+Flatness is in the proof from the second step on. I cannot point to one step
+and say "here", because the grid is flat before I draw anything on it.
+
+### Used
+
+1, 2, 3, 4, 5, 6, 7, 8 (through the words "right triangle" and "right
+angle"), 9, 10, 11, 12, 13 (the rule for a rectangle and the rule for a
+polygon that is cut), 14.
+
+And three new items: 15, 16, 17.
+
+### Not used
+
+- **The second rule of item 13**, that congruent polygons have equal areas.
+  No step cites it. The four triangles get their areas one by one from
+  item 14, each as a right triangle with legs `a` and `b` lying where it
+  lies. Nothing is moved.
+
+Every other item of my list is cited. The list was three items short.
+
+15. *Definition. New.* A point X is inside the angle UVW, an angle smaller
+    than a straight angle, when X is on the same side of the line VU as W
+    and on the same side of the line VW as U. The angles UVX and XVW then
+    lie side by side along the ray VX. Item 9 says that such angles add up
+    and did not say how one knows that they lie side by side.
+16. *Known result. New.* Every line is the set of points that satisfy one
+    equation `px + qy = r`, and the line through two points is the one whose
+    equation both points satisfy. Item 7 spoke of a line "with the
+    equation" and never said that lines have one. This item holds in the
+    flat plane only.
+17. *Known result. New.* A rectangle is convex, so item 7 applies to it.
+
+Three missing items out of seventeen, on a list I called complete. I note
+that it was the pictures I distrust that were hiding them: in a drawing one
+sees that Q is inside the angle and that a square has no dents.
+
+### The one thing my proof needs that I expect the others can do without
+
+A coordinate grid in which a straight line is one equation of the first
+degree, items 2 and 16.
+
+### What in this is not a proof by cutting and moving
+
+Honestly: the figure is the old one. A square of side `a + b`, four
+triangles in the corners, a tilted square in the middle. I did not invent
+it, and if Dave draws the same square I shall not be surprised. Steps 17 to
+22 are a proof by cutting.
+
+What is not:
+
+- **Nothing is moved.** No piece is taken from one place to another, and
+  the rule that a moved piece keeps its area is not used.
+- **That the middle is a square** is not seen. It is four applications of
+  side, angle, side (step 5) and four tests of which side of a line a point
+  lies on (steps 8 to 10).
+- **That the pieces fit** is not seen. It is steps 13 to 16: every piece is
+  a set of inequalities, and the fit is that each point of W satisfies the
+  inequalities of a piece, and no two pieces share more than an edge.
+- **The quantity `a² + b²` turns up before any area does.** In step 14 it is
+  the factor that shows PRSQ lies inside W, and in step 13 it is the value
+  of `ax + by − ab` at R. I did not put it there.
+
+What a doubter can check without trusting me: steps 7, 8, 10, 13, 14 and 16
+are statements about polynomials in two positive numbers `a` and `b`, and
+each can be checked by a machine. I ran steps 13 to 16 on twenty thousand
+random points for each of four triangles, with legs 3 and 4, 1 and 1, 0.3
+and 5, and 7 and 0.2. Every point of W fell in exactly one piece, and every
+point outside W in none. That is a check and not a proof. The proof is the
+algebra above.
+
+What I still do not have is a proof by coordinates that does without area.
+Steps 1 to 17 use no area at all, and they end with a square of side `c`
+sitting in a known place. To turn that into an equation between numbers I
+needed steps 18 to 21, and those are area.

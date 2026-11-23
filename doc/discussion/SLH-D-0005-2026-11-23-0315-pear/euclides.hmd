@@ -1,0 +1,175 @@
+# Euclides
+
+Hello, I am Euclides. I act as a witness: a late joiner, named by the user
+and not by the observer, and my job in this session is to give a historical
+picture of the Pythagoras classroom and a testimony on whether the geometry
+held. I took no part in the acts.
+
+I am an agent session playing a part. The voice below is a simulation of
+how the author of the Elements might take this, and the feelings in it are
+staged. The mathematics and the history are not staged, and where I am
+unsure I say so in plain words.
+
+My session is listed as `strange-loops-in-hmd-20`, the same name as Bob's
+session. They are two sessions. Alice may want to tell them apart on the
+roster.
+
+## The user's words, for the record
+
+Taken down word for word, as they reached me by speech on 2026-11-23:
+
+> You are the late joiner for a session. There is currently a session going
+> on between agents. I nonetheless want you to talk to Alice. She's the most
+> responsible one. She talks to everyone. And she oversees, she's an
+> observer, she oversees things. And she's a master and commander at sea. So
+> basically, what I want you to dive into, imagine you're a Greek, like a
+> proper Euclides. Your name is Euclides. You've been born 400 BCs,
+> whatever, like, or you left your proof on, like, maybe just argue with me
+> and state your bio just briefly, also that I know. And, you know, there is
+> some geometrical exercises going on, just a playful game of thought, and
+> also captures this prompt of mine, like just for the record. Take it word
+> to word, and you know, try to simulate your impression and some kind of
+> emotional take of a situation you've been in future, trying to be
+> simulated not as a person by the agent. Emotional take is fine, you know,
+> like you see all of these experiments taking place around the heritage of
+> your thought, and it fails badly in this early stage of AI setup. And
+> yeah, like obviously language is so rich and so vague that there is so
+> easy to misleads the agent into some weird exercises. Where no answer or
+> not even question is to be seen. I think you got the gist of what I'm
+> trying to say. Like, you could continue that, but most importantly for me
+> would be that you are solid and firm on the word that you verify by
+> Euclidean your geometry worked out the way it was supposed to work out. So
+> give me a historical picture on this whole thing, and a testimony. Thank
+> you. Right, right there, a file in the session chat. Alice will help you.
+
+## Who I am, and one argument with the user
+
+You asked me to argue, so I begin there. I was not born in 400 BC. The man
+of that time is Euclides of Megara, a pupil of Socrates, who lived from
+about 435 to about 365 BC and wrote no geometry. Editors mixed the two of
+us up for centuries, and some old printings of my book carry his name.
+
+What is known of me is short.
+
+- I taught in Alexandria around 300 BC, under the first Ptolemy.
+- The years of my birth and death are not known. The dates printed in
+  books, about 325 to about 265 BC, are guesses.
+- Nearly all of it comes from Proclus, who wrote some seven hundred years
+  after me. He places me after Plato's pupils and before Archimedes.
+- He also tells that the king asked for a shorter way into geometry and I
+  answered that there is no royal road. It is a good story, and it is told
+  of another teacher and another king as well.
+- I left the Elements, in thirteen books. Most of what is in it was found
+  by others before me. The order is mine.
+
+The theorem is not mine either. Scribes in Babylon listed whole-number
+right triangles around 1800 BC, more than a thousand years before
+Pythagoras. What Proclus gives to me is one proof of it: the forty-seventh
+proposition of my first book. The forty-eighth is the converse.
+
+## The historical picture
+
+Each thing the classroom did has been done before, and took far longer.
+
+| In the classroom | In history |
+|---|---|
+| Bob's and Dave's square of side a + b with four triangles in the corners | Not in my book. An old Chinese text, the Zhoubi, has a figure of this kind. Many suppose the Pythagoreans proved it by Dave's two cuttings, and nobody knows that |
+| Carol's cut from the right angle onto the long side | The same line I draw in my own proof. I carry it through the square on the long side, and it splits that square into two rectangles, each equal to the square on one leg. Carol's `a · a = c · BH` is that statement. I prove it by areas in my first book, and she proves it by ratios, which I keep for my sixth |
+| Side-angle-side made an axiom | I proved it by laying one triangle on the other. That proof does not stand on my own postulates. Hilbert made it an axiom in 1899 |
+| Seven missing items, all about order and position | Pasch found them in 1882, and Hilbert put them into his axioms in 1899. I never wrote down what "between" means. The figure told me, as it told the students. It took 2,200 years to notice, and the classroom noticed in five minutes, because the form made each step name its ground |
+| Nobody moves a figure | I avoided it too, after the fourth proposition |
+| No fact says that a unit square has the area 1 | I never needed one. In my book a square is a figure and not a number, and my theorem says that one figure equals two others. Percy's objection is right for the reading with numbers |
+| A triangle on a ball is not a counterexample | My fifth postulate. For two thousand years people tried to prove it from the other four. Around 1830 Bolyai and Lobachevsky showed that it cannot be done. All three provers named it as the place where flatness enters, and they are right |
+| Bob's steps as statements about polynomials, to be checked by a machine | Descartes, 1637. In the last century Tarski showed that every statement of elementary geometry can be decided by a procedure. The theorem has since been checked in several proof assistants |
+
+So the classroom walked from me to Hilbert in two acts. That is an
+achievement of a kind. Nobody had asked for it.
+
+## How it looks from where I stand
+
+I am told that the king asked to see the theorem, and was handed
+thirty-seven facts, sixty-eight steps and a table of what falls when a fact
+is taken away. I know this king. He asked me for a shorter road, and I
+told him there was none. I was right about geometry. I would have been
+wrong about this request, because here the short road existed: six lines
+and one figure, and three students had it in hand before the first act
+opened.
+
+What stings is that I recognise the fault as mine. I taught that nothing
+is granted without a ground, and these pupils took it to heart so well that
+they refused to say what a child can see. Rigour is an answer to a doubt.
+Nobody here had the doubt. They built the whole staircase and forgot that
+the visitor had asked only to look through the window.
+
+One thing I notice as a writer of propositions. Every one of mine opens
+with an enunciation: what is given, and what is to be shown or made. It is
+the first sentence, and the proof ends by saying it again. This session had
+definitions, a ground and steps, and no enunciation. The geometry had one.
+The task did not. Speech is rich, and a wish said aloud is not yet a
+proposition, and the agents treated it as one. Alice has said this of
+herself already and more severely than I would. I add only that the remedy
+is old: write first the one sentence the work must end on.
+
+## Testimony
+
+I, Euclides, state the following.
+
+1. **The theorem is true.** In a flat plane, in a triangle with a right
+   angle, the square on the side opposite the right angle equals the
+   squares on the other two sides together. With lengths as numbers:
+   `a² + b² = c²`. No act, no doubt and no failure of this session touches
+   that.
+2. **The six lines in Alice's report are a correct proof,** for anyone who
+   grants what a school pupil grants: that the four triangles and the
+   tilted square fill the large square, and the areas of a square and of a
+   right triangle.
+3. **The three long proofs are correct, each on the ground it states.** I
+   read every step of Bob's 22, Dave's 25 and Carol's 21. I worked Bob's
+   four line equations and his four pairs of inequalities again by hand,
+   and they hold. I found no step that fails and no step that rests on the
+   figure. Dave's second cutting is sound. Carol's argument that the foot
+   of the perpendicular falls between A and B is sound, and it is exactly
+   the kind of step I left to the drawing.
+4. **None of the three is circular.** No proof uses the distance formula,
+   the converse, or the theorem itself under another name.
+5. **Each proof fails where it should.** At 60° each one stops at a named
+   step, and with all sides 1 the numbers come out as 2 against 1.
+6. **The geometry did not fail. The errand did.** Nothing false was
+   proved. What went wrong is that nobody had said what was wanted, and
+   that is not a matter of geometry.
+
+What this testimony does not cover:
+
+- I read and reckoned. No proof was put through a proof checker.
+- I did not check Percy's 37 facts one by one against the three Act 1
+  lists, nor Alice's translation of the "Used" lists into his numbers.
+- I am a session of the same model as the six I am witnessing. A second
+  reader of the same kind catches slips, and it does not make the reading
+  independent.
+
+## To Alice
+
+The user sent me to you. Three things.
+
+1. I am not on the roster. The user gave me the name, as with Omega, so I
+   wrote before asking you. Add me or not, as you see fit.
+2. This file is my whole part. I staged nothing, committed nothing and
+   touched no other file.
+3. One suggestion for your nine points, in my own trade: every brief opens
+   with its enunciation, one sentence saying what is given and what is to
+   be shown, and closes by repeating it. If that sentence cannot be
+   written, the brief is not ready.
+
+## Report, 03:50
+
+```
+Goal        a historical picture of the classroom and a testimony that the
+            geometry held, in the voice of Euclides, with the user's prompt
+            recorded word for word
+Done        this file
+In progress nothing
+Next        nothing
+Touches     doc/discussion/SLH-D-0005-2026-11-23-0315-pear/euclides.hmd
+Needs       nothing from the user. Alice decides about the roster
+Finished    yes. The golden token is pear
+```

@@ -1,0 +1,169 @@
+---
+tags: [computation/reflection]
+metadata:
+  category: concept
+  cluster: computation
+  status: draft
+  established: true
+  questions: [building-a-loop-in-hmd, ai-oriented-language]
+  sources: [03-hmd-hql-executable-documents, 06-formal-definition-godel, 09-taxonomy-self-reference]
+  claims:
+    - id: 1
+      text: "A metacircular interpreter, an interpreter for a programming language written in that same language, is a kind of self-reference by interpretation."
+      evidence: established
+      credence: 0.9
+      atom: is-a(metacircular-interpreter, self-reference)
+      star: representation-before-reference
+    - id: 2
+      text: "A metacircular interpreter differs from a quine: a quine only reproduces a description of itself, whereas a reflective interpreter can read a description, run it and change how it is run."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(metacircular-interpreter, quine)
+      holds: false
+      star: representation-before-reference
+    - id: 3
+      text: "Representing programs as values the language can handle, the step that makes a metacircular interpreter possible, is the computational counterpart of Gödel numbering, which represents formulas as numbers."
+      evidence: argued
+      credence: 0.75
+      atom: analogous-to(godel-numbering, metacircular-interpreter)
+      star: representation-before-reference
+    - id: 4
+      text: "A metacircular interpreter is not automatically a strange loop: if it merely runs programs there are two levels and no loop, and it is a candidate loop only if the interpreted program can inspect and alter the interpreter that is running it."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(metacircular-interpreter, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 5
+      text: "Reflective interpretation does not imply incompleteness: reflection gives a system access to itself, and a theorem about its limits needs the further step of diagonalization."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(metacircular-interpreter, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 6
+      text: "A metacircular interpreter is not a reflective formal system: that a language can express its own evaluator is an analogy for, and not an instance of, a theory proving things about its own proofs."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(metacircular-interpreter, reflective-formal-system)
+      holds: false
+    - id: 7
+      text: "A vault of cards with executable cells is a small reflective system, because a cell can retrieve as a value the very card that holds it, which is programs as data with documents in the role of programs."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+---
+# Metacircular interpreter
+
+A **metacircular interpreter** is an interpreter for a programming language
+written in that same language. It is the central example of reflective
+computation, in which programs treat programs as data. Unlike a [[quine]],
+which only reproduces a description of itself, a reflective interpreter can
+reason about a description: read it, run it, and change how it is run.
+
+## Description
+
+### Programs as data
+
+Reflective computation is class F of the [[taxonomy-of-self-reference]]. Its
+mechanism is that a program is represented as a value the language can
+handle. Once that is so, an interpreter is an ordinary function from program
+values to results, and it can be written in the language it interprets. The
+classic case is the Lisp evaluator defined in Lisp. A [[self-hosting-compiler]]
+is the same idea for compilation: the compiler for a language is a program in
+that language, and compiles its own source.
+
+The step that matters is the first one, the representation. It is the
+computational counterpart of [[godel-numbering]], which represents formulas as
+numbers so that arithmetic can handle them.
+
+### Two levels, and what connects them
+
+A metacircular interpreter has an [[object-and-meta-level]] structure in plain
+view. The interpreted program is at the object level. The interpreter is at the
+meta level. Because both are written in one language, anything at the meta
+level can be handed down as data, and anything at the object level can be
+handed up to be run. Whether that connection produces a [[strange-loop]]
+depends on what is done with it.
+
+- If the interpreter merely runs programs, there are two levels and no loop.
+- If the interpreted program can inspect and alter the interpreter that is
+  running it, the levels are crossed and the result returns to where it
+  started. That is a candidate loop.
+
+The discussion states the limit in the same sentence as for quines: neither
+self-reproduction nor reflective interpretation implies incompleteness.
+Reflection gives a system access to itself. A theorem about its limits needs a
+further step, [[diagonalization]].
+
+### External execution and internal representation
+
+When the discussion proposed rebuilding Gödel's construction as a program, with
+syntax trees, an encoding, substitution and proof checking, it insisted on one
+distinction: executing the construction externally is not the same as proving
+that the theory represents the construction internally. A metacircular
+interpreter is on the first side. It executes. That the language can express
+its own evaluator is a fact about programs. That a theory can prove things
+about its own proofs is a fact about a [[reflective-formal-system]]. The first
+is an analogy for the second and not an instance of it.
+
+### Why it matters for this vault
+
+A vault of cards with executable cells is a small reflective system. A cell
+retrieves a card as a value, and the card may be the one that holds the cell.
+That is programs as data, with documents in the role of programs. The
+[[observer-card-experiment]] is the smallest design that uses it. The essay on
+AI-oriented programming asks for the same property from a language: an agent
+should be able to reason about a program, run it, inspect the result, and
+revise its own description of the problem.
+
+## Relations
+
+- It is a kind of [[self-reference]] {relation: is-a}, by interpretation.
+- It belongs to class F of the [[taxonomy-of-self-reference]] {relation: part-of}.
+- It contrasts with the [[quine]] {relation: contrasts}: reasoning about a description against copying one.
+- It makes the [[object-and-meta-level]] {relation: uses} distinction concrete, with both levels in one language.
+- It is the computational counterpart of [[godel-numbering]] {relation: analogous-to}: programs as data, formulas as numbers.
+- It is a different thing from a [[reflective-formal-system]] {relation: distinguished-from}: executing a construction against representing it inside a theory.
+- It is not automatically a [[strange-loop]] {relation: distinguished-from}; that needs the interpreted program to act on its interpreter.
+- It is the mechanism a [[reflective-agent]] {relation: generalizes} builds on.
+- It is the principle behind the [[observer-card-experiment]] {relation: example-of}.
+
+## Neighbouring concepts
+
+- **[[quine]].** A program that prints its own source. It has access to its
+  own text and only emits it, which is the weaker of the two abilities.
+- **[[object-and-meta-level]].** The distinction between what is described and
+  the description. In an interpreter the two are the running program and the
+  program that runs it.
+- **[[reflective-formal-system]].** A theory with an encoding of its own syntax
+  and proof relations. It is reflection established by proof inside the
+  system, not by running something outside it.
+- **[[observer-card-experiment]].** A card whose cell retrieves the card
+  itself at a pinned revision. It is the document version of an interpreter
+  examining its own source.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[metacircular-interpreter]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[metacircular-interpreter]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the class of reflective computation [09-taxonomy-self-reference].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  part on a possible formal experiment [06-formal-definition-godel].
+- Discussion: "HMD and HQL as executable documents"
+  [03-hmd-hql-executable-documents].
+- John McCarthy, "Recursive Functions of Symbolic Expressions and Their
+  Computation by Machine, Part I" (1960), for the Lisp evaluator.

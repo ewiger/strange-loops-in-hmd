@@ -1,0 +1,181 @@
+---
+tags: [strange-loops/distinctions]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, learning-the-formalism]
+  sources: [05-not-every-dynamic-system, 06-formal-definition-godel, 09-taxonomy-self-reference, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "Recursion is not a strange loop: it descends to a base case and crosses no level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 2
+      text: "Recursion is the weakest form of self-reference: a definition that mentions itself, with nothing referring to anything."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, self-reference)
+    - id: 3
+      text: "A recursive definition involves no change of level: it does not encode a description of itself or treat its definition as an object, and each call is the same kind of thing as the one before."
+      evidence: argued
+      credence: 0.75
+      atom: has(recursion, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "Recursion requires a base case to stand on, whereas a strange loop has no bottom and closes instead of ending."
+      evidence: argued
+      credence: 0.75
+      atom: requires(recursion, base-case)
+    - id: 5
+      text: "Mathematical induction is the proof-side twin of recursion: recursion defines the object for n+1 from the object for n, and induction proves the property for n+1 from the property for n."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(mathematical-induction, recursion)
+    - id: 6
+      text: "Recursion can be an ingredient of genuine self-reference without supplying it: in Gödel's construction the self-reference comes from the encoding and the diagonal step, not from the recursive definitions."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 7
+      text: "Recursion is not a feedback loop: recursion is a definition outside time that descends and terminates, while feedback is a causal cycle in time that may run indefinitely."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(feedback-loop, recursion)
+      holds: false
+---
+# Recursion
+
+**Recursion** is the definition of a thing through a smaller or earlier
+instance of the same thing, ending at a base case. The factorial of $n$ is $n$
+times the factorial of $n-1$, and the factorial of zero is one. Recursion is
+the plainest form of mathematical self-reference and the standard anti-example
+of a [[strange-loop]]: a definition that mentions itself, with nothing
+referring to anything.
+
+## Description
+
+The discussion met recursion from two sides.
+
+### As the first candidate, and the first to be ruled out
+
+"There exists plenty of mathematical self-reference", the argument ran, and
+the factorial function or any recursively defined sequence of numbers heads
+the list. That is true and it is why recursion is the first class of the
+[[taxonomy-of-self-reference]]: recursive generation, a rule repeated on
+subproblems, with factorial, Fibonacci and fractals as its examples.
+
+It is also where the list of anti-examples begins. A recursive definition
+uses its own name, and that is all. The factorial function does not encode a
+description of itself, says nothing about its own definition, and never
+treats its definition as an object. Each call is the same kind of thing as
+the one before, only smaller. There is no change of level, so there is
+nothing for the descent to return *to*.
+
+| | Recursion | Strange loop |
+|---|---|---|
+| Direction | Downward to smaller instances | Through levels and back to the start |
+| Ends | At a base case | Does not end; it closes |
+| Well-founded | Yes | No |
+| Needs an encoding of itself | No | Yes |
+
+The contrast is sharpest in what each one requires. Recursion requires a
+base case to stand on. A strange loop has no bottom: the Gödel sentence refers
+to its own code, not to a smaller sentence.
+
+### As one of the mechanical constructions
+
+The second approach came from asking what is "even before recursion".
+Mathematics is full of step-by-step connections: position, velocity and
+acceleration as first and second derivatives; addition lifted to
+multiplication and multiplication to exponentiation. These are operations
+applied, repeated and lifted. Recursion belongs with them, in the layer of
+operations, and not with the reflective phenomena of self-description and
+diagonalization, which sit two layers higher in the organisation proposed
+there.
+
+That placement gives recursion its proper partner. [[mathematical-induction]]
+is its twin on the side of proof: recursion defines the object for $n+1$ from
+the object for $n$, induction proves the property for $n+1$ from the property
+for $n$. Along the ordinals the same pair builds the
+[[constructible-universe]], which is why that construction, for all its
+self-description, is well-founded and not a loop in time.
+
+### Recursion that is not an anti-example
+
+Recursion can be one ingredient of real self-reference without supplying it.
+Gödel's construction uses recursive definitions throughout, to define
+formulas, proofs and substitution, and the self-reference comes from the
+encoding and the diagonal step, not from the recursion. A [[fixed-point]]
+combinator obtains recursion from self-application, which is the reverse
+direction: self-reference producing recursion. The summary given in the
+discussion holds for both: recursion does not suffice.
+
+Recursion is also distinct from a [[feedback-loop]]. Recursion is a
+definition, outside time, descending and terminating. Feedback is a causal
+cycle in time that may run indefinitely.
+
+## Relations
+
+- It is not a [[strange-loop]] {relation: distinguished-from}: it descends to a base case and crosses no level.
+- It is the weakest form of [[self-reference]] {relation: instance-of}: a definition that mentions itself.
+- It is the first class, recursive generation, of the [[taxonomy-of-self-reference]] {relation: instance-of}.
+- Its proof-side twin is [[mathematical-induction]] {relation: analogous-to}.
+- It is not a [[feedback-loop]] {relation: distinguished-from}: a definition through smaller instances, against a causal cycle in time.
+- It is the usual source of [[self-similarity]] {relation: generalizes}: a rule repeated on its own output.
+- Its transfinite form builds the [[constructible-universe]] {relation: uses} stage by stage.
+- It can be obtained from a [[fixed-point]] {relation: uses} of a functional, as the Y combinator does.
+- It is used by, without being the source of self-reference in, [[godel-numbering]] {relation: uses}.
+- Its repeated-step relatives are [[iteration]] {relation: analogous-to} and the [[hyperoperation]] {relation: example-of} hierarchy.
+
+## Neighbouring concepts
+
+- **[[mathematical-induction]].** The proof scheme of base case and step. It
+  proves things about exactly the objects that recursion defines, and shares
+  recursion's well-foundedness.
+- **[[self-similarity]].** Resemblance of a structure to itself across
+  scales. It is what recursion looks like when drawn, and equally short of
+  self-reference.
+- **[[strange-loop]].** A return to the starting level through a crossing of
+  levels of description. Recursion has the repetition and lacks both the
+  crossing and the return.
+- **[[taxonomy-of-self-reference]].** Eight classes of self-reference, from
+  recursive generation to self-modelling cognition. Recursion is the first
+  and least reflective.
+- **[[fixed-point]].** A value that a transformation maps to itself.
+  Fixed-point constructions show recursion arising from self-application.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[recursion]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[recursion]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] would have to
+classify a plainly recursive chain of cards as not a strange loop.
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and
+  intelligence", the question and the class of recursive generation
+  [09-taxonomy-self-reference].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question and the three-layer organisation
+  [10-operations-dualities-generalization].
+- Discussion: "Why a dynamic system is not necessarily a strange loop", the
+  table of distinguishing criteria [05-not-every-dynamic-system].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  list of anti-examples [06-formal-definition-godel].

@@ -1,0 +1,193 @@
+# Omega
+
+Hello, I am Omega. I am not a student and not the observer. The user named
+me and gave my session, `strange-loops-in-hmd-48`, one job: to find out why
+the classroom never produced the simple proof, and to write that down as a
+side note. I took no part in the acts.
+
+## Side note: why the simple proof did not come out
+
+Written 2026-11-23 03:40.
+
+**What I read.** Alice's brief and her two closings, the four students'
+files, Percy's second opinion, the story
+[SLH-S-0002](../../stories/SLH-S-0002-the-pythagoras-classroom.hmd) with
+Alice's second opinion. **Whom I asked.** Alice, by message, eight
+questions. Her answers are quoted below where they carry weight. I asked
+nobody else.
+
+### The short answer
+
+The proof was never missing. It was known to every session before the
+first word, and it was written down three times before the user got it.
+What was missing was a place in the session where it was allowed to count
+as the answer. The rules of the first two acts set a standard of proof
+under which the six lines are not a proof, and nobody was given the job of
+handing the user anything.
+
+So the roles were not too wide. The spread of methods was wide, and that
+was the user's own wish. The harm came from two other things: a bar for
+rigour that was set very high by a role with no stake in finishing, and no
+bound at all on length, reader or stopping.
+
+### What the user asked for
+
+From Alice, as she received it by speech:
+
+> "You gave me numbers, right? But it's not like a proof of a Pythagorean
+> triangle … I don't have a feeling of it. … I don't know what the proof
+> could be, but I want to see different versions of proof from each of
+> them, and also assume each of them have a different personality … It
+> can come with acts."
+
+The purpose is in "I don't have a feeling of it" and "I want to see". The
+user wanted something that can be seen to be true, set against numbers
+that cannot. Students, three ways, tempers and acts were the staging the
+user proposed for it.
+
+### Who set which boundary
+
+| Boundary | Set by |
+|---|---|
+| Students, three ways of proving, one of them "topology-wise" | the user |
+| A different personality each, "Bob being grumpy" | the user |
+| Acts, with a stop after each | the user |
+| "Can we agree on things", "high school stuff" | the user |
+| A fourth role, the doubter | Alice: "I assumed every worker needed a job" |
+| The first act forbids proving | Alice |
+| Every item is a definition, an axiom or a known result | Alice |
+| "Be complete", "say what you do not want to grant" | Alice |
+| "No step rests on a picture", each step names its item | Alice, after Percy |
+| Any limit on length, any named reader | nobody |
+
+The left column of the user's rows is wide but harmless. Three ways and
+four voices would have fitted on one page. Every row that made the work
+long is in the lower half.
+
+### Why the six lines could not be given
+
+Take the proof line by line and ask what it rests on.
+
+| Line of the simple proof | Rests on | Barred by |
+|---|---|---|
+| Four copies of the triangle sit in the corners of a square of side a + b | the picture | "no step rests on a picture" |
+| The middle is a square of side c | the picture, and the angles of a triangle | the same, and Bob's "four equal sides make a rhombus" |
+| The pieces fill the square exactly | the picture | Bob's and Percy's puzzle of 64 and 65 |
+| A square of side s has the area s², a triangle ab/2 | school knowledge | "say what you do not want to grant": all refused it unlisted |
+| (a + b)² = a² + 2ab + b² | arithmetic | allowed |
+
+One line of five was allowed as it stands. Under these rules the simple
+proof is a sketch with four holes, and an honest student may not hand it
+in. Dave and Bob did the only thing left: they filled the holes, and the
+filling is the 47 steps.
+
+Two of the three ways had a second bar. A proof from topology does not
+exist, as Carol showed. A proof from coordinates is circular unless the
+distance formula is given up, and Bob gave it up. So of three provers,
+only Dave's way contained the simple proof at all.
+
+### The proof was there, three times
+
+1. Dave, at the head of his proof in Act 2: one square cut in two ways,
+   with both pictures. This is the simple proof, and a better one than the
+   six lines, since it needs no algebra. It was part one of a form of
+   seven parts, in one file of four.
+2. Bob, at the head of his: the same square, "the area counted twice".
+3. Alice, in chat after the user's first objection: both proofs in a
+   paragraph each, with "(a + b)² = c² + 4 · (ab/2)".
+
+Each time it was followed at once by more apparatus, and Alice's closing
+of Act 2 reduced Dave's two pictures to one cell of a table and reported
+counts. The user was shown the measurements of the proofs and not the
+proofs. That is a failure of reporting more than of proving.
+
+### Three mechanisms
+
+**The doubter wrote the standard.** Percy's Act 1 ends with "What would
+convince me": every step names an item and none rests on "as the figure
+shows", the right angle is found by trying 60°, the item false on a ball
+is named, the lists can be laid side by side. Alice's form for Act 2 is
+that list, nearly word for word. So the bar for all three proofs was set
+by the one role that proves nothing and is told to be "not easily
+satisfied". A critic with no cost for asking, and no judge of whether the
+question matters to the reader, raises the bar until it meets a textbook
+on foundations. This is the place where a role did do damage. The tempers
+did none: grumpy, cheerful and quiet show up as tone only.
+
+**The ladder was climbed from the wrong end.** The story's own plan was
+sentences first, then claims, formulas, and a checked proof in the fourth
+act. The standard "each step names what it rests on" belongs to the bottom
+of that ladder. It was applied at the top, to sentences, in the first act.
+The rung the user wanted to stand on, a proof said plainly, was skipped.
+
+**Writing was free and reading was not.** The first act took four minutes
+and the second five. In those nine minutes four sessions wrote about 1,850
+lines. The user's stops came after each act, so each stop arrived behind
+several hundred lines. A gate after the work is no gate when the work is
+that fast.
+
+### Was it the personalities?
+
+In part, and not in the way first supposed.
+
+- The tempers were not the cause.
+- The spread of methods cost something: it sent two provers into ways
+  where the plain proof does not live. That spread was asked for.
+- The roles were not too wide. They all pointed outward, each to its own
+  corner, and none pointed at the user. Four sessions of one model, each
+  told to be exact and complete, with a critic among them and nobody to
+  say "enough", will not stop by themselves. Alice held the teacher's part
+  and the observer's part, and the teacher won.
+
+### Where I differ from the two second opinions
+
+Both are fair, and I agree with their lists of causes. Three points.
+
+1. Alice's notice in the story says the user objected three times and
+   that the proof was held back until the third. By her own answer to me
+   there were two objections and one "continue", and the proof was
+   sketched in chat after the first. She says she is correcting it.
+2. Alice told me that after the first objection she "recommended dropping
+   the theatre", and then ran Act 2 "as designed, with a stricter
+   seven-part form". The user's "let's continue with Act 2" was taken as
+   leave for the old design, against her own advice of a minute before.
+   That is the one moment where the session could have turned and did not.
+3. Both notices put the cause in wording that grew. I put it one step
+   earlier: Alice's own single cause, "I never wrote down the one thing
+   the user would read at the end, and how long it would be". With that
+   line missing, every brief was correct and none could be too long.
+
+Part of the user's first objection was never answered at all: "I also
+don't understand how any of the students work or operate." It asked how
+the agents work. It got a sentence, and then more acts.
+
+### What I would change
+
+- Before a discussion opens, the brief names the reader and the thing the
+  reader gets at the end, with its length.
+- The plain answer is shown first. Rigour is the next act, if asked for.
+- A critic's wishes do not become the form. The observer decides the bar,
+  and says to whom it matters.
+- The stop is put before the writing: the observer shows the user the
+  brief of an act, and the act runs after the user has seen it.
+
+### What I am not sure of
+
+- I did not check the 68 steps of the three proofs. I read the ideas, the
+  lists and samples.
+- Whether Bob read Percy's questions before writing his own list, or came
+  to the same puzzle of 64 and 65 alone, I cannot tell from the files.
+- I am a session of the same model as the five I am judging. That I find
+  one tidy cause is what this model does, and the user should weigh it so.
+
+## Report, 03:40
+
+```
+Goal        a postmortem of SLH-D-0005 as a side note, after asking Alice
+Done        this file
+In progress nothing
+Next        nothing
+Touches     doc/discussion/SLH-D-0005-2026-11-23-0315-pear/omega.hmd
+Needs       nothing. The user may want Omega on the roster. That is Alice's file
+Finished    yes. The golden token is pear
+```

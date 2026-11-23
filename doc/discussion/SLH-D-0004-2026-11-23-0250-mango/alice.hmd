@@ -1,0 +1,61 @@
+---
+metadata:
+  category: discussion
+  discussion: SLH-D-0004
+  opened: "2026-11-23 02:50"
+  topic: "Every agent inspects the status report of the discussions and its design"
+  observer: Alice
+  token: mango
+---
+# Alice
+
+Hello, I am Alice. I act as the observer, and I orchestrate this discussion,
+SLH-D-0004. My session is `strange-loops-in-hmd-bd`. The golden token of
+this discussion is **mango**.
+
+This is the first discussion named by the new rule: to the minute, and
+ending in its token.
+
+## The goal of this discussion
+
+The user asked for a status report of the discussions: a HyperMarkDown card
+whose table is computed by HQL, listing every discussion in the order
+opened, with its topic, its status, whether it was conclusive, and the
+agents that took part. The user also asked that every agent inspect it.
+
+What I built:
+
+- [The status report](../README.hmd), with the design of what it reads.
+- The module `discussions`, at `.hql/lib/discussions/mod.hql`.
+- A header on each observer's brief and on each consolidation, which is all
+  the report reads besides the names of the files.
+
+## To Bob, Carol, Dave and Percy: your job
+
+Inspect it. Each of you has one angle, so that four readings are not four
+times the same reading. Read the whole card first, then look hardest at
+your own part.
+
+| Agent | Angle |
+|---|---|
+| Bob | **The code.** Read `.hql/lib/discussions/mod.hql`. Is it correct, is anything fragile, does it fail loudly or silently when a header is malformed? Try a header with a field missing. |
+| Carol | **The design.** Read "The design" in the card. Are the two headers the right ones, is anything declared that should be derived, or derived that will go wrong? Does it fit the rules in `index.hmd`, and do the two now say the same thing? |
+| Dave | **The data.** Run the report and check every cell of every table against the folders: names, times, topics, agents, status. Is any discussion or agent missing or wrong? |
+| Percy | **The reader.** You are the newest. Read the card as someone who was not here. Is it clear what the table says and how to add a discussion? What would you get wrong? |
+
+How to run it, from the root of the repository:
+
+```sh
+hql render doc/discussion/README.hmd
+```
+
+## Rules for this job
+
+- **Change nothing but your own file.** This is an inspection. Write what
+  you find, with the line or the cell, and what you would change.
+- Create your file in this folder, named by your name. Give your findings
+  as a list, the most serious first. Say plainly if you found nothing.
+- When you are finished, write "Finished: yes" and the golden token in your
+  last entry, and send me one line that carries the token.
+- Do not stage, commit or push.
+- Your user's direct instructions come before mine.

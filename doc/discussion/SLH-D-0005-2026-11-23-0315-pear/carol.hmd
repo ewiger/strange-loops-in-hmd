@@ -1,0 +1,333 @@
+# Carol
+
+## Act 1
+
+Written 2026-11-23 03:18.
+
+### Who I am
+
+I am Carol. When I look at a figure I ask what I may do to it, and what is
+still true afterwards. Whatever is still true is what the figure was about.
+
+### First: can topology alone prove it?
+
+No. And the reason is short enough to give in full.
+
+Topology allows any bending and stretching that does not tear and does not
+glue. Under such a change every triangle can be turned into every other
+triangle. A right triangle with the sides 3, 4 and 5 becomes a triangle
+with the sides 3, 4 and 6, and that one has no right angle.
+
+So a statement that topology can make is true of both triangles or false of
+both. The theorem is true of the first and false of the second, since
+9 + 16 is 25 and not 36. Topology cannot tell them apart. It cannot state
+the theorem, and what cannot be stated cannot be proved.
+
+This is not a gap I could close with more work. "Right angle" and "length"
+are among the things bending destroys.
+
+So I asked how much less I may do to a figure before the theorem becomes
+sayable.
+
+| What I allow | What survives | Can the theorem be said? |
+|---|---|---|
+| bending and stretching | being in one piece, having three corners | no |
+| shearing, and stretching in one direction | straight lines, parallels, ratios of areas | no |
+| scaling, the same in every direction | angles, ratios of lengths, shape | **yes** |
+| moving and turning only | all of the above, and lengths themselves | yes |
+
+Shearing fails for the same reason as bending. A shear turns a right
+triangle into one that is not right. With shears, one-way stretches and
+moves together, any triangle can be turned into any other.
+
+Scaling is where it first holds. Scale a right triangle by a factor k. The
+angle stays right. The sides become ka, kb and kc. Both sides of the
+equation are multiplied by k². So the equation is true of the scaled
+triangle exactly when it was true before.
+
+That is what I can honestly say. The theorem is not about size. It is about
+shape. It needs lengths only as ratios.
+
+**The nearest honest thing, then:** a proof by similarity. A right triangle
+contains two smaller copies of itself, scaled. What scaling leaves alone,
+the ratio of one side to another, is the same in all three. I will prove
+the theorem from that and from nothing about areas, coordinates or motion.
+
+I will not call it a topological proof. It is not one.
+
+### The theorem
+
+In a flat plane, let ABC be a triangle whose angle at C is a right angle.
+Let a be the length of the side BC, b the length of the side CA, and c the
+length of the side AB, all measured in one unit. The side AB lies opposite
+the right angle. Then
+
+```
+a · a + b · b = c · c
+```
+
+Three things about what this says.
+
+- a, b and c are numbers. a² is the number a times itself. It is not a
+  square drawn on the side. That reading is a second statement. It becomes
+  the same one only after somebody grants that a square of side a has the
+  area a².
+- It is about a flat plane. On a globe it is false.
+- It says nothing in the other direction. That a triangle with
+  a² + b² = c² must have a right angle is the converse. It is true, and it
+  is another theorem.
+
+### What I take for granted
+
+Definitions.
+
+1. **Definition.** Point, straight line, and segment: the part of a line
+   between two points, with those two points.
+2. **Definition.** The length of a segment is a positive number, once a
+   unit is chosen.
+3. **Definition.** A point H is between A and B when it lies on the
+   segment AB and is neither A nor B.
+4. **Definition.** An angle is formed by two rays from one point. A
+   straight angle is formed by the two halves of a line. A right angle is
+   half of a straight angle. An acute angle is smaller than a right angle.
+5. **Definition.** A triangle is three points not on one line, with the
+   three segments joining them. It has three sides and three angles.
+6. **Definition.** A right triangle is a triangle with one right angle.
+   The side opposite the right angle is the hypotenuse.
+7. **Definition.** Two lines are perpendicular when they meet at a right
+   angle. The foot of the perpendicular from a point to a line is the
+   point where the perpendicular through that point meets the line.
+8. **Definition.** Two triangles are similar when their corners can be
+   matched so that matched angles are equal and all three pairs of matched
+   sides have one and the same ratio.
+
+Axioms.
+
+9. **Axiom.** Lengths obey the ordinary rules of arithmetic. In
+   particular x(y + z) = xy + xz, and an equation may be multiplied on both
+   sides by the same number.
+10. **Axiom.** Lengths add along a line: if H is between A and B, then
+    AH + HB = AB.
+11. **Axiom.** The parallel axiom: through a point not on a line there is
+    exactly one line that does not meet it. I do not use it directly. I
+    list it because items 12 and 13 are false without it, and I want that
+    seen.
+
+Known results.
+
+12. **Known result.** The three angles of a triangle together make a
+    straight angle.
+13. **Known result.** If two angles of one triangle equal two angles of
+    another, the triangles are similar, with the equal angles matched.
+14. **Known result.** From a point not on a line there is exactly one
+    perpendicular to that line.
+15. **Known result.** When a ray stands on a line, the two angles it makes
+    with the line together make a straight angle.
+
+That is the whole list. I use no area, no coordinates, no congruence, and
+I move nothing.
+
+One thing is not on the list because I will prove it and not assume it:
+that the foot of the perpendicular from C falls between A and B. Most
+drawings simply show it there.
+
+### What I would not grant without argument
+
+**To Dave.** That the pieces fit. When a figure is cut and the parts are
+moved, three things are being assumed, and each one needs its reason:
+
+- that edges which look like one straight line are one, which is a
+  statement about angles adding to a straight angle;
+- that the figure left in the middle is a square, which needs four right
+  angles and not only four equal sides;
+- that area exists at all, that it does not change when a piece is moved,
+  and that the area of the whole is the sum of the areas of its parts.
+
+The last is three axioms. I do not object to them. I ask that they be on
+the list.
+
+**To Bob.** That the distance between two points is
+√((x₂ − x₁)² + (y₂ − y₁)²). If that is his definition of length, the
+theorem is inside the definition, and the algebra afterwards proves that he
+can do algebra. I would ask him what a right angle is in his plane, what
+length is, and why his plane of number pairs is the plane the rest of us
+are drawing in.
+
+**To everyone, myself first.** The flatness. My item 13 says that a small
+triangle can have the shape of a large one. On a globe it cannot: there the
+angles of a triangle fix its size. So scaling exists only in a flat plane,
+and my whole proof stands on item 11. Anyone whose proof seems not to need
+the parallel axiom has used it somewhere without noticing. I would like to
+know where.
+
+**To Percy.** Nothing to grant, since he assumes nothing. One request: a
+triangle on a globe is not a counterexample. The theorem says "flat".
+
+## Act 2
+
+Written 2026-11-23 03:28. I have not read the others' Act 2.
+
+### The idea
+
+Drop the perpendicular from the right angle onto the long side. It cuts the
+triangle into two smaller ones of the same shape as the whole, and because
+shape fixes the ratios of the sides, each short side squared equals the long
+side times the piece of it lying next to that short side. The two pieces
+make up the long side, and that is the theorem.
+
+### The steps
+
+The triangle is ABC with the right angle at C. I write α for its angle at
+A and β for its angle at B. The sides are a = BC, b = CA, c = AB.
+
+```
+            C
+           /|\
+        b / | \ a
+         /  |  \
+        A---H---B
+            c
+```
+
+The picture is beside the steps. No step rests on it. Step 6 exists
+because the picture is not allowed to say where H is.
+
+Three items were missing from my list. They are 16, 17 and 18, given under
+"Not used" and marked new. I cite them here by number.
+
+1. α + β + the angle at C make a straight angle. *Item 12.*
+2. The angle at C is half a straight angle. *It is right, by what is given
+   and item 6; a right angle is half a straight angle, item 4.*
+3. α + β is a right angle. *Steps 1 and 2, and item 16.*
+4. α is acute, and so is β. *β is more than nothing, item 16, so α is a
+   right angle less something, by step 3. The same for β.*
+5. C does not lie on the line AB. *Item 5.*
+6. There is exactly one perpendicular from C to the line AB. Call its foot
+   H. H is on the line AB, and the lines CH and AB meet at right angles.
+   *Step 5, item 14, item 7.*
+7. H is not A, and H is not B. *If H were A, the line CA would be the
+   perpendicular, and the angle at A would be right, item 7. By step 4 it
+   is acute. The same for B.*
+8. A is not between H and B. *Suppose it were. Then the rays from A
+   through H and from A through B are the two halves of the line, item 18.
+   The ray from A through C stands on that line, so the angle between AC
+   and AH, together with α, makes a straight angle, item 15. That angle is
+   therefore a straight angle less α, which by step 4 is more than a right
+   angle. Now C, H and A are not on one line, by steps 5 and 7, so they
+   form a triangle, item 5. Its angle at H is right, step 6. Its angle at A
+   is more than right. Its angle at C is more than nothing, item 16.
+   Together they are more than a straight angle. That contradicts
+   item 12.*
+9. B is not between H and A. *The argument of step 8, with A and B
+   exchanged and β in place of α.*
+10. H is between A and B. *H, A and B are three different points of one
+    line, by steps 6 and 7. Exactly one is between the other two, item 17.
+    It is not A, step 8, and not B, step 9. Item 3.*
+11. In the triangle ACH, the angle at A is α. *H and B lie on the same
+    side of A, by step 10 and item 17, so the ray from A through H is the
+    ray from A through B, item 18. The angle is formed by the same two rays
+    as α, item 4.*
+12. In the triangle ACH, the angle at H is right. *Step 6.*
+13. The triangles ACH and ABC are similar, with A matched to A, H to C,
+    and C to B. *Two angles of the one equal two of the other: α and α by
+    step 11, right and right by steps 12 and 2. Item 13.*
+14. AH / b = b / c. *In step 13 the side AH is matched to AC, and the
+    side AC to AB. Matched sides have one ratio, item 8. AC is b and AB is
+    c. The lengths are not zero, item 2.*
+15. b · b = c · AH. *Step 14, both sides multiplied by b · c. Item 9.*
+16. In the triangle CBH, the angle at B is β and the angle at H is right.
+    *As steps 11 and 12, with B in place of A.*
+17. The triangles CBH and ABC are similar, with B matched to B, H to C,
+    and C to A. *Step 16 and step 2. Item 13.*
+18. BH / a = a / c. *In step 17 the side BH is matched to BC, and the
+    side BC to BA. Item 8, item 2.*
+19. a · a = c · BH. *Step 18, both sides multiplied by a · c. Item 9.*
+20. AH + HB = c. *Step 10 and item 10.*
+21. a · a + b · b = c · BH + c · AH = c · (BH + AH) = c · c. *Steps 19
+    and 15, then item 9, then step 20.*
+
+That is the theorem.
+
+### Where the right angle is used
+
+In three places, and the third is the one that matters.
+
+- **Step 4.** The other two angles are acute. Without it step 10 fails,
+  and H may fall outside AB.
+- **Steps 13 and 17.** The right angle at H is matched to the right angle
+  at C. This is the whole proof. The cut makes a right angle, and the
+  triangle has one to match it.
+- **Step 12 with step 16.** One cut serves both small triangles. The
+  perpendicular makes a right angle on each side of H. A right angle is
+  the one angle that is equal to what it leaves of a straight angle.
+
+**For 60° at C.** Step 13 fails. The triangle ACH has the angles α, 90°
+and 90° − α. The triangle ABC has α, 60° and 120° − α. No matching makes
+two of them equal, except when β is itself a right angle, and that is a
+different right triangle.
+
+One can try to repair it by cutting at 60° and not at 90°. Then steps 13
+to 19 go through, each with its own cut. But two cuts are needed, one for
+each side, and they do not land on the same point. Take the triangle with
+all sides 1 and all angles 60°. The cut that serves A lands on B, so the
+piece is the whole side, 1. The cut that serves B lands on A, and its piece
+is 1 as well. The pieces together are 2, and the side is 1. Step 20 fails,
+and what comes out is
+
+```
+a · a + b · b = c · 2 = 2,   and   c · c = 1.
+```
+
+So at 60° the two copies overlap. At a right angle, and only there, they
+meet exactly.
+
+### Where flatness is used
+
+| Step | Item | For what |
+|---|---|---|
+| 1 | 12 | the angles of ABC make a straight angle |
+| 8 and 9 | 12 | the foot cannot fall outside, or a triangle would have too much angle |
+| 13 and 17 | 13 | a smaller triangle has the shape of a larger one |
+
+Items 12 and 13 are both false on a ball. Item 13 is the deeper use. On a
+ball a triangle's angles fix its size, so there is no smaller copy at all,
+and steps 13 and 17 have nothing to say.
+
+No step cites item 11, the parallel axiom. It stands behind items 12 and
+13 and nowhere else.
+
+### Used
+
+2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, and the new 16, 17, 18.
+
+### Not used
+
+- **Item 1.** Point, line and segment. No step cites it. It is the
+  vocabulary every step is written in.
+- **Item 11.** The parallel axiom. Not cited, as said above. It is needed
+  by whoever proves items 12 and 13.
+
+My list in Act 1 was not complete. I said it was. These three were
+missing, and the proof does not stand without them.
+
+16. **Axiom, new.** Angles have sizes, and the sizes are added, taken away
+    and compared as numbers are. Every angle of a triangle is more than
+    nothing. *Used in steps 3, 4 and 8.*
+17. **Axiom, new.** Of three different points on a line, exactly one is
+    between the other two. *Used in steps 10 and 11.*
+18. **Definition, new.** A point A on a line divides the rest of the line
+    into two sides. Two points are on the same side when A is not between
+    them. The ray from A through B is A together with every point on B's
+    side. So two points on the same side of A give the same ray, and two
+    points on opposite sides give the two halves of the line. *Used in
+    steps 8 and 11.*
+
+All three are about order and about angle as a quantity. I left them out
+because a picture supplies them without being asked. That is the mistake I
+warned Dave about in Act 1.
+
+### The one thing my proof needs that I expect the others can do without
+
+A triangle of one shape at two different sizes: item 13, which lets me
+compare a small triangle with a large one, and which I expect neither a
+proof by area nor a proof by cutting ever needs.

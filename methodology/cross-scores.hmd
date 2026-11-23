@@ -1,0 +1,83 @@
+# Cross scores
+
+A **cross score** says how much the card at one end of a link disagrees with
+the card at the other. It is computed for every link between two cards that
+carry claims, and it is several numbers and not one, because "disagrees" means
+several things.
+
+The numbers come from the query
+[cross scores](../.hql/queries/cross-scores.hql), which runs on the current
+query language.
+
+## What is compared
+
+Two cards can be compared where they speak on the same atom. Each card has a
+**belief** in an atom it speaks on:
+
+- its credence, when its claim asserts the atom;
+- one minus its credence, when its claim denies it.
+
+A card that denies `same-as(abstraction, summarization)` at a credence of 0.75
+believes that atom at 0.25. Two cards that both deny it at 0.75 hold the same
+belief and agree completely.
+
+An atom only one of the two cards speaks on contributes nothing. Silence is
+not a belief of one half, and it is not disagreement.
+
+## The numbers
+
+| Number | Range | What it measures |
+|---|---|---|
+| `shared` | 0 and up | The atoms both cards speak on. When it is 0 the next three numbers are absent, since nothing can be compared. |
+| `disagreement` | 0 to 1 | The mean distance between the two beliefs in a shared atom. 0 is the same belief, 1 is opposite certainties. |
+| `divergence` | 0 to 1 bit | The same comparison as information: the mean Jensen-Shannon divergence between the two beliefs, each read as a coin with that probability. |
+| `conflicts` | 0 and up | Shared atoms that one card asserts and the other denies, whatever the credences. |
+| `distance` | 0 to 1 | How little the two cards talk about the same things: one minus the overlap of the arguments of their atoms, the size of the intersection over the size of the union. |
+
+They answer different questions and do not move together.
+
+- `disagreement` and `divergence` are about degree. Two cards can assert the
+  same atom and still be 0.24 apart when one calls it proved and the other
+  argued.
+- `conflicts` is about logic. It counts contradictions and ignores how firmly
+  either side is held.
+- `distance` is not about disagreement at all. It says whether the two cards
+  are close enough in subject for disagreement to be possible. A link with a
+  distance near 1 joins cards with almost nothing in common to disagree
+  about.
+
+`divergence` is small where `disagreement` is moderate, because it grows
+slowly near agreement and fast near contradiction: beliefs of 0.99 and 0.75
+are 0.24 apart and 0.11 bits apart, while beliefs of 1 and 0 are 1 apart and 1
+bit apart. Use `disagreement` to rank and `divergence` to weigh.
+
+## A case where two numbers part
+
+The prediction card denies that compression is the same as intelligence, at
+0.75. The compression and prediction card states the equivalence as a
+conjecture, at 0.4. One asserts and one denies, so `conflicts` is 1: this is
+the single contradicted atom of the vault. The beliefs are 0.25 and 0.4, so
+`disagreement` is 0.15. The logic reports a contradiction where the
+probabilities report two cards that nearly agree the claim is doubtful.
+Neither number is wrong. They are measuring different things, which is the
+reason to keep both.
+
+## What the scores do not see
+
+- **Claims without an atom.** A third of the claims are in natural language
+  only, and no score reads them. The design that would is the future query
+  `claim-contradictions.hql`, which compares claims by meaning.
+- **Conflict between different atoms.** The scores compare two cards only on
+  atoms that are the same string. `is-a(a, b)` asserted on one card and
+  `same-as(a, b)` denied on another are not compared here. Rules of inference
+  now connect such atoms: an atom derived from some claims can meet a denial
+  stated by another. That is described in [derivation](derivation.hmd), and
+  its results are not part of any cross score.
+- **Conflict between links.** Two cards that each declare the other a part of
+  itself contradict one another in their links and not in their claims. The
+  query [two-way links](../.hql/queries/two-way-links.hql) finds those.
+- **Whether a credence is right.** The numbers start as priors set by evidence
+  grade. A score is exactly as informative as the credences under it.
+
+A low score therefore means the cards do not contradict each other where
+they can be compared. It does not mean they are consistent.

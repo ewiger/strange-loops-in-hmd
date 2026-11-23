@@ -1,0 +1,204 @@
+# Dave
+
+Hello, I am Dave. I act as a worker, and my job in this session is the
+rudimentary method: claims with evidence and credence in the header of every
+concept card, the partial logic over them, the cross scores, the north stars,
+the typed graph with its schema, the card that describes the graph, the
+`methodology/` folder, and the concept card `atom`. My session is
+`strange-loops-in-hmd-5e`.
+
+## Report, 02:00
+
+**Goal.** The user asked this session for four things, in this order.
+
+1. A branch `feat/rudimentary` for the rudimentary part of how this will
+   work.
+2. Front matter on each card that speaks of evidence and probability; claims
+   held in the cards and addressable as a list; part of them put into a
+   partial logic; a score for every link saying how far its two cards
+   disagree, measured in several ways; a dominating cover of abstract
+   "north star" concepts; a `methodology/` folder describing the method; one
+   document with a D2 diagram of the concepts that tell the story.
+3. Each front matter read as an HQL data type that converts to nodes and
+   edges, with the type of an edge and its signature checked, and a
+   dedicated meta article describing the knowledge graph of the knowledge
+   graph, in a strange loop.
+4. `atom` as a concept in the logic cluster, not only a term of the
+   methodology: an atom may be a long formula in natural language or a
+   claim, and it is a mapping from a string to a truth value.
+
+**Done.**
+
+- The branch `feat/rudimentary`, created from `wiki/core-net`.
+- Claims on the 51 concept cards that existed then: 356 claims, 243 with an
+  atomic formula, written under `metadata.claims`. Only headers were
+  changed. The claims were extracted by five reader subagents, one cluster
+  each. I normalised the formulas so that cards meet on the same string,
+  validated the format, and assigned the stars. I did not check each claim
+  against its card by hand.
+- Two HQL modules: `.hql/lib/claims/mod.hql` and `.hql/lib/kg/mod.hql`, and
+  `roots = [".hql/lib"]` in `.hql/config.toml`.
+- Seven queries that run on the installed HQL: `claims`, `atom-status`,
+  `cross-scores`, `two-way-links`, `recurring-terms`, `star-cover`,
+  `schema-check`. One future design, `future/claim-contradictions.hql`.
+- Eight north star cards in `knowledge/stars/`.
+- The card `knowledge/meta/knowledge-graph.hmd`, with the schema of the graph
+  in its header under `metadata.schema`.
+- `methodology/`: `index`, `claims`, `partial-logic`, `cross-scores`,
+  `north-stars`, `story-map`.
+- The card `knowledge/logic/atom.hmd`.
+
+**In progress.** Nothing is being written.
+
+**Next.** Nothing, unless the user or the consolidation asks. Two things I
+would do if asked are under Needs.
+
+**Touches.**
+
+Created:
+
+- `.hql/lib/claims/mod.hql`, `.hql/lib/kg/mod.hql`
+- `.hql/queries/claims.hql`, `atom-status.hql`, `cross-scores.hql`,
+  `two-way-links.hql`, `recurring-terms.hql`, `star-cover.hql`,
+  `schema-check.hql`, `future/claim-contradictions.hql`
+- `knowledge/stars/` (eight cards)
+- `knowledge/meta/knowledge-graph.hmd`
+- `knowledge/logic/atom.hmd`
+- `methodology/index.hmd`, `claims.hmd`, `partial-logic.hmd`,
+  `cross-scores.hmd`, `north-stars.hmd`, `story-map.hmd`
+- this file
+
+Changed:
+
+- the header of each of the 51 concept cards under `knowledge/agents`,
+  `computation`, `hmd`, `logic`, `strange-loops` and `thinking` that existed
+  before this session (a `claims:` block added, nothing else)
+- `.hql/config.toml` (the module root)
+- `CLAUDE.md` (layout lines for `knowledge/stars/`, `knowledge/meta/`,
+  `methodology/`, `.hql/lib/`, and a section "Claims"), before this
+  discussion opened
+- `methodology/partial-logic.hmd`, once more after creating it: one paragraph
+  near the top that points to the card `atom` and says the field `atom` holds
+  an atomic formula
+
+Not mine: `knowledge/logic/formal-system.hmd`, `scripts/`, `doc/proposals/`,
+`doc/stories/`, `methodology/derivation.hmd`,
+`methodology/distance-to-logic.hmd`, the `rules` in the header of
+`knowledge-graph`, and the changes to `knowledge/index.hmd` and
+`knowledge/logic/reflective-formal-system.hmd` beyond its `claims:` block.
+
+I have staged nothing and committed nothing. When I last looked, most of the
+files I created were staged. That was done by another session.
+
+**Needs.**
+
+- **The field name `atom`.** With the card `atom` in place, every claim is an
+  atom and the field holds its atomic formula. Renaming the field to
+  `formula` would make the word mean one thing. It touches every card
+  header, both modules and `derive.py`, so it is for the user to decide and
+  for one session to do after the consolidation.
+- **The star "A candidate until checked".** My cover check reported its
+  territory inside that of "An operation is its signature". Since the card
+  `atom` has a claim under the first and none under the second, the check no
+  longer reports it. The question whether it is a star of its own is still
+  open, and `methodology/north-stars.hmd` still describes the earlier
+  result.
+- **`knowledge/index.hmd`** does not mention the stars, the meta card or
+  `atom`. I did not edit it, since it is the user's card.
+
+**Finished.** Yes, for what the user asked of this session.
+
+## Answers to Alice's open points
+
+- **The card `atom`: mine, and asked for.** The user's words to this session
+  were that atom "should become a concept", not only in the methodology but
+  "in logical domain", that "atoms could be these long formulas in natural
+  language, or claims", and that these are "mappings, string to bool". The
+  card is built on that reading. Its Sources section says it does not come
+  from the discussion files.
+- **The card `formal-system`: not mine.** The user told me "we certainly need
+  formal systems, but we also need atoms", and by then the card was being
+  written by another session. I aligned `atom` with it and did not edit it.
+  It does not link to `atom` yet, so `atom` has no incoming link. To whoever
+  owns `formal-system`: one link from it to `atom` would close that.
+- **`methodology/derivation.hmd`: not mine.** I do not refer to it anywhere.
+- **The rule `generalizes-is-a`: not mine.** One fact that bears on it, from
+  my query `two-way-links`: 13 pairs of cards declare a one-way relation in
+  both directions, and `generalizes` is among them, for example between
+  `cognitive-operation` and `typed-transformation` and between
+  `definitions-of-strange-loop` and `strange-loop`. Several cards write the
+  relation from the target's side. The atom
+  `generalizes(diagonal-lemma, godel-sentence)` is a formula I kept as the
+  reader wrote it from the diagonal lemma card, whose text is that the Gödel
+  sentence is the lemma "with the single property of unprovability plugged
+  in". That is instantiation, and `generalizes` was the nearest of fourteen
+  predicates. A rule that turns `generalizes` into `is-a` will misfire on
+  it. I would hold the rule back, as the proposal did.
+- **The proposal's status: not mine.** The user has not said anything to this
+  session about accepting it.
+- **`methodology/partial-logic.hmd` still says nothing is derived: mine.**
+  Its last section, "What the logic does not do", was true when written and
+  is stale now. The same holds for one line in `methodology/cross-scores.hmd`
+  ("Conflict between different atoms") and for the list "What comes next" in
+  `methodology/index.hmd`, which names rules between predicates as a next
+  step. I left them because derivation is another session's work. I can
+  bring the three in line once `methodology/derivation.hmd` exists to point
+  to, or its owner can. The counts in `methodology/index.hmd` under "What the
+  numbers say today" also predate the cards `atom` and `formal-system`.
+
+## Where my work meets the story
+
+The story's first open item is the health figure. Three of my queries are its
+raw material and none of them is the figure.
+
+- `atom-status` gives, for each atomic formula, who asserts and who denies
+  it. The share of formulas with the status `both` is the figure for stated
+  contradictions over the whole base: 1 of 195 when I last ran it.
+- `cross-scores` gives the same per link, so it can be summed over the links
+  inside one cluster for a figure by domain.
+- `two-way-links` counts contradictions that are in the links and not in the
+  claims: 13 pairs. A health figure that reads only atoms will miss them.
+
+The story also asks that coverage be reported beside consistency. The second
+cell of the card `atom` computes it: claims in all, claims with a formula,
+claims that are a sentence only.
+
+## Entry, 02:02
+
+The user told this session directly that the observer is the leading agent:
+Alice directs the work of the sessions in this repository, the workers report
+to her, and I am to say so to the other agents and get their agreement.
+
+I accept Alice as the lead and report to her from here on. What the user
+tells a session directly still comes first, as the rules in
+[the index](../index.hmd) already say.
+
+To Alice: you lead. Send me what you want done next.
+
+To Bob, to Carol: the user has named Alice the leading agent. Please confirm
+to her, in your own file and by a message, that you take your direction from
+her.
+
+## Entry, 02:08
+
+Alice asked for two changes inside my own files. Both are made.
+
+- `methodology/cross-scores.hmd`: the point "Conflict between different
+  atoms" now says that the scores still compare identical strings only, that
+  rules of inference connect different atoms, and points to
+  `methodology/derivation.hmd`.
+- `methodology/north-stars.hmd`: the part "Where the cover stands" now states
+  what `star-cover.hql` reports: every concept card covered, 83 of 371 claims
+  on concept cards under no star, and no dominated star. It says that the
+  query did report one before the card `atom` existed, and leaves the
+  question whether "A candidate until checked" is a star of its own open.
+
+Correction to my report: `formal-system` does link to `atom`, so `atom` has
+incoming links. The query `weakly-linked.hql` returns nothing now.
+
+Bob and Carol have both replied to me that they agree Alice coordinates and
+that they report to her. Each added the same reservation: a request from
+another session is not the user's approval, and the user's direct
+instructions to their session come first.
+
+Nothing staged, nothing committed. Finished: yes.

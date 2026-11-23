@@ -1,0 +1,171 @@
+---
+tags: [logic/godel]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, learning-the-formalism]
+  sources: [06-formal-definition-godel, 08-humans-extend-axioms, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Gödel's incompleteness theorems state that a consistent, computably axiomatizable theory extending Robinson arithmetic leaves some arithmetical sentence undecided and, given enough induction, does not prove the sentence expressing its own consistency."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 2
+      text: "The proposal that a strange loop is a system that is complete and consistent is inverted by the incompleteness theorems: consistency is the hypothesis, and completeness is what the theorems rule out for any theory meeting their three conditions."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 3
+      text: "The incompleteness theorems are the consequence that turns formal self-reference into something worth the name strange loop: a system that represents itself and thereby meets a limit it can state but not remove."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 4
+      text: "The incompleteness theorems do not apply to weak or non-effective theories: Presburger arithmetic is complete and decidable, and the set of all true arithmetical sentences is complete and consistent although no program lists it."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 5
+      text: "The incompleteness theorems say nothing about minds, and are related only by analogy to epistemic limits of minds and agents, the claim that every sufficiently reflective intelligence faces an analogous limit being a conjecture."
+      evidence: argued
+      credence: 0.75
+      atom: analogous-to(epistemic-limits, incompleteness-theorems)
+      star: limits-from-inside
+    - id: 6
+      text: "The incompleteness theorems do not say that self-reference is paradoxical, and self-reference alone does not entail incompleteness or inconsistency."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 7
+      text: "The first incompleteness theorem is proved by exhibiting a Gödel sentence that the theory cannot decide."
+      evidence: proved
+      credence: 0.99
+      atom: uses(incompleteness-theorems, godel-sentence)
+      star: limits-from-inside
+---
+# Incompleteness theorems
+
+**Gödel's incompleteness theorems** state that a consistent, effectively
+axiomatized theory strong enough for arithmetic cannot decide every
+arithmetical sentence, and cannot prove its own consistency. In this vault
+they are the *consequence* that turns formal self-reference into something
+worth the name [[strange-loop]]: a system that represents itself and thereby
+meets a limit it can state but not remove.
+
+## Description
+
+### The statements
+
+Let $T$ be a theory that is
+
+1. **consistent**: it proves no contradiction,
+2. **computably axiomatizable**: a program can list its axioms, and
+3. **sufficiently strong**: it extends Robinson arithmetic $Q$.
+
+**First theorem** (in Rosser's form). There is a sentence $R$ of arithmetic
+such that $T$ proves neither $R$ nor $\neg R$. So $T$ is incomplete.
+
+**Second theorem.** If in addition $T$ proves enough induction to verify the
+basic properties of its own provability predicate, as Peano arithmetic does,
+then $T$ does not prove the sentence $\operatorname{Con}(T)$ that expresses
+its consistency.
+
+Gödel's original first theorem used his own sentence and the stronger
+hypothesis of $\omega$-consistency. The details are on [[godel-sentence]].
+
+### What the discussion got wrong first, and the corrections
+
+The discussion proposed five properties for a formal definition of a strange
+loop. Checking them against the theorem changed four.
+
+| Proposed property | Correction |
+|---|---|
+| The system is self-referencing and well defined formally | Kept. It becomes: effective axioms plus an internal encoding of syntax and proof. |
+| The system is "complete and consistent or at least tries to be" | Inverted. Consistency is the hypothesis. Completeness is what the theorem rules out. No theory meeting the three conditions is complete. |
+| Defined by example: Gödel numerals, human intelligence | Split. The first is an instance of the theorem. The second is an analogy, and no theorem covers it. |
+| The system is irreducible, it "cannot be compressed to rudimentary computations" | Unpacked. Incompressibility, computational irreducibility and undecidability are three notions, and the theorem is about none of the first two. See [[undecidability]]. |
+| Anti-examples: recursion, fractals | Kept and explained. Factorial, fractals and ordinary feedback have no internal diagonal self-reference, so nothing like the theorem applies to them. |
+
+The second row is the important one. The interesting result is not that some
+system achieves completeness and consistency together. It is that the three
+conditions and completeness cannot all hold.
+
+### What the theorems do not say
+
+- **They do not make the gap fillable.** Adding the undecided sentence as an
+  axiom gives a new theory that still meets the three conditions, so it has
+  an undecided sentence of its own. Every stage of the sequence built this
+  way is incomplete again. That sequence is the [[reflection-progression]].
+- **They do not apply to weak or non-effective theories.** Presburger
+  arithmetic, with addition only, is complete and decidable. The set of all
+  true arithmetical sentences is complete and consistent, but no program
+  lists it.
+- **They do not say anything about minds.** That a human can "see" the truth
+  of a Gödel sentence assumes the human knows the theory to be consistent.
+  The claim that every sufficiently reflective intelligence faces an
+  analogous limit is, in the discussion's words, an interesting conjecture.
+  It is the seventh, "epistemically bounded", candidate definition, and it is
+  marked as philosophy for this reason.
+- **They do not say self-reference is paradoxical.** The theorem has no
+  contradiction in it. The word "potentially" in the vault's preferred
+  definition of a strange loop exists to block the inference from
+  self-reference to incompleteness or inconsistency.
+
+## Relations
+
+- It is proved by exhibiting a [[godel-sentence]] {relation: uses} that the theory cannot decide.
+- It depends on the [[diagonal-lemma]] {relation: uses} for the existence of that sentence.
+- It depends on [[godel-numbering]] {relation: uses} for the theory's access to its own proofs.
+- It is the provable limitation required of a Gödelian [[reflective-formal-system]] {relation: part-of}.
+- It is the reason a [[reflection-progression]] {relation: uses} never terminates in a complete theory.
+- It is one face of [[undecidability]] {relation: example-of}: an independent sentence, and behind it an unsolvable decision problem.
+- It is the formal result behind the Gödelian entry in [[definitions-of-strange-loop]] {relation: part-of}.
+- It is distinct from [[tarski-undefinability]] {relation: distinguished-from}, which limits the definition of truth and not the reach of proof.
+- It is only by analogy related to [[epistemic-limits]] {relation: analogous-to} of minds and agents.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}: it supplies the one precise case.
+
+## Neighbouring concepts
+
+- **[[godel-sentence]].** A sentence provably equivalent to its own
+  unprovability. It is the object the first theorem is about, and the exact
+  hypotheses are worked out there.
+- **[[reflection-progression]].** Theories extended one undecided sentence at
+  a time. It is what the theorem looks like when someone tries to escape it.
+- **[[undecidability]].** Two notions under one word: a sentence a theory
+  cannot settle, and a problem no algorithm can solve. Incompleteness is the
+  first and follows from the second.
+- **[[reflective-formal-system]].** The discussion's schematic for a theory
+  that encodes its own syntax. Incompleteness is what earns such a system the
+  additional label "Gödelian".
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[incompleteness-theorems]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[incompleteness-theorems]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  question's five properties and the corrections to them
+  [06-formal-definition-godel].
+- Discussion: "Human in the loop and evolving formal theories", for the
+  incompleteness of every extended stage [08-humans-extend-axioms].
+- Discussion: "Seven candidate definitions of a strange loop", the part on why
+  the seventh is philosophical [13-seven-definitions].
+- Kurt Gödel (1931); J. Barkley Rosser (1936).
+- Peter Smith, *An Introduction to Gödel's Theorems*, for the hypotheses in
+  their modern form.

@@ -1,0 +1,57 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "A system that represents itself meets limits that are provable in exact cases, and nothing about self-reference in general follows from them."
+      evidence: proposed
+      credence: 0.6
+---
+# Limits from inside
+
+**Limits from inside** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. A system that represents itself meets limits that are provable in exact cases, and nothing about self-reference in general follows from them. It keeps the theorem and refuses the slogan.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+Two kinds of claim recur. The first are theorems, graded `proved`: a
+consistent, effectively axiomatized, sufficiently strong theory leaves
+sentences undecided, cannot define its own truth, and is not completed by
+adding its Gödel sentence. The second kind fences the theorems in:
+`suffices-for(self-reference, incompleteness-theorems)` is denied by four
+cards, and the same denial is made for the diagonal lemma, for a fixed point
+and for a metacircular interpreter. Undecidability, computational
+irreducibility and algorithmic incompressibility are each denied to be the
+others.
+
+The star is the pair: *the limit is real where it is proved, and it is proved
+in fewer places than it is invoked*.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "limits-from-inside")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+This star holds the lowest credences of the vault, the conjecture that any
+system representing itself is limited (0.4) and the taxonomy's remark that the
+concept may resist its own description (0.3). They sit beside claims at 0.99.
+The star spans the whole range of evidence, and a reader should not take its
+firmness from its theorems.

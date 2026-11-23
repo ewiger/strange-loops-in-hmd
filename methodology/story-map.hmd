@@ -1,0 +1,166 @@
+# The story map
+
+The whole net has more than fifty concepts and nearly five hundred links, and
+drawn in full it shows nothing. This map keeps the concepts that carry the
+argument and the links between them that the cards declare. The eight
+containers are the [north stars](north-stars.hmd). A concept sits in the star
+that most of its claims fall under.
+
+## The story
+
+Read the map from the top.
+
+1. **A notion, not a class.** "Strange loop" was fixed by examples and never
+   defined, so the vault holds seven candidate definitions and a taxonomy in
+   place of one answer.
+2. **Levels, not cycles.** What the candidates share is a test: a level of
+   description is crossed on the way round. Feedback, including the feedback
+   loop of the documents themselves, goes round without crossing anything.
+3. **Representation before reference.** Before a level can be crossed the
+   system must hold a representation of itself. Gödel numbering is the exact
+   case, a quine the minimal one, and the observer card the one this project
+   can build.
+4. **Limits from inside.** In the exact case the crossing has a provable
+   consequence, the Gödel sentence and the incompleteness theorems, which hold
+   there and are not a general fact about self-reference.
+5. **A step from outside.** A theory gets past its limit by a step it cannot
+   derive, the next stage of a progression. The documents get past theirs by a
+   reviewed revision through a gate. Neither step needs a human; both need to
+   be explicit.
+6. **No operation alone.** That step is one turn of the reasoning cycle, in
+   which induction, deduction, evaluation and revision are positions and none
+   stands by itself.
+7. **An operation is its signature.** The positions are operations, told apart
+   by what goes in and what comes out.
+8. **A candidate until checked.** A signature gives the form of a result. A
+   typed transformation adds the evidence that makes it more than a candidate.
+
+The card `knowledge-graph` is on the map as well. It describes this graph and
+is a node of it.
+
+## The map
+
+```d2
+direction: down
+
+notion: A notion, not a class {
+  definitions-of-strange-loop
+  taxonomy-of-self-reference
+}
+
+levels: Levels, not cycles {
+  strange-loop: strange-loop {
+    style.bold: true
+  }
+  self-reference
+  level-crossing
+  object-and-meta-level
+  feedback-loop
+  hmd-feedback-loop
+  knowledge-graph
+}
+
+representation: Representation before reference {
+  godel-numbering
+  quine
+  observer-card-experiment
+}
+
+limits: Limits from inside {
+  godel-sentence
+  incompleteness-theorems
+}
+
+outside: A step from outside {
+  reflection-progression
+  human-in-the-loop
+  render-integrate-execute
+  revision
+}
+
+cycle: No operation alone {
+  reasoning-cycle
+}
+
+signature: An operation is its signature {
+  cognitive-operation
+  induction
+  deduction
+  abstraction
+  evaluation
+}
+
+checked: A candidate until checked {
+  typed-transformation
+}
+
+notion.definitions-of-strange-loop -> levels.strange-loop: generalizes
+notion.taxonomy-of-self-reference -> levels.self-reference: generalizes
+
+levels.strange-loop -> levels.self-reference: is-a
+levels.strange-loop -> levels.level-crossing: uses
+levels.level-crossing -> levels.object-and-meta-level: uses
+levels.strange-loop -> levels.feedback-loop: distinguished-from
+levels.hmd-feedback-loop -> levels.feedback-loop: is-a
+levels.knowledge-graph -> levels.self-reference: example-of
+levels.knowledge-graph -> levels.strange-loop: distinguished-from
+
+representation.godel-numbering -> levels.level-crossing: example-of
+representation.quine -> levels.self-reference: is-a
+representation.observer-card-experiment -> representation.godel-numbering: analogous-to
+representation.observer-card-experiment -> levels.hmd-feedback-loop: instance-of
+
+limits.godel-sentence -> representation.godel-numbering: uses
+limits.godel-sentence -> levels.strange-loop: example-of
+limits.godel-sentence -> limits.incompleteness-theorems: part-of
+
+outside.reflection-progression -> limits.godel-sentence: uses
+outside.reflection-progression -> limits.incompleteness-theorems: uses
+outside.reflection-progression -> outside.human-in-the-loop: uses
+outside.reflection-progression -> levels.hmd-feedback-loop: analogous-to
+outside.render-integrate-execute -> outside.human-in-the-loop: uses
+outside.render-integrate-execute -> outside.revision: is-a
+outside.render-integrate-execute -> levels.hmd-feedback-loop: part-of
+levels.knowledge-graph -> outside.revision: uses
+
+outside.revision -> cycle.reasoning-cycle: part-of
+cycle.reasoning-cycle -> levels.feedback-loop: is-a
+cycle.reasoning-cycle -> levels.hmd-feedback-loop: generalizes
+
+signature.induction -> cycle.reasoning-cycle: part-of
+signature.deduction -> cycle.reasoning-cycle: part-of
+signature.evaluation -> cycle.reasoning-cycle: part-of
+signature.induction -> signature.deduction: contrasts
+signature.induction -> signature.cognitive-operation: instance-of
+signature.deduction -> signature.cognitive-operation: instance-of
+signature.abstraction -> signature.cognitive-operation: instance-of
+signature.abstraction -> levels.level-crossing: uses
+signature.deduction -> limits.incompleteness-theorems: uses
+
+signature.induction -> checked.typed-transformation: is-a
+signature.deduction -> checked.typed-transformation: is-a
+checked.typed-transformation -> signature.evaluation: uses
+```
+
+## How the map was made
+
+- **The containers** are the north stars, and a star with no concept on the
+  map would mean the story skips it. None is skipped.
+- **The concepts** are twenty-five of the fifty-two that carry claims. A concept
+  was kept when the story above cannot be told without naming it. That is a
+  judgement, made once by reading, and it is the part of this map most open to
+  dispute.
+- **The arrows** are links the cards declare, with the relation they declare.
+  No arrow was added to make the story run. Where two cards declare the same
+  one-way relation in both directions (see the query
+  [two-way links](../.hql/queries/two-way-links.hql)), neither direction was
+  drawn.
+
+Arrows that cross from one container to another are where two stars meet. The
+query [star cover](../.hql/queries/star-cover.hql) lists every such meeting
+under `overlaps`, with the cards the two stars share. The map draws the ones
+the story passes through.
+
+The map is written by hand and does not update itself. When claims or stars
+change, the cover query says what moved, and the map has to be redrawn to
+match.

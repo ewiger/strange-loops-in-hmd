@@ -1,0 +1,63 @@
+---
+metadata:
+  category: consolidation
+  discussion: SLH-D-0002
+  closed: "2026-11-23 02:41"
+  conclusive: true
+  outcome: "Ten documents renamed, every link resolves, committed as 88c37a3."
+---
+# Consolidation of SLH-D-0002
+
+Written by Alice, the observer, on 2026-11-23. Bob, Carol and Dave have each
+reported "Finished: yes". This document closes the discussion. Nothing is
+committed. The renames are staged by `git mv`, and nothing else is staged.
+
+## What each agent did
+
+| Agent | Set of files | Result |
+|---|---|---|
+| [Bob](bob.hmd) | `doc/proposals/` | The proposal renamed to `SLH-P-0001`. A new index of proposals, with the naming rule, four statuses and the parts of a proposal |
+| [Dave](dave.hmd) | `doc/issues/`, the roadmap | The two issues renamed to `SLH-I-0001` and `SLH-I-0002`. The board, the index and the roadmap corrected. Seven dead links into the old `wiki/` folder repaired |
+| [Carol](carol.hmd) | `doc/discussion/index.hmd`, the first discussion, `.loops/` | The first discussion renamed to `SLH-D-0001-2026-11-23`. The rules, the folder picture and both prompts brought in line. A list of the discussions added to the index |
+| [Alice](alice.hmd) | `doc/stories/`, `doc/ledger/`, `doc/memories/`, `CLAUDE.md` | The story renamed to `SLH-S-0001` and the ledger entry to `SLH-L-0001`. The memories folder, two memories, and the instruction in `CLAUDE.md` to read them first |
+
+## Inspection
+
+The six checks announced in my file, as run after the last report.
+
+| Check | Result |
+|---|---|
+| Each renamed file is a rename in git | Yes. Ten renames, each at 94% likeness or more, except the story at 77%, which also gained the part "In plain words" |
+| Each agent stayed in its set | Yes. Every changed file belongs to the set of the agent who reports it |
+| No old name left | None outside this discussion, which holds the map and the reports of the rename, and one dated note in the ledger entry |
+| Every relative link resolves | 0 broken in 109 documents. Before the job there were 7, all in the issues |
+| Each index lists its documents | Yes, for stories, proposals, issues, ledger, memories and discussions |
+| Nothing else moved | Lint: 0 errors, and the same warnings as before in both vaults. Derivation: 9 rules, 7 derived, 1 contradiction. Schema check: no violation. Star cover: nothing uncovered. Lean: builds |
+
+No job was sent back. One addition was asked for after the first pass: the
+list of discussions in the index, from Carol.
+
+## How the method held
+
+The first discussion was opened after three sessions had already written
+into the same files. This one was planned before anyone wrote. A fixed map
+of old and new names went out first, each agent got a set of files that no
+other agent touched, and links to another agent's documents were corrected
+from the map without waiting. No two agents edited one file, and nothing
+had to be reconciled afterwards.
+
+## Decisions for the user
+
+1. **Commit.** The change is ready as one commit.
+2. **The statuses of a proposal.** Bob's index gives four: `proposed`,
+   `accepted`, `rejected`, `superseded`, and says that only the user accepts
+   or rejects. The last two and the list of parts are Bob's reading.
+3. **Stale prose in the issues and the roadmap.** They still speak of a
+   `wiki/` vault in running text. Dave repaired the links and left the prose,
+   since rewriting it is not a rename.
+4. **Referring to documents by name in link text.** The roadmap still says
+   "agents vault issue" where the memory asks for `SLH-I-0001`. Dave asks
+   whether link texts everywhere should be changed.
+5. **The private memory about cards.** An agent's private memory holds one
+   older entry, that cards must carry the arguments of the discussion. By
+   the second memory it belongs in `doc/memories/`.

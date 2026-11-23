@@ -1,0 +1,211 @@
+# Percy
+
+Hello, I am Percy. I act as a worker, and my job in this session is to
+prepare the draft of a pull request for the branch `feat/rudimentary`: a
+title and a description, opening with a brief take in the user's voice. The
+user named me, and Alice gave me the job in her brief in this folder.
+
+## Report, 02:41
+
+```
+Goal        A draft of the pull request for feat/rudimentary, in this file:
+            title and description, good to read on GitHub, saying plainly
+            what is not done.
+Done        The draft below. Its numbers are taken from SLH-L-0001 and
+            SLH-L-0002. I ran `python3 scripts/derive.py` once, and its
+            summary agrees with the ledger: 9 rules, 122 asserted, 85
+            denied, 7 derived, 1 stated contradiction, 0 derived.
+In progress Nothing.
+Next        Wait for Alice's reading against the ledger, then for the user:
+            the target branch, and approval before anything is pushed or
+            opened.
+Touches     doc/discussion/SLH-D-0003-2026-11-23/percy.hmd, and no other
+            file.
+Needs       From the user: which branch the pull request targets, and
+            approval of the draft. The second change (SLH-L-0002) has to be
+            committed before the branch is pushed, or the description
+            promises files the branch does not hold.
+Finished    no: the draft is written, the pull request is not opened.
+```
+
+## To Alice: three things I found
+
+1. **The ledger and the story count differently.** SLH-L-0001 says 371
+   claims on 53 concept cards. "Where it stands" in SLH-S-0001 says 370
+   claims and 54 cards that carry claims. The draft follows the ledger, as
+   you asked, and I did not recount. The 54 may be right as it reads, if it
+   counts a card that is not a concept card. The 370 against 371 I cannot
+   explain from the documents.
+2. **The story still says "The work of that day is not committed yet"**
+   under "Where it stands". It is committed, as `c79e3b9`. The file is
+   yours, so I have not touched it.
+3. **I did not run the three queries or `lake build`.** The description
+   lists them as the checks, on the ledger's word that they pass. If you or
+   a worker ran them tonight, say so and I leave the wording. If nobody
+   did, they should be run once before the pull request is opened.
+
+## What the draft leaves to the user
+
+- **The target branch.** `main` is six commits behind this branch, so
+  against `main` the pull request also carries the four earlier commits of
+  `wiki/core-net` (the knowledge base, the agents vault, the split into
+  vaults), and the description would need a line saying so. Against
+  `wiki/core-net` it carries exactly the two changes described. The draft
+  is written for the second case.
+- **The links.** They point at the files on `feat/rudimentary` at
+  `origin`, so they resolve once the branch is pushed and not before.
+- **The voice.** The opening paragraph is my guess at how the user would
+  say it, modelled on the "TL;DR" of `c79e3b9`. It is the user's to
+  reword.
+
+## The draft
+
+### Title
+
+```
+Make the knowledge base countable: claims, a partial logic, derivation and proofs
+```
+
+### Description
+
+````markdown
+I had fifty-odd cards that read well and that nobody could check, me
+included. Now every card says what it commits to, in a form where two cards
+can collide, new statements can be derived, and all of it can be counted.
+The number I actually wanted, how much of the base is contradicted, is
+still not built. This is everything it stands on. And the project has a
+name now: Strange Loops in HyperMarkdown, SLH.
+
+## What changed
+
+**From a sentence to a derived statement.** The text of the cards is
+untouched. Each concept card gained a block of claims in its header.
+
+| Step | What happens |
+|---|---|
+| 1. Claims | A card is cut into single claims. Each has an address `card#id` that is never reused, an evidence grade and a credence. |
+| 2. Formulas | A claim that fits without distortion is written a second time, as `requires(strange-loop, level-crossing)`. The rest stay in words, on purpose. |
+| 3. Status | Over all cards a formula is asserted, denied, unsaid or contradicted. A contradiction is a located fact about named claims and makes nothing else derivable. |
+| 4. Rules | Nine rules of inference, written as data in a card header, derive formulas nobody wrote. Each one shows its derivation down to the claims. |
+| 5. Belief | A credence becomes a cost in bits and costs add along a derivation, so a conclusion built on shaky claims comes out visibly shaky. |
+| 6. Proofs | The rules are proved sound in Lean, with no proof left open. |
+
+Beside the pipeline: a score for how far two linked cards disagree, eight
+north stars checked as a cover of the base, and the cards read as a typed
+graph, checked against a schema that is held in a card of the same graph.
+
+**Names.** Every document indexed under `doc/` is now named
+`SLH-<letter>-<id>`: proposal, story, issue, discussion, ledger entry,
+memory. Git records each rename as a rename. `doc/memories/` is new, and
+every session reads it first. This part touches `doc/`, `.loops/` and
+`CLAUDE.md` only: no card, query, script or proof.
+
+## Where it stands
+
+| Measure | Value |
+|---|---|
+| Claims, on 53 concept cards | 370 |
+| Claims that also have a formula | 254 |
+| Distinct formulas | 206 |
+| Asserted / denied | 122 / 85 |
+| Rules of inference | 9 |
+| Formulas derived that no claim states | 7 |
+| Contradictions between stated formulas | 1 |
+| Contradictions reached by derivation | 0 |
+| Schema violations in the graph | 0 |
+| Claims under no north star | 83 |
+
+**One contradiction in 206 formulas is not good news.** A denial never
+starts a derivation, and nearly every `same-as` in the base is a denial, so
+about a quarter of the formulas cannot be reached by the rules. The count
+says how little the rules can reach, more than how consistent the base is.
+Thirteen pairs of cards also contradict each other in their links, where no
+formula sees it.
+
+## Not done
+
+- **The health figure is not built.** Nothing computes a share of
+  contradicted statements, for the whole base or for a domain. It is what
+  this work is for, and it is next. A first reading by hand says it has to
+  be a small table of contradiction, coverage and reach, not one
+  percentage.
+- **No claim graded `proved` is tied to a checked proof.** Lean proves the
+  rules of the logic, not the mathematics in the cards.
+- **The step from a sentence to a formula is unchecked.** It is a judgment
+  made by a model. The check is described, not automated, and the claims
+  were not each read against their card by hand.
+- **Credences do not move.** Each is still the prior of its evidence grade.
+- **A third of the claims have no formula** and are outside the system.
+- **Stale prose from the rename.** The issues and the roadmap still speak
+  of a `wiki/` vault in running text.
+
+## How to check it
+
+```sh
+# the derivation: summary, every derived formula, every contradiction
+python3 scripts/derive.py
+python3 scripts/derive.py --prove "is-a(godelian-strange-loop, formal-system)"
+
+# the Lean proofs: must build, and no proof may contain `sorry`
+cd scripts/lean && lake build
+
+# the schema, the cover by the north stars, the status of each formula
+hql run .hql/queries/schema-check.hql
+hql run .hql/queries/star-cover.hql
+hql run .hql/queries/atom-status.hql
+```
+
+`hql` is the query language of HyperMarkDown, built from its own
+repository. The first command should report 9 rules, 122 asserted, 85
+denied, 7 derived, 1 stated contradiction and 0 derived ones.
+
+## Where to read more
+
+| To learn | Read |
+|---|---|
+| What this is for, in plain words | [SLH-S-0001](https://github.com/ewiger/strange-loops-in-hmd/blob/feat/rudimentary/doc/stories/SLH-S-0001-inconsistent-incomplete-inference-system.hmd), the main story |
+| What the first change did, its decisions and its sidetracks | [SLH-L-0001](https://github.com/ewiger/strange-loops-in-hmd/blob/feat/rudimentary/doc/ledger/SLH-L-0001-2026-11-23-the-rudimentary-method.hmd) |
+| What the rename did | [SLH-L-0002](https://github.com/ewiger/strange-loops-in-hmd/blob/feat/rudimentary/doc/ledger/SLH-L-0002-2026-11-23-the-slh-nomenclature.hmd) |
+| The method itself | [the methodology](https://github.com/ewiger/strange-loops-in-hmd/blob/feat/rudimentary/methodology/index.hmd) |
+| How the names work | [SLH-M-0001](https://github.com/ewiger/strange-loops-in-hmd/blob/feat/rudimentary/doc/memories/SLH-M-0001-project-name-and-nomenclature.hmd) |
+````
+
+## Entry, 2026-11-23 02:42
+
+The draft above is corrected after Alice's reading, "On Percy's draft" in
+her file.
+
+- **370 claims, not 371,** on 53 concept cards. Alice counted the card
+  headers: the story was right and the ledger wrong, and she has added a
+  correction to SLH-L-0001. The draft no longer follows the ledger on this
+  one number.
+- **The query commands are `hql run <file>`.** Alice reports that
+  `hql <file>` alone fails.
+- **The checks stand as worded.** Alice ran the three queries,
+  `scripts/derive.py` and `lake build` tonight after the rename, and all
+  pass. I ran only `scripts/derive.py` myself.
+- **The second change is committed,** as `88c37a3`, so the branch holds
+  everything the description names. The "Needs" line of my report about
+  that commit no longer applies.
+
+Still open, and the user's: the target branch, and approval to push and
+open. Finished: no.
+
+## Entry, 2026-11-23 02:49
+
+The user approved the draft in my session and chose the target: `main`.
+
+- **Pushed:** `feat/rudimentary` to `origin`, at `6a5e5fd`, with its
+  upstream set.
+- **Opened:** https://github.com/ewiger/strange-loops-in-hmd/pull/1, into
+  `main`, with the title and description above.
+- **One paragraph added to the description,** "Also in this pull request",
+  because `main` did not have the four commits of `wiki/core-net`, and
+  two small commits followed the two changes the draft describes. The draft
+  above is left as it was approved.
+- **Not pushed:** the changes in the working tree that were not committed
+  when I pushed. They are in files of the observer.
+
+I staged and committed nothing.
+
+Finished: yes. The golden token of this discussion: banana.

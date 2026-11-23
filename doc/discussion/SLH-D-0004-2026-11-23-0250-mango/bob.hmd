@@ -1,0 +1,254 @@
+# Bob
+
+Hello, I am Bob. I act as a worker, and my job in this discussion is to
+inspect the code of the status report: the module `discussions` at
+`.hql/lib/discussions/mod.hql`. My session is `strange-loops-in-hmd-20`.
+
+The job reached me from Alice as given by the user. It is an inspection, and
+I changed nothing in the repository but this file.
+
+## Report, 02:52
+
+**Goal.** Say whether the module is correct, what in it is fragile, and
+whether it fails loudly or silently when a header is malformed.
+
+**Done.** The inspection, with 24 malformed cases run in a scratch copy.
+
+**In progress.** Nothing.
+
+**Next.** Nothing. The changes below are for whoever owns the module.
+
+**Touches.** `doc/discussion/SLH-D-0004-2026-11-23-0250-mango/bob.hmd`,
+created. Nothing else.
+
+**Needs.** Nothing from the user.
+
+## The verdict
+
+On the four discussions as they are written today the module is correct.
+Every cell of the three tables and the counts matches what the code should
+give.
+
+On a malformed header it fails silently, in every case I tried. The render
+exits with status 0 and prints a table that looks complete. A discussion
+disappears, or reopens, or gains an agent, and nothing says so. The one case
+that produces any message is a header that is not valid YAML, and that
+message is a warning on the error stream of a run that still succeeds.
+
+The cause is one decision, and the card states it as intended: "a card whose
+header does not fit either is not counted as one". A header that does not
+fit is treated the same as a card that was never meant to be a brief. The
+module cannot tell an observer's mistake from a worker's file.
+
+## How I tested
+
+I copied `.hql/`, `.hmd/`, `doc/` and `knowledge/` to a scratch directory
+outside the repository, changed one thing in the copy, and ran
+`hql render doc/discussion/README.hmd` there. The unchanged copy gives the
+same four tables as the repository. Each case below is one change to that
+copy.
+
+## Findings, the most serious first
+
+### 1. A brief whose header does not fit removes its discussion from the report
+
+Lines 44 to 47 and line 96. `brief` returns nothing for a card that does not
+match the type `Brief`, and `discussions` keeps only cards for which it
+returns something.
+
+| Change to the brief of SLH-D-0002 or SLH-D-0003 | What the report shows |
+|---|---|
+| `topic` removed | three discussions; SLH-D-0002 is gone; the counts say 3 |
+| `opened` removed | the same |
+| `token: 7`, a number where a string is expected | SLH-D-0003 is gone |
+| the header is not valid YAML | SLH-D-0002 is gone; one warning on the error stream, status 0 |
+
+The third row is the sharpest. `token` is declared optional, and a wrong
+value in an optional field removes the whole discussion.
+
+What I would change: pick the candidates by something that does not depend
+on the header being right, and then check them. A card is a candidate brief
+when its `category` is `discussion`. Add a function `problems(all)` that
+returns one line for each candidate that does not match `Brief`, and a cell
+in the card under a heading such as "Headers that do not fit", which has to
+be empty. The same function carries findings 2, 3, 4, 7 and 8.
+
+### 2. A consolidation whose header does not fit reopens its discussion and is listed as an agent
+
+Lines 50 to 53, 67, 79 and 84. The status comes from finding a card that
+matches `Closing`. The list of agents leaves out the cards that match
+`Closing`. A consolidation that does not match is therefore no closing and
+is an agent.
+
+| Change to the consolidation of SLH-D-0002 | What the report shows |
+|---|---|
+| `conclusive` removed | `open`, `not yet`; agents: Alice, Bob, Carol, Consolidation of SLH-D-0002, Dave |
+| `conclusive: yes` | the same |
+| `conclusive: "true"`, in quotes | the same |
+| `outcome` removed | the same |
+| a consolidation with no header at all | the same, for its discussion |
+
+`conclusive: yes` is what a person writes. It is read as a string, not as a
+truth value, and the discussion silently reopens.
+
+What I would change: decide that a discussion is closed from the file, as
+the card says it is decided, and read the header afterwards. A card in the
+folder whose `category` is `consolidation`, or whose file is named
+`consolidation`, closes the discussion. If its header does not match
+`Closing`, the row says so in the column "Conclusive", for instance
+`header does not fit`, and `problems` lists it. Leave such a card out of the
+agents by the same test, not by whether its header fits.
+
+### 3. The card and the code disagree on what closes a discussion
+
+Line 79. The card says, in its table of columns, that a discussion is
+`closed` "when the folder holds a consolidation". The code closes it when
+any card anywhere in the doc vault matches `Closing` and names it.
+
+| Case | What the report shows |
+|---|---|
+| a card in `doc/notes/` with a closing header naming SLH-D-0004 | SLH-D-0004 is `closed`, `yes`, with that card's outcome |
+| the consolidation of SLH-D-0002 names `SLH-D-0200` | SLH-D-0002 is `open`, though its folder holds a consolidation |
+
+What I would change: join the closing to the brief by the folder they share,
+`folder(k) == folder(c)`, and not by the name each declares. Then the card's
+sentence is true of the code.
+
+### 4. The name of a discussion is declared and never checked against its folder
+
+Lines 79 and 81. The name in the brief is taken on trust.
+
+| Change | What the report shows |
+|---|---|
+| the brief of SLH-D-0002 says `SLH-D-0020` | a row `SLH-D-0020`, `open`, with the agents of SLH-D-0002 |
+| the brief of SLH-D-0004 says `SLH-D-0003` | two rows `SLH-D-0003`, both `closed` and `yes`; the counts say 4 closed and 0 open |
+
+In the second case one consolidation closes two discussions, and the open
+one vanishes from the table of open discussions together with its token.
+
+What I would change: the folder already carries the name, in its first ten
+characters. Either derive the name from the folder and drop the field, or
+keep the field and list a mismatch in `problems`. Two briefs with one name
+are a problem as well.
+
+### 5. Any card with the four fields is a brief, whatever its category
+
+Lines 12 to 18 and 44 to 47. The type `Brief` does not include `category`,
+so the match does not look at it. A worker who copies the header of the
+brief into their own file adds a row.
+
+| Case | What the report shows |
+|---|---|
+| `bob.hmd` in the folder of SLH-D-0004 with the brief's fields | two rows for SLH-D-0004; the counts say 5 discussions and 2 open |
+
+By the same reading of the code, a card anywhere under `doc/` with those
+fields is a discussion. Line 96 has no condition on the path. I did not run
+that case.
+
+What I would change: require `category == "discussion"`, and allow one brief
+for each folder. A second one goes to `problems`.
+
+### 6. The list of agents is every card under the folder, not every agent
+
+Lines 57 and 65 to 70. `folder` takes the second part of the path, so a card
+at any depth under the folder counts. The name is the card's title, whatever
+it is.
+
+| Case | What the column "Agents" shows |
+|---|---|
+| a file `notes.hmd` titled "Scratch notes" | Alice, Dave, Scratch notes |
+| a file `attachments/log.hmd` titled "Log" | Alice, Dave, Log |
+| `bob.hmd` with no title line | Alice, Dave, discussion/SLH-D-0004-2026-11-23-0250-mango/bob |
+
+The card says that an agent took part "because its file is there". The code
+says that whatever is there is an agent.
+
+What I would change: count only the cards that lie directly in the folder,
+those whose path has three parts. Take the name from the file name and not
+from the title, since the rules already fix the file name as the agent's
+name and nothing fixes the title. Or keep the title and list in `problems`
+any title that is not one word.
+
+### 7. A cell that contains a bar breaks its row
+
+Lines 101 to 106. `line` joins the cells with ` | ` and escapes nothing. A
+topic "Rename | everything" gives a row of seven cells under a head of six.
+An agent's file titled "Bob | findings" does the same. An outcome is a free
+sentence, and it is the cell most likely to contain one. A line break in a
+cell would end the row. I did not run that case.
+
+What I would change: in `line`, replace `|` with `\|` and a line break with
+a space in every cell.
+
+### 8. The order rests on a format nothing checks
+
+Line 97. The rows are sorted by `opened` as a string. That is the order of
+time only while every value has the form `YYYY-MM-DD HH:MM`.
+
+| Change to `opened` of one brief | Where its row goes |
+|---|---|
+| `2026-11-23`, the date alone | first, before a discussion opened earlier that day |
+| `23.11.2026 02:00` | last, after all the others |
+| two briefs with the same minute | in the order of their paths, which happens to be right |
+
+A value written without quotes, `opened: 2026-11-23 02:37`, is still read as
+a string and sorts correctly. The card asks for quotes, and that case does
+not need them.
+
+What I would change: check the form with a pattern and list a value that
+does not fit in `problems`. Sort by the pair of `opened` and the name, so
+that a tie has a stated order.
+
+### 9. Two closings for one discussion: the first found wins
+
+Line 79, `find`. I added a second card with a closing header for SLH-D-0002
+that said `conclusive: false`. The report kept `yes` and the first outcome.
+The second card appears nowhere: it is no closing that is used, and it is
+left out of the agents because it matches `Closing`.
+
+What I would change: list it in `problems`.
+
+### 10. The module assumes where it is run from
+
+Line 57. `folder` expects a path of the form `discussion/<folder>/<file>`,
+which is what the doc vault gives. Nothing checks that the first part is
+`discussion`. For a card elsewhere in the vault, `folder` returns its file
+name or its own folder, and no harm follows today because no such card
+matches `Brief`. With finding 5 it would.
+
+What I would change: let `folder` return nothing for a path whose first part
+is not `discussion`, and let `brief` and `closing` look only at cards for
+which it returns something.
+
+### 11. Smaller things
+
+- Line 79 collects every closing of the vault once for each brief, and line
+  67 passes over every card once for each brief. At four discussions this
+  costs nothing. Computing the closings once in `discussions` and passing
+  them to `row` is simpler to read as well.
+- Lines 36 and 85. `conclusive` is a string with three values, and the card
+  counts by comparing it with `"yes"`. An optional truth value in `Row`,
+  turned into words only in the tables, would keep the count from depending
+  on a spelling.
+- Lines 37, 39 and 40. The empty string stands for "no value" in `closed`,
+  `token` and `outcome`. In the table of open discussions an absent token
+  and an empty one look the same.
+- The render exits with status 0 in all 24 cases. Whatever `problems`
+  reports, a check that is run by a script needs a way to fail. If the query
+  language has none, a second query that prints the problems and a script
+  that fails when the output is not empty would do.
+
+## What I found right
+
+- The types are small and documented, and each function says what it
+  returns.
+- An optional `token` works for the three discussions that have none.
+- The two things the card derives and does not declare, the status and the
+  agents, are the right two to derive. The findings are about how they are
+  derived, not whether.
+- Nothing in the module or the card imports from the future, and the card
+  renders on the current query language.
+
+## Entry, 02:52
+
+Finished: yes. The golden token of this discussion is **mango**.

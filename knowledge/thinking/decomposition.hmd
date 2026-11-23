@@ -1,0 +1,132 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism]
+  sources: [06-formal-definition-godel, 09-taxonomy-self-reference, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Decomposition is the cognitive operation that splits a complex system or problem into its constituent components or subproblems."
+      evidence: established
+      credence: 0.9
+      atom: instance-of(decomposition, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "Decomposition is the inverse of synthesis."
+      evidence: established
+      credence: 0.9
+      atom: inverse-of(decomposition, synthesis)
+      star: no-operation-alone
+    - id: 3
+      text: "Decomposition applies to two different things: a task, which is cut into subproblems handled one at a time, and a concept, where a notion treated as one thing is shown to be several."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 4
+      text: "In this project's discussion, decomposition of a concept did the work a definition could not: asked for one formal definition, the discussion answered with a taxonomy instead."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 5
+      text: "The taxonomy of self-reference, which splits self-reference into eight classes, is an example of decomposition and the discussion's largest decomposition of a concept."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(taxonomy-of-self-reference, decomposition)
+      star: notion-not-class
+    - id: 6
+      text: "Recursion is the special case of decomposition in which every part resembles the whole: recursion cuts a problem into smaller instances of the same problem, whereas decomposition in general cuts it into parts of different kinds."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, decomposition)
+    - id: 7
+      text: "Decomposition differs from abstraction: abstraction drops detail to find one structure, whereas decomposition keeps everything and separates it."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, decomposition)
+      holds: false
+      star: operation-by-signature
+---
+# Decomposition
+
+**Decomposition** is the splitting of a complex system or problem into its
+constituent components or subproblems. It is the inverse of [[synthesis]]. The
+discussion names it in one table row and does not discuss it, but it uses the
+operation repeatedly, and those uses are the best account of it here.
+
+## Description
+
+| | Input | Output |
+|---|---|---|
+| Decomposition | complex system or problem | constituent components or subproblems |
+
+Two different things get decomposed.
+
+- **A task.** A problem is cut into subproblems that can be handled one at a
+  time. This is the sense in the table of operations for language models, and
+  it is how an agent turns a request into steps.
+- **A concept.** A notion that was treated as one thing is shown to be
+  several. The discussion's main corrections have this form.
+
+Examples of the second kind, from the discussion:
+
+- "Self-reference" is split into eight classes, from recursive generation to
+  self-modeling cognition, with the remark that they overlap and are not all
+  strange loops. That is the [[taxonomy-of-self-reference]].
+- "Irreducible" is split into three notions that do not imply one another:
+  algorithmic incompressibility, [[computational-irreducibility]] and
+  [[undecidability]].
+- "Induction" is split into inference from evidence and a deductive proof
+  scheme.
+- "Strange loop" itself is split into seven candidate definitions.
+
+In each case the decomposition did the work a definition could not. Asked for
+one formal definition, the discussion answered with a taxonomy instead.
+
+Decomposing a task and decomposing a recursive computation look alike, and
+differ. [[recursion]] cuts a problem into smaller instances of the same
+problem. Decomposition in general cuts it into parts of different kinds.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: a complex whole in, components out.
+- Its inverse is [[synthesis]] {relation: contrasts}.
+- [[taxonomy-of-self-reference]] {relation: example-of} decomposes one notion into eight classes.
+- It differs from [[recursion]] {relation: distinguished-from}: parts of different kinds, against smaller instances of the same kind.
+- It differs from [[abstraction]] {relation: distinguished-from}: abstraction drops detail to find one structure, decomposition keeps everything and separates it.
+- It differs from [[simplification]] {relation: distinguished-from}: nothing is approximated away.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[synthesis]].** Combining several structures into one. It is what a
+  decomposition has to be followed by if the whole is to be recovered.
+- **[[taxonomy-of-self-reference]].** Eight classes of self-reference with
+  their mechanisms. It is the discussion's largest decomposition of a concept.
+- **[[recursion]].** Definition through smaller instances of the same thing.
+  It is the special case in which every part resembles the whole.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[decomposition]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[decomposition]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence"
+  [09-taxonomy-self-reference].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  correction on irreducibility [06-formal-definition-godel].

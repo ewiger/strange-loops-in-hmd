@@ -1,0 +1,88 @@
+---
+tags: [questions]
+metadata:
+  category: question
+  status: open
+  order: 2
+  sources: [01-hofstadter-definition, 05-not-every-dynamic-system, 06-formal-definition-godel, 09-taxonomy-self-reference, 13-seven-definitions, 14-diagonalization-distinction]
+---
+# What does "strange loop" mean?
+
+**The question.** Define what *strange loop* means, following Douglas
+Hofstadter's *Gödel, Escher, Bach* and *I Am a Strange Loop*, and say what it
+means for modern AI work. This is the second of the five questions in the
+project README.
+
+## Where the answer stands
+
+The discussion reached a position in four moves.
+
+1. **Hofstadter defines by example.** Gödel's sentence, Escher's hands, Bach's
+   canon and the self are offered case by case. The common feature he names is
+   a return to the starting level after moving through a hierarchy. He does not
+   give a formal definition, and the cases are joined by analogy.
+2. **Most loops are excluded.** A first attempt in the discussion equated
+   strange loops with iterative self-modification and was withdrawn: by that
+   standard every dynamic system would qualify. Feedback, recursion,
+   self-similarity and plain cycles are anti-examples. What they lack is a
+   crossing between the level of the thing and the level of its description.
+3. **Only one case is exact.** The Gödel construction is the single example in
+   which every step can be written down: encoding, the diagonal lemma, the
+   sentence, the theorem. A second exact example, the constructible universe,
+   describes itself by a different mechanism and has no loop in time at all.
+   Neither requires feedback or self-modification.
+4. **So there is a family, not one definition.** The result is seven candidate
+   definitions ordered by what each includes, and a taxonomy of eight classes
+   of self-reference, most of which are not strange loops.
+
+The working formulation: a strange loop is a self-referential structure that
+arises through representational level crossing, and Gödelian diagonalization
+is its canonical formal realization. The preferred longer version adds that
+such a structure *potentially* exposes limits of its own descriptive
+framework. The word matters, because not every self-referential cycle is
+incomplete.
+
+For AI work the consequence is a test and not a slogan. An agent that edits
+its own instructions is feedback. It becomes a candidate strange loop only
+when its representation of itself takes part in changing what it represents.
+
+## Cards that bear on it
+
+- The term and its limits: [[strange-loop]], [[definitions-of-strange-loop]], [[taxonomy-of-self-reference]].
+- The defining feature: [[level-crossing]], [[object-and-meta-level]], [[self-reference]].
+- What it is not: [[feedback-loop]], [[recursion]], [[self-similarity]], [[mathematical-induction]].
+- The exact case: [[godel-numbering]], [[diagonal-lemma]], [[godel-sentence]], [[incompleteness-theorems]], [[diagonalization]].
+- The second exact case: [[constructible-universe]].
+- The proposed formal classes: [[reflective-formal-system]], [[reflection-progression]].
+
+## Still open
+
+- Whether any definition between Hofstadter's and the Gödelian one is more
+  than a restatement of "reflective system".
+- Whether the seventh, epistemically bounded definition can be made a theorem
+  for anything but formal theories. At present it is a conjecture supported by
+  analogy.
+- Whether a human is essential. The discussion's answer is no for the
+  mathematics and undecided for intelligence.
+
+## Queries
+
+Cards that declare they bear on this question:
+
+```hql
+@[[strange-loop-meaning]] | downlinks | filter(e => match e.data.relation { some(String r) => r == "answers", _ => false }) | map(e => e.source)
+```
+
+## Sources
+
+- Project README, the second listed reason for the project.
+- Discussion: "Original definition in Gödel, Escher, Bach"
+  [01-hofstadter-definition].
+- Discussion: "Why a dynamic system is not necessarily a strange loop"
+  [05-not-every-dynamic-system].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization"
+  [06-formal-definition-godel].
+- Discussion: "Seven candidate definitions of a strange loop"
+  [13-seven-definitions].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].

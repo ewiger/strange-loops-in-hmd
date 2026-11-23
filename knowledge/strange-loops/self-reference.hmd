@@ -1,0 +1,168 @@
+---
+tags: [strange-loops/core]
+metadata:
+  category: concept
+  cluster: strange-loops
+  status: draft
+  established: true
+  questions: [strange-loop-meaning]
+  sources: [02-fractals-and-self-similarity, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "A strange loop is a kind of self-reference: self-reference is the genus and the crossing of levels is the difference."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(strange-loop, self-reference)
+      star: levels-not-cycles
+    - id: 2
+      text: "Self-reference is a large family whose members work by different mechanisms, and most of them are not strange loops."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "Self-similarity is not self-reference: a fractal resembles itself at other scales without asserting anything about the rules of its own description."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(self-reference, self-similarity)
+      holds: false
+    - id: 4
+      text: "Duality is not self-reference: two structures that reconstruct each other are still two structures, and no loop is produced."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(duality, self-reference)
+      holds: false
+    - id: 5
+      text: "The existence of self-reference is distinct from a theorem about its consequences: a quine achieves self-reference with no paradox and no limitation."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 6
+      text: "Gödel's sentence is the liar with truth replaced by provability, and the replacement is what makes it a theorem instead of a contradiction."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(godel-sentence, liar-paradox)
+    - id: 7
+      text: "Recursion is the weakest form of self-reference: a recursive function mentions itself in its definition and crosses no level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, self-reference)
+---
+# Self-reference
+
+**Self-reference** is the property of a statement, program or system that
+refers to itself, contains a representation of itself, or takes itself as
+input. It is the broad family to which the [[strange-loop]] belongs. The
+discussion's position is that the family is large, that its members work by
+different mechanisms, and that most of them are not strange loops.
+
+## Description
+
+The starting observation was that mathematics is full of self-reference:
+the factorial function and every recursive sequence, Gödel's proof, the
+constructible universe, programs that print their own source. The proposal
+was to stop looking for one definition that covers all of them and to treat
+mathematical self-reference as a class to be sorted. The sorting is the
+[[taxonomy-of-self-reference]], with eight classes from recursive generation
+to self-modelling cognition.
+
+Sorting shows that "refers to itself" covers at least four different things.
+
+| What is meant | Example | Is anything referred to? |
+|---|---|---|
+| A rule applied to its own output | factorial, a fractal | No. A definition mentions itself; nothing is said about it |
+| A description that reproduces itself | a [[quine]] | The source is reproduced, not reasoned about |
+| A statement about its own code | the [[godel-sentence]] | Yes, through an encoding |
+| A system that models itself | a reflective agent, a mind | Yes, through a model that takes part in what it models |
+
+Three distinctions from the discussion keep these apart.
+
+- **Self-similarity is not self-reference.** A fractal resembles itself at
+  other scales. It does not, by that fact, assert anything about the rules of
+  its own description. This is the subject of [[self-similarity]].
+- **Duality is not self-reference.** A vector space and its dual, a set and
+  its complement, a Boolean algebra and its Stone space reconstruct each
+  other. Two structures that determine one another are still two structures,
+  and no loop is produced.
+- **Reproducing is not reasoning.** A quine reproduces a description; a
+  reflective interpreter can reason about a description. Neither inherently
+  implies incompleteness.
+
+A fourth distinction concerns what self-reference yields. The *existence* of
+self-reference is one thing, and *a theorem about its consequences* is
+another. Gödel's construction has both: a sentence that refers to itself, and
+a proof that the theory cannot decide it. A quine has only the first.
+
+Self-reference turns paradoxical when it is semantic and unrestricted. The
+[[liar-paradox]], [[russell-paradox]] and [[berry-paradox]] form their own
+class in the taxonomy. Gödel's sentence is the liar with truth replaced by
+provability, and the replacement is what makes it a theorem instead of a
+contradiction.
+
+### Where the strange loop sits
+
+The working formulation reached at the end of the discussion defines a
+strange loop as "a self-referential structure arising through representational
+level crossing". Self-reference is the genus. The crossing of levels is the
+difference. A recursive function is self-referential in the weak first sense
+and crosses nothing.
+
+## Relations
+
+- A [[strange-loop]] {relation: generalizes} is self-reference that arises through a crossing of levels.
+- It is sorted into eight classes by the [[taxonomy-of-self-reference]] {relation: part-of}.
+- It is not [[self-similarity]] {relation: distinguished-from}: resemblance across scales asserts nothing about itself.
+- It is not [[duality]] {relation: distinguished-from}: mutual reconstruction of two structures is not one structure referring to itself.
+- [[recursion]] {relation: example-of} is its weakest form: a definition that mentions itself.
+- A [[quine]] {relation: example-of} is its reproductive form: a program whose output is its own source.
+- The [[godel-sentence]] {relation: example-of} is its exact formal form.
+- [[diagonalization]] {relation: uses} is the standard method for producing it inside a formal system.
+- A [[fixed-point]] {relation: analogous-to} is its mathematical shape: an object that a transformation returns unchanged.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}, as the family from which the concept has to be cut out.
+
+## Neighbouring concepts
+
+- **[[taxonomy-of-self-reference]].** Eight overlapping classes, each with its
+  own mechanism, offered in place of a forced universal definition. It is the
+  full sorting of what this card introduces.
+- **[[strange-loop]].** A return to the starting level through a hierarchy.
+  It is the member of this family that Hofstadter singled out.
+- **[[self-similarity]].** Repetition of a pattern across scales. It is the
+  concept most easily mistaken for self-reference, and involves no reference.
+- **[[godel-sentence]].** A sentence provably equivalent to the statement that
+  it is not provable. It is self-reference with every step written out.
+- **[[quine]].** A program that outputs its own source text. It shows that
+  self-reference can be achieved with no paradox and no limitation.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[self-reference]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[self-reference]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[semantic-neighbours]] would list the
+cards that discuss self-reference without linking here.
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and
+  intelligence", the question and the table of classes
+  [09-taxonomy-self-reference].
+- Discussion: "Fractals versus strange loops"
+  [02-fractals-and-self-similarity].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  note that duality is not self-reference
+  [10-operations-dualities-generalization].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].

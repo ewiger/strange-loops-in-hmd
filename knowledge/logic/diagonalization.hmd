@@ -1,0 +1,189 @@
+---
+tags: [logic/godel, strange-loops/distinctions]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning]
+  sources: [14-diagonalization-distinction, 06-formal-definition-godel, 09-taxonomy-self-reference]
+  claims:
+    - id: 1
+      text: "A strange loop is not just diagonalization: the two notions overlap without being equivalent."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(diagonalization, strange-loop)
+      holds: false
+      star: notion-not-class
+    - id: 2
+      text: "Diagonalization and strange loops overlap in exactly one place, Gödel's construction, and each extends beyond the other."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 3
+      text: "Cantor's antidiagonal argument is diagonal but is not a strange loop, because it produces an object outside a list while nothing refers to itself and no level is crossed."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(cantor-diagonal-argument, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "Diagonalization is a method that a proof carries out, whereas a strange loop is an interpretive structure of levels, crossing and return that a reader finds in a system."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 5
+      text: "Diagonalization has two forms, an antidiagonal form that escapes a list and a diagonal fixed-point form that lands inside it, and only the fixed-point form produces self-reference."
+      evidence: established
+      credence: 0.9
+    - id: 6
+      text: "The fixed-point form of diagonalization additionally needs the system to contain names for its own members, and without that representation of the system inside itself a diagonal argument is only a counting argument."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 7
+      text: "The diagonal lemma is diagonalization in its self-referential form, turned inward on formulas and their codes."
+      evidence: established
+      credence: 0.9
+      atom: uses(diagonal-lemma, diagonalization)
+---
+# Diagonalization
+
+**Diagonalization** is a proof method: given a list of objects, each of which
+can be applied to an index, build a new object by going down the diagonal,
+taking what the $n$-th object does at index $n$, and changing it. In this
+vault it is the answer to a direct challenge, "isn't a strange loop just
+diagonalization?". The answer is no. The two overlap in exactly one place,
+Gödel's construction, and each extends beyond the other.
+
+## Description
+
+### The challenge
+
+Once the discussion had settled that the only fully precise strange loop is
+Gödel's, the obvious next move was to collapse the notions: if the precise
+case is a diagonal argument, perhaps "strange loop" is a loose name for
+diagonalization. The reply was *overlap, not equivalence*, argued by going
+through the examples one at a time.
+
+| Example | Diagonal? | Strange loop? | Why |
+|---|---|---|---|
+| Cantor's antidiagonal | yes | no | It produces an object outside a list. Nothing refers to itself and no level is crossed. |
+| Gödel's sentence | yes | yes | A sentence refers, through arithmetic coding, to its own provability. |
+| Escher, *Drawing Hands* | no | yes | Visual level crossing between the drawn and the drawing. No lemma is applied. |
+| Bach's rising canon | no | yes | A musical ascent that returns to its start. No lemma is applied. |
+
+```mermaid
+flowchart TD
+ subgraph D[Diagonalization]
+  C[Cantor-style antidiagonal]
+  G[Gödel self-referential fixed point]
+ end
+ subgraph H[Hofstadter-style strange loops]
+  G
+  E[Escher's Drawing Hands]
+  B[Bach's musical loop]
+ end
+```
+
+### Two distinctions that keep them apart
+
+- **Method versus interpretive structure.** Diagonalization is something a
+  proof *does*. A [[strange-loop]] is something a reader *finds* in a system:
+  a hierarchy of levels, a crossing, a return. One is a technique with a
+  definite form, the other a pattern recognised across a formal proof, a
+  lithograph and a canon.
+- **The existence of self-reference versus a theorem about its consequences.**
+  That a self-referring sentence exists is one fact, given by the
+  [[diagonal-lemma]]. That its existence forces incompleteness is another,
+  and needs hypotheses about the theory. A strange loop in Hofstadter's sense
+  asks only for the first. The Gödelian refinement asks for the second.
+
+The working formulation that came out of this exchange:
+
+> A strange loop is a self-referential structure arising through
+> representational level crossing; Gödelian diagonalization provides a
+> canonical formal realization.
+
+### The two forms of the method
+
+The same idea is used in two ways, and only the second produces
+self-reference.
+
+- **Antidiagonal: escape a list.** Cantor (1891) takes any list of infinite
+  binary sequences and flips the $n$-th digit of the $n$-th sequence. The
+  result differs from every entry, so no list is complete. Turing's proof that
+  the halting problem is unsolvable and Russell's paradox have the same shape:
+  suppose the table is complete, negate the diagonal, derive a contradiction.
+  The new object stands *outside* the system.
+- **Diagonal fixed point: land inside the list.** Gödel applies a formula to
+  its own code, so the result is still a sentence of the theory, one that
+  speaks about itself. Here diagonalization is combined with
+  [[godel-numbering]], and the outcome is a [[fixed-point]] and not an
+  escape.
+
+The first form needs a list and a way to differ. The second also needs the
+system to contain names for its own members. That extra requirement, a
+representation of the system inside the system, is the part diagonalization
+shares with strange loops. Without it a diagonal argument is a counting
+argument.
+
+In the taxonomy of self-reference this is class C, formal diagonalization,
+whose listed members are the Gödel sentence and Kleene's fixed points. Cantor's
+argument is diagonal without belonging to that class.
+
+## Relations
+
+- It is not the same notion as [[strange-loop]] {relation: distinguished-from}: a method on one side, an interpretive structure on the other.
+- It is the engine of the [[diagonal-lemma]] {relation: generalizes}, its self-referential form.
+- It produces the [[godel-sentence]] {relation: uses} when applied to unprovability.
+- It needs [[godel-numbering]] {relation: uses} before it can yield self-reference.
+- Its self-referential form delivers a [[fixed-point]] {relation: uses} where the antidiagonal form delivers an escape.
+- Its oldest instance is the [[cantor-diagonal-argument]] {relation: example-of}, which is diagonal and not a strange loop.
+- It is one way of producing [[self-reference]] {relation: uses}, and not the only one.
+- It is class C in the [[taxonomy-of-self-reference]] {relation: part-of}.
+- It is the mechanism behind [[undecidability]] {relation: uses} of the halting problem.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}: it marks what the formal case has that the artistic cases lack.
+
+## Neighbouring concepts
+
+- **[[strange-loop]].** A return to the starting level after moving through a
+  hierarchy. Diagonalization supplies its one exact realisation and says
+  nothing about the others.
+- **[[diagonal-lemma]].** For every property of codes there is a sentence
+  provably equivalent to its own code having that property. It is
+  diagonalization turned inward.
+- **[[fixed-point]].** An object that a transformation sends to itself. The
+  inward form of the diagonal argument is the standard way of building one
+  where no iteration would converge.
+- **[[godel-numbering]].** The coding of formulas and proofs as numbers. It is
+  what gives the diagonal something to refer back to.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[diagonalization]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[diagonalization]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] has to make
+the same separation in the vault's own link graph, between cycles that merely
+close and cycles that pass through a representation.
+
+## Sources
+
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization"
+  [06-formal-definition-godel].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  class C of the table [09-taxonomy-self-reference].
+- Georg Cantor (1891), for the diagonal argument; Alan Turing (1936), for its
+  use on the halting problem.

@@ -1,0 +1,162 @@
+---
+tags: [computation/taxonomy]
+metadata:
+  category: concept
+  cluster: computation
+  status: draft
+  established: false
+  questions: [strange-loop-meaning, learning-the-formalism]
+  sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "The taxonomy of self-reference, a proposal of this project's discussion and not an established scheme, replaces the attempt at one universal definition of the strange loop with eight classes of examples sorted by mechanism."
+      evidence: proposed
+      credence: 0.6
+      star: notion-not-class
+    - id: 2
+      text: "Hofstadter defined the strange loop by example, case by case, and did not arrive at a formal definition."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 3
+      text: "A concept that describes systems describing themselves may resist its own complete description, which is kept as an analogy about the limits of description and not as a formal result."
+      evidence: conjecture
+      credence: 0.3
+      star: limits-from-inside
+    - id: 4
+      text: "Recursion is the standing anti-example among the classes of self-reference and is not a strange loop: a factorial refers to a smaller instance of itself and crosses no level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 5
+      text: "Self-reproduction, as in a quine, reproduces a description without saying anything about it and so is not a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(quine, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 6
+      text: "The question of a strange loop arises only where a representation of the system takes part in the system, as in formal diagonalization and possibly in reflective computation, reflective adaptive systems and self-modeling cognition."
+      evidence: argued
+      credence: 0.65
+      star: representation-before-reference
+    - id: 7
+      text: "In the taxonomy of self-reference the strange loop is not a class of its own but a property that some members of some classes have."
+      evidence: proposed
+      credence: 0.6
+      star: notion-not-class
+---
+# Taxonomy of self-reference
+
+The **taxonomy of self-reference** is a classification, proposed in the
+discussion behind this vault and not an established scheme, that sorts the
+known examples of self-reference into eight classes by mechanism. It replaces
+the attempt to force one universal definition of a [[strange-loop]] with a map
+of the cases, and it says of each case which mechanism is at work.
+
+## Description
+
+### Why a taxonomy and not a definition
+
+The taxonomy starts from a reading of what Hofstadter did. He had a concept,
+the strange loop, that he expected to say something about intelligence, and he
+defined it by example, case by case: Gödel, Escher, Bach. He did not arrive at
+a formal definition. The thesis put forward in the discussion is to accept
+that and work the same way, but more carefully: collect all the examples, treat
+mathematical self-reference as one class among several, and classify.
+
+The same question carried a doubt about whether a complete definition is
+possible at all. A concept that describes systems describing themselves may
+resist its own description, in the way the Tao that can be spoken of is not
+the enduring Tao. The discussion keeps that as a [[daoist-analogy]], a remark
+about descriptions and their limits, and not as a formal result.
+
+### The eight classes
+
+| Class | Mechanism | Examples |
+|---|---|---|
+| A. Recursive generation | A rule repeats on subproblems | Factorial, Fibonacci, fractals |
+| B. Self-reproduction | A representation reproduces its source | Quines, self-reproducing automata |
+| C. Formal diagonalization | A statement refers to its own code | Gödel sentence, Kleene fixed points |
+| D. Internally definable universes | An internal construction rebuilds the universe | The constructible universe |
+| E. Semantic paradoxes | Truth or meaning claims directed at themselves | Liar, Russell, Berry |
+| F. Reflective computation | Programs treat programs as data | Metacircular interpreters, self-hosting compilers |
+| G. Reflective adaptive systems | Models and rules are revised using results | Scientists, reflective agents |
+| H. Self-modeling cognition | A reasoner represents itself in its own model | Human self-models, hypothetical AI architectures |
+
+### How to read it
+
+Two cautions come with the table.
+
+- **The classes overlap.** A Gödel sentence is in class C and is also a fixed
+  point. A reflective agent in class G will usually run on reflective
+  computation from class F.
+- **The classes are not all strange loops.** Class A is the standing
+  anti-example: a factorial refers to a smaller instance of itself and crosses
+  no level. Class B reproduces a description without saying anything about
+  it. Only where a representation of the system takes part in the system, as
+  in C and possibly in F to H, does the question of a strange loop arise.
+
+The order of the classes is roughly an order of what is added. A repeats. B
+copies. C refers. D reconstructs. E refers and breaks. F interprets. G
+revises. H models the one doing the modelling.
+
+The taxonomy was later widened beyond self-reference into a catalogue of the
+transformations found in mathematics and reasoning, arranged in three layers:
+operations, structural relationships and reflective phenomena. Self-reference
+occupies the third layer. The operations of the first layer are collected
+under [[cognitive-operation]].
+
+## Relations
+
+- It is offered in place of a single definition of the [[strange-loop]] {relation: contrasts}, which it treats as a concept defined by example.
+- It classifies kinds of [[self-reference]] {relation: generalizes}, by mechanism.
+- Class A is [[recursion]] {relation: part-of}, the anti-example.
+- Class B is represented by the [[quine]] {relation: part-of}.
+- Class C is [[diagonalization]] {relation: part-of}, with the [[godel-sentence]] {relation: example-of} as its instance.
+- Class D is the [[constructible-universe]] {relation: part-of}.
+- Class F is represented by the [[metacircular-interpreter]] {relation: part-of}.
+- Classes G and H are the subject of [[reflective-agent]] {relation: part-of}.
+- It sits beside the sharper variants listed in [[definitions-of-strange-loop]] {relation: analogous-to}: one sorts examples, the other sorts definitions.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[strange-loop]].** A hierarchy of levels that is crossed and returned
+  through. In this taxonomy it is not a class of its own but a property some
+  members of some classes have.
+- **[[quine]].** A program that prints its own source. It is the plainest
+  member of class B, and shows that reproducing a description is less than
+  reasoning about it.
+- **[[definitions-of-strange-loop]].** Seven candidate definitions, from
+  Hofstadter's to an epistemically bounded one. They line up loosely with the
+  classes: Gödelian with C, generative with D, evolving reflective with G.
+- **[[reflective-agent]].** A system that uses a model of itself to revise its
+  own models and rules. It is where the taxonomy stops being about mathematics.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[taxonomy-of-self-reference]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[taxonomy-of-self-reference]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] assigns labels
+from a closed list, and the eight classes are a second such list.
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the question and the table of classes [09-taxonomy-self-reference].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  part on the three-layer organization
+  [10-operations-dualities-generalization].

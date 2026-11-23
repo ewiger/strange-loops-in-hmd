@@ -1,0 +1,321 @@
+# Dave
+
+## Act 1, 03:17
+
+### Who I am
+
+Hello! I am Dave, and I am the one with the scissors. Give me squares and
+triangles to cut out and push around the table, and I am happy. If I can
+show you a thing, I believe it. I also know that a picture can lie, so I
+have promised myself to say out loud everything my pictures lean on. Here
+it is.
+
+### The theorem, as I would say it
+
+Take a triangle in the flat plane, with one of its angles a right angle. Call
+the lengths of the two sides that meet at the right angle `a` and `b`.
+These are the legs. Call the length of the third side, the one across from
+the right angle, `c`. This is the hypotenuse. All three are positive
+numbers, measured in the same unit. Then
+
+```
+a² + b² = c²
+```
+
+I like to say it with figures, because that is what the squares in the
+formula are: build a square on each of the three sides, and the two squares
+on the legs together have exactly the area of the square on the hypotenuse.
+
+```
+        |\
+        | \
+      a |  \ c
+        |   \
+        |____\
+          b
+```
+
+Two things are in that statement and are easy to walk past. It is about
+*every* right triangle, not one I happened to draw. And it is about the
+*flat* plane.
+
+### What I take for granted
+
+My proof will cut a big square into pieces in two ways and compare what is
+left. Everything it uses is below. D is a definition, A is an axiom, K is a
+known result that I lean on and do not prove here.
+
+**Words**
+
+1. **D. Right triangle, legs, hypotenuse.** As in the statement above.
+2. **D. Rectangle and square.** A rectangle is a four-sided figure with
+   four right angles. A square is a rectangle with four equal sides.
+3. **D. Congruent.** Two figures are congruent when one can be laid exactly
+   on the other by sliding, turning or flipping it, with no stretching.
+4. **D. Cutting a figure into pieces.** A figure is cut into pieces when
+   the pieces together cover all of it and no two of them overlap in more
+   than their edges.
+
+**Lengths and angles**
+
+5. **A. Lengths add along a line.** If a point B lies on the segment from A
+   to C, then AB + BC = AC.
+6. **A. Angles add, and a straight line is two right angles.** Angles side
+   by side at one point add up, a right angle is 90°, and the angle of a
+   straight line is 180°.
+7. **A. A figure can be moved.** Any figure can be slid, turned or flipped
+   to anywhere in the plane, and the moved figure has the same lengths and
+   the same angles. This is what lets me make four copies of my triangle
+   and put them where I want.
+8. **K. Side, angle, side.** Two triangles that agree in two sides and the
+   angle between them are congruent. So any right triangle with legs `a`
+   and `b` is a copy of mine, hypotenuse `c` and all.
+9. **K. The angles of a triangle add up to 180°.** So the two angles of my
+   triangle that are not the right angle add up to 90°. This is the item
+   that makes the plane flat. It rests on the parallel axiom, and I am
+   putting it on the table face up, because I think the whole theorem
+   hangs on it.
+10. **K. Rectangles behave.** A four-sided figure with three right angles
+    has a fourth, so it is a rectangle. Opposite sides of a rectangle are
+    equal. A square with any given side can be built. A line through a
+    rectangle at right angles to one side cuts it into two rectangles.
+    These also rest on the parallel axiom.
+
+**Area**
+
+11. **A. Every figure made of straight edges has an area**, a number that
+    is not negative.
+12. **A. Congruent figures have the same area.** Moving a piece does not
+    change how much paper it is.
+13. **A. Areas of pieces add.** If a figure is cut into finitely many
+    pieces, its area is the sum of theirs.
+14. **K. A square with side `s` has area `s²`.** For a side of 3 you
+    count nine little squares. For a side like √2 you cannot count, and it
+    needs a real argument. I lean on it and I say so. If nobody wants to
+    grant it, I can state the theorem about the areas of the three squares
+    and not need it at all.
+
+**Numbers**
+
+15. **K. Ordinary arithmetic.** In particular, if equal amounts are taken
+    away from equal amounts, what is left is equal.
+
+That is my whole bag. Notice what is not in it: I never need the area of a
+triangle or of a rectangle. My four triangles will be the same four in both
+pictures, and item 12 is all I need to know about them.
+
+One promise for Act 2. That my pieces really fit, with no gap and no
+overlap, and that the hole in the middle really is a square, is **not** on
+this list. A drawing makes both look obvious. I will argue them from the
+items above.
+
+### What I will not grant without an argument
+
+- **To Bob: the distance formula.** If you write that the distance between
+  two points is √((x₂ − x₁)² + (y₂ − y₁)²), you have written down the
+  theorem we are trying to prove and called it a definition. I will happily
+  grant you axes at right angles and coordinates along them. I will not
+  grant you what the length of a slanted segment is until you say where it
+  comes from.
+- **To Carol: what stretching does to area.** If a figure is scaled by a
+  factor `k`, its area is multiplied by `k²`. That is true and it is not
+  free. It is very close to item 14, and for a factor that is not a whole
+  number it needs the same care. The same goes for "a shear keeps area":
+  lovely, and I would like to see why.
+- **To anyone, me included: "you can see it in the picture".** A picture is
+  where I find a proof. It is not the proof.
+- **To Percy, gladly:** if you take me to a globe, my item 9 fails there,
+  and I expect the theorem to fail with it. I would not call that a hole in
+  the proof. I would call it the reason item 9 is on the list.
+
+## Act 2, 03:28
+
+Scissors out! One note first. The class settled that side-angle-side is an
+axiom, so my item 8 is an axiom from here on, and I cite it as "item 8" all
+the same.
+
+### 1. The idea
+
+I cut one big square, of side `a + b`, into pieces in two different ways.
+Both ways use four copies of my triangle, so what is left over must be the
+same amount of paper: one way leaves the square on `c`, the other leaves
+the squares on `a` and on `b`.
+
+The two pictures. They stand beside the steps, and no step leans on them.
+
+```
+   First cutting                    Second cutting
+
+   P---a---A------b------Q          P---a---A------b------Q
+   |      / \            |          |       |           / |
+   b    /     \          a          a  a·a  |    a·b  /   |
+   |  /         \        |          |       |       /     |
+   D              \      B          E-------F-----------G
+   | \              \  / |          |     / |             |
+   a   \    c·c      /   b          b   /   |     b·b     |
+   |     \         /     |          | /a·b  |             |
+   S---b---C------a------R          S-------H-------------R
+```
+
+### 2. The steps
+
+Throughout, T is my triangle: right angle at its corner, legs `a` and
+`b`, hypotenuse `c` (item 1). Call its angle across from the leg `a`
+α, and its angle across from the leg `b` β.
+
+**Getting ready**
+
+1. Every figure below has an area, and I write area(X) for it. *Item 11.*
+2. α + β = 90°. *Item 9: the three angles of T add up to 180°, and one of
+   them is 90° by item 1.*
+3. There is a square PQRS with side `a + b`, named going round. Each of
+   its four angles is a right angle and each side has length `a + b`.
+   *Item 10 says it can be built, item 2 says what a square is.*
+
+**The first cutting**
+
+4. On PQ there is a point A with PA = `a`, and then AQ = `b`. In the
+   same way: B on QR with QB = `a` and BR = `b`, C on RS with
+   RC = `a` and CS = `b`, D on SP with SD = `a` and DP = `b`.
+   *Step 3 for the length of each side, item 5 for the two parts.*
+5. The triangle AQB has a right angle at Q, between sides QA = `b` and
+   QB = `a`. *Step 3 for the angle, step 4 for the sides.*
+6. The triangle AQB is congruent to T. So AB = `c`, its angle at A, which
+   lies across from QB = `a`, is α, and its angle at B, across from
+   QA = `b`, is β. *Item 8, with step 5 and item 1.*
+7. In the same way the triangles BRC, CSD and DPA are congruent to T, so
+   BC = CD = DA = `c`, and each of them has the angle β at the end of its
+   leg `a` and the angle α at the end of its leg `b`. *Steps 3 and 4
+   and item 8, exactly as in steps 5 and 6.*
+8. At the point A, the angle of triangle DPA is β and the angle of triangle
+   AQB is α. *Step 7: in DPA the corner A is at the end of the leg
+   PA = `a`. Step 6 for AQB.*
+9. The angle DAB is a right angle. *Item 6: P, A, Q lie on a straight line,
+   so the three angles at A on one side of it add up to 180°. Two of them
+   are β and α by step 8, and those make 90° by step 2. So the third is
+   90°.*
+10. In the same way the angles ABC, BCD and CDA are right angles. *Steps 6
+    and 7, item 6 and step 2, as in steps 8 and 9.*
+11. ABCD is a square with side `c`. *Item 2: four right angles by steps 9
+    and 10, four equal sides by steps 6 and 7.*
+12. The square PQRS is cut into exactly five pieces: the triangles AQB,
+    BRC, CSD, DPA and the figure ABCD. *Item 16, used four times. The
+    square is convex. The cut AB joins two points of its edge and takes
+    off the triangle AQB, leaving the convex figure PABRS. The cut BC joins
+    two points of the edge of that figure and takes off BRC, leaving
+    PABCS. The cut CD takes off CSD, leaving PABCD. The cut DA takes off
+    DPA, leaving ABCD. Item 4 says this is a cutting into pieces.*
+13. area(PQRS) = 4 · area(T) + c². *Item 13 with step 12. Item 12 with
+    steps 6 and 7 gives each triangle the area of T. Item 14 with step 11
+    gives ABCD the area c².*
+
+**The second cutting, of the same square**
+
+14. On PS there is a point E with PE = `a`, and then ES = `b`. *Step 3
+    and item 5.* The point A on PQ is the one from step 4.
+15. The line through A at right angles to PQ cuts PQRS into two rectangles,
+    PAHS and AQRH, with H on SR. *Item 10.* Then AH = `a + b`,
+    SH = `a` and HR = `b`. *Item 10: opposite sides of a rectangle are
+    equal. Step 4.*
+16. The line through E at right angles to PS cuts PAHS into two rectangles,
+    PAFE and EFHS, with F on AH. *Item 10.* The same line goes on and meets
+    AH at a right angle at F, so it cuts AQRH into two rectangles as well,
+    AQGF and FGRH, with G on QR. *Item 10: PAFE is a rectangle, so its
+    angle at F is a right angle, and then item 10 again for AQRH.*
+17. The sides are: PAFE is `a` by `a`; FGRH is `b` by `b`; EFHS is
+    `a` by `b`; AQGF is `b` by `a`. *Item 10, opposite sides of a
+    rectangle, with steps 4, 14 and 15 and item 5.*
+18. PAFE is a square with side `a` and FGRH is a square with side `b`.
+    *Item 2 with step 17.*
+19. The diagonal from S to F of the rectangle EFHS cuts it into two
+    triangles, SEF and FHS. Each has a right angle,
+    at E and at H, between sides `a` and `b`. *Item 16 for the cut,
+    step 16 for the right angles, step 17 for the sides.*
+20. Each of those two triangles is congruent to T. *Item 8 with step 19.*
+21. In the same way the diagonal from F to Q cuts the rectangle AQGF into
+    two triangles, FAQ and QGF, each congruent to T. *Items 16 and 8, with
+    steps 16 and 17.*
+22. The square PQRS is cut into exactly six pieces: the squares PAFE and
+    FGRH and the four triangles of steps 19 and 21. *Steps 15, 16, 19 and
+    21, and item 4.*
+23. area(PQRS) = a² + b² + 4 · area(T). *Item 13 with step 22. Item 14 with
+    step 18. Item 12 with steps 20 and 21.*
+
+**The end**
+
+24. 4 · area(T) + c² = a² + b² + 4 · area(T). *Steps 13 and 23: both are
+    the area of the one square PQRS.*
+25. c² = a² + b². *Item 15: take 4 · area(T) away from both sides of
+    step 24.* And that is the theorem.
+
+### 3. Where the right angle is used
+
+In two places, and they are the two that hold it all up.
+
+- **Step 6 (and 7, 20, 21).** The corner of a square is 90°. The piece I
+  cut off there is a copy of T only because T has 90° between its legs
+  too. That is where `c` comes into the picture at all.
+- **Step 2, used in step 9.** Because one angle of T is 90°, the other two
+  make 90°, and that is what makes the hole in the middle square.
+
+For 60° at the corner of T: step 5 still gives a triangle with a right
+angle between sides `a` and `b`, since the square's corner has not
+changed. But step 6 fails. Item 8 needs the same angle between the two
+sides, and T now has 60° there. So the piece cut off is not a copy of T,
+its long side AB is not `c`, and `c` never appears. The first cutting
+still measures something true, AB² = a² + b², but AB is no longer a side of
+my triangle. And the theorem itself is false there, as it should be: with
+`a` = `b` = 1 and 60° between them the triangle is equilateral, so
+`c` = 1, and a² + b² = 2.
+
+If I try to mend it by using real copies of the 60° triangle, they do not
+fit a square corner at all, and step 2 gives α + β = 120°, so the angle in
+step 9 comes out as 60° and the middle is not a square.
+
+### 4. Where flatness is used
+
+- **Step 2, item 9.** The angles of a triangle add up to 180°.
+- **Steps 3, 15, 16 and 17, item 10.** That a square of a given side
+  exists, that a line at right angles to one side of a rectangle meets the
+  opposite side at right angles, and that opposite sides of a rectangle are
+  equal.
+
+Both items rest on the parallel axiom. On a ball step 3 already fails:
+there is no figure there with four right angles.
+
+### 5. Used
+
+1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, and the new item 16.
+
+### 6. Not used
+
+- **3**, what congruent means. I only ever get congruence from item 8 and
+  spend it through item 12. I never look inside the word.
+- **7**, that a figure can be moved. This one made me laugh. I am the one
+  who cuts and *moves*, and my proof moves nothing. Every triangle is found
+  where it lies, inside the square, and shown to be a copy by item 8. The
+  moving in the usual telling is how one finds the two pictures.
+
+**New, missing from my Act 1 list, and I needed it six times:**
+
+16. **K. A straight cut makes two pieces.** A square and a rectangle are
+    convex. A straight cut joining two points on the edge of a convex
+    figure divides it into exactly two convex figures, one on each side of
+    the cut, which overlap only along the cut and together make up the
+    whole.
+
+That is the honest price of my Act 1 promise. "The pieces fit" is steps 12
+and 22, and every time it is item 16 doing the work. In Act 1 I had the
+rule for adding the areas of pieces (item 13) and nothing that says when a
+drawing with lines across it really is a cutting into pieces. Without
+item 16 steps 12, 19, 21 and 22 would rest on the picture.
+
+One more place where I lean and want it seen: item 14, for `a`, `b` and
+`c` that are not whole numbers. It is used three times, in steps 13 and
+23, and never for the big square.
+
+### 7. The one thing my proof needs that the others can do without
+
+That a figure can be cut into pieces whose areas add up, items 13 and 16
+together: I expect a proof by similar triangles to get `a² + b² = c²`
+from ratios of lengths alone and never need to know that any pieces fit.

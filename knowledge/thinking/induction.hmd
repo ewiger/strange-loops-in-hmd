@@ -1,0 +1,212 @@
+---
+tags: [thinking/reasoning]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql, ai-oriented-language]
+  sources: [08-humans-extend-axioms, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Induction is the inference from observations to a general hypothesis that may be false."
+      evidence: established
+      credence: 0.9
+      atom: produces(induction, hypothesis)
+      star: candidate-until-checked
+    - id: 2
+      text: "Induction is never a standalone operation and works only in a cycle with deduction: a hypothesis reached by induction has no content until something is deduced from it."
+      evidence: argued
+      credence: 0.75
+      atom: requires(induction, deduction)
+      star: no-operation-alone
+    - id: 3
+      text: "Induction is the upward arc of the reasoning cycle, from data to model, while deduction is the downward arc from model to consequences."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(induction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 4
+      text: "Induction as inference is a different concept from mathematical induction, which is a deductive proof method with certain conclusions and shares only the name."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(induction, mathematical-induction)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Induction belongs with deduction and abduction as one family of inference and is not generalization: induction is an inference that rests on evidence, whereas generalization widens a concept or claim and may involve no evidence at all."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "Induction is not abduction: induction goes from many cases to a rule, whereas abduction goes from one surprising case to a candidate explanation."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abduction, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 7
+      text: "The practical line between conventional programs and language models runs between executing an established formalization, which is the deductive arc, and discovering or revising one, which is the inductive arc, and not between computable and uncomputable problems."
+      evidence: argued
+      credence: 0.75
+---
+# Induction
+
+**Induction** is the inference from observations to a general hypothesis. In
+this vault it is never treated as a standalone operation: it is one half of a
+cycle whose other half is [[deduction]]. Induction proposes a model, deduction
+unfolds what the model implies, and testing those implications produces the
+observations for the next induction.
+
+The word names two different things, and this card keeps them in two lanes.
+
+| | Induction as inference | Mathematical induction |
+|---|---|---|
+| Goes from | observations | a base case and a step |
+| Arrives at | a hypothesis that may be false | a theorem about every natural number |
+| Kind of operation | discovery, outside any fixed theory | proof, inside a fixed theory |
+| Partner | [[deduction]], in a cycle | [[recursion]], as its definitional twin |
+| Card | this one | [[mathematical-induction]] |
+
+## Description
+
+### Lane one: induction is always done in the context of deduction
+
+A hypothesis reached by induction has no content until something is deduced
+from it. "All observed cases fit this rule" becomes a claim about the world
+only when the rule is used to derive a case not yet observed. Conversely,
+deduction cannot start itself: it needs premises, and for anything that is not
+already a formal theory those premises were reached by induction or
+[[abduction]]. Neither operation does work alone.
+
+```mermaid
+flowchart TD
+ A[Observations] -->|Induction / abduction| B[Hypotheses or model]
+ B -->|Deduction| C[Predictions]
+ C -->|Testing| D[New observations]
+ D --> A
+```
+
+This is the [[reasoning-cycle]]. Induction is its upward arc, from data to
+model. Deduction is its downward arc, from model to consequences.
+
+The pairing shows up in the discussion in three more guises.
+
+- **Discovering a formalization versus executing one.** A conventional
+  program executes an established formalization: given the rules, the result
+  follows. That is the deductive arc. Work with a language model is useful
+  where the rules are not yet fixed and have to be found or revised. That is
+  the inductive arc. The practical line between the two kinds of tool runs
+  here, and not between computable and uncomputable problems.
+- **Adding axioms.** Inside a theory everything is deduction. When a theory
+  leaves a statement undecided, as incompleteness guarantees it will, no
+  deduction inside the theory settles it. A mathematician who adopts a new
+  axiom is taking a step that is not deductive relative to that theory, and
+  deduction then resumes inside the larger one. The sequence of theories built
+  this way is a [[reflection-progression]]. Nothing guarantees that such a
+  step preserves truth or consistency, which is exactly the mark of an
+  inductive step.
+- **Compression.** To discover a regularity in observations is to find a
+  shorter description of them, and a shorter description is a model that
+  predicts. Induction is the step labelled "discover regularities, build
+  model" in the cycle that links compression to prediction.
+
+Induction was missing from the first table of operations drawn up in the
+discussion and was put back on request. The corrected placement is with
+deduction and abduction, as one family of inference, and not with
+generalization or summarization.
+
+Two distinctions follow from that placement.
+
+- **Induction is not generalization.** Induction is an inference that rests on
+  evidence. [[generalization]] widens a concept or a claim, as when vector
+  spaces are extended to modules, and may involve no evidence at all.
+- **Induction is not abduction.** Induction goes from many cases to a rule.
+  Abduction goes from one surprising case to a candidate explanation.
+
+When a language model continues a pattern from examples it performs something
+that resembles induction, but the result is unchecked. A system that offers
+induction as an operation should give it a type, with examples as input and
+hypotheses as output, and attach to each result its evidence and a confidence.
+The discussion writes the signature as `Induce: Examples -> Hypotheses`,
+beside `Deduce: (Theory, Premises) -> Conclusions`.
+
+### Lane two: mathematical induction is another concept
+
+Proving a statement for zero, and proving that it passes from each number to
+the next, establishes it for every natural number. The conclusion is certain,
+and nothing is observed. Mathematical induction is therefore a deductive proof
+method, and belongs on the deduction side of the cycle above. It has its own
+card, [[mathematical-induction]].
+
+It sits in a different part of the map from lane one. Its relatives are
+[[recursion]] and iteration: the mechanical, step-by-step constructions such
+as repeated differentiation or the passage from addition to multiplication to
+exponentiation. Lane one's relatives are the operations of inquiry.
+
+## Relations
+
+- It works only in a cycle with [[deduction]] {relation: contrasts}: induction supplies the model, deduction its consequences.
+- It is the upward arc of the [[reasoning-cycle]] {relation: part-of}.
+- It shares that arc with [[abduction]] {relation: contrasts}: many cases to a rule, against one case to an explanation.
+- It is a different concept from [[mathematical-induction]] {relation: distinguished-from}, which is deductive.
+- It is not [[generalization]] {relation: distinguished-from}: an inference from evidence, against a widening of scope.
+- It is one [[cognitive-operation]] {relation: instance-of}, restored to the list after being left out.
+- It is what [[compression-and-prediction]] {relation: uses} describes as discovering regularities.
+- It is the kind of step by which a [[reflection-progression]] {relation: example-of} acquires each new axiom.
+- Its results are judged by [[evaluation]] {relation: uses} and corrected by [[revision]] {relation: uses}.
+- As an operation offered by an agent it should be a [[typed-transformation]] {relation: is-a}.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: discovering a formalization is the inductive half of programming.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[deduction]].** Inference from premises and rules to what must follow.
+  Seen from this card it is the half of the cycle that gives an induced
+  hypothesis something to be tested on.
+- **[[mathematical-induction]].** The proof scheme of base case and step. It
+  shares the name and nothing else: its conclusions are certain and it lives
+  inside a formal theory.
+- **[[reasoning-cycle]].** Observations, hypothesis, predictions, test,
+  repeated. It is the smallest unit in which induction makes sense.
+- **[[reflection-progression]].** A sequence of theories, each extending the
+  last by an axiom the last could not decide. Each extension is a step no
+  deduction in the earlier theory could have made.
+- **[[compression-and-prediction]].** The link between how well a model
+  predicts and how short a code it yields. Induction is the model-building
+  step of that link.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[induction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[induction]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] labels a passage
+with the cognitive operation it performs and would use lane one of this card
+as the definition of the label `induction`.
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question and the part on the reasoning triad
+  [10-operations-dualities-generalization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the part on compression and prediction [09-taxonomy-self-reference].
+- Essay: "What is an AI-oriented programming language?", the part asking
+  whether programming languages and LLMs solve different kinds of problems
+  [ai-oriented-pl].

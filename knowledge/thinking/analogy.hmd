@@ -1,0 +1,191 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, learning-the-formalism]
+  sources: [07-constructible-universe, 09-taxonomy-self-reference, 11-analogy-vs-summarization, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "An analogy is a partial mapping from one domain to another that preserves selected relations."
+      evidence: established
+      credence: 0.9
+      star: operation-by-signature
+    - id: 2
+      text: "An analogy is not an equivalence: it keeps the relations it was chosen for and is silent or wrong about the rest, and a mapping that preserved everything in both directions would be an isomorphism and no longer an analogy."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, isomorphism)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "The output of an analogy is a hypothesis that must be tested to find where the analogy holds and where it breaks; an analogy proposes and does not prove."
+      evidence: argued
+      credence: 0.75
+      atom: produces(analogy, hypothesis)
+      star: candidate-until-checked
+    - id: 4
+      text: "Analogy depends on abstraction, because the structure of each domain has to be seen apart from its incidental detail before one domain can be mapped onto the other."
+      evidence: argued
+      credence: 0.75
+      atom: requires(analogy, abstraction)
+      star: no-operation-alone
+    - id: 5
+      text: "Analogy sits on the upward arc of the reasoning cycle beside induction and abduction, and differs from induction in importing its hypothesis from another domain instead of drawing it from cases in the same domain."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(analogy, reasoning-cycle)
+      star: no-operation-alone
+    - id: 6
+      text: "The strange loop was defined by analogy, case by case across a theorem, a drawing and a canon, which is why the term never became a formal class."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 7
+      text: "Analogy is weaker than diagonalization, for which it is often mistaken: an analogy is a suggestive mapping, whereas diagonalization is a proof method."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, diagonalization)
+      holds: false
+---
+# Analogy
+
+An **analogy** is a partial mapping from one domain to another that preserves
+selected relations. It says that some of what holds among the things of the
+first domain holds among their counterparts in the second. It is not an
+equivalence: an analogy keeps the relations it was chosen for and is silent or
+wrong about the rest. The discussion singles it out as the powerful one among
+the operations of thought, and also as the one whose results most need
+testing.
+
+## Description
+
+### A mapping that preserves some relations
+
+Write the mapping as a partial function $A$ from a source structure $S_1$ to a
+target structure $S_2$. For each relation $R_1$ selected in the source there
+is a corresponding relation $R_2$ in the target, and
+
+$$R_1(a,b)\implies R_2(A(a),A(b)).$$
+
+Two words carry the weight. *Partial*: not every element has a counterpart.
+*Selected*: not every relation is carried across. An isomorphism would
+preserve everything in both directions. An analogy that did so would no longer
+be an analogy, since the two domains would be the same structure.
+
+The standard example maps an electrical circuit to a hydraulic one.
+
+| Electrical circuit | Hydraulic analogue |
+|---|---|
+| Potential difference | Pressure difference |
+| Current | Volumetric flow |
+| Resistance | Hydraulic resistance |
+| Capacitive storage | Fluid compliance or storage |
+
+Ohm's law carries across. The behaviour of a transistor does not.
+
+### Analogy as a way of working
+
+```mermaid
+flowchart LR
+ A[Recognize structure] --> B[Find cross-domain correspondence]
+ B --> C[Transfer tentative hypothesis]
+ C --> D[Test where analogy holds or breaks]
+```
+
+The output of an analogy is a hypothesis, and the last step is the one that
+matters. An analogy proposes; it does not prove. In the terms of the
+[[reasoning-cycle]] it sits on the upward arc beside [[induction]] and
+[[abduction]]: all three produce candidates that deduction and testing must
+then work on. What sets analogy apart is its source. Induction draws a
+hypothesis from cases in the same domain, analogy imports one from another
+domain.
+
+Analogy depends on [[abstraction]]. To map one domain onto another the
+structure of each has to be seen apart from its incidental detail first. The
+remark that started this thread of the discussion was exactly that abstract
+thinking and thinking by analogy are real operations, and that neither is the
+same as producing a summary.
+
+### Analogy in this vault's subject
+
+The whole subject of this vault rests on an analogy and inherits its limits.
+
+- **Gödel, Escher, Bach.** Hofstadter's juxtaposition of a theorem, a drawing
+  and a canon is itself analogical reasoning about structure. It defines the
+  [[strange-loop]] case by case, which is why the term never became a formal
+  class. Analogy alone does not show that the three share a theorem.
+- **Human intelligence as a Gödelian system.** The discussion keeps this as a
+  conjectural analogy, not an instance of the incompleteness theorems.
+- **The constructible universe and a vault of cards.** A world defined by
+  rules that can be represented and rebuilt inside the world: an analogy that
+  needs precise criteria before it could become a theorem.
+- **The Tao that can be spoken.** An analogy about descriptions and their
+  limits, explicitly not a formal equivalent of Gödel or Tarski.
+
+In each case the discussion does the fourth step of the workflow: it says
+where the analogy holds and where it breaks. The same discipline separates a
+strange loop from the many things that merely resemble one.
+
+As an operation offered by an agent, the discussion gives analogy the
+signature `Analogize: (StructureA, StructureB) -> Correspondences`. The result
+is a set of proposed correspondences, each of which can be checked.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: two domains in, proposed structural correspondences out.
+- It depends on [[abstraction]] {relation: uses}: structure has to be identified before it can be mapped.
+- It is not [[summarization]] {relation: distinguished-from}: it relates two things and shortens neither.
+- It shares the upward arc of the [[reasoning-cycle]] {relation: part-of} with [[induction]] {relation: contrasts} and [[abduction]] {relation: contrasts}: its hypotheses come from another domain.
+- Its results have to pass [[evaluation]] {relation: uses}, the step that finds where it breaks.
+- It is the method by which the [[strange-loop]] {relation: uses} was introduced, and the reason that concept lacks a formal definition.
+- It is weaker than the [[diagonalization]] {relation: contrasts} it is often mistaken for: one is a suggestive mapping, the other a proof method.
+- It differs from [[generalization]] {relation: distinguished-from}: an analogy goes sideways between domains, a generalization goes up to a wider one.
+- As an operation of an agent it should be a [[typed-transformation]] {relation: is-a}.
+- Its worked example is the [[electrical-hydraulic-analogy]] {relation: example-of}.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[abstraction]].** Identifying structure apart from incidental detail. It
+  supplies the two structures that an analogy then maps onto each other.
+- **[[strange-loop]].** A structure in which movement through levels returns
+  to its start. It was defined by analogy across mathematics, art and music.
+- **[[reasoning-cycle]].** Hypothesis, prediction, test, repeated. An analogy
+  enters it as a hypothesis and leaves it confirmed in part and refuted in
+  part.
+- **[[generalization]].** Extending a concept to a wider domain. A successful
+  analogy often ends as a generalization, once the shared structure is named.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[analogy]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[analogy]] | downlinks | map(e => e.source)
+```
+
+Future lenses that apply to this card: [[semantic-neighbours]] is a search for
+analogies between cards that are not yet linked, and [[classify-operation]]
+would use this card as the definition of the label `analogy`.
+
+## Sources
+
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy", the
+  signatures [12-llm-cognitive-operations].
+- Discussion: "Gödel's constructible universe L", the analogy with HMD
+  [07-constructible-universe].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the Daoist analogy [09-taxonomy-self-reference].
+- Dedre Gentner, "Structure-mapping: a theoretical framework for analogy"
+  (1983), for analogy as a mapping of relations.

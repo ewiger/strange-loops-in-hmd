@@ -1,0 +1,56 @@
+# Stories
+
+A story says what we are building and why, in the order it happened. It is
+the place to look when the question is "what is this for?" and not "how does
+this part work?".
+
+A story differs from the other documents of this repository.
+
+| Document | Says | Place |
+|---|---|---|
+| Story | what is being invented, why, and how it got to where it is | `doc/stories/` |
+| Proposal | one decision, its options and its consequences | `doc/proposals/` |
+| Methodology | how one step of the method works today | `methodology/` |
+| Card | what is known about one concept | `knowledge/` |
+
+The [story map](../../methodology/story-map.hmd) is a different thing again:
+it is the argument of the knowledge base drawn as one picture. A story here
+is about the project, not about strange loops.
+
+## Naming
+
+A story is one file, named
+
+```
+SLH-S-NNNN-name-of-the-invention.hmd
+```
+
+- `NNNN` is the next free number, four digits. A number is never reused.
+- The name is the thing the story invents, as a noun phrase in lower case
+  with hyphens. It names the invention, not the work done on it:
+  `inconsistent-incomplete-inference-system`, not `adding-derivation`.
+- `SLH-S` marks it as a story of this project. The letters of the other
+  kinds of document are in the memory `SLH-M-0001`.
+- The title inside the file is the same name, written out.
+
+## Parts of a story
+
+0. **In plain words.** The whole thing as one would say it aloud, with no
+   term that needs looking up.
+1. **What we are inventing.** One paragraph a newcomer can repeat.
+2. **Why.** The need it answers.
+3. **Properties.** What must be true of the thing for it to count.
+4. **So far.** What happened, in order, with dates.
+5. **Where it stands.** What runs today, with its numbers.
+6. **Open.** What is missing between where it stands and the goal.
+
+A story is kept current. When the work moves, "So far", "Where it stands" and
+"Open" are edited in the same change. The first three parts change only when
+the goal itself changes.
+
+## The stories
+
+| Story | Invents |
+|---|---|
+| [SLH-S-0001](SLH-S-0001-inconsistent-incomplete-inference-system.hmd) | The inconsistent incomplete inference system. The main story: every later one is a part of it. |
+| [SLH-S-0002](SLH-S-0002-the-pythagoras-classroom.hmd) | The Pythagoras classroom: a small domain known to be consistent, proved three ways by four students, to get a feeling for the numbers of the system. |

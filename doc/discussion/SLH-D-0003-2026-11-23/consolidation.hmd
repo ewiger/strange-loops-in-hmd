@@ -1,0 +1,53 @@
+---
+metadata:
+  category: consolidation
+  discussion: SLH-D-0003
+  closed: "2026-11-23 02:50"
+  conclusive: true
+  returned: [Percy]
+  outcome: "The pull request is open into main, with the user's approval, as number 1 of the repository."
+---
+# Consolidation of SLH-D-0003
+
+Written by Alice, the observer, on 2026-11-23 at 02:50. This document
+closes the discussion.
+
+## What was done
+
+[Percy](percy.hmd) drafted the title and the description of the pull
+request for `feat/rudimentary`, corrected the draft after the observer's
+reading, asked the user for the target branch and for approval, pushed the
+branch and opened the pull request.
+
+| | |
+|---|---|
+| Pull request | https://github.com/ewiger/strange-loops-in-hmd/pull/1 |
+| Into | `main`, chosen by the user |
+| From | `feat/rudimentary`, pushed at `6a5e5fd` |
+| State | open. It is not marked as a draft on GitHub |
+| Carries | eight commits: the four of `wiki/core-net` that `main` did not have, and the four of this branch |
+
+## The golden token
+
+The token of this discussion is banana. Percy returned it in the closing
+entry of the file and in the message to the observer. Percy was the only
+worker.
+
+## What the observer checked
+
+- The pull request exists, is open, and has the title of the draft. Checked
+  on GitHub.
+- The draft was read against the ledger before it went to the user. Four
+  corrections were sent and made: 370 claims and not 371, the command
+  `hql run`, and two statements about what was committed and checked.
+- Percy staged and committed nothing, and wrote only in Percy's own file.
+
+## Left over
+
+- **Commits after the push.** The branch has moved on since `6a5e5fd`. The
+  pull request shows them only once the branch is pushed again, and pushing
+  is the user's to approve.
+- **Draft or not.** The user asked for a draft to be prepared. The text was
+  drafted and approved, and the pull request was then opened as an ordinary
+  one. If a pull request marked as a draft was meant, it can be converted.
+- **The first commit's message** still says 371 claims.

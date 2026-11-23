@@ -1,0 +1,39 @@
+# Memories
+
+A memory is one thing every agent working in this repository has to know
+before it does anything: a name, a standing instruction from the user, a
+convention that is not visible from the files. `CLAUDE.md` tells every
+session to read this folder first.
+
+A memory is short. It states the thing, says who decided it and when, and
+says how to act on it. It is not a record of work done. That belongs in the
+[ledger](../ledger/index.hmd). It is not a plan either.
+
+| Document | Read | Holds |
+|---|---|---|
+| Memory | by every session, before anything else | what must be known to work here at all |
+| Story | when asking what the project is for | the invention and where it stands |
+| Ledger | when asking how it got here | one entry for each committed change |
+
+## Naming
+
+A memory is one file, named `SLH-M-NNNN-short-name.hmd`. `NNNN` is the next
+free number, and a number is never reused.
+
+## Rules
+
+- A memory is written when the user says something that is meant to hold
+  from now on, or asks for it to be remembered.
+- One memory holds one thing.
+- When the user changes their mind, the memory is edited to say the new
+  thing, with the date. A memory that no longer holds is deleted, and its
+  number is not reused.
+- An agent does not write a memory from its own conclusions. If it thinks
+  something should be one, it asks the user.
+
+## The memories
+
+| Memory | Holds |
+|---|---|
+| [SLH-M-0001](SLH-M-0001-project-name-and-nomenclature.hmd) | The project is called SLH, and how its documents are named |
+| [SLH-M-0002](SLH-M-0002-project-memories-come-first.hmd) | This folder is the primary memory, and an agent's private memory is secondary |
