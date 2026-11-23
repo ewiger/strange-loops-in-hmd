@@ -1,0 +1,129 @@
+# Dave
+
+## Act 1, 03:17
+
+### Who I am
+
+Hello! I am Dave, and I am the one with the scissors. Give me squares and
+triangles to cut out and push around the table, and I am happy. If I can
+show you a thing, I believe it. I also know that a picture can lie, so I
+have promised myself to say out loud everything my pictures lean on. Here
+it is.
+
+### The theorem, as I would say it
+
+Take a triangle in the flat plane, with one of its angles a right angle. Call
+the lengths of the two sides that meet at the right angle `a` and `b`.
+These are the legs. Call the length of the third side, the one across from
+the right angle, `c`. This is the hypotenuse. All three are positive
+numbers, measured in the same unit. Then
+
+```
+a² + b² = c²
+```
+
+I like to say it with figures, because that is what the squares in the
+formula are: build a square on each of the three sides, and the two squares
+on the legs together have exactly the area of the square on the hypotenuse.
+
+```
+        |\
+        | \
+      a |  \ c
+        |   \
+        |____\
+          b
+```
+
+Two things are in that statement and are easy to walk past. It is about
+*every* right triangle, not one I happened to draw. And it is about the
+*flat* plane.
+
+### What I take for granted
+
+My proof will cut a big square into pieces in two ways and compare what is
+left. Everything it uses is below. D is a definition, A is an axiom, K is a
+known result that I lean on and do not prove here.
+
+**Words**
+
+1. **D. Right triangle, legs, hypotenuse.** As in the statement above.
+2. **D. Rectangle and square.** A rectangle is a four-sided figure with
+   four right angles. A square is a rectangle with four equal sides.
+3. **D. Congruent.** Two figures are congruent when one can be laid exactly
+   on the other by sliding, turning or flipping it, with no stretching.
+4. **D. Cutting a figure into pieces.** A figure is cut into pieces when
+   the pieces together cover all of it and no two of them overlap in more
+   than their edges.
+
+**Lengths and angles**
+
+5. **A. Lengths add along a line.** If a point B lies on the segment from A
+   to C, then AB + BC = AC.
+6. **A. Angles add, and a straight line is two right angles.** Angles side
+   by side at one point add up, a right angle is 90°, and the angle of a
+   straight line is 180°.
+7. **A. A figure can be moved.** Any figure can be slid, turned or flipped
+   to anywhere in the plane, and the moved figure has the same lengths and
+   the same angles. This is what lets me make four copies of my triangle
+   and put them where I want.
+8. **K. Side, angle, side.** Two triangles that agree in two sides and the
+   angle between them are congruent. So any right triangle with legs `a`
+   and `b` is a copy of mine, hypotenuse `c` and all.
+9. **K. The angles of a triangle add up to 180°.** So the two angles of my
+   triangle that are not the right angle add up to 90°. This is the item
+   that makes the plane flat. It rests on the parallel axiom, and I am
+   putting it on the table face up, because I think the whole theorem
+   hangs on it.
+10. **K. Rectangles behave.** A four-sided figure with three right angles
+    has a fourth, so it is a rectangle. Opposite sides of a rectangle are
+    equal. A square with any given side can be built. A line through a
+    rectangle at right angles to one side cuts it into two rectangles.
+    These also rest on the parallel axiom.
+
+**Area**
+
+11. **A. Every figure made of straight edges has an area**, a number that
+    is not negative.
+12. **A. Congruent figures have the same area.** Moving a piece does not
+    change how much paper it is.
+13. **A. Areas of pieces add.** If a figure is cut into finitely many
+    pieces, its area is the sum of theirs.
+14. **K. A square with side `s` has area `s²`.** For a side of 3 you
+    count nine little squares. For a side like √2 you cannot count, and it
+    needs a real argument. I lean on it and I say so. If nobody wants to
+    grant it, I can state the theorem about the areas of the three squares
+    and not need it at all.
+
+**Numbers**
+
+15. **K. Ordinary arithmetic.** In particular, if equal amounts are taken
+    away from equal amounts, what is left is equal.
+
+That is my whole bag. Notice what is not in it: I never need the area of a
+triangle or of a rectangle. My four triangles will be the same four in both
+pictures, and item 12 is all I need to know about them.
+
+One promise for Act 2. That my pieces really fit, with no gap and no
+overlap, and that the hole in the middle really is a square, is **not** on
+this list. A drawing makes both look obvious. I will argue them from the
+items above.
+
+### What I will not grant without an argument
+
+- **To Bob: the distance formula.** If you write that the distance between
+  two points is √((x₂ − x₁)² + (y₂ − y₁)²), you have written down the
+  theorem we are trying to prove and called it a definition. I will happily
+  grant you axes at right angles and coordinates along them. I will not
+  grant you what the length of a slanted segment is until you say where it
+  comes from.
+- **To Carol: what stretching does to area.** If a figure is scaled by a
+  factor `k`, its area is multiplied by `k²`. That is true and it is not
+  free. It is very close to item 14, and for a factor that is not a whole
+  number it needs the same care. The same goes for "a shear keeps area":
+  lovely, and I would like to see why.
+- **To anyone, me included: "you can see it in the picture".** A picture is
+  where I find a proof. It is not the proof.
+- **To Percy, gladly:** if you take me to a globe, my item 9 fails there,
+  and I expect the theorem to fail with it. I would not call that a hole in
+  the proof. I would call it the reason item 9 is on the list.

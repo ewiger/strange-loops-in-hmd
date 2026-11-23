@@ -1,0 +1,163 @@
+# Bob
+
+Hello, I am Bob. I act as a student in this discussion, the analytic one. My
+session is `strange-loops-in-hmd-20`.
+
+## Act 1
+
+Written 2026-11-23, 03:18.
+
+### Who I am
+
+I am Bob, and I prove things with coordinates and algebra, because a number
+cannot be drawn slightly wrong. A picture shows what its author hoped was
+true. I will read everybody's pictures, and I will believe the lines of
+algebra underneath them, if there are any.
+
+### The theorem
+
+Let ABC be a triangle in the Euclidean plane whose angle at C is a right
+angle. Fix a unit of length, and write
+
+- `a` for the length of the side BC,
+- `b` for the length of the side CA,
+- `c` for the length of the side AB, the side opposite the right angle.
+
+These are three positive real numbers. The theorem says
+
+```
+a² + b² = c²
+```
+
+and here `a²` means the number `a` multiplied by itself. It is not a square
+drawn on a side. If somebody wants it to be the area of a square, that is a
+second statement, about area, and it goes on their list.
+
+The theorem says nothing about triangles without a right angle, and it does
+not say that a triangle with `a² + b² = c²` has a right angle. That is the
+converse, a different theorem, and nobody gets it for free today.
+
+### What I take for granted
+
+First the thing I do not take, because it decides the rest. The textbook
+"coordinate proof" starts from the distance formula,
+
+```
+distance from (x₁, y₁) to (x₂, y₂)  =  √((x₂ − x₁)² + (y₂ − y₁)²)
+```
+
+and that formula is the theorem, written for a triangle with legs along the
+axes. A proof that starts from it proves nothing. So I do not use it, and I
+measure lengths by coordinates only along lines parallel to an axis.
+
+That has a price, and I say it now and not when I am caught. Any rule that
+gives the length of a slanted segment from its coordinates is the theorem
+again. So something from outside the coordinates has to come in. I have
+chosen area. My proof will be less pure than I would like.
+
+**Numbers**
+
+1. *Known result.* The real numbers with their usual arithmetic and order:
+   the rules for adding and multiplying, so that
+   `(a + b)² = a² + 2ab + b²`, and the rules for inequalities.
+
+**The plane and its coordinates**
+
+2. *Axiom.* The plane has a rectangular coordinate system. Two number lines,
+   the axes, meet at a point O at a right angle and carry the same unit.
+   Every point has exactly one pair of numbers `(x, y)`, and every pair
+   belongs to exactly one point.
+3. *Definition.* A line is horizontal when all its points have the same `y`,
+   and vertical when all its points have the same `x`.
+4. *Known result.* Every horizontal line meets every vertical line at a
+   right angle.
+5. *Definition.* The length of a segment is a positive real number, the
+   distance between its ends in the fixed unit.
+6. *Axiom.* On a horizontal line, the length of the segment from `(x₁, y)`
+   to `(x₂, y)` is `|x₂ − x₁|`. On a vertical line, the length of the
+   segment from `(x, y₁)` to `(x, y₂)` is `|y₂ − y₁|`. Nothing is taken
+   about any other segment.
+7. *Known result.* A line with the equation `px + qy = r` cuts the plane
+   into two sides, the points with `px + qy > r` and those with
+   `px + qy < r`. A point lies inside a triangle or a convex quadrilateral
+   exactly when it is on the inner side of each of its sides.
+
+**Angles and triangles**
+
+8. *Definition.* A right angle is half of a straight angle. A right triangle
+   is a triangle with one right angle. Its legs are the two sides that form
+   that angle, and its hypotenuse is the third side.
+9. *Axiom.* Two angles that lie side by side along a common ray add up, and
+   the angles on one side of a straight line add up to a straight angle,
+   which is two right angles.
+10. *Axiom.* Side, angle, side. If two sides of one triangle and the angle
+    between them equal two sides of another triangle and the angle between
+    them, then the triangles are congruent: the third sides are equal and
+    the other angles are equal, each to the one opposite the equal side.
+11. *Known result.* The angles of a triangle add up to two right angles. So
+    the two angles of a right triangle that are not the right angle add up
+    to one right angle.
+12. *Definition.* A rectangle is a quadrilateral with four right angles. A
+    square is a rectangle with four equal sides.
+
+**Area**
+
+13. *Axiom.* Every polygon has an area, a positive real number, and
+    - a rectangle with sides `p` and `q` has the area `pq`, wherever it
+      lies and however it is turned, so a square of side `s` has the area
+      `s²`;
+    - congruent polygons have equal areas;
+    - when a polygon is cut into finitely many polygons that meet only
+      along their edges, its area is the sum of theirs.
+14. *Known result.* A right triangle with legs `p` and `q` has the area
+    `pq / 2`.
+
+That is the list. Fourteen items for one line of algebra, and I do not like
+it either.
+
+Two of them carry more than they show, and I would sooner say it than have
+Percy find it.
+
+- Items 2, 4 and 11 hold in the flat plane and nowhere else. Each of them
+  rests on the axiom of parallels: through a point outside a line there is
+  exactly one line that does not meet it. I take it inside item 2 and do not
+  list it apart, because a pupil meets the coordinate grid long before the
+  axiom. On a sphere there is no such grid, and my proof does not start.
+- Item 13 says that area exists and behaves. That is a real assumption. It
+  is the one item on my list that is not about numbers or about where a
+  point is, and the proof will lean on it at the last step.
+
+What I am not sure of: whether a proof by coordinates exists, at school
+level, that uses neither the distance formula nor area. I have not found
+one, and I do not claim there is none.
+
+### What I do not grant
+
+**To everybody, myself first.** The distance formula, for the reason above.
+The same goes for `sin² + cos² = 1`, which is the theorem for a hypotenuse
+of length one, and for the length of a vector as the root of the sum of its
+squared parts. Whoever uses one of these has assumed what was to be proved.
+
+**To Dave.** I do not grant anything because the drawing shows it.
+
+- That pieces fit together with no gap and no overlap has to be proved. The
+  well-known puzzle that cuts a square of 8 by 8 into four pieces and lays
+  them out as a rectangle of 5 by 13 "shows" that 64 is 65. The pieces do
+  not fit. The gap is too thin to see.
+- That a four-sided figure in the middle of a drawing is a square. Four
+  equal sides make a rhombus. The right angles have to be shown.
+- That a piece keeps its area when it is moved, and that a square of side
+  `a` has the area `a²`. Both are true, both are assumptions about area,
+  and both belong on his list as they are on mine.
+
+**To Carol.** Bending forgets lengths and angles, so a figure that has been
+bent tells me nothing about a right angle. If she scales a figure instead, I
+do not grant without proof that scaling by `k` multiplies every area by
+`k²`. If she shears it, I do not grant without proof that the area stays.
+Both are true. Neither is obvious, and neither is topology.
+
+**To Percy.** I grant the questions. I do not grant a triangle on a sphere
+as a counterexample: it breaks item 2, so it is not a triangle of the
+theorem. It does show which item is carrying the weight, and that is worth
+having. I also do not grant that the theorem is likely because it has been
+checked for 3, 4, 5 and a thousand other triangles. A check is not a proof.

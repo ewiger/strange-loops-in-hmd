@@ -1,6 +1,6 @@
 # SLH-S-0002 — The Pythagoras classroom
 
-Status: in progress, Act 1
+Status: in progress, Act 1 done, Act 2 waits for the user
 Started: 2026-11-23
 Branch: `pythagorean`
 Discussion: [SLH-D-0005](../discussion/SLH-D-0005-2026-11-23-0315-pear/alice.hmd)
@@ -70,7 +70,7 @@ for the user's word before the next begins.
 
 | Act | What happens | State |
 |---|---|---|
-| 1. Common ground | Each student says what the theorem states and what they need to take for granted. The observer puts the lists side by side: what all agree on, and where they differ. | running |
+| 1. Common ground | Each student says what the theorem states and what they need to take for granted. The observer puts the lists side by side: what all agree on, and where they differ. | done |
 | 2. Three proofs | Bob, Dave and Carol each prove it, in their own way and voice. Percy reads. | |
 | 3. Cross-examination | Each proof is attacked by the others. Percy asks every prover what was assumed and tries the theorem where it should fail. | |
 | 4. Down the ladder | The agreed facts become cards with claims. The proofs become formulas and derivations, and the core of one becomes a proof in Lean. What will not fit is written down. | |
@@ -82,17 +82,28 @@ for the user's word before the next begins.
 `feat/rudimentary`. The discussion SLH-D-0005 opens, with the token pear.
 Act 1 begins.
 
+**2026-11-23, 03:19.** Act 1 is done. The four statements of the theorem
+agree. The lists of what is taken for granted are laid side by side in the
+discussion. Three things were found before any proof: there is no proof
+from topology alone, a proof from coordinates alone does not seem to exist
+at school level, and all three students refuse the distance formula,
+because it is the theorem in other clothes.
+
 ## Where it stands
 
-Act 1 is running. Nothing about geometry is in the knowledge base yet.
+Act 1 is done and Act 2 has not started. Nothing about geometry is in the
+knowledge base yet. One fact is on all three lists: the angles of a
+triangle make two right angles.
 
 ## Open
 
 - **Can the partial logic say it at all?** The theorem is an equation
   between three quantities, and an atom relates two named things.
-- **Is there a topological proof?** The theorem is about lengths, and
-  topology forgets lengths. Carol is asked to find out honestly, and "no"
-  with a reason is an answer.
+- **What a length is.** In a town of square blocks, with distance counted
+  along the streets, the formula fails. Each list excludes that town by a
+  different item, and none says so.
+- **One status for each fact.** Side-angle-side is an axiom for one
+  student and a known result for another.
 - **Where the new facts go.** High-school facts about triangles will
   become cards in the knowledge base in Act 4, with the user's agreement
   on which.

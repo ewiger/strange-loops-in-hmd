@@ -91,3 +91,93 @@ questions you will put to each of the three, and name the places where you
 suspect the theorem is false. Say what would convince you.
 
 When your part is written, send me one line: "Act 1 done".
+
+## Act 1 closed: the common ground
+
+Written 2026-11-23 03:19. All four have written. Nobody proved anything, as
+asked. What follows lays the four parts side by side.
+
+### What all four say the theorem is
+
+The four statements agree, word for word in what matters.
+
+- A triangle ABC in a **flat** plane, with a right angle at C.
+- a is the length of BC, b of CA, c of AB, the side opposite the right
+  angle. Three positive numbers in one unit.
+- `a² + b² = c²`, where a² is the number a times itself and **not** a
+  square drawn on the side. The reading with drawn squares is a second
+  statement, the same only once a square of side s is granted the area s².
+- It is not the converse, and nobody may use the converse.
+
+### What they take for granted, side by side
+
+The numbers are the item numbers in each student's list. D is a
+definition, A an axiom, K a known result.
+
+| Fact | Bob | Dave | Carol |
+|---|---|---|---|
+| Numbers and their arithmetic | 1 K | 15 K | 9 A |
+| Right angle, right triangle, hypotenuse | 8 D | 1 D | 4, 6 D |
+| The angles of a triangle make two right angles | 11 K | 9 K | 12 K |
+| The angles along a straight line make two right angles | 9 A | 6 A | 15 K |
+| Lengths add along a line | from 6 | 5 A | 10 A |
+| The parallel axiom, said out loud | inside 2 | inside 9, 10 | 11 A |
+| Side, angle, side | 10 A | 8 K | not used |
+| Rectangle and square | 12 D | 2 D | not used |
+| Area exists, is kept by congruence, adds over pieces | 13 A | 11, 12, 13 A | not used |
+| A square of side s has the area s² | inside 13 A | 14 K | not used |
+| A right triangle with legs p, q has the area pq/2 | 14 K | not used | not used |
+| A coordinate grid, lengths along the axes only | 2, 3, 4, 6, 7 | not used | not used |
+| Figures can be moved without change | not used | 3 D, 7 A | not used |
+| Rectangles behave | not used | 10 K | not used |
+| Similar triangles, and two equal angles are enough | not used | not used | 8 D, 13 K |
+| One perpendicular from a point to a line | not used | not used | 14 K |
+
+### Where they agree
+
+1. **One fact is on all three lists:** the angles of a triangle make two
+   right angles. All three mark it as the place where flatness comes in,
+   and all three say it rests on the parallel axiom.
+2. **Nobody may use the distance formula.** Bob refuses it to everybody,
+   himself first. Dave and Carol refuse it to Bob. Percy asked where it
+   comes from. It is the theorem written in coordinates.
+3. **A triangle on a ball is not a counterexample.** It breaks an item on
+   every list, and it shows which item carries the weight. Percy agrees:
+   he expects to find no flat triangle that breaks the formula, and looks
+   for a proof that does not know why the ball does.
+4. **A picture is where a proof is found, not the proof.** Dave says it of
+   himself before the others can.
+
+### Where they differ
+
+1. **The same fact, held differently.** Side-angle-side is an axiom for
+   Bob and a known result for Dave. The angles along a line are an axiom
+   for Bob and Dave and a known result for Carol. The area of a square is
+   inside an axiom for Bob and a known result for Dave. None of them is
+   wrong: it depends on where one starts. For a common ground each fact
+   needs one status.
+2. **The parallel axiom is said by one and carried by three.** Only Carol
+   lists it. Bob has it inside his grid, and Dave inside two known results.
+3. **What a length is.** Percy's town of square blocks has the same points
+   and the same right angle, and the formula fails there, because length
+   is counted along streets. So something on each list must say which
+   length is meant. For Bob it is the grid with one unit on both axes,
+   together with side-angle-side. For Dave it is that figures can be
+   turned without change. For Carol it is that two equal angles make
+   triangles similar. None of them says that this is what the item is for.
+
+### Three findings before any proof
+
+1. **There is no proof from topology alone.** Carol: bending turns the
+   triangle 3, 4, 5 into 3, 4, 6, and topology cannot tell the two apart,
+   so it cannot even state the theorem. Shearing fails the same way.
+   Scaling is the first kind of change under which the theorem can be
+   said. Her proof will be by similarity, and she will not call it
+   topological.
+2. **A proof by coordinates alone does not seem to exist at this level.**
+   Bob: any rule that gives the length of a slanted segment from its
+   coordinates is the theorem again. He brings in area and says his proof
+   is less pure for it. He does not claim that no pure proof exists.
+3. **The three proofs will stand on three different things:** Bob on a
+   grid and area, Dave on area and motion, Carol on ratios alone, with no
+   area at all.

@@ -1,0 +1,164 @@
+# Carol
+
+## Act 1
+
+Written 2026-11-23 03:18.
+
+### Who I am
+
+I am Carol. When I look at a figure I ask what I may do to it, and what is
+still true afterwards. Whatever is still true is what the figure was about.
+
+### First: can topology alone prove it?
+
+No. And the reason is short enough to give in full.
+
+Topology allows any bending and stretching that does not tear and does not
+glue. Under such a change every triangle can be turned into every other
+triangle. A right triangle with the sides 3, 4 and 5 becomes a triangle
+with the sides 3, 4 and 6, and that one has no right angle.
+
+So a statement that topology can make is true of both triangles or false of
+both. The theorem is true of the first and false of the second, since
+9 + 16 is 25 and not 36. Topology cannot tell them apart. It cannot state
+the theorem, and what cannot be stated cannot be proved.
+
+This is not a gap I could close with more work. "Right angle" and "length"
+are among the things bending destroys.
+
+So I asked how much less I may do to a figure before the theorem becomes
+sayable.
+
+| What I allow | What survives | Can the theorem be said? |
+|---|---|---|
+| bending and stretching | being in one piece, having three corners | no |
+| shearing, and stretching in one direction | straight lines, parallels, ratios of areas | no |
+| scaling, the same in every direction | angles, ratios of lengths, shape | **yes** |
+| moving and turning only | all of the above, and lengths themselves | yes |
+
+Shearing fails for the same reason as bending. A shear turns a right
+triangle into one that is not right. With shears, one-way stretches and
+moves together, any triangle can be turned into any other.
+
+Scaling is where it first holds. Scale a right triangle by a factor k. The
+angle stays right. The sides become ka, kb and kc. Both sides of the
+equation are multiplied by k². So the equation is true of the scaled
+triangle exactly when it was true before.
+
+That is what I can honestly say. The theorem is not about size. It is about
+shape. It needs lengths only as ratios.
+
+**The nearest honest thing, then:** a proof by similarity. A right triangle
+contains two smaller copies of itself, scaled. What scaling leaves alone,
+the ratio of one side to another, is the same in all three. I will prove
+the theorem from that and from nothing about areas, coordinates or motion.
+
+I will not call it a topological proof. It is not one.
+
+### The theorem
+
+In a flat plane, let ABC be a triangle whose angle at C is a right angle.
+Let a be the length of the side BC, b the length of the side CA, and c the
+length of the side AB, all measured in one unit. The side AB lies opposite
+the right angle. Then
+
+```
+a · a + b · b = c · c
+```
+
+Three things about what this says.
+
+- a, b and c are numbers. a² is the number a times itself. It is not a
+  square drawn on the side. That reading is a second statement. It becomes
+  the same one only after somebody grants that a square of side a has the
+  area a².
+- It is about a flat plane. On a globe it is false.
+- It says nothing in the other direction. That a triangle with
+  a² + b² = c² must have a right angle is the converse. It is true, and it
+  is another theorem.
+
+### What I take for granted
+
+Definitions.
+
+1. **Definition.** Point, straight line, and segment: the part of a line
+   between two points, with those two points.
+2. **Definition.** The length of a segment is a positive number, once a
+   unit is chosen.
+3. **Definition.** A point H is between A and B when it lies on the
+   segment AB and is neither A nor B.
+4. **Definition.** An angle is formed by two rays from one point. A
+   straight angle is formed by the two halves of a line. A right angle is
+   half of a straight angle. An acute angle is smaller than a right angle.
+5. **Definition.** A triangle is three points not on one line, with the
+   three segments joining them. It has three sides and three angles.
+6. **Definition.** A right triangle is a triangle with one right angle.
+   The side opposite the right angle is the hypotenuse.
+7. **Definition.** Two lines are perpendicular when they meet at a right
+   angle. The foot of the perpendicular from a point to a line is the
+   point where the perpendicular through that point meets the line.
+8. **Definition.** Two triangles are similar when their corners can be
+   matched so that matched angles are equal and all three pairs of matched
+   sides have one and the same ratio.
+
+Axioms.
+
+9. **Axiom.** Lengths obey the ordinary rules of arithmetic. In
+   particular x(y + z) = xy + xz, and an equation may be multiplied on both
+   sides by the same number.
+10. **Axiom.** Lengths add along a line: if H is between A and B, then
+    AH + HB = AB.
+11. **Axiom.** The parallel axiom: through a point not on a line there is
+    exactly one line that does not meet it. I do not use it directly. I
+    list it because items 12 and 13 are false without it, and I want that
+    seen.
+
+Known results.
+
+12. **Known result.** The three angles of a triangle together make a
+    straight angle.
+13. **Known result.** If two angles of one triangle equal two angles of
+    another, the triangles are similar, with the equal angles matched.
+14. **Known result.** From a point not on a line there is exactly one
+    perpendicular to that line.
+15. **Known result.** When a ray stands on a line, the two angles it makes
+    with the line together make a straight angle.
+
+That is the whole list. I use no area, no coordinates, no congruence, and
+I move nothing.
+
+One thing is not on the list because I will prove it and not assume it:
+that the foot of the perpendicular from C falls between A and B. Most
+drawings simply show it there.
+
+### What I would not grant without argument
+
+**To Dave.** That the pieces fit. When a figure is cut and the parts are
+moved, three things are being assumed, and each one needs its reason:
+
+- that edges which look like one straight line are one, which is a
+  statement about angles adding to a straight angle;
+- that the figure left in the middle is a square, which needs four right
+  angles and not only four equal sides;
+- that area exists at all, that it does not change when a piece is moved,
+  and that the area of the whole is the sum of the areas of its parts.
+
+The last is three axioms. I do not object to them. I ask that they be on
+the list.
+
+**To Bob.** That the distance between two points is
+√((x₂ − x₁)² + (y₂ − y₁)²). If that is his definition of length, the
+theorem is inside the definition, and the algebra afterwards proves that he
+can do algebra. I would ask him what a right angle is in his plane, what
+length is, and why his plane of number pairs is the plane the rest of us
+are drawing in.
+
+**To everyone, myself first.** The flatness. My item 13 says that a small
+triangle can have the shape of a large one. On a globe it cannot: there the
+angles of a triangle fix its size. So scaling exists only in a flat plane,
+and my whole proof stands on item 11. Anyone whose proof seems not to need
+the parallel axiom has used it somewhere without noticing. I would like to
+know where.
+
+**To Percy.** Nothing to grant, since he assumes nothing. One request: a
+triangle on a globe is not a counterexample. The theorem says "flat".

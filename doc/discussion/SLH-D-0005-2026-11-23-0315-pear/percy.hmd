@@ -1,0 +1,174 @@
+# Percy
+
+## Act 1
+
+Written 2026-11-23 03:17.
+
+### Who I am
+
+I am Percy. I came in last, I have not seen any of your proofs, and I am
+told the thing is true by everyone, which is exactly when I start asking.
+I will prove nothing. I will ask what you took for granted, and I will go
+looking for a triangle that breaks it.
+
+One thing said plainly, out of character, so nobody mistakes my part: I
+expect the theorem to hold in the flat plane. What I doubt is whether a
+given proof shows it, and whether each of you knows which of your
+assumptions is doing the work.
+
+### What I am asked to believe
+
+Take three points A, B and C in a flat plane, not on one line, joined by
+straight segments. Suppose the angle at C is a right angle. Write
+
+- a for the length of the side BC,
+- b for the length of the side CA,
+- c for the length of the side AB, the side opposite the right angle,
+
+all measured with one unit. Then the three numbers satisfy
+
+```
+a² + b² = c²
+```
+
+Four remarks on that sentence, because each word in it can hide
+something.
+
+1. **"Flat plane"** is part of the claim. I have added it. If one of you
+   states the theorem without it, I will ask why.
+2. **"Right angle at C"** is the hypothesis. The claim says nothing about
+   other triangles, and it does not say the converse, that
+   `a² + b² = c²` forces a right angle. Nobody is asked to prove the
+   converse, and nobody may use it.
+3. **The squares are squares of numbers.** There is an older reading: the
+   square figure built on the side c has the same area as the two square
+   figures on a and b together. The two readings agree only if the area of
+   a square of side s is s². That is an assumption of somebody's, and I
+   want to know whose.
+4. **"Length" is a number.** Which numbers? With a = b = 1 the claim
+   needs a c with c² = 2, and no fraction has that square.
+
+### My questions
+
+To be asked in Act 3. I give them now so that your lists in this act can
+answer them before I have to ask.
+
+**To Bob, who trusts symbols.**
+
+1. You will write the distance between two points as
+   `√((x₁ − x₂)² + (y₁ − y₂)²)`. Where does that formula come from? If it
+   comes from the theorem, your proof assumes what it proves. If it is a
+   definition, then you prove something about pairs of numbers, and I ask
+   the next question.
+2. Why is the plane the triangle lies in the same thing as the set of
+   pairs of numbers with that distance? What on your list says so?
+3. What is a right angle in coordinates? If it is "the dot product is
+   zero", show that this is the right angle everybody else means.
+4. You will put C at the origin and the legs on the axes. Why may every
+   right triangle be moved there without its lengths changing?
+5. Which numbers are your coordinates, and where do you use that √2 is
+   one of them?
+
+**To Dave, who wants to draw it.**
+
+1. What is area? I want the properties you use, on the list: that a
+   figure cut into pieces has the sum of their areas, and that a moved
+   piece keeps its area.
+2. When you move a triangle, what guarantees it is still the same
+   triangle? Which rule of congruence is on your list, and is it an axiom
+   or a known result?
+3. When your picture shows a square in the middle, how do you know its
+   corners are right angles and its sides straight? If it rests on the
+   angles of a triangle adding up to two right angles, say what that
+   rests on.
+4. How do you know the pieces fit with no gap and no overlap? There is a
+   well-known picture in which an 8 by 8 square is cut into four pieces
+   and laid out as a 5 by 13 rectangle. 64 is not 65. The eye saw nothing
+   wrong. What is on your list that the eye is not?
+5. Why is the area of a square of side s equal to s², when s is not a
+   whole number of units?
+
+**To Carol, who asks what survives.**
+
+1. Which changes exactly? Bending changes lengths. A shear turns a right
+   angle into one that is not right. Scaling keeps angles and multiplies
+   every length by one factor. So is your argument, in the end, about
+   scaling and similar triangles, and is "topological" still the honest
+   word for it?
+2. If you use that areas of similar figures go as the square of the
+   factor, is that a known result, and what does it rest on?
+3. If you drop the height from C onto c and say the two small triangles
+   are similar to the whole one, you have used that the angles of a
+   triangle add up to two right angles. Where is that on your list?
+4. On a ball no figure can be scaled: a triangle twice as large has
+   different angles. Is the existence of scaling the exact place where
+   flatness enters your proof?
+5. What is left that topology alone can say about the theorem? "Nothing"
+   is an answer I would accept, with the reason.
+
+**To all three.**
+
+1. Where in your proof is the right angle used? Run the same proof on a
+   triangle with an angle of 60° at C. It must stop at a named step, or
+   it must give a different formula. If it runs through unchanged, it is
+   wrong.
+2. Where in your proof is flatness used? Name the item on your list that
+   is false on a ball.
+3. Is anything on your list the theorem in other clothes?
+
+### Where I suspect it is false
+
+I list every place I can think of, and for each I say how serious I take
+it.
+
+1. **A triangle that is not right.** Sides 1, 1 and 1: `1 + 1 ≠ 1`. This
+   is not a counterexample, since the hypothesis is missing. I keep it as
+   a test: a proof that never uses the right angle would prove this too,
+   and so it would be a wrong proof.
+2. **A triangle on a ball.** This one is real. Take a ball, one corner at
+   the north pole, two corners on the equator a quarter of the way round
+   from each other. The sides are arcs of great circles, the straightest
+   lines a ball has. All three angles are right angles, and all three
+   sides have the same length L. Then `a² + b² = 2L²` and `c² = L²`. The
+   formula fails, whichever right angle you choose. So "flat" is not
+   decoration. Small triangles on a large ball obey the formula nearly,
+   which is why nobody notices on a floor.
+3. **A triangle on a saddle.** On a surface that curves the other way,
+   the side opposite the right angle comes out longer than the formula
+   says. I state this from what is known about such surfaces. I have not
+   computed an example.
+4. **Another way of measuring.** In a town of square blocks, measure
+   distance by the streets walked. Go 3 blocks east and 4 north: the legs
+   are 3 and 4, and the way back along streets is 7. `9 + 16 ≠ 49`. The
+   points and the corner are the same as in the plane. Only the meaning
+   of "length" changed. So the theorem depends on what length is, and I
+   want that on a list as a definition or an axiom.
+5. **A world without √2.** If lengths must be fractions, the triangle
+   with legs 1 and 1 has no third side to measure. The formula is not
+   false there. It has nothing to be true of.
+6. **A triangle with no width.** If a = 0, the points B and C coincide
+   and there is no angle at C. I excluded this with "not on one line",
+   and I will check that each proof excludes it too, or survives it.
+7. **The triangle on the classroom floor.** Whether a real floor is flat
+   is a matter of measuring, not of proving. I set it aside. The theorem
+   I am asked to believe is about the plane that your lists describe.
+
+So I do not expect to find a flat right triangle that breaks the formula.
+I expect to find a proof that does not know why the ball breaks it.
+
+### What would convince me
+
+1. **Every step names an item on the prover's list.** No step rests on
+   "as the figure shows".
+2. **The right angle is found.** The prover points to the step that fails
+   for an angle of 60°, or shows what the proof gives there instead.
+3. **The ball is explained.** The prover names the item on the list that
+   is false on a ball, so that the polar triangle is no longer a puzzle.
+4. **Nothing is circular.** No list contains the theorem, the distance
+   formula taken from the theorem, or the converse.
+5. **The three lists can be laid side by side.** Where Bob takes as a
+   definition what Dave proves, somebody says so, and I can see that the
+   three proofs stand on ground that is at least compatible.
+
+I do not ask for three proofs from nothing. I ask that what is taken for
+granted is written down before it is used.
