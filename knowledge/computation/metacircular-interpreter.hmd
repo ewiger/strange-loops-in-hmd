@@ -7,6 +7,51 @@ metadata:
   established: true
   questions: [building-a-loop-in-hmd, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 06-formal-definition-godel, 09-taxonomy-self-reference]
+  claims:
+    - id: 1
+      text: "A metacircular interpreter, an interpreter for a programming language written in that same language, is a kind of self-reference by interpretation."
+      evidence: established
+      credence: 0.9
+      atom: is-a(metacircular-interpreter, self-reference)
+      star: representation-before-reference
+    - id: 2
+      text: "A metacircular interpreter differs from a quine: a quine only reproduces a description of itself, whereas a reflective interpreter can read a description, run it and change how it is run."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(metacircular-interpreter, quine)
+      holds: false
+      star: representation-before-reference
+    - id: 3
+      text: "Representing programs as values the language can handle, the step that makes a metacircular interpreter possible, is the computational counterpart of Gödel numbering, which represents formulas as numbers."
+      evidence: argued
+      credence: 0.75
+      atom: analogous-to(godel-numbering, metacircular-interpreter)
+      star: representation-before-reference
+    - id: 4
+      text: "A metacircular interpreter is not automatically a strange loop: if it merely runs programs there are two levels and no loop, and it is a candidate loop only if the interpreted program can inspect and alter the interpreter that is running it."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(metacircular-interpreter, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 5
+      text: "Reflective interpretation does not imply incompleteness: reflection gives a system access to itself, and a theorem about its limits needs the further step of diagonalization."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(metacircular-interpreter, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 6
+      text: "A metacircular interpreter is not a reflective formal system: that a language can express its own evaluator is an analogy for, and not an instance of, a theory proving things about its own proofs."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(metacircular-interpreter, reflective-formal-system)
+      holds: false
+    - id: 7
+      text: "A vault of cards with executable cells is a small reflective system, because a cell can retrieve as a value the very card that holds it, which is programs as data with documents in the role of programs."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
 ---
 # Metacircular interpreter
 

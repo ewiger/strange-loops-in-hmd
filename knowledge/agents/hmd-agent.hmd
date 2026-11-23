@@ -7,6 +7,47 @@ metadata:
   established: false
   questions: [ai-support-in-hql, building-a-loop-in-hmd, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 12-llm-cognitive-operations, hql-book-agents-and-runs]
+  claims:
+    - id: 1
+      text: "An HMD agent is an agent defined as a HyperMarkDown card: the text of the card is the agent's instructions, the header is its configuration, the operations it performs are other cards, and nothing in it is code."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(hmd-agent, agent)
+    - id: 2
+      text: "An HMD agent's text contains no account of any single operation; an operation is a card that declares itself an instance of cognitive operation, so writing a new operation card extends every HMD agent."
+      evidence: proposed
+      credence: 0.6
+      atom: uses(hmd-agent, cognitive-operation)
+      star: operation-by-signature
+    - id: 3
+      text: "An HMD agent's tools are read-only functions of the query language that read the vault, and the agent has no tool that writes."
+      evidence: proposed
+      credence: 0.6
+      atom: has(hmd-agent, read-only-tools)
+      star: step-from-outside
+    - id: 4
+      text: "An HMD agent proposes and does not act: what it generates is inert until someone integrates it, and anything executable in it is inert until someone runs it."
+      evidence: proposed
+      credence: 0.6
+      star: step-from-outside
+    - id: 5
+      text: "Agent cards are kept in a vault separate from the knowledge base, a wikilink never crosses from one vault into another, and the connection is made by the program that runs the agent, which matches agent and operation cards by name."
+      evidence: proposed
+      credence: 0.6
+    - id: 6
+      text: "An HMD agent is not yet a strange loop, since a run, an edit and another run are a feedback loop; it becomes a candidate only where the agent's representation of itself takes part in changing what it represents and this can be shown from the record of runs and revisions."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(hmd-agent, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 7
+      text: "An HMD agent has a model of itself, its own card, but is a reflective agent only if its self-description changes it, which depends on what is done with its proposals."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(hmd-agent, reflective-agent)
+      holds: false
+      star: representation-before-reference
 ---
 # HMD agent
 

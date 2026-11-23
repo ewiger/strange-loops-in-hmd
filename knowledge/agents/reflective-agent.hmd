@@ -7,6 +7,50 @@ metadata:
   established: false
   questions: [strange-loop-meaning, ai-support-in-hql, ai-oriented-language]
   sources: [08-humans-extend-axioms, 09-taxonomy-self-reference, 13-seven-definitions, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A reflective agent is an agent that holds a representation of its own models, rules or behaviour and uses the results of its activity to revise them."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(reflective-agent, agent)
+      star: representation-before-reference
+    - id: 2
+      text: "Static reflection, in which a system can express some of its own properties, differs from evolving reflection, in which those reflective results change the rules, and a reflective agent is whatever drives the evolving kind."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(evolving-reflection, static-reflection)
+      holds: false
+    - id: 3
+      text: "A reflective agent can revise at two depths, the model itself or the criteria by which it decides what to change, and the second depth is what the evolving reflective definition of the strange loop describes."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 4
+      text: "A reflective agent need not be human, since a program can carry out a progression of theories."
+      evidence: argued
+      credence: 0.75
+      atom: requires(reflective-agent, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 5
+      text: "An agent that can read and propose changes to its own instructions does not automatically make a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(reflective-agent, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 6
+      text: "A reflective agent is not thereby incomplete in Gödel's sense, and the claim that every sufficiently reflective intelligence meets an analogous limit is a conjecture and not a theorem."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 7
+      text: "An agent that merely repeats a cycle of act and observe is a feedback loop and not a reflective agent; reflection starts when the cycle passes through a representation of the agent."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(feedback-loop, reflective-agent)
+      holds: false
+      star: levels-not-cycles
 ---
 # Reflective agent
 

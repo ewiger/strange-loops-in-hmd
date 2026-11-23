@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-oriented-language]
   sources: [06-formal-definition-godel, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Prediction is a cognitive operation that takes a history and a model and returns predicted observations."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(prediction, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "A prediction drawn as a consequence from a hypothesis and a prediction computed as a next-symbol probability are two different things, and a language model being a predictor in the second sense by construction does not settle whether it predicts in the first sense."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 3
+      text: "For a probabilistic sequence model, the total code length of a sequence is approximately its accumulated logarithmic loss, so a model that predicts each next symbol well yields a short code."
+      evidence: proved
+      credence: 0.99
+    - id: 4
+      text: "The link between logarithmic loss and code length does not establish a universal equivalence of predictability and compressibility, and does not show that compression is intelligence."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(compression, intelligence)
+      holds: false
+    - id: 5
+      text: "Prediction is the hinge of the reasoning cycle, because a hypothesis from which nothing can be predicted cannot be wrong and so cannot be supported either."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(prediction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 6
+      text: "Computational irreducibility, undecidability and ambiguity are three distinct ways prediction can fail, and none of them is escaped by using a language model, which is itself a computational system."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 7
+      text: "Prediction is not generation, because a prediction is a claim that can be wrong while a generated instance is merely new."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generation, prediction)
+      holds: false
+      star: operation-by-signature
 ---
 # Prediction
 

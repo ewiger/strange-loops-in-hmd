@@ -7,6 +7,51 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 05-not-every-dynamic-system, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A feedback loop is not a strange loop: it has a cycle but no change of level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(feedback-loop, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 2
+      text: "A feedback loop involves no level crossing, because every signal in the loop is the same kind of thing as every other and nothing in the loop has to represent the loop."
+      evidence: argued
+      credence: 0.75
+      atom: has(feedback-loop, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "A cycle of document, code, output and document again is feedback and nothing more, however many times it runs."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(feedback-loop, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "A feedback cycle of documents becomes a candidate strange loop only when the document represents the mechanism that interprets it and the interpretation changes that same mechanism."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 5
+      text: "The early equation of any self-modifying system with a strange loop was withdrawn, because it would make every dynamic system a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-modification, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 6
+      text: "A feedback loop is not recursion: recursion is a definition through smaller instances that terminates at a base case, while feedback is a causal cycle in time that may run indefinitely."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(feedback-loop, recursion)
+      holds: false
+    - id: 7
+      text: "The HMD feedback loop, built from cards, cells and revisions, is an instance of a feedback loop."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(hmd-feedback-loop, feedback-loop)
 ---
 # Feedback loop
 

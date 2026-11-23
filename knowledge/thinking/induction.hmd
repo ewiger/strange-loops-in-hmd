@@ -7,6 +7,50 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-support-in-hql, ai-oriented-language]
   sources: [08-humans-extend-axioms, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Induction is the inference from observations to a general hypothesis that may be false."
+      evidence: established
+      credence: 0.9
+      atom: produces(induction, hypothesis)
+      star: candidate-until-checked
+    - id: 2
+      text: "Induction is never a standalone operation and works only in a cycle with deduction: a hypothesis reached by induction has no content until something is deduced from it."
+      evidence: argued
+      credence: 0.75
+      atom: requires(induction, deduction)
+      star: no-operation-alone
+    - id: 3
+      text: "Induction is the upward arc of the reasoning cycle, from data to model, while deduction is the downward arc from model to consequences."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(induction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 4
+      text: "Induction as inference is a different concept from mathematical induction, which is a deductive proof method with certain conclusions and shares only the name."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(induction, mathematical-induction)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Induction belongs with deduction and abduction as one family of inference and is not generalization: induction is an inference that rests on evidence, whereas generalization widens a concept or claim and may involve no evidence at all."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "Induction is not abduction: induction goes from many cases to a rule, whereas abduction goes from one surprising case to a candidate explanation."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abduction, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 7
+      text: "The practical line between conventional programs and language models runs between executing an established formalization, which is the deductive arc, and discovering or revising one, which is the inductive arc, and not between computable and uncomputable problems."
+      evidence: argued
+      credence: 0.75
 ---
 # Induction
 

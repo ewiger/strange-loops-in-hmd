@@ -7,6 +7,52 @@ metadata:
   established: true
   questions: [learning-the-formalism]
   sources: [11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Simplification is a cognitive operation that replaces a complex problem or representation by a less complex approximation or formulation."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(simplification, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "A simplification deliberately gives up accuracy, so its result is easier to work with and is no longer exactly the original."
+      evidence: argued
+      credence: 0.75
+      atom: has(simplification, loss-of-accuracy)
+      star: operation-by-signature
+    - id: 3
+      text: "Simplification is not abstraction, because a simplification is an approximation while what an abstraction says is exactly true of every instance."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, simplification)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Simplification is not summarization, because a simplification is a cruder model of the thing while a summary is a shorter account of a text."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(simplification, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "On the examples given, an idealization removes one named factor entirely, whereas a simplification replaces the whole description by a cruder one."
+      evidence: argued
+      credence: 0.65
+      atom: same-as(idealization, simplification)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "A simplification holds only within a range and fails outside it, so its output should come with the conditions under which it was acceptable."
+      evidence: argued
+      credence: 0.75
+      atom: has(simplification, range-of-validity)
+      star: operation-by-signature
+    - id: 7
+      text: "As an agent's operation, simplification should be a typed transformation that states where the approximation holds."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(simplification, typed-transformation)
+      star: operation-by-signature
 ---
 # Simplification
 

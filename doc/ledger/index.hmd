@@ -1,0 +1,47 @@
+# The ledger
+
+The ledger is the annals of this project. Each entry records one change of
+state in the repository: what we set out to do, what we arrived at, what was
+decided, and where we went off course. An entry is written when the change
+is committed, and it goes into the same commit.
+
+The ledger differs from its neighbours in one way: it is never brought up to
+date. A [story](../stories/index.hmd) is edited as the work moves, so it
+always says where things stand now. A ledger entry says where things stood
+on its day and is left as written. A mistake in an entry is corrected by a
+dated note at its end, or by a later entry.
+
+| Document | Says | Changes afterwards |
+|---|---|---|
+| Story | what is being invented and where it stands | yes, kept current |
+| Proposal | one decision, before it is taken | its status only |
+| Discussion | what each agent said and did in one session | entries are added |
+| Ledger | what one change of state amounted to, and what was decided for good | no |
+
+## Naming
+
+An entry is one file, named by the date of its commit and a short name for
+the change.
+
+```
+YYYY-MM-DD-name-of-the-change.hmd
+```
+
+Two entries on one day are told apart by their names.
+
+## Parts of an entry
+
+1. **The change.** The branch, the commit it follows, and its size.
+2. **Objectives.** What we set out to do, in the words of the time.
+3. **Arrived at.** Where the repository stands after the change.
+4. **Accomplished.** What was built, by whom.
+5. **Decisions.** What was decided for good, each with who decided it. This
+   is the part later readers come for.
+6. **Sidetracks.** Where we left the path, what it cost, and what it taught.
+7. **Not done.** What the objectives asked for and the change does not hold.
+
+## The entries
+
+| Entry | Change |
+|---|---|
+| [2026-11-23](2026-11-23-the-rudimentary-method.hmd) | The rudimentary method: claims, a partial logic, derivation with proofs, and the first story |

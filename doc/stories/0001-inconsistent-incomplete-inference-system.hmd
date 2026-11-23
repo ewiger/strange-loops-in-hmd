@@ -1,0 +1,184 @@
+# 0001 — The inconsistent incomplete inference system
+
+Status: in progress
+Started: 2026-11-19
+Last brought up to date: 2026-11-23
+
+This is the main story. Every later story is a part of it.
+
+## What we are inventing
+
+A system in which knowledge is written down in conversation with a language
+model, as HyperMarkDown cards and documents in natural language, and in which
+the same cards carry the numbers that say how sound that knowledge is. What a
+card claims, how strongly, what follows from it, and where it disagrees with
+another card are all recorded inside the card or computed from it, and each
+number leads back to the sentences it came from.
+
+The three words of the name are the three things the system admits about
+itself.
+
+- **Inconsistent.** Cards may contradict each other. A contradiction is not
+  an error that stops the system. It is a located fact about named claims,
+  and the system counts such facts.
+- **Incomplete.** Not everything said is formalised, and not everything
+  formalised is decided. A claim with no formula stays in natural language. A
+  card that is silent on a statement has not denied it.
+- **Inference.** From what the cards assert, further statements are derived
+  by written rules, and each derived statement carries its derivation.
+
+## Why
+
+A knowledge base written in prose can be read and cannot be measured. Nobody
+can say how much of it is contradicted, which part is the unsound one, or
+whether last week's edits made it better or worse.
+
+A service in production has this solved. It reports health figures, and one
+can say that it behaves well, badly or strangely, and where. We want the same
+for knowledge: a figure for the whole base, a figure for each domain, and for
+each figure the proofs that stand behind it.
+
+Classical logic cannot give that figure, because in it one contradiction
+makes everything provable, and a base is then either consistent or worthless.
+A base written by people and models over time is never fully consistent. So
+the system must keep working while inconsistent, and say by how much.
+
+## Properties
+
+The system is meant to be three things.
+
+- **Simple.** One shape of formula, `predicate(first, second)`. One place for
+  it, the header of the card that says it. Rules short enough to read aloud.
+- **Precise.** Every number has an address. A score, a derived statement or a
+  contradiction names the claims it rests on as `card#id`. The rules of the
+  logic are themselves proved by machine.
+- **Customizable.** The predicates, the rules of inference, the schema of the
+  graph and the north stars are data in card headers, not code. Another
+  knowledge base changes them and keeps the machinery.
+
+And it must do these things.
+
+- **It works with a language model.** The model helps write cards, cut them
+  into claims and translate claims into formulas. Whether a formula says what
+  a sentence meant is a judgment, so every such step is recorded and can be
+  checked by a person or by a second translation.
+- **Natural language comes first.** The sentence is the claim. The formula is
+  a second writing of it, added only where it fits without distortion.
+- **The numbers live in the cards.** A card holds its own claims, credences
+  and formulas. Nothing about a card is kept in a database beside it.
+- **Proofs are evidence.** A derived statement can show its derivation down
+  to the claims, and that derivation is what is offered when the statement is
+  questioned.
+- **Inconsistency is measured.** For any set of cards the system can say what
+  share of its statements is contradicted, and name them.
+
+## So far
+
+**2026-11-19. A vault.** The repository starts as an HMD vault and an HQL
+project, with the queries designed ahead of the language where needed.
+
+**2026-11-20 to 2026-11-22. A knowledge base to work on.** The subject is
+strange loops: self-reference, level crossing, Gödel's construction, and
+whether a set of documents can close such a loop on itself. Cards are added
+for logic, computation, reasoning and the cognitive operations. A second
+vault holds agent cards. The wiki is split into the knowledge base and a
+third vault for designs that do not run yet.
+
+**2026-11-22 to 2026-11-23. Prose becomes countable.** This is the
+rudimentary method, described in the
+[methodology](../../methodology/index.hmd).
+
+- Each concept card is cut into **claims**, held in its header. A claim has
+  an address that is never reused, an evidence grade and a credence.
+- Claims that fit are also written as **atoms**. Collected over all cards, an
+  atom is asserted, denied, unsaid or contradicted. These are Belnap's four
+  values, and they are why a contradiction stays where it is.
+- Each link gets a **cross score**: how far its two cards disagree on the
+  atoms they share.
+- What recurs across cards is stated once as a **north star**. There are
+  eight, and they are checked as a cover of the base.
+- Headers and links are read as a **typed graph** and checked against a
+  schema. The schema is held in a card of the same graph.
+
+**2026-11-23. Atoms become a formal system.**
+
+- A [proposal](../proposals/0001-formal-system-for-claims.hmd) observes that
+  the atoms had a language and a valuation and no rules, so nothing could be
+  derived and two atoms were compared only when they were the same string.
+- The concepts the method had been using without owning get cards:
+  `formal-system` and `atom`.
+- **Rules of inference** are written as data, in the header of the card that
+  holds the schema.
+- A script, [derive.py](../../scripts/derive.py), applies the rules until
+  nothing new follows. It prints each derived atom with its derivation, and
+  each derived atom that some claim denies.
+- [From distance to logic](../../methodology/distance-to-logic.hmd) gives the
+  logic underneath: a distance with a direction is read as how far one thing
+  is from implying another, so that implication is the distance zero and a
+  proof is a path whose costs add. The rules are **proved in Lean**.
+- The first rule is tried and thrown out. A rule reading `generalizes` as
+  `is-a` backwards gave four atoms, and two of them read false, so it was
+  removed and the test recorded in
+  [derivation](../../methodology/derivation.hmd). This sets the practice: a
+  rule stays only if every atom it gives has been read.
+- A credence becomes a cost, its surprise in bits, so a derived atom gets a
+  belief from the chain it rests on.
+- A second script, [claim_distance.py](../../scripts/claim_distance.py),
+  measures how close two claim texts are by compression and by shared
+  vocabulary. It can propose that two claims say the same thing. It cannot
+  propose that one implies the other.
+
+## Where it stands
+
+As run on 2026-11-23. The work of that day is not committed yet.
+
+| Measure | Value |
+|---|---|
+| Cards that carry claims | 54 |
+| Claims on concept cards | 370 |
+| Claims that also have an atom | 254 |
+| Distinct atoms | 206 |
+| Atoms asserted | 122 |
+| Atoms denied | 85 |
+| Rules of inference | 9 |
+| Atoms derived that no claim states | 7 |
+| Contradictions between stated atoms | 1 |
+| Contradictions reached by derivation | 0 |
+| Lean proofs | build, with none left open |
+
+The one contradiction is `same-as(compression, intelligence)`, asserted by
+one claim and denied by another. Two of the seven derived atoms rest on it.
+
+Nearly every `same-as` in the base is a denial, and a denial is never a
+premise. About a quarter of the atoms therefore cannot start a derivation.
+
+The pipeline runs from a sentence to a derived statement with its
+derivation. A low count of contradictions is not yet good news. The rules
+have few chains to follow, so the count says more about what the system can
+reach than about how consistent the base is.
+
+## Open
+
+- **The health figure.** Nothing computes a share of contradicted statements,
+  for the whole base, for a domain, or for one tree of derivations. This is
+  the measure the story is for, and it is the next thing to build. A first
+  reading by hand is in the
+  [consolidation of 2026-11-23](../discussion/2026-11-23/consolidation.hmd).
+  It shows that one percentage is not enough: the figure is a small table of
+  contradiction, coverage and reach.
+- **Coverage beside consistency.** A base with few atoms is trivially
+  consistent. The figure has to be reported with the share of claims that
+  have no atom, or it flatters.
+- **Proofs for the claims graded `proved`.** Lean proves the rules of the
+  logic. No mathematical claim of the base is yet tied to a checked proof.
+- **Rules that are safe.** A wrong rule produces wrong atoms at scale. Each
+  rule has to be kept only if every atom it gives has been read.
+- **Contradictions outside the claims.** Thirteen pairs of cards declare a
+  one-way relation in both directions. They are in the links, so a figure
+  that reads only atoms misses them.
+- **Claims with no atom.** A third of the claims are outside the system.
+  Comparing them needs a measure that reads meaning.
+- **Credences that move.** Every credence is still the prior of its evidence
+  grade. Nothing has been updated by a test or a challenge.
+- **One language.** Derivation runs in Python because the query language
+  cannot yet express a fixed point.

@@ -7,6 +7,49 @@ metadata:
   established: true
   questions: [learning-the-formalism]
   sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Synthesis, or composition, is a cognitive operation that combines several concepts or structures into one combined structure or new framework."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(synthesis, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "Composition and synthesis are two ends of one range: a composition is determined by its parts and checked by whether types fit, whereas a synthesis is more than its parts fix and has to be argued."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 3
+      text: "In a synthesis the joining of established ideas into a new framework is a choice, because nothing in the parts says how they go together."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 4
+      text: "Synthesis runs opposite to decomposition, and whether putting solved parts back together solves the problem depends on whether the parts were independent."
+      evidence: argued
+      credence: 0.75
+      atom: inverse-of(decomposition, synthesis)
+      star: no-operation-alone
+    - id: 5
+      text: "Synthesis differs from summarization, because a summary condenses one source while a synthesis joins several into something new."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(summarization, synthesis)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "Synthesis differs from generalization, because a generalization contains its cases while a synthesis combines unlike parts."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, synthesis)
+      holds: false
+      star: operation-by-signature
+    - id: 7
+      text: "The three-layer organisation of operations, structural relationships and reflective phenomena is itself a synthesis of everything the discussion had listed."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(three-layer-organisation, synthesis)
+      star: notion-not-class
 ---
 # Synthesis
 

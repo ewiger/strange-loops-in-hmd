@@ -7,6 +7,47 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [01-hofstadter-definition, 05-not-every-dynamic-system, 06-formal-definition-godel, 08-humans-extend-axioms]
+  claims:
+    - id: 1
+      text: "A strange loop needs the distinction between object level and meta level in order to exist and then violates it; without two levels the loop is only a cycle."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, object-and-meta-level)
+      star: levels-not-cycles
+    - id: 2
+      text: "The distinction between object level and meta level is the precondition of a level crossing, which is a passage between the two levels."
+      evidence: argued
+      credence: 0.75
+      atom: requires(level-crossing, object-and-meta-level)
+      star: levels-not-cycles
+    - id: 3
+      text: "The unexpected collapse of the separation between object level and meta level, not dynamism or repetition, is the test for a strange loop."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 4
+      text: "Executing a self-referential construction externally is different from proving that the theory represents the construction internally: a program that computes Gödel numbers stays at the meta level and has not shown that anything refers to itself."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(external-execution, self-reference)
+      holds: false
+      star: representation-before-reference
+    - id: 5
+      text: "Static reflection, in which a theory expresses properties of its own syntax, is distinct from evolving reflection, in which those results change the rules."
+      evidence: argued
+      credence: 0.75
+    - id: 6
+      text: "The collapse of object level and meta level has a formal limit: a theory can represent its own provability but cannot define its own truth."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 7
+      text: "A feedback loop has no meta level, because every signal in it is of the same kind."
+      evidence: argued
+      credence: 0.75
+      atom: has(feedback-loop, meta-level)
+      holds: false
+      star: levels-not-cycles
 ---
 # Object level and meta level
 

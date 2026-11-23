@@ -7,6 +7,47 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-support-in-hql, building-a-loop-in-hmd]
   sources: [04-markdown-as-output, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Generation is the production of new instances, such as text, code or structures, from instructions, rules or context."
+      evidence: established
+      credence: 0.9
+      atom: produces(generation, new-instances)
+      star: operation-by-signature
+    - id: 2
+      text: "Generation is the little brother of generalization: generalization goes from instances to a rule, whereas generation goes from a rule to instances and so needs the rule to exist already."
+      evidence: argued
+      credence: 0.75
+      star: no-operation-alone
+    - id: 3
+      text: "Generating from a rule and generating as a language model's task are different: in the first the output is fixed by the rule, while in the second the output is one of many possible candidates and nothing in the act of producing it says whether it is right."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 4
+      text: "Generation alone settles nothing: its output has to be judged by evaluation before it counts as a result, and the value comes from the pair of generating and verifying, the same pairing as induction with deduction."
+      evidence: argued
+      credence: 0.75
+      atom: uses(generation, evaluation)
+      star: candidate-until-checked
+    - id: 5
+      text: "Generated text must not run itself: when generation produces a document with cells, rendering the output, integrating it and executing what it contains are kept as separate steps with approval between them."
+      evidence: proposed
+      credence: 0.6
+      atom: uses(generation, render-integrate-execute)
+      star: step-from-outside
+    - id: 6
+      text: "A quine is an example of generation in which the output is the generator's own source."
+      evidence: established
+      credence: 0.9
+      atom: example-of(quine, generation)
+    - id: 7
+      text: "Generation is distinct from specialization: specialization narrows a principle, whereas generation produces instances of it."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generation, specialization)
+      holds: false
+      star: operation-by-signature
 ---
 # Generation
 

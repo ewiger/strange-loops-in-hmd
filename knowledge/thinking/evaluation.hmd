@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [ai-support-in-hql, building-a-loop-in-hmd, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "The word evaluation names two different things, the assessment of a claim against a criterion and the running of a program to obtain its value: an assessment may be mistaken, whereas the value of an execution is whatever the rules give."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 2
+      text: "Evaluation as assessment is the return arc of the reasoning cycle, the testing step where predictions are compared with new observations."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(evaluation, reasoning-cycle)
+      star: no-operation-alone
+    - id: 3
+      text: "Evaluation in the sense of execution is deduction carried out by a machine: it computes and does not judge."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(execution, deduction)
+      star: operation-by-signature
+    - id: 4
+      text: "An induced hypothesis, a proposed analogy or a summary is only a candidate until something evaluates it, and an evaluation performed by a language model is itself one more candidate that needs its own evidence."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 5
+      text: "Reflection is evaluation turned on the process that produced the claim, with the evaluator's own procedure as the claim being assessed."
+      evidence: argued
+      credence: 0.75
+      atom: generalizes(evaluation, reflection)
+    - id: 6
+      text: "Evaluation that only judges outputs, however often it is repeated, is a plain feedback loop and not a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(evaluation, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 7
+      text: "A strange loop could arise where a document's cells execute the criteria by which the document's own revisions are assessed, so that the criterion becomes an object of the document's own computation."
+      evidence: argued
+      credence: 0.65
+      star: levels-not-cycles
 ---
 # Evaluation
 

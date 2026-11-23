@@ -7,6 +7,48 @@ metadata:
   established: false
   questions: [strange-loop-meaning, ai-support-in-hql]
   sources: [06-formal-definition-godel, 13-seven-definitions, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "A reflective formal system is a formal theory with computable axioms that carries an effective encoding of its own syntax, such as a Gödel numbering, and formulas representing its own syntactic and proof relations."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(godel-numbering, reflective-formal-system)
+      star: representation-before-reference
+    - id: 2
+      text: "A Gödelian strange loop is a reflective formal system that additionally has a diagonal fixed point producing a provable limitation of the system, such as incompleteness under precise hypotheses."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(godelian-strange-loop, reflective-formal-system)
+      star: limits-from-inside
+    - id: 3
+      text: "Strange loop is not a standard mathematical class, and forcing all its examples under one formal heading would conflate them, so the formalization defines a class by its machinery and a subclass by a theorem, neither term being established mathematical vocabulary."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 4
+      text: "A reflective formal system is static reflection, in which nothing changes over time and nothing is fed back, so a theory revised over time by a person or an agent is not one such system but a sequence of them."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(reflective-formal-system, reflection-progression)
+    - id: 5
+      text: "The definition of a reflective formal system fits the one example it was written for and leaves out Escher's hands and Bach's canon, which remain strange loops in Hofstadter's sense, and the constructible universe, whose self-description has no diagonal sentence."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(constructible-universe, reflective-formal-system)
+      holds: false
+      star: notion-not-class
+    - id: 6
+      text: "Human intelligence is a conjectural analogy to a reflective formal system and satisfies no clause of its definition."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(human-intelligence, reflective-formal-system)
+      holds: false
+      star: limits-from-inside
+    - id: 7
+      text: "Executing Gödel's construction in a programming language shows that the encoding and the diagonal sentence can be computed but does not show that the theory represents those computations internally, which is what the theorems use."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
 ---
 # Reflective formal system
 
@@ -47,7 +89,7 @@ $$(\mathcal L,\ T,\ \gamma,\ \mathcal R).$$
 | $\gamma$ | an effective encoding of the syntax of $\mathcal L$ by objects $T$ talks about | a [[godel-numbering]] |
 | $\mathcal R$ | formulas of $\mathcal L$ that represent syntactic and proof relations on the codes | $\operatorname{Proof}_T(p,x)$ and $\operatorname{Prov}_T(x)$ |
 
-The first two components are any formal system. The last two are what make
+The first two components are any [[formal-system]]. The last two are what make
 it reflective: the system has names for its own expressions, and it can
 state, in its own language, which of them are proofs of which.
 
@@ -109,6 +151,7 @@ same position: execution from outside is not yet internal representation.
 
 ## Relations
 
+- It is a [[formal-system]] {relation: is-a} with two further components, the encoding and the represented proof relations.
 - It requires a [[godel-numbering]] {relation: uses} as its encoding component.
 - Its Gödelian subclass is defined by a [[fixed-point]] {relation: uses} with a provable consequence.
 - That fixed point is, for arithmetic, the [[godel-sentence]] {relation: example-of}.

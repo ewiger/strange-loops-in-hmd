@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [ai-oriented-language, strange-loop-meaning]
   sources: [06-formal-definition-godel, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Computational irreducibility is the property of a computation that has no substantial shortcut, so that the only general way to learn its outcome is to carry it out step by step."
+      evidence: established
+      credence: 0.9
+      atom: has(computational-irreducibility, no-shortcut)
+    - id: 2
+      text: "Computational irreducibility is not undecidability: a computation can be irreducible and perfectly decidable, since one simply runs it."
+      evidence: established
+      credence: 0.9
+      atom: same-as(computational-irreducibility, undecidability)
+      holds: false
+      star: limits-from-inside
+    - id: 3
+      text: "Computational irreducibility, which concerns the cost of predicting a computation, is not algorithmic incompressibility, which concerns the length of the shortest description of data."
+      evidence: established
+      credence: 0.9
+      atom: same-as(algorithmic-incompressibility, computational-irreducibility)
+      holds: false
+      star: limits-from-inside
+    - id: 4
+      text: "Gödel's incompleteness theorems concern what a theory can prove and establish neither computational irreducibility nor a general impossibility of compression."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 5
+      text: "Irreducibility is neither necessary nor sufficient for a strange loop, and was proposed and then withdrawn as a criterion for one."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, computational-irreducibility)
+      holds: false
+      star: notion-not-class
+    - id: 6
+      text: "The view that classical programming solves reducible problems and language models solve irreducible ones is wrong, because a language model is itself a computational system bound by the limits of computation, and what it is actually good for is problems whose requirements are ambiguous or incomplete."
+      evidence: argued
+      credence: 0.75
+    - id: 7
+      text: "The distinction that survives between programs and language models is a practical one, between executing an established formalization, which is deduction, and discovering or revising the formalization itself, which is induction and abduction."
+      evidence: argued
+      credence: 0.75
 ---
 # Computational irreducibility
 

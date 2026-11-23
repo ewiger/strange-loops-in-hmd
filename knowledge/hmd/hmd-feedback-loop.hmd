@@ -7,6 +7,48 @@ metadata:
   established: false
   questions: [building-a-loop-in-hmd, ai-support-in-hql, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 05-not-every-dynamic-system, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "The HMD feedback loop is the cycle in which a HyperMarkDown card is evaluated, the result is written beside the cell that produced it, a person or agent interprets the result, and an accepted revision becomes the next version of the card."
+      evidence: proposed
+      credence: 0.6
+    - id: 2
+      text: "The HMD feedback loop is an ordinary feedback loop made of cards, cells and revisions."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(hmd-feedback-loop, feedback-loop)
+      star: levels-not-cycles
+    - id: 3
+      text: "A cycle of document, code, output and document again is only feedback and does not by itself make a strange loop, because every stage is the same kind of thing as the next."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(feedback-loop, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "The earlier statement equating iterative self-modification with strange loops was withdrawn: an HMD card repeatedly rewriting another card need not collapse any distinction between levels."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-modification, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 5
+      text: "The HMD feedback loop becomes a candidate strange loop only with a level crossing: a document must represent the mechanism that interprets it, and the interpretation must feed back into that same mechanism."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, level-crossing)
+      star: levels-not-cycles
+    - id: 6
+      text: "Even when a document represents and changes its own interpreting mechanism, the system is only a reflective programming substrate and counts as a strange loop only once the cross-level self-reference has been demonstrated."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 7
+      text: "Because the output of a cell may be Markdown containing new cells, data becomes code in the HMD feedback loop, which makes the loop more capable and more dangerous and is why rendering, integration and execution are kept as separate steps."
+      evidence: proposed
+      credence: 0.6
+      atom: uses(hmd-feedback-loop, render-integrate-execute)
+      star: step-from-outside
 ---
 # HMD feedback loop
 

@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [strange-loop-meaning, ai-oriented-language]
   sources: [06-formal-definition-godel, 08-humans-extend-axioms, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "The word undecidability is used for two different absences: a sentence that a given theory can neither prove nor refute, and a problem that no algorithm solves for every input."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 2
+      text: "The criterion that a strange loop is irreducible hides three distinct notions, undecidability, algorithmic incompressibility and computational irreducibility, and Gödel's theorem concerns only undecidability."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(computational-irreducibility, undecidability)
+      holds: false
+      star: limits-from-inside
+    - id: 3
+      text: "An undecidable sentence is undecidable only relative to a particular theory and can be removed by adding an axiom, whereas an undecidable problem is absolute and cannot be removed, there being no larger notion of algorithm to move to."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 4
+      text: "Undecidability of problems is the stronger notion and undecidable sentences follow from it, giving a route to the incompleteness theorems that mentions no self-referring sentence, although the unsolvability of the halting problem is itself proved by diagonalization."
+      evidence: proved
+      credence: 0.99
+      atom: uses(undecidability, diagonalization)
+      star: limits-from-inside
+    - id: 5
+      text: "Undecidable sentences are not confined to self-reference, as the independence of the continuum hypothesis from ZFC involves no diagonal sentence."
+      evidence: proved
+      credence: 0.99
+      atom: requires(undecidability, self-reference)
+      holds: false
+      star: limits-from-inside
+    - id: 6
+      text: "In the Gödelian definition of a strange loop, irreducibility was dropped as a criterion and replaced by a provable limitation, which is undecidability of a sentence produced by a fixed point and is narrower and checkable."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 7
+      text: "A problem with ambiguous or incomplete requirements is a missing specification and not a limit of computation, and a language model, being a computational system, does not escape the undecidability of problems but can help turn an ambiguous requirement into a specification."
+      evidence: argued
+      credence: 0.75
 ---
 # Undecidability
 

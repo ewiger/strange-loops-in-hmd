@@ -7,6 +7,49 @@ metadata:
   established: true
   questions: [strange-loop-meaning]
   sources: [02-fractals-and-self-similarity, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "A strange loop is a kind of self-reference: self-reference is the genus and the crossing of levels is the difference."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(strange-loop, self-reference)
+      star: levels-not-cycles
+    - id: 2
+      text: "Self-reference is a large family whose members work by different mechanisms, and most of them are not strange loops."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "Self-similarity is not self-reference: a fractal resembles itself at other scales without asserting anything about the rules of its own description."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(self-reference, self-similarity)
+      holds: false
+    - id: 4
+      text: "Duality is not self-reference: two structures that reconstruct each other are still two structures, and no loop is produced."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(duality, self-reference)
+      holds: false
+    - id: 5
+      text: "The existence of self-reference is distinct from a theorem about its consequences: a quine achieves self-reference with no paradox and no limitation."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 6
+      text: "Gödel's sentence is the liar with truth replaced by provability, and the replacement is what makes it a theorem instead of a contradiction."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(godel-sentence, liar-paradox)
+    - id: 7
+      text: "Recursion is the weakest form of self-reference: a recursive function mentions itself in its definition and crosses no level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, self-reference)
 ---
 # Self-reference
 

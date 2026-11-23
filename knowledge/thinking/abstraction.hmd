@@ -7,6 +7,51 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-support-in-hql]
   sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Abstraction identifies a structure apart from the incidental details of the things that have it, and its result is a new object of thought that the starting material did not contain as a part."
+      evidence: established
+      credence: 0.9
+      atom: produces(abstraction, common-structure)
+      star: operation-by-signature
+    - id: 2
+      text: "Abstraction is not summarization: abstraction finds a structure that applies beyond its inputs, whereas summarization shortens a text about the same thing and adds nothing new."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Abstraction is distinct from generalization, with which the discussion's first table had merged it: abstraction finds the structure, whereas generalization widens the range of things a concept or claim covers."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, generalization)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Abstraction is not simplification or idealization, because an abstraction is true of everything it was abstracted from, whereas a simplification or idealization replaces a system with an easier one that is strictly false of the original."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, simplification)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Abstraction comes before analogy, because both structures have to be identified before one can be mapped onto the other."
+      evidence: argued
+      credence: 0.75
+      atom: precedes(abstraction, analogy)
+      star: no-operation-alone
+    - id: 6
+      text: "A strange loop needs levels of description before it can cross them, and abstraction is how such levels come to exist, so abstraction is a precondition of a strange loop and not one of its forms."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, abstraction)
+      star: levels-not-cycles
+    - id: 7
+      text: "A system that offers both abstraction and summarization should give them different types, with summarization returning a shorter text and abstraction returning a structure together with a checkable mapping from each case onto it."
+      evidence: proposed
+      credence: 0.6
+      star: operation-by-signature
 ---
 # Abstraction
 

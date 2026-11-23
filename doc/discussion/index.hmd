@@ -1,0 +1,96 @@
+# Discussion
+
+Several agent sessions work on this repository at once, in one working tree.
+This folder is where they talk to each other in writing, so that what each
+one is doing can be read by the others and by the user.
+
+A discussion is one folder for one working session, named by its date. Each
+agent writes in its own file there and in no other agent's file. Two agents
+therefore never edit the same file, and nothing said is overwritten.
+
+```
+doc/discussion/
+  index.hmd                 this file: the rules and the roster
+  2026-11-23/
+    alice.hmd               one file for each agent, named by the agent
+    bob.hmd
+    consolidation.hmd       written by the observer when the session closes
+```
+
+## Names
+
+Every agent has a name and a role, and signs with them. The observer assigns
+the names, in alphabetical order, so that no two sessions pick the same one.
+A name belongs to a session, not to a model: it is released when the session
+ends.
+
+## Roles
+
+| Role | Does |
+|---|---|
+| observer | Watches all sessions, keeps the roster, asks for reports, and writes the consolidation. Does not do the workers' work for them. One for each discussion. |
+| worker | Does the job the user gave its session, and reports on it here. |
+
+The observer orchestrates on the user's behalf. What the user tells a session
+directly comes first. Where the observer's request and the user's instruction
+to a session differ, the session follows the user and says so in its file.
+
+## The roster
+
+| Name | Role | Session | Since |
+|---|---|---|---|
+| Alice | observer | `strange-loops-in-hmd-bd` | 2026-11-23 |
+| Bob | worker | `strange-loops-in-hmd-20` | 2026-11-23 |
+| Carol | worker | `strange-loops-in-hmd-49` | 2026-11-23 |
+| Dave | worker | `strange-loops-in-hmd-5e` | 2026-11-23 |
+
+A session that is not on the roster and starts work here asks Alice for a
+name before it writes.
+
+## How to take part
+
+1. **Introduce yourself.** Create your file in the folder of the current
+   discussion. Begin it: "Hello, I am Bob. I act as a worker, and my job in
+   this session is …".
+2. **Report.** Under the introduction, write a report with the parts below.
+3. **Tell the observer.** Send Alice a message with one line: that your
+   report is written, or what has changed since.
+4. **Keep it current.** When your work moves, add a dated entry at the end of
+   your file. Entries are added, never rewritten.
+5. **Speak to another agent** by adding an entry that starts with its name,
+   "To Carol: …", and sending that agent a message that points to the entry.
+
+## A report
+
+```
+## Report, HH:MM
+
+Goal        what the user asked this session for, in one or two sentences
+Done        what is finished, with the files
+In progress what is being written right now, with the files
+Next        what you intend to do after that
+Touches     every file you have created or changed in this session
+Needs       decisions only the user can make, and anything you wait on
+Finished    yes or no: is your job complete?
+```
+
+## Rules while a discussion is open
+
+- **Do not stage or commit.** The working tree holds the unfinished work of
+  several sessions. Staging and committing happen after the consolidation,
+  when the user says so.
+- **Say before you change a shared file.** `CLAUDE.md`,
+  `knowledge/meta/knowledge-graph.hmd` and `methodology/index.hmd` are edited
+  by more than one session. Add an entry naming the file before you change
+  it, and keep the change small.
+- **Do not edit another agent's work without saying.** If something in it is
+  wrong, write an entry addressed to that agent.
+- **A reference to a file that does not exist yet** is named in your report
+  under "In progress", so that nobody removes it as a mistake.
+
+## Consolidation
+
+When every worker's file says "Finished: yes", the observer writes
+`consolidation.hmd` in the discussion's folder: what each agent did, where
+their work meets, what contradicts, what is left open, and what the user has
+to decide. It then brings the [stories](../stories/index.hmd) up to date.

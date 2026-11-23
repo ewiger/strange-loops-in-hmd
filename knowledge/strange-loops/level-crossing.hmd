@@ -7,6 +7,48 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [01-hofstadter-definition, 03-hmd-hql-executable-documents, 05-not-every-dynamic-system, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "Level crossing is the feature that makes a loop strange: a strange loop is a level crossing that leads back to where it started."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, level-crossing)
+      star: levels-not-cycles
+    - id: 2
+      text: "A cycle with no level crossing is a feedback loop, which stays on one level."
+      evidence: argued
+      credence: 0.75
+      atom: has(feedback-loop, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "Whether a fractal, a dynamic system or a self-rewriting document is a strange loop depends on whether a level is crossed; repetition, change over time and self-modification do not settle it."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 4
+      text: "A level crossing needs levels to exist first: it presupposes the separation of object level and meta level that it collapses."
+      evidence: argued
+      credence: 0.75
+      atom: requires(level-crossing, object-and-meta-level)
+      star: levels-not-cycles
+    - id: 5
+      text: "Level crossing is wider than diagonalization, since Escher's drawing hands and Bach's rising canon cross levels with no diagonal argument."
+      evidence: argued
+      credence: 0.75
+      atom: generalizes(level-crossing, diagonalization)
+    - id: 6
+      text: "Self-similarity is not level crossing, because the scales of a pattern are not levels of description."
+      evidence: argued
+      credence: 0.75
+      atom: has(self-similarity, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 7
+      text: "A card whose cell rewrites another card has a cycle and no level crossing, and running the loop more times does not produce one; a crossing has to be demonstrated case by case."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
 ---
 # Level crossing
 

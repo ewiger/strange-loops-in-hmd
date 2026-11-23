@@ -7,6 +7,47 @@ metadata:
   established: true
   questions: [learning-the-formalism, building-a-loop-in-hmd, ai-oriented-language]
   sources: [08-humans-extend-axioms, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "The reasoning cycle is a feedback loop, since its output, new observations, becomes its next input."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(reasoning-cycle, feedback-loop)
+      star: levels-not-cycles
+    - id: 2
+      text: "A reasoning cycle is not by itself a strange loop: without the outer loop it is ordinary feedback however many times it turns."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(reasoning-cycle, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "Induction, abduction and deduction are not a list of alternative inference methods but positions on one loop."
+      evidence: argued
+      credence: 0.75
+      star: no-operation-alone
+    - id: 4
+      text: "The upward arc of the reasoning cycle is induction when there are many cases and abduction when there is one surprising case, and the downward arc from the model to its consequences is deduction."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(deduction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 5
+      text: "The outer loop of the reasoning cycle is reflection: the inner loop revises the model, the outer loop revises the way models are made, and only the outer loop passes through a representation of the cycle itself."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(reflection, reasoning-cycle)
+      star: no-operation-alone
+    - id: 6
+      text: "In AI-assisted programming the downward arc of the reasoning cycle, from program to execution, is what a conventional program does well, and the upward arc, from intention to specification, is where a language model is useful."
+      evidence: argued
+      credence: 0.75
+    - id: 7
+      text: "Each turn of the reasoning cycle ends in revision of the model, using what testing returns."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(revision, reasoning-cycle)
+      star: no-operation-alone
 ---
 # Reasoning cycle
 

@@ -7,6 +7,44 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-oriented-language]
   sources: [06-formal-definition-godel, 09-taxonomy-self-reference]
+  claims:
+    - id: 1
+      text: "A model that predicts a sequence well under logarithmic loss yields a short code for that sequence, and the reverse, and this link between prediction and compression is a theorem of coding."
+      evidence: proved
+      credence: 0.99
+    - id: 2
+      text: "The coding formula does not prove a universal equivalence of predictability and compressibility, because it relates one loss to one kind of code."
+      evidence: argued
+      credence: 0.75
+    - id: 3
+      text: "Compression is equivalent to intelligence, a claim raised in the discussion that remains a conjecture and is not shown by the coding result."
+      evidence: conjecture
+      credence: 0.4
+      atom: same-as(compression, intelligence)
+    - id: 4
+      text: "Algorithmic incompressibility, which is about the shortest description of an object, is a different notion from computational irreducibility, which is about shortcuts to a computation, and both differ from undecidability."
+      evidence: established
+      credence: 0.9
+      atom: same-as(algorithmic-incompressibility, computational-irreducibility)
+      holds: false
+      star: limits-from-inside
+    - id: 5
+      text: "Gödel's theorem concerns formal incompleteness and says nothing general about compression."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 6
+      text: "Discovering regularities is induction, and a discovered regularity is a shorter description, which is a model, which predicts."
+      evidence: argued
+      credence: 0.75
+      atom: produces(induction, model)
+      star: no-operation-alone
+    - id: 7
+      text: "The outer loop of observing, modelling, predicting and evaluating is alone a feedback loop, whereas the inner loop, in which a system models its own modelling, passes through a representation of the process itself, which is the mark of a reflective agent."
+      evidence: argued
+      credence: 0.75
+      atom: has(reflective-agent, self-model)
+      star: levels-not-cycles
 ---
 # Compression and prediction
 

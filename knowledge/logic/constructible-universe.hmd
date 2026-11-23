@@ -7,6 +7,47 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [07-constructible-universe, 09-taxonomy-self-reference, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "The constructible universe is a second rigorous example of a strange loop, of a different form of self-description from the Gödel sentence, and not simply a better example than the incompleteness proof."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(constructible-universe, strange-loop)
+      star: notion-not-class
+    - id: 2
+      text: "The constructible universe reconstructs itself from inside (carrying out the definition of L within L gives L again, by absoluteness), an identity that has the form of a fixed point although no sentence in it refers to itself."
+      evidence: proved
+      credence: 0.99
+      atom: analogous-to(constructible-universe, fixed-point)
+    - id: 3
+      text: "The self-reconstruction of the constructible universe is reached through definability and absoluteness and not through diagonalization."
+      evidence: established
+      credence: 0.9
+      atom: uses(constructible-universe, diagonalization)
+      holds: false
+      star: notion-not-class
+    - id: 4
+      text: "The constructible universe is not a feedback loop, because its hierarchy is well-founded, each stage depends only on earlier ones, nothing is revised, and the stage index is an ordinal and not a moment in time."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(constructible-universe, feedback-loop)
+      holds: false
+    - id: 5
+      text: "In the constructible universe the loop lies in the identity and not in the stages: what returns to its starting point is the operation of forming the constructible universe, applied to its own result."
+      evidence: argued
+      credence: 0.75
+    - id: 6
+      text: "The constructible universe yields a relative consistency result (if ZF is consistent then so is ZFC with the generalized continuum hypothesis), which shows that ZF cannot refute choice or the continuum hypothesis and does not show that they are true."
+      evidence: proved
+      credence: 0.99
+      atom: produces(constructible-universe, relative-consistency)
+    - id: 7
+      text: "The constructible universe falls outside the definition of a reflective formal system, because that definition asks for a diagonal fixed point."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(constructible-universe, reflective-formal-system)
+      holds: false
+      star: notion-not-class
 ---
 # Constructible universe
 

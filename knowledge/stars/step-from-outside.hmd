@@ -1,0 +1,56 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "What changes a system's rules is a step its current rules do not yield, which has to be explicit and reviewable, and which need not be taken by a human."
+      evidence: proposed
+      credence: 0.6
+---
+# A step from outside
+
+**A step from outside** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. What changes a system's rules is a step its current rules do not yield, which has to be explicit and reviewable, and which need not be taken by a human. It joins the safety design of the documents to the mathematics of extending a theory.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+Two groups of cards meet here that otherwise share little. The logic cards say
+that extending a theory by its Gödel sentence is no deduction inside the
+theory and is not safe by construction. The HMD cards say that generated
+content enters the vault only through a gate, as a revision, and never runs
+itself. Between them stand the corrections about people:
+`requires(strange-loop, human-in-the-loop)` and
+`requires(reflection-progression, human-in-the-loop)` are both denied, each by
+two cards.
+
+The star is what the two groups have in common: *the rule-changing step comes
+from outside the frame it changes, so it must be visible, and what takes it is
+a role and not a species*.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "step-from-outside")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+The cards deny that a human is required and also reserve two decisions for a
+person or an agent under review. That is consistent only while "outside" means
+outside the current frame and not outside all machinery. The star rests on
+that reading, and no atom states it.

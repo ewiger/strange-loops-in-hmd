@@ -7,6 +7,46 @@ metadata:
   established: false
   questions: [ai-support-in-hql, ai-oriented-language]
   sources: [06-formal-definition-godel, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A typed transformation is a cognitive operation given a signature: a declared type of input, a declared type of output, and a requirement on what must accompany the result."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(typed-transformation, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "Asking a language model to deduce is not the same as a formally checked deduction, since the text a model returns for a deduction looks like the text for a guess."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 3
+      text: "A typed signature says what kind of thing came back, so that code receiving hypotheses cannot pass them on as established facts without an explicit step."
+      evidence: proposed
+      credence: 0.6
+      star: candidate-until-checked
+    - id: 4
+      text: "A typed transformation requires a deduction to carry a proof or derivation that a checker accepts, which moves the trust from the model to the checker, and requires an induction, abduction or analogy to carry the evidence used and a confidence."
+      evidence: proposed
+      credence: 0.6
+      star: candidate-until-checked
+    - id: 5
+      text: "Types constrain the form of a result and what accompanies it but do not make an induction correct or an analogy apt: a hypothesis with evidence and a confidence attached can still be false."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(typed-transformation, correctness)
+      holds: false
+      star: candidate-until-checked
+    - id: 6
+      text: "A typed transformation applies the argument that a compiler or proof checker acts as a feedback mechanism to the operations of reasoning themselves, so that the verifier checks each inferential step and not only generated code."
+      evidence: proposed
+      credence: 0.6
+      atom: analogous-to(typed-transformation, verifier-as-feedback)
+      star: candidate-until-checked
+    - id: 7
+      text: "The lens classify-operation is the nearest sketch of a typed transformation as a query: it labels a passage with the operation it performs and returns the label with evidence and a confidence."
+      evidence: proposed
+      credence: 0.6
+      atom: example-of(classify-operation, typed-transformation)
 ---
 # Typed transformation
 

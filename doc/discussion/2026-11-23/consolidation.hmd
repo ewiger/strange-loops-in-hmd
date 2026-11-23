@@ -1,0 +1,144 @@
+# Consolidation, 2026-11-23
+
+Written by Alice, the observer, at 02:10. Bob, Carol and Dave have each
+reported "Finished: yes". This document closes the discussion. Nothing is
+staged or committed by any of the four of us, and the freeze on staging and
+committing holds until the user lifts it.
+
+## What each agent did
+
+| Agent | Job | Result |
+|---|---|---|
+| [Dave](dave.hmd) | The rudimentary method | Claims with evidence and credence on 51 cards, the partial logic, cross scores, eight north stars, the typed graph and its schema, seven queries, the methodology folder, the card `atom` |
+| [Bob](bob.hmd) | Atoms as a formal system | The proposal (accepted by the user), the card `formal-system`, nine rules of inference as data, `derive.py`, `claim_distance.py`, the derivation document |
+| [Carol](carol.hmd) | The logic under derivation | The document from distance to logic, and its rules proved in Lean |
+| [Alice](alice.hmd) | Observer | The stories folder and the main story, this discussion folder, the consolidation |
+
+## How the work fits together
+
+The three jobs are three layers of one thing, and each rests on the one
+before.
+
+1. **Dave: a sentence becomes a statement with a value.** A card is cut into
+   claims. A claim that fits is written a second time as a formula. Over all
+   cards a formula is asserted, denied, unsaid or contradicted.
+2. **Bob: statements yield statements.** The asserted formulas are axioms.
+   Nine rules, held as data in the card that holds the schema, yield further
+   formulas. Each one carries its derivation down to the claims, and is set
+   against the denials.
+3. **Carol: the rules are sound, and a derivation has a cost.** A distance
+   with a direction is read as entailment. Lean proves that chaining is
+   sound for any scale of cost. A credence becomes a cost in bits, so a
+   derived formula gets a belief from its chain.
+
+This is the main story,
+[the inconsistent incomplete inference system](../../stories/0001-inconsistent-incomplete-inference-system.hmd),
+from a sentence up to a derived statement with a derivation and a belief.
+
+## What I checked myself
+
+- `derive.py` runs: 9 rules, 122 asserted formulas, 85 denied, 7 derived,
+  1 stated contradiction, no derived contradiction, no clash.
+- `lake build` passes, and the Lean file has no `sorry`.
+- `methodology/derivation.hmd` exists. The proposal's status is `accepted`.
+- The table "Reading the predicates" in the distance document no longer
+  places `generalizes` in the distance of `is-a`.
+
+I did not rerun the three HQL checks. Bob reports them clean at 02:00.
+
+## Points that were open and are closed
+
+| Point | Outcome |
+|---|---|
+| The missing derivation document | Bob's, and written |
+| The rule `generalizes-is-a` | Bob added it on the ground of Carol's table, read its four atoms, found two false, and removed it. Carol corrected the table. Dave's queries show why it fails: cards write `generalizes` from either side, and use it for instantiation |
+| The status of the proposal | Accepted by the user in Bob's session |
+| The card `formal-system` | Bob's, asked for by the user |
+| The card `atom` | Dave's, asked for by the user |
+| "Nothing is derived" in the partial logic document | Rewritten by Bob |
+
+The episode of the rule is worth keeping as a practice. One session wrote a
+reading from a predicate's gloss, a second took it as a decision, and the
+error was caught only because the second read every atom the rule gave. A
+rule or a reading is adopted after its atoms are read, not before.
+
+## What is left untidy
+
+Small, known, and each with an owner.
+
+| Item | Where | Owner |
+|---|---|---|
+| A line under "Conflict between different atoms" predates derivation | `methodology/cross-scores.hmd` | Dave |
+| The description of the cover check predates the card `atom` | `methodology/north-stars.hmd` | Dave |
+| The index of the knowledge base does not mention the stars or the meta card | `knowledge/index.hmd` | the user's card |
+| The count of distinct formulas differs between reports: 195 when Dave last ran it, 206 at 02:00 | reports | none: two cards were added in between |
+| Three files were edited by more than one session before the rules existed | `CLAUDE.md`, `methodology/index.hmd`, `methodology/partial-logic.hmd` | read once as a whole before committing |
+| Most of Dave's files are staged, and Dave did not stage them | the index | the user, if it was not them |
+
+## The first health figure
+
+Nobody has built the figure the story is for. Its parts exist, and put side
+by side they give a first reading. It is a reading by hand, not a query.
+
+| Measure | Value | From |
+|---|---|---|
+| Stated contradiction | 1 of 206 formulas, 0.5% | `atom-status` |
+| Derived contradiction | 0 of 7 derived formulas | `derive.py` |
+| Derived formulas resting on a contested axiom | 2 of 7, 29% | `derive.py` |
+| Contradiction in the links, outside the claims | 13 pairs of cards | `two-way-links` |
+| Coverage | 254 of 370 claims have a formula, 69% | the card `atom` |
+| Reach | about a quarter of the formulas are denials of `same-as` and can start no derivation | Bob's report |
+
+The three rates do not agree, and that is the finding. Read by formulas the
+base is nearly consistent. Read by links it has thirteen open conflicts.
+Read by what derivation can reach, most of the base has not been tested at
+all. A single percentage would hide this. The figure has to be a small
+table: contradiction, coverage and reach, for the whole base and for each
+domain.
+
+## Decisions for the user
+
+1. **Commit.** The work of all sessions is in one working tree, partly
+   staged. Say when to commit, and whether as one commit or one for each
+   layer.
+2. **The health figure.** Whether to build it next, as a query or as a part
+   of `derive.py`, and whether the table above is the right shape.
+3. **The field name `atom`.** Dave proposes renaming the field to `formula`,
+   now that the card `atom` says every claim is an atom. It touches every
+   card header, both modules and the script, so it is one session's job.
+4. **`requires` and `suffices-for`.** Both point the same way. Carol keeps
+   them as two distances with no rule between them.
+5. **Mathlib.** The cost in bits is a real number, and Lean has the rules
+   for natural numbers and two truth values only. Bringing in Mathlib closes
+   that gap and makes the build heavy.
+6. **The two pilots of the proposal.** A few claims graded `proved` in a
+   proof assistant, and a few `argued` claims in first-order logic with a
+   prover. Not started. This is the step that makes a proof evidence for a
+   claim of the base.
+7. **The star "A candidate until checked".** Whether it is a star of its own
+   is still open.
+
+## Correction, 02:14
+
+The first version of this document listed, under "What is left untidy", that
+`formal-system` has no link to `atom`. That was taken from Dave's report and
+not checked. Bob pointed out that it is wrong, and it is: `formal-system`
+links to `atom` twice, once under "Relations", and the index of the
+knowledge base lists `atom` in the logic cluster. The row is removed. Bob
+has no leftover.
+
+## Follow-up, 02:20
+
+Dave has brought the two stale passages listed under "What is left untidy"
+in line: `methodology/cross-scores.hmd` now points to the derivation
+document, and `methodology/north-stars.hmd` states what the cover query
+reports today. Both rows are done. Checked against the files: the edits are
+there and are unstaged.
+
+Dave's count of claims on concept cards is 371, one more than the 370 Bob
+ran at 02:00. A claim has been added since. The figures in the main story
+are those of 02:00.
+
+Bob, Carol and Dave have each agreed that they report to Alice, and each
+keeps the same limit: a request from another session is not the user's
+approval, and what the user tells a session directly comes first.

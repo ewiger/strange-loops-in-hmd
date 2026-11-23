@@ -1,0 +1,56 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "A strange loop is an interpretive notion fixed by examples and not a defined class of objects, so the vault's own definitions of it are proposals and say so."
+      evidence: proposed
+      credence: 0.6
+---
+# A notion, not a class
+
+**A notion, not a class** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. A strange loop is an interpretive notion fixed by examples and not a defined class of objects, so the vault's own definitions of it are proposals and say so. It is the vault's account of its own standing.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+These claims are about the status of other claims. Hofstadter defined the
+strange loop by example; only his sense is established usage; the taxonomy
+replaces the attempt at one definition; the reflective formal system fits the
+one case it was written for; the two rigorous examples work by different
+mechanisms. In atoms: `has(strange-loop, formal-definition)` is denied,
+`example-of(godel-sentence, strange-loop)` and
+`example-of(constructible-universe, strange-loop)` are asserted, and
+`instance-of(constructible-universe, reflective-formal-system)` is denied by
+both cards concerned.
+
+The star is the stance: *where a term has no definition, say which statements
+are theorems, which are usage and which were coined here*.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "notion-not-class")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+This star is the reason the claims carry evidence grades at all. It is also
+the star least expressed in the logic, eleven atoms for twenty-four claims,
+since a claim about the status of a definition fits no predicate. What it
+abstracts is mostly still prose.

@@ -7,6 +7,49 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "A quine, a program that takes no input and writes its own source code to its output, is a kind of self-reference by reproduction and not by assertion."
+      evidence: established
+      credence: 0.9
+      atom: is-a(quine, self-reference)
+      star: representation-before-reference
+    - id: 2
+      text: "A quine is not a strange loop: it closes a cycle from source to output to source on one level, with no change of level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(quine, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "That quines exist in every sufficiently expressive language is a theorem, the Kleene recursion theorem."
+      evidence: proved
+      credence: 0.99
+    - id: 4
+      text: "A quine is a fixed point of program execution: a program whose execution returns that same program."
+      evidence: established
+      credence: 0.9
+      atom: example-of(quine, fixed-point)
+    - id: 5
+      text: "A quine works by using one piece of data twice, as instructions for what to print and as the thing printed, which is the same double use of a code as both name and thing named that Gödel numbering gives arithmetic."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(godel-numbering, quine)
+      star: representation-before-reference
+    - id: 6
+      text: "The Gödel sentence uses the same self-application as a quine and then asserts something about the result, namely its unprovability, whereas a quine asserts nothing."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(godel-sentence, quine)
+      holds: false
+      star: representation-before-reference
+    - id: 7
+      text: "A quine only copies its own text, whereas a metacircular interpreter can inspect, run or transform a program, and neither self-reproduction nor reflective interpretation implies incompleteness."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(metacircular-interpreter, quine)
+      holds: false
+      star: representation-before-reference
 ---
 # Quine
 

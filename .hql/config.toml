@@ -3,6 +3,9 @@
 # library is .hql/queries/.
 [modules]
 import = ["hmd"]
+# Project modules: .hql/lib/claims/mod.hql is `claims`, the types and
+# functions the claim queries share.
+roots = [".hql/lib"]
 
 # The agents vault, a second namespace beside the knowledge base. Its cards
 # are reached with source("agents") and are never merged into `cards`.

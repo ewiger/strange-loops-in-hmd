@@ -1,0 +1,113 @@
+# Methodology
+
+This folder describes the method by which the knowledge base is turned from
+prose into something that can be counted, compared and checked. The cards in
+`knowledge/` say things. The method records what each card says, how sure it
+is, where two cards part, and what several cards are saying in common.
+
+It is the rudimentary version. Each step is done in the plainest way that
+runs today, and each document says what its step cannot yet see.
+
+## The steps
+
+| Step | What is done | Operation | Described in |
+|---|---|---|---|
+| 1 | Each concept card is cut into the claims it makes | decomposition | [claims](claims.hmd) |
+| 2 | Each claim gets an evidence grade and a credence | evaluation | [claims](claims.hmd) |
+| 3 | Claims that fit are also written as atoms | translation | [partial logic](partial-logic.hmd) |
+| 4 | Every link is scored by how far its two cards disagree | evaluation | [cross scores](cross-scores.hmd) |
+| 5 | What recurs across cards is stated once, as a north star | abstraction | [north stars](north-stars.hmd) |
+| 6 | The stars are checked as a cover of the knowledge base | evaluation | [north stars](north-stars.hmd) |
+| 7 | The concepts that carry the argument are drawn as one map | synthesis | [story map](story-map.hmd) |
+| 8 | Headers and links are read as a typed graph and checked against a schema | deduction | the card `knowledge-graph` in the knowledge base |
+| 9 | Atoms are derived from asserted atoms by rules, and each derivation is set against the denials | deduction | [derivation](derivation.hmd) |
+
+The third column names the cognitive operation each step is, in the vault's
+own vocabulary. The method uses the operations the vault defines, on the
+vault. An agent could perform any of them, and so could a person. The method
+does not depend on which, and it fixes what goes in and what comes out of each
+step so that the result can be checked either way.
+
+Step 5 is abstraction and not summarization or generalization. The difference
+is the one the abstraction card draws, and [north stars](north-stars.hmd)
+says how it is held to.
+
+## Where things are
+
+| Thing | Place |
+|---|---|
+| Claims, credences, atoms | the header of each concept card, under `metadata.claims` |
+| North stars | cards in `knowledge/stars/` |
+| The schema of the graph | the header of `knowledge/meta/knowledge-graph.hmd` |
+| The rules of inference | the same header, under `metadata.rules` |
+| The scripts: derivation, and distance between claim texts | `scripts/derive.py` and `scripts/claim_distance.py` |
+| Types and functions shared by the queries | `.hql/lib/claims/mod.hql` and `.hql/lib/kg/mod.hql` |
+| The queries | `.hql/queries/` |
+| The proofs, in Lean | `scripts/lean/` |
+
+## The queries
+
+All of these run on the current query language.
+
+| Query | Answers |
+|---|---|
+| [claims](../.hql/queries/claims.hql) | What does the vault claim? Every claim with its address. |
+| [atom status](../.hql/queries/atom-status.hql) | Which atoms are asserted, denied, or both? |
+| [cross scores](../.hql/queries/cross-scores.hql) | How far do the two cards of each link disagree? |
+| [two-way links](../.hql/queries/two-way-links.hql) | Which pairs of cards declare a one-way relation in both directions? |
+| [recurring terms](../.hql/queries/recurring-terms.hql) | Which predicates and things recur across cards? |
+| [star cover](../.hql/queries/star-cover.hql) | Do the north stars cover the concepts, and does any star lie inside another? |
+| [schema check](../.hql/queries/schema-check.hql) | Does every arrow of the graph have a signature the schema allows? |
+
+One design waits for the language: `claim-contradictions.hql` in the future
+queries compares claims by meaning, which reaches the claims that have no
+atom.
+
+## What the numbers say today
+
+- 54 cards carry claims: 53 concepts and the card that describes the graph.
+  The eight star cards each carry one more, the statement of the star.
+- 370 claims on concept cards. 254 of them have an atom.
+- 206 distinct atoms across all cards, of which one is asserted by one card and denied by
+  another.
+- 9 rules of inference derive 7 atoms that no claim states, and none of the
+  7 is denied.
+- 503 links join two cards that carry claims. 97 of them join cards that speak
+  on a shared atom, and 16 of those show a disagreement above zero. The
+  largest is 0.24.
+- 13 pairs of cards declare a one-way relation in both directions.
+- The typed graph has 454 nodes and 1,648 arrows, and every arrow conforms to
+  the schema.
+
+The low disagreement is partly real, since the cards were written from one
+line of discussion, and partly the limit of the method: atoms are compared
+only when they are the same string, and the credences are still the priors
+their evidence grade gave them. The thirteen two-way links were found outside
+the claims entirely. The inconsistency the vault has is more likely to be in
+what the method cannot compare yet than in what it can.
+
+## The logic under derivation
+
+[From distance to logic](distance-to-logic.hmd) reads a distance with a
+direction as an entailment: `a ⊑ b` when the distance from `a` to `b` is zero.
+It gives the rules by which atoms are derived from other atoms, and each
+rule is proved in Lean. [Derivation](derivation.hmd) is the step built on it:
+the rules as data, a script that applies them, and what they find. The script
+is Python, and no query derives anything yet.
+
+## What comes next
+
+- Atoms written with shared arguments, so that the rules of
+  [derivation](derivation.hmd) have chains to follow. Today they yield seven
+  atoms.
+- More rules between predicates, each kept only if every atom it gives is
+  read and none is false.
+- Derivation as a query, when the query language can express a fixed point.
+- Credences moved by hand, with a reason recorded, where a claim has been
+  tested or challenged.
+- Comparison of claims by meaning, for the third of the claims with no atom.
+- Tighter signatures in the schema, each one a claim about the vault that the
+  check then enforces.
+- The check feeding a revision of the schema through a reviewed gate, which
+  is the step that would make the graph's description of itself take part in
+  changing it.

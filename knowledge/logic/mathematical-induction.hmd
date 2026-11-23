@@ -7,6 +7,41 @@ metadata:
   established: true
   questions: [learning-the-formalism]
   sources: [07-constructible-universe, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "Mathematical induction, despite its name, is a form of deduction: its conclusion is certain, it uses no observations, and it lives entirely inside a formal theory."
+      evidence: established
+      credence: 0.9
+      atom: is-a(mathematical-induction, deduction)
+      star: operation-by-signature
+    - id: 2
+      text: "Mathematical induction is a different concept from induction as inference from evidence, with which it shares only the name."
+      evidence: established
+      credence: 0.9
+      atom: same-as(induction, mathematical-induction)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "In first-order arithmetic mathematical induction is an axiom schema, so a proof by induction is an ordinary derivation that goes beyond nothing the theory already contains."
+      evidence: established
+      credence: 0.9
+    - id: 4
+      text: "Mathematical induction is the proof-side twin of recursion: recursion defines an object stage by stage and induction proves a property stage by stage, with the same shape and the same need for a base case."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(mathematical-induction, recursion)
+    - id: 5
+      text: "The hierarchy of the constructible universe is defined by transfinite recursion and every fact about it is proved by transfinite induction, the extension of mathematical induction along the ordinals with a third case for limit stages."
+      evidence: established
+      credence: 0.9
+      atom: uses(constructible-universe, mathematical-induction)
+    - id: 6
+      text: "Mathematical induction is well-founded, does not loop and crosses no level, so it is a standard anti-example of a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(mathematical-induction, strange-loop)
+      holds: false
+      star: levels-not-cycles
 ---
 # Mathematical induction
 

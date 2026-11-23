@@ -7,6 +7,45 @@ metadata:
   established: false
   questions: [building-a-loop-in-hmd, ai-support-in-hql]
   sources: [03-hmd-hql-executable-documents, 06-formal-definition-godel]
+  claims:
+    - id: 1
+      text: "The observer card experiment is the smallest instance of the HMD feedback loop: one card links to itself, a cell in it retrieves a pinned revision of that same card, and what the cell reports may lead to a reviewed change of the card or of the rules that interpret it."
+      evidence: proposed
+      credence: 0.6
+      atom: instance-of(observer-card-experiment, hmd-feedback-loop)
+    - id: 2
+      text: "A link from a card to itself is self-reference at the level of prose, whereas retrieving the card as a value turns it into data for a computation inside the card, and that is the step from a document that names itself to a document that examines itself."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 3
+      text: "A card that only reads its own text is in the position of a quine, reproducing a description without saying anything about it, and adding a proposed and recorded edit makes it only a feedback loop."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 4
+      text: "The observer card experiment succeeds only if a level crossing can be exhibited, in which observations lead to a change in the interpretive rules that produced those observations."
+      evidence: proposed
+      credence: 0.6
+      atom: requires(observer-card-experiment, level-crossing)
+      star: levels-not-cycles
+    - id: 5
+      text: "Five execution boundaries, namely a fixed snapshot, no silent self-execution, changes as reviewable patches, provenance of each output and an explicit termination policy, are part of the observer card experiment and not an afterthought."
+      evidence: proposed
+      credence: 0.6
+      atom: has(observer-card-experiment, execution-boundaries)
+      star: step-from-outside
+    - id: 6
+      text: "The pinned revision in the observer card experiment does the same work as the separation of object level and meta level in logic: the card inspected and the card inspecting are held apart as two revisions, so that the crossing between them is a deliberate, recorded act."
+      evidence: argued
+      credence: 0.75
+      atom: analogous-to(object-and-meta-level, pinned-revision)
+      star: levels-not-cycles
+    - id: 7
+      text: "An observer card that runs is evidence only of executing a construction from outside, and not of a theory representing that construction internally."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
 ---
 # Observer card experiment
 

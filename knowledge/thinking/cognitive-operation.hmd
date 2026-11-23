@@ -7,6 +7,45 @@ metadata:
   established: false
   questions: [learning-the-formalism, ai-support-in-hql]
   sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "A cognitive operation is a named kind of step in thinking, described by what it takes in and what it gives out."
+      evidence: proposed
+      credence: 0.6
+      star: operation-by-signature
+    - id: 2
+      text: "The list of seventeen cognitive operations is a taxonomy proposed in this project's discussion, not an established classification."
+      evidence: proposed
+      credence: 0.6
+      star: notion-not-class
+    - id: 3
+      text: "Induction is a cognitive operation that was left out of the first table of model tasks and restored, together with deduction and abduction, as the central family of inference."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(induction, cognitive-operation)
+    - id: 4
+      text: "Naming a cognitive operation does not make a language model perform it reliably: asking a model to deduce is not a checked deduction."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 5
+      text: "Each cognitive operation is meant to become a typed transformation with declared input and output, whose result carries evidence, a confidence, or a proof obligation."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(typed-transformation, cognitive-operation)
+      star: operation-by-signature
+    - id: 6
+      text: "A strange loop is a reflective phenomenon of the third layer of the taxonomy and is not a cognitive operation, whereas most of thinking and most of what a language model does happens in the first layer, the operations."
+      evidence: proposed
+      credence: 0.6
+      atom: instance-of(strange-loop, cognitive-operation)
+      holds: false
+    - id: 7
+      text: "Fixed points and diagonalization are structures and methods in the upper layers of the taxonomy, not cognitive operations of inquiry."
+      evidence: proposed
+      credence: 0.6
+      atom: instance-of(fixed-point, cognitive-operation)
+      holds: false
 ---
 # Cognitive operation
 

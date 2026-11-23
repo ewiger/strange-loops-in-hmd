@@ -1,0 +1,55 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "Nothing refers to itself until the system holds a representation of itself that it can operate on, and holding one is still not referring."
+      evidence: proposed
+      credence: 0.6
+---
+# Representation before reference
+
+**Representation before reference** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. Nothing refers to itself until the system holds a representation of itself that it can operate on, and holding one is still not referring. It names the step that every exact case of self-reference has to take first.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+The claims under this star are about encodings: Gödel numbering, a quine's
+data used twice, programs as values in a metacircular interpreter, a card
+retrieved as a value by its own cell, translation into the system's own terms.
+The atoms run in two directions. One says the representation is needed:
+`requires(diagonal-lemma, godel-numbering)`,
+`requires(self-reference, translation)`. The other says it is not enough:
+`suffices-for(godel-numbering, self-reference)` is denied, and so is
+`suffices-for(external-execution, self-reference)`.
+
+The star is that double condition, and the distinction it protects: running a
+construction from outside is not the system representing it inside.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "representation-before-reference")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+The last distinction is the one the project's own experiment has to face. A
+card that reads itself and runs is on the outside-execution side of it, by
+the observer card's own claim. This star states the gap and no card yet
+closes it.

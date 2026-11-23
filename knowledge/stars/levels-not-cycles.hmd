@@ -1,0 +1,55 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "A loop is strange because a level of description is crossed on the way round, and no amount of cycling, repetition, feedback or self-modification supplies a crossing."
+      evidence: proposed
+      credence: 0.6
+---
+# Levels, not cycles
+
+**Levels, not cycles** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. A loop is strange because a level of description is crossed on the way round, and no amount of cycling, repetition, feedback or self-modification supplies a crossing. It is the vault's test, stated once. Every card that asks whether something is a strange loop ends up applying it.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+The cards under this star keep making the same two moves. One denies that some
+kind of cycle is enough: `suffices-for(x, strange-loop)` is denied for
+`feedback-loop`, `self-modification`, `reasoning-cycle`, `evaluation`,
+`revision`, `metacircular-interpreter`, `reflective-agent` and
+`render-integrate-execute`. The other says what is needed instead:
+`requires(strange-loop, level-crossing)` and
+`requires(strange-loop, object-and-meta-level)`, with `has(x, level-crossing)`
+denied for the things that only go round.
+
+The star is the shape those claims share: *a cycle of x is not a strange loop
+unless a level is crossed*. It says nothing about any one x.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "levels-not-cycles")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+The criterion is negative far more often than positive. The claims rule out
+many candidates and admit two, the Gödel sentence and the constructible
+universe, and the second of those crosses no level in the same sense as the
+first. The star says what fails the test more firmly than what passes it.

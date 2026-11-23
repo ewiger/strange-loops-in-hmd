@@ -7,6 +7,47 @@ metadata:
   established: false
   questions: [strange-loop-meaning, building-a-loop-in-hmd, learning-the-formalism]
   sources: [08-humans-extend-axioms, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "A reflection progression is a sequence of theories in which each stage adds the Gödel sentence of the stage before, a construction whose mathematical core is established as Turing's ordinal logics and Feferman's transfinite recursive progressions of theories."
+      evidence: established
+      credence: 0.9
+      atom: uses(reflection-progression, godel-sentence)
+    - id: 2
+      text: "Each step of a reflection progression is outside the reach of the stage it extends: no deduction in a theory yields its extension by its own Gödel sentence, so the step is taken by someone who accepts the theory and reflects on it."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 3
+      text: "A reflection progression never ends in a complete theory, because the incompleteness theorems apply again at every stage that is still consistent, computably axiomatized and strong enough."
+      evidence: proved
+      credence: 0.99
+      atom: uses(reflection-progression, incompleteness-theorems)
+      star: limits-from-inside
+    - id: 4
+      text: "Extending a theory by its Gödel sentence is not automatically safe: consistency alone is not enough, and the step is justified by trust in the theory, which is more than the theory can express."
+      evidence: established
+      credence: 0.9
+      star: step-from-outside
+    - id: 5
+      text: "A human is not a mathematical requirement for a strange loop, since a program can implement a theory progression and its definition does not mention who takes the step."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 6
+      text: "A reflection progression in which the criteria of revision are themselves revised differs from a feedback loop by that outer cycle, which is what separates a reflective system from a feedback loop."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(reflection-progression, feedback-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 7
+      text: "A reflective formal system is the static case, one stage of a reflection progression considered alone, whereas the progression is the evolving case in which reflective results change the rules or the criteria over a sequence of stages."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(reflective-formal-system, reflection-progression)
 ---
 # Reflection progression
 

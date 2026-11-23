@@ -1,0 +1,97 @@
+# North stars
+
+A **north star** is an abstraction over claims: one statement that claims on
+several cards are each a case of. The stars are kept as cards in
+`knowledge/stars/`, with the category `star`. A claim is placed under a star
+by naming it in the claim's `star` field.
+
+A star is a direction and not a conclusion. Its own claim is graded
+`proposed`, and it may turn out to be a bad abstraction. The checks below are
+how that is found out.
+
+## Abstraction, not generalization and not summary
+
+The vault's own cards draw the distinction, and the method follows it.
+
+- A **summary** of the claims would say the same things in fewer words. A star
+  does not restate its claims.
+- A **generalization** would widen one claim until it covers more cases. A
+  star is not one of its claims made larger.
+- An **abstraction** identifies the structure the claims share and states it
+  once. It is true of every claim under it, and for each claim one can say how
+  it is a case.
+
+The abstraction card says what makes an abstraction checkable: it returns a
+structure together with the mapping from each case onto it. Here the structure
+is the star's statement and the mapping is the `star` field, one entry per
+claim. A reader can take any claim under a star and ask whether it is a case
+of the statement. If it is not, the claim is misplaced or the star is wrong.
+
+## Finding a star
+
+Stars are found from below.
+
+1. Put the claims into the partial logic where they fit.
+2. Look at what recurs: the same predicate with the same polarity around the
+   same things, on cards that do not cite each other. The query
+   [recurring terms](../.hql/queries/recurring-terms.hql) counts predicates
+   and arguments by the number of cards using them.
+3. State the shape the recurring atoms share, with the particular things
+   replaced by a blank. Eight cards deny `suffices-for(x, strange-loop)`, each
+   for its own x. The shape is: a cycle of x is not a strange loop unless a
+   level is crossed.
+4. Place under the star the claims that are cases of that shape, including
+   claims in natural language that say the same and have no atom.
+
+A star needs claims from several cards. An abstraction over one card's claims
+is that card's definition.
+
+## The cover
+
+The **territory** of a star is the set of cards with at least one claim under
+it. The stars are meant to form a cover of the knowledge base, and three
+conditions make that precise.
+
+- **It covers.** Every concept card is in at least one territory. A card in
+  none is a hole: either a star is missing, or the card stands apart from
+  everything else the vault says.
+- **It is dominating.** No star's territory lies inside another's. A star
+  whose territory does adds no ground. It is a part of the larger star, or its
+  claims have been filed under the wrong one.
+- **It overlaps.** Territories are not a partition. A card with claims under
+  two stars is where those stars meet, and the meetings are the structure of
+  the cover: take the stars as points and join two when their territories
+  share a card. That graph is what the [story map](story-map.hmd) draws.
+
+The query [star cover](../.hql/queries/star-cover.hql) reports all three:
+`uncovered`, `dominated` and `overlaps`, with the territories themselves and
+the number of claims left under no star.
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| group(by = u => u.star)
+| sort(by = g => g.key)
+| map(g => {star: g.key, cards: g.items | map(u => u.card) | distinct | size, claims: size(g.items)})
+```
+
+## Where the cover stands
+
+There are eight stars. As the query reports on 2026-11-23, every concept card
+is covered, and 83 of the 371 claims on concept cards are under no star. Most
+of those are statements of fact about one thing, which is as it should be: a
+star that took in every claim would be abstracting nothing.
+
+The query reports no dominated star. It did report one before the card `atom`
+was written: the territory of "A candidate until checked" lay inside that of
+"An operation is its signature". The card `atom` has a claim under the first
+star and none under the second, so the first territory now has a card the
+second lacks, and the report is empty. One card made the difference. Whether
+"A candidate until checked" is a star of its own is therefore not settled by
+the check, and it is an open question.
+
+Measured by cards, the test is also coarse. Two stars could share every card
+and no claim. Territory by card is the rudimentary measure, and the finer
+one, by the atoms the claims share, is not built.

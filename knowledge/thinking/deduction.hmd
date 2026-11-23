@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-support-in-hql, ai-oriented-language]
   sources: [06-formal-definition-godel, 08-humans-extend-axioms, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Deduction is the inference from premises and rules to what must follow from them, so that if the premises hold the conclusion holds."
+      evidence: established
+      credence: 0.9
+      atom: has(deduction, truth-preservation)
+      star: operation-by-signature
+    - id: 2
+      text: "Deduction adds certainty and no new content, whereas induction adds content and no certainty."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 3
+      text: "Deduction cannot supply its own frame and works only in a cycle with induction: the premises of any deduction about the world were reached by induction or abduction."
+      evidence: argued
+      credence: 0.75
+      atom: requires(deduction, induction)
+      star: no-operation-alone
+    - id: 4
+      text: "Deduction is the downward arc of the reasoning cycle, the step from a hypothesis to predictions that the next observations can confirm or refute."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(deduction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 5
+      text: "Asking a language model to deduce is not a checked deduction: the model produces text that resembles a derivation and carries no guarantee until an independent checker accepts a proof of the result."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 6
+      text: "Mathematical induction is a deductive method, an ordinary derivation with a certain conclusion, in spite of its name."
+      evidence: established
+      credence: 0.9
+      atom: is-a(mathematical-induction, deduction)
+      star: operation-by-signature
+    - id: 7
+      text: "The incompleteness theorems mark the limit of deduction inside a theory: a consistent, effectively axiomatized, sufficiently strong theory leaves some statements undecided, and no deduction inside it reaches them."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
 ---
 # Deduction
 

@@ -7,6 +7,48 @@ metadata:
   established: false
   questions: [building-a-loop-in-hmd, ai-support-in-hql, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "When the output of a computation is itself a document, rendering the result as Markdown, integrating that Markdown into the vault and executing the cells it contains are three distinct operations that each need their own decision."
+      evidence: proposed
+      credence: 0.6
+      star: step-from-outside
+    - id: 2
+      text: "Render-integrate-execute has two gates, held by a person or by an agent under review: generated content does not enter the vault unless approved, and content that has entered does not run unless explicitly chosen."
+      evidence: proposed
+      credence: 0.6
+      atom: uses(render-integrate-execute, human-in-the-loop)
+      star: step-from-outside
+    - id: 3
+      text: "Render-integrate-execute is the safety discipline of the HMD feedback loop, describing what must happen between that loop's output step and its revision step."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(render-integrate-execute, hmd-feedback-loop)
+      star: step-from-outside
+    - id: 4
+      text: "A vault that generates and re-runs its own cells is a reflective programming substrate and may still be plain feedback; it qualifies as a strange loop only when the relevant cross-level self-reference is demonstrated."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(render-integrate-execute, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 5
+      text: "The integration gate cannot be automated away, because a checker can prove that a program follows a specification but cannot prove that the specification is what was wanted."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 6
+      text: "The integrate step of render-integrate-execute is a revision of the vault: integration is revision with a version history."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(integration, revision)
+      star: step-from-outside
+    - id: 7
+      text: "Render-integrate-execute generalizes the five execution boundaries of the observer card experiment, which are the same gates applied to a single card."
+      evidence: proposed
+      credence: 0.6
+      atom: generalizes(render-integrate-execute, observer-card-experiment)
+      star: step-from-outside
 ---
 # Render, integrate, execute
 

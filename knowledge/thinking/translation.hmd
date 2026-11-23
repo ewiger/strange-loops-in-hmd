@@ -7,6 +7,49 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-oriented-language, strange-loop-meaning]
   sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Self-reference in a formal system requires translation, because the system's statements must first be translated into the system's own objects."
+      evidence: argued
+      credence: 0.75
+      atom: requires(self-reference, translation)
+      star: representation-before-reference
+    - id: 2
+      text: "Gödel numbering is a translation of the formulas and proofs of arithmetic into numbers, which lets arithmetic speak about its own formulas."
+      evidence: established
+      credence: 0.9
+      atom: example-of(godel-numbering, translation)
+      star: representation-before-reference
+    - id: 3
+      text: "The loop in Gödel's construction is not in the Gödel-numbering translation itself, although the loop cannot be built without it."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(godel-numbering, strange-loop)
+      holds: false
+      star: representation-before-reference
+    - id: 4
+      text: "A cross-language quine is two translations composed into a cycle, and the cycle reproduces a description and reasons about nothing."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(cross-language-quine, translation)
+      star: representation-before-reference
+    - id: 5
+      text: "In the chain from intention to specification to program, the translation from natural-language intention to formal specification is the one that can fail silently, because proving a program meets a specification does not prove the specification says what was wanted."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 6
+      text: "A translation between formal languages can be checked, but a translation out of natural language cannot be checked the same way, because the source has no exact meaning to compare against."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 7
+      text: "Translation differs from analogy, because translation keeps the same subject in a new language while analogy maps one subject onto another."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, translation)
+      holds: false
+      star: operation-by-signature
 ---
 # Translation
 

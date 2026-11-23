@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [strange-loop-meaning, learning-the-formalism]
   sources: [06-formal-definition-godel, 08-humans-extend-axioms, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Gödel's incompleteness theorems state that a consistent, computably axiomatizable theory extending Robinson arithmetic leaves some arithmetical sentence undecided and, given enough induction, does not prove the sentence expressing its own consistency."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 2
+      text: "The proposal that a strange loop is a system that is complete and consistent is inverted by the incompleteness theorems: consistency is the hypothesis, and completeness is what the theorems rule out for any theory meeting their three conditions."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 3
+      text: "The incompleteness theorems are the consequence that turns formal self-reference into something worth the name strange loop: a system that represents itself and thereby meets a limit it can state but not remove."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 4
+      text: "The incompleteness theorems do not apply to weak or non-effective theories: Presburger arithmetic is complete and decidable, and the set of all true arithmetical sentences is complete and consistent although no program lists it."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 5
+      text: "The incompleteness theorems say nothing about minds, and are related only by analogy to epistemic limits of minds and agents, the claim that every sufficiently reflective intelligence faces an analogous limit being a conjecture."
+      evidence: argued
+      credence: 0.75
+      atom: analogous-to(epistemic-limits, incompleteness-theorems)
+      star: limits-from-inside
+    - id: 6
+      text: "The incompleteness theorems do not say that self-reference is paradoxical, and self-reference alone does not entail incompleteness or inconsistency."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 7
+      text: "The first incompleteness theorem is proved by exhibiting a Gödel sentence that the theory cannot decide."
+      evidence: proved
+      credence: 0.99
+      atom: uses(incompleteness-theorems, godel-sentence)
+      star: limits-from-inside
 ---
 # Incompleteness theorems
 

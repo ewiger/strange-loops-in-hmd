@@ -7,6 +7,49 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-support-in-hql]
   sources: [08-humans-extend-axioms, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Abduction is the inference from a surprising observation to candidate explanations, and it produces hypotheses, not certainties."
+      evidence: established
+      credence: 0.9
+      atom: produces(abduction, candidate-explanations)
+      star: candidate-until-checked
+    - id: 2
+      text: "Abduction is not the same operation as induction: abduction starts from one case that does not fit and produces an explanation of it, whereas induction starts from many agreeing cases and produces a rule covering them."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abduction, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Abduction returns several candidate explanations and does not choose among them; evaluation is the step that selects among the candidates."
+      evidence: argued
+      credence: 0.75
+      atom: uses(abduction, evaluation)
+      star: no-operation-alone
+    - id: 4
+      text: "Abduction is never complete on its own: a candidate explanation is worth nothing until consequences that differ from those of its rivals are deduced from it and tested."
+      evidence: argued
+      credence: 0.75
+      atom: precedes(abduction, deduction)
+      star: no-operation-alone
+    - id: 5
+      text: "Abduction is part of the upward arc of the reasoning cycle, which it shares with induction."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(abduction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 6
+      text: "Proposing a new axiom for a statement that a theory leaves undecided is an abductive step, and it is the step that moves a reflection progression from one theory to the next."
+      evidence: argued
+      credence: 0.75
+      atom: uses(reflection-progression, abduction)
+      star: step-from-outside
+    - id: 7
+      text: "Language models are fluent at abduction, and a plausible explanation is the easiest thing to generate and the hardest to tell from a correct one."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
 ---
 # Abduction
 

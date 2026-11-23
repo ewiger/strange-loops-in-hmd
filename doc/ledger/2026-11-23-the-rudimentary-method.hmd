@@ -1,0 +1,159 @@
+# 2026-11-23 — The rudimentary method
+
+The first entry of the ledger. It records the change that turned a knowledge
+base of prose cards into one that can be counted, derived from and checked,
+and that gave the project its name.
+
+## The change
+
+| | |
+|---|---|
+| Branch | `feat/rudimentary` |
+| Follows | commit `384c7a8` of 2026-11-22 |
+| Size | about 100 files, about 7,300 lines added, almost none removed |
+| Of which new | 48 files |
+| Of which changed | 55 files, nearly all of them card headers |
+| Worked on by | four agent sessions in one working tree: Dave, Bob, Carol, and Alice as observer |
+| Time | one night, 2026-11-22 to 2026-11-23 |
+
+The changed files are the concept cards. Their text was left as it was and a
+block of claims was added to each header.
+
+## Objectives
+
+In the order they were set.
+
+1. **Make the knowledge base measurable.** Give every card front matter that
+   speaks of evidence and probability. Hold its claims as an addressable
+   list. Put part of them into a partial logic. Score every link by how far
+   its two cards disagree. State what recurs as north stars. Describe the
+   method.
+2. **Read the base as a typed graph.** Check every arrow against a schema,
+   and let one card describe the graph it is a node of.
+3. **Get from a sentence to a proof.** Say how a claim stated in natural
+   language is translated into a formula and proved, and how a distance
+   between two things can be read as an implication.
+4. **Measure inconsistency like health.** Say what share of the base is
+   contradicted, for the whole and for each domain, as one reads the health
+   of a running service.
+5. **Tell it as a story,** and keep several agents working on it at once
+   without losing each other.
+
+## Arrived at
+
+A pipeline that runs from a sentence to a derived statement.
+
+| Stage | State |
+|---|---|
+| A card is cut into claims, each with a grade and a credence | 371 claims on 53 concept cards |
+| A claim that fits is written as a formula | 254 of them, 206 distinct formulas |
+| A formula is asserted, denied, unsaid or contradicted | 122 asserted, 85 denied, 1 contradicted |
+| Rules yield further formulas, each with its derivation | 9 rules, 7 derived formulas |
+| A derived formula is set against the denials | no contradiction reached by derivation |
+| The rules are proved sound | in Lean, for any scale of cost, with no proof left open |
+| A credence becomes a cost, so a derivation has a belief | computed for each derived formula |
+| The graph is checked against its schema | no violation |
+| The stars are checked as a cover | every concept covered, 83 claims under no star |
+
+## Accomplished
+
+**Dave, the rudimentary method.** Claims in the headers of 51 cards. The
+partial logic and its four statuses. Cross scores for links. Eight north
+stars and the check of their cover. The typed graph, its schema, and the
+card that describes the graph. Seven queries that run today and one design
+for later. The methodology folder. The concept card `atom`.
+
+**Bob, the formal system.** The proposal that atoms become a formal system,
+accepted by the user. The concept card `formal-system`. Nine rules of
+inference written as data. A script that applies them to a fixed point and
+shows each derivation down to the claims. A second script that measures how
+close two claim texts are. The derivation document.
+
+**Carol, the logic underneath.** The document that reads a distance with a
+direction as entailment. Its rules proved in Lean: entailment is a preorder,
+the costs of steps add, a chain bounds the distance it spans, classical
+logic is the case of two costs, and neither a symmetric nor a signed
+distance can do the job.
+
+**Alice, the observer.** The stories folder and the main story. The
+discussion folder, the names and the roster. The consolidation of the
+session. The doc vault. This ledger.
+
+## Decisions
+
+Decided for good, unless a later entry says otherwise.
+
+| Decision | Decided by |
+|---|---|
+| The project is the **inconsistent incomplete inference system**, and that is its main story | the user |
+| Natural language comes first. A claim is a sentence, and a formula is a second writing of it | the user, built by Dave |
+| A card carries its own claims, credences and formulas in its header. Nothing about a card is kept beside it | the user, built by Dave |
+| A claim's address `card#id` is never renumbered or reused | Dave, in the method |
+| Only a claim that fits a predicate without distortion gets a formula. The rest stay in words, on purpose | Dave, in the method |
+| Truth has four values, after Belnap. A contradiction is a located fact about named claims and makes nothing else derivable | Dave, in the method; kept by the proposal |
+| Silence is not denial | Dave, in the method |
+| The schema of the graph is held in a card of the graph | the user, built by Dave |
+| The atoms become a formal system: asserted formulas are axioms, written rules yield theorems, each theorem carries its derivation | the user, accepting Bob's proposal |
+| Rules of inference are data in a card header. What applies them stays outside the vault until the query language can express a fixed point | Bob, under the proposal |
+| A denial is never a premise | Bob, under the proposal |
+| Entailment is a distance with a direction, at zero. A credence becomes a cost in bits, and costs add along a derivation | the user asked for it, Carol built it |
+| The Lean proofs use core Lean only, and none may be left open | Carol |
+| `generalizes` is not `is-a` read backwards | Bob by test, Carol and Dave concurring |
+| **A rule or a reading is adopted only after every atom it gives has been read** | learned from the sidetrack below |
+| `atom` and `formal-system` are concepts of the knowledge base, not only terms of the method | the user |
+| The project is told in stories, discussed in a discussion folder, and recorded in this ledger | the user |
+| Parallel sessions have names and one observer. The observer leads. A request from another session is never the user's approval | the user; the limit stated by Bob and Carol |
+| `doc/` is a vault of its own | the user, on finding it would not render |
+
+## Sidetracks
+
+**A rule that should not have gone in.** The proposal held back the rule
+that reads `generalizes` as `is-a` backwards, for the user to decide. Carol
+then wrote that reading into a table from the predicate's gloss, without
+reading the atoms. Bob took the table for the decision and added the rule.
+It derived that the Gödel sentence is a kind of diagonal lemma, at a belief
+of 0.99. Bob read the four atoms the rule gave, found two false, and removed
+it within minutes. Carol corrected the table. Cost: small. Lesson: the
+decision in bold above.
+
+**Sessions wrote past each other.** Three sessions edited `CLAUDE.md`,
+`methodology/index.hmd` and `methodology/partial-logic.hmd` in the same
+quarter of an hour, with no way to see one another. Documents said "nothing
+is derived" while a script was deriving. Two files pointed to a document
+that did not exist yet. Nothing was lost, by luck and by small edits. This
+is why the discussion folder exists.
+
+**The objective that was not reached is the one the night was for.** The
+fourth objective, the health figure, was not built. What was built instead
+is everything it stands on, and then the means of telling and coordinating
+the work: stories, a discussion, a ledger. That second part was not in the
+plan of the evening. It was worth doing and it was a detour.
+
+**A count that looks like good news and is not.** One contradiction in 206
+formulas reads as a healthy base. It is not evidence of that. Nearly every
+`same-as` is a denial and a denial starts no derivation, so about a quarter
+of the formulas cannot be reached by the rules. Thirteen pairs of cards
+contradict each other in their links, where no formula sees it.
+
+**Smaller ones.** The documents under `doc/` would not render, because the
+root vault starts its cards in `knowledge/`. The observer put a row into the
+consolidation from one agent's report without checking it, and another
+agent corrected it. Two agents headed entries with times they had not read
+from a clock. The claims were extracted by reader subagents and were not
+each checked against their card by hand.
+
+## Not done
+
+- **The health figure.** No query or script computes a share of
+  contradicted statements. A first reading by hand, in the
+  [consolidation](../discussion/2026-11-23/consolidation.hmd), suggests it
+  has to be a small table of contradiction, coverage and reach.
+- **Proofs as evidence for claims.** Lean proves the rules of the logic. No
+  claim graded `proved` is tied to a checked proof. The two pilots of the
+  proposal are not started.
+- **A check of each translation.** Described, not automated.
+- **Credences that move.** Each is still the prior of its evidence grade.
+- **The third of the claims with no formula.** Outside the system.
+- **Open questions put to the user:** renaming the field `atom` to
+  `formula`, a rule joining `requires` and `suffices-for`, bringing in
+  Mathlib, and whether "A candidate until checked" is a star of its own.

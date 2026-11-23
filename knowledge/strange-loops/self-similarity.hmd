@@ -7,6 +7,47 @@ metadata:
   established: true
   questions: [strange-loop-meaning]
   sources: [02-fractals-and-self-similarity, 06-formal-definition-godel, 09-taxonomy-self-reference]
+  claims:
+    - id: 1
+      text: "Self-similarity is not self-reference: a self-similar structure looks like itself but does not refer to itself."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(self-reference, self-similarity)
+      holds: false
+      star: representation-before-reference
+    - id: 2
+      text: "Self-similarity is not a strange loop: it descends through scales in one direction and never comes back."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(self-similarity, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 3
+      text: "Self-similarity involves no level crossing, because every stage of a self-similar structure is the same kind of object as the last."
+      evidence: argued
+      credence: 0.75
+      atom: has(self-similarity, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "Self-similarity and self-reference are independent properties: a structure can have both, but neither implies the other."
+      evidence: argued
+      credence: 0.75
+    - id: 5
+      text: "Self-similarity is the defining property of a fractal."
+      evidence: established
+      credence: 0.9
+      atom: has(fractal, self-similarity)
+    - id: 6
+      text: "Self-similarity is usually produced by recursion or by iterating a rule on its own output."
+      evidence: established
+      credence: 0.9
+      atom: produces(recursion, self-similarity)
+    - id: 7
+      text: "Fractals are anti-examples of a strange loop and fall into the first class of the taxonomy of self-reference, recursive generation, where no representation is involved."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
 ---
 # Self-similarity
 

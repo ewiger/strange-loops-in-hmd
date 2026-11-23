@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [strange-loop-meaning]
   sources: [01-hofstadter-definition, 06-formal-definition-godel, 08-humans-extend-axioms, 13-seven-definitions, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "A Gödel sentence for a theory is the instance of the diagonal lemma for the property of not being provable: a sentence of arithmetic that the theory proves equivalent to the statement of its own unprovability."
+      evidence: proved
+      credence: 0.99
+      atom: instance-of(godel-sentence, diagonal-lemma)
+    - id: 2
+      text: "The Gödel sentence is the one example of a strange loop in which every level, every crossing and the return can be written down and checked, which makes it the reference case for every other candidate."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(godel-sentence, strange-loop)
+      star: notion-not-class
+    - id: 3
+      text: "Consistency of a theory suffices for it not to prove its Gödel sentence but not for it not to prove the negation, which needs omega-consistency or Rosser's modified sentence, so speaking of 'the usual hypotheses' compresses too much."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 4
+      text: "The Gödel sentence of a consistent theory is true, but this is seen from outside the theory, in a theory that assumes its consistency, and is not a proof within the theory."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 5
+      text: "A Gödel sentence is relative to its theory: there is no single Gödel sentence, and adding one as an axiom gives a new theory with its own provability predicate and its own undecided sentence."
+      evidence: proved
+      credence: 0.99
+      atom: has(godel-sentence, theory-relative)
+      star: limits-from-inside
+    - id: 6
+      text: "The Gödel sentence is where diagonalization and the strange loop coincide, a level-crossing loop realised by a formal diagonal fixed point, whereas Escher's hands and Bach's canon cross levels without a diagonal lemma and Cantor's argument diagonalizes without self-reference."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 7
+      text: "The Gödel sentence is not a liar paradox, because it speaks of provability, which is definable in arithmetic, and not of truth, which is not."
+      evidence: established
+      credence: 0.9
+      atom: same-as(godel-sentence, liar-paradox)
+      holds: false
+      star: limits-from-inside
 ---
 # Gödel sentence
 

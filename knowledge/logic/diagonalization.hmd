@@ -7,6 +7,45 @@ metadata:
   established: true
   questions: [strange-loop-meaning]
   sources: [14-diagonalization-distinction, 06-formal-definition-godel, 09-taxonomy-self-reference]
+  claims:
+    - id: 1
+      text: "A strange loop is not just diagonalization: the two notions overlap without being equivalent."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(diagonalization, strange-loop)
+      holds: false
+      star: notion-not-class
+    - id: 2
+      text: "Diagonalization and strange loops overlap in exactly one place, Gödel's construction, and each extends beyond the other."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 3
+      text: "Cantor's antidiagonal argument is diagonal but is not a strange loop, because it produces an object outside a list while nothing refers to itself and no level is crossed."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(cantor-diagonal-argument, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "Diagonalization is a method that a proof carries out, whereas a strange loop is an interpretive structure of levels, crossing and return that a reader finds in a system."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 5
+      text: "Diagonalization has two forms, an antidiagonal form that escapes a list and a diagonal fixed-point form that lands inside it, and only the fixed-point form produces self-reference."
+      evidence: established
+      credence: 0.9
+    - id: 6
+      text: "The fixed-point form of diagonalization additionally needs the system to contain names for its own members, and without that representation of the system inside itself a diagonal argument is only a counting argument."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 7
+      text: "The diagonal lemma is diagonalization in its self-referential form, turned inward on formulas and their codes."
+      evidence: established
+      credence: 0.9
+      atom: uses(diagonal-lemma, diagonalization)
 ---
 # Diagonalization
 

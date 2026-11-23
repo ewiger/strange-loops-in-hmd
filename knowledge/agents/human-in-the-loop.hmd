@@ -7,6 +7,45 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd, ai-oriented-language]
   sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 08-humans-extend-axioms, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A human in the loop is a person placed at a step of an otherwise mechanical cycle, where the person interprets a result and decides what the system does next."
+      evidence: established
+      credence: 0.9
+      star: step-from-outside
+    - id: 2
+      text: "The Gödel sentence and the constructible universe are both static examples of self-description: neither modifies itself, and neither involves feedback over time."
+      evidence: argued
+      credence: 0.75
+    - id: 3
+      text: "A human is not mathematically required to extend a formal theory by new axioms, because a program can carry out a progression of theories."
+      evidence: argued
+      credence: 0.75
+      atom: requires(reflection-progression, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 4
+      text: "The claim that a human is what makes a strange loop essential was weakened: the loop needs a step taken from outside the current formalism, and a human is one way to fill it while a reflective agent is another."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 5
+      text: "What the human supplies when extending a theory is a judgement not derivable inside the current theory, and that judgement can be wrong, since adding an undecided statement does not automatically preserve truth or consistency."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 6
+      text: "Whether human intelligence exceeds what an algorithm can do in extending formal theories is a philosophical and scientific question and not a corollary of the incompleteness theorems."
+      evidence: argued
+      credence: 0.75
+    - id: 7
+      text: "In the design for executable documents two decisions are reserved for a person or for an agent acting under review: whether generated content is integrated into the versioned knowledge, and whether any cell in that content is executed."
+      evidence: proposed
+      credence: 0.6
+      atom: uses(render-integrate-execute, human-in-the-loop)
+      star: step-from-outside
 ---
 # Human in the loop
 

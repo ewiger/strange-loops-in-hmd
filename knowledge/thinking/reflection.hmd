@@ -7,6 +7,45 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd, learning-the-formalism]
   sources: [06-formal-definition-godel, 08-humans-extend-axioms, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Reflection names two different things, an operation of self-analysis performed in time and a structural property of a system that can represent its own syntax, proofs or programs, and the property is what a strange loop is made of while the operation is how an agent would use one."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 2
+      text: "Reflection differs from evaluation in its object: evaluation judges a claim, whereas reflection judges the way claims were produced."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(evaluation, reflection)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Reflection is the operation that makes the outer loop of the reasoning cycle, the step that builds a model of the modelling process."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(reflection, reasoning-cycle)
+      star: no-operation-alone
+    - id: 4
+      text: "A language model asked to reflect produces text about its process with no guarantee that the text describes the process that actually ran, so a reflection worth acting on needs the process to be recorded."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 5
+      text: "Static reflection, in which a theory expresses properties of its own syntax and proofs, is a fact about a structure that changes nothing over time, whereas evolving reflection is a process in which the results of reflection revise the rules or the criteria of revision."
+      evidence: argued
+      credence: 0.75
+    - id: 6
+      text: "Reflection is necessary for a strange loop but not sufficient for a paradox, since a reflective interpreter can reason about a description of itself without any incompleteness following."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, reflection)
+      star: limits-from-inside
+    - id: 7
+      text: "Any system that represents itself, and not only a formal theory, is limited in what it can prove or define about itself."
+      evidence: conjecture
+      credence: 0.4
+      star: limits-from-inside
 ---
 # Reflection
 

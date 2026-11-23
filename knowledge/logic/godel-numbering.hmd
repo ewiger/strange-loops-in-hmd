@@ -7,6 +7,46 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [05-not-every-dynamic-system, 06-formal-definition-godel, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "Gödel numbering is the one place where a level crossing is carried out by an explicit, checkable construction, in which object-level numbers come to stand for meta-level syntax."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(godel-numbering, level-crossing)
+      star: levels-not-cycles
+    - id: 2
+      text: "Gödel numbering is a representation and not yet a self-reference: an encoding by itself says nothing about itself, and self-reference appears only when a fixed point is taken over it."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(godel-numbering, self-reference)
+      holds: false
+      star: representation-before-reference
+    - id: 3
+      text: "Gödel numbering supplies the coding of syntax, the arithmetization of proof and its representation inside the theory, but the final step, a sentence expressing a property of its own code, needs the diagonal lemma."
+      evidence: established
+      credence: 0.9
+      atom: requires(diagonal-lemma, godel-numbering)
+      star: representation-before-reference
+    - id: 4
+      text: "Because every computable relation is representable in Robinson arithmetic, Gödel numbering yields a proof formula and from it the provability predicate through which a theory speaks of its own proofs."
+      evidence: proved
+      credence: 0.99
+      atom: produces(godel-numbering, provability-predicate)
+      star: representation-before-reference
+    - id: 5
+      text: "A program that computes Gödel numbers, substitutes and checks proofs executes the construction from outside, which is not the same as the theory representing those computations internally, and the incompleteness theorem needs the latter."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 6
+      text: "The choice of coding in a Gödel numbering does not matter provided it is effective, since any computable, decodable scheme gives the same theorems."
+      evidence: established
+      credence: 0.9
+    - id: 7
+      text: "Gödel numbering is the encoding component of a reflective formal system."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(godel-numbering, reflective-formal-system)
 ---
 # Gödel numbering
 

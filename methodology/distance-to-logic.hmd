@@ -1,0 +1,252 @@
+# From distance to logic
+
+The [partial logic](partial-logic.hmd) records atoms and derives nothing from
+them. This document gives what derivation rests on: a distance
+between two things is read as how far the first is from implying the second.
+Implication is then the distance zero, and a proof is a path.
+
+The construction is Lawvere's, from "Metric spaces, generalized logic, and
+closed categories" (1973). Its statements are proved in Lean, in
+[DistanceLogic.lean](../scripts/lean/DistanceLogic.lean), and each one below
+names its proof.
+
+This document holds the definitions, the proofs, and the reading of the
+predicates. The step that applies them to the vault's atoms is
+[derivation](derivation.hmd).
+
+## A distance with a direction
+
+An ordinary metric is symmetric: the distance from `a` to `b` is the distance
+from `b` to `a`. Implication is not symmetric, so the distance that carries it
+cannot be either. Two numbers are kept for each pair, one for each direction,
+and neither is negative.
+
+```
+d : A × A → V
+
+d(a, a) = 0                          nothing is at a distance from itself
+d(a, c) ≤ d(a, b) + d(b, c)          going through a third thing is never shorter
+```
+
+This is a quasi-metric. `V` is whatever the distance is measured in: a set of
+costs with an order, an addition, and a least cost `0`.
+
+## The notation
+
+| Written | Read | Defined as | In Lean |
+|---|---|---|---|
+| `a ⊑ b` | a entails b | `d(a, b) = 0` | `a ⊑[m] b` |
+| `a ≡ b` | a and b are equivalent | `a ⊑ b` and `b ⊑ a` | `a ≡[m] b` |
+| `a ⊑ε b` | a entails b up to the cost ε | `d(a, b) ≤ ε` | `a ⊑[m ; ε] b` |
+
+`⊑` is the sign description logic uses for "every a is a b". It is used here
+and not `→`, because `→` joins two sentences and `⊑` relates two things, and
+the arguments of an atom are things.
+
+In Lean the distance is named between the brackets, because the vault has
+several distances, one for each predicate.
+
+## The rules
+
+The two laws of the distance are the two laws of entailment.
+
+```
+                                a ⊑ b     b ⊑ c
+(refl)  ─────────      (trans)  ───────────────
+          a ⊑ a                      a ⊑ c
+```
+
+Reflexivity is `d(a, a) = 0`. Transitivity is the triangle inequality at
+zero: if both steps cost nothing, the whole costs nothing. So `⊑` is a
+preorder, and `≡` is an equivalence relation.
+
+The graded rule is the triangle inequality itself. The costs of two steps add.
+
+```
+            a ⊑ε b     b ⊑δ c
+(chain)     ─────────────────
+               a ⊑(ε+δ) c
+```
+
+| Statement | Proof |
+|---|---|
+| `a ⊑ a` | `QMetric.entails_refl` |
+| `a ⊑ b` and `b ⊑ c` give `a ⊑ c` | `QMetric.entails_trans` |
+| `a ⊑ b` exactly when `a ⊑0 b` | `QMetric.entails_iff_within_zero` |
+| `a ⊑ε b` and `b ⊑δ c` give `a ⊑(ε+δ) c` | `QMetric.within_trans` |
+| `≡` is reflexive, symmetric and transitive | `QMetric.equiv_refl`, `equiv_symm`, `equiv_trans` |
+
+## Logic is the case of two costs
+
+Let `V` have two values only: `holds`, which costs nothing, and `fails`, which
+costs more than anything. Adding is conjunction: a sum holds when both parts
+hold. A distance with these two values is a preorder and nothing more, and
+every preorder is such a distance.
+
+| Statement | Proof |
+|---|---|
+| The two truth values are a set of costs | the instance `Cost Truth` |
+| Every distance gives a preorder | `QMetric.toPreorder` |
+| Every preorder gives a two-valued distance | `Preorder'.toQMetric` |
+| The second undoes the first | `Preorder'.toQMetric_entails` |
+
+This is why the move from distance to logic is a definition and not an
+analogy. Classical entailment and metric distance are one structure with two
+choices of `V`. The rules above are proved once, for any `V`, and hold in
+both.
+
+## Two versions that do not work
+
+**A symmetric distance.** If `d(a, b) = d(b, a)`, then whatever entails is
+entailed back, and `⊑` and `≡` are one relation. An ordinary metric can say
+that two things are the same and nothing else.
+Proof: `QMetric.entails_iff_equiv_of_symm`.
+
+This binds the two distances in
+[claim_distance.py](../scripts/claim_distance.py). Both are symmetric. They
+can propose a `same-as` between two claims and can never propose an `is-a`.
+
+**A signed distance.** Let one number `s(a, b)` stand for both directions,
+with `s(b, a) = −s(a, b)`, and read `s(a, b) ≥ 0` as `a ⊑ b`. Then for every
+pair one direction holds: no two things are unrelated. If the numbers also
+add up along a path, `s(a, b) = h(b) − h(a)` for a height `h`, and the whole
+space is a line. Proofs: `Signed.total`, `Signed.potential`.
+
+Most pairs of concepts in the vault are unrelated, and a logic that cannot
+say so is the wrong one. Hence two numbers that are never negative, not one
+that changes sign.
+
+## Reading the predicates
+
+Each predicate that states an entailment gets its own distance. They are not
+merged: that two predicates agree is a rule between predicates, and none is
+adopted here.
+
+| Atom | Reading |
+|---|---|
+| `is-a(x, y)` | `x ⊑ y` in the distance of `is-a` |
+| `generalizes(x, y)` | `y ⊑ x` in the distance of `generalizes` |
+| `suffices-for(x, y)` | `x ⊑ y` in the distance of `suffices-for` |
+| `requires(x, y)` | `x ⊑ y` in the distance of `requires` |
+| `same-as(x, y)` | `x ≡ y` |
+
+`generalizes` is read backwards: the narrower thing entails the wider. A
+distance read backwards is again a distance, with the entailment reversed.
+Proofs: `QMetric.op`, `QMetric.op_entails`.
+
+It is not placed in the distance of `is-a`. An earlier version of this table
+did so, and [derivation](derivation.hmd) tried the rule that follows from it.
+Two of the four atoms it gave were false: the cards also use `generalizes`
+for "is the general construction behind", which is not inclusion in a class.
+
+`requires(x, y)` and `suffices-for(x, y)` point the same way: where x is,
+y is. They differ in what the card stresses, the need or the sufficiency, and
+they stay two distances until a rule joins them.
+
+The other predicates (`part-of`, `produces`, `uses`, `precedes`, `has`,
+`instance-of`, `example-of`, `analogous-to`, `inverse-of`) are not
+entailments and get no distance from this document. `part-of` and `precedes`
+are transitive and could be given one each, read as containment and as order
+in time.
+
+## From a belief to a cost
+
+A claim asserts its atom with a belief `p`. The cost of the step is its
+surprise, in bits.
+
+```
+c = −log₂ p
+```
+
+A step believed with certainty costs nothing, and a step believed less costs
+more. Costs add where beliefs multiply, so a chain's cost turns back into a
+belief as `2^(−c)`.
+
+```
+is-a(a, b)   belief 0.75   cost 0.415
+is-a(b, c)   belief 0.90   cost 0.152
+─────────────────────────────────────
+a ⊑ c within 0.567 bits:   belief 0.675 = 0.75 × 0.90
+```
+
+Multiplying beliefs assumes the two claims hold or fail independently. Two
+cards written from one line of discussion are not independent, so the product
+is an estimate. The bound that assumes nothing is `p + q − 1`, here 0.65.
+It corresponds to a different addition on `V`. The rules above hold for
+either, since they are proved for any `V`.
+
+## Derivation
+
+An asserted atom is a step with a cost. A chain of steps is a derivation, and
+its cost is the sum.
+
+```
+E(a, b, c)        a step from a to b of cost c is asserted
+Chain(a, z, c)    steps lead from a to z, at the total cost c
+```
+
+A distance respects the steps when it puts the ends of each step within the
+step's cost. In every such distance, a chain of cost `c` gives `a ⊑c z`, and a
+chain of cost zero gives `a ⊑ z`. Proofs: `Chain.sound`, `Chain.sound_zero`.
+
+The derived distance from `a` to `z` is the cost of the cheapest chain. That
+is a shortest-path computation over the atoms of one predicate.
+
+## Denial
+
+A claim with `holds: false` adds no step. It says that the distance is not
+zero. A derivation and a denial then meet in a way that two strings never
+could:
+
+```
+card-one#3   asserts   is-a(a, b)
+card-two#1   asserts   is-a(b, c)
+card-six#4   denies    is-a(a, c)
+```
+
+No two of these atoms are the same string, so today nothing compares them.
+With derivation, `a ⊑ c` follows from the first two and the third denies it.
+The atom `is-a(a, c)` gets the status `both`, and its address is the chain
+together with the denial. As before, the contradiction stays where it is and
+makes nothing else derivable.
+
+## What this does not do
+
+- No query computes a derived distance. The shortest path needs a fixed
+  point, which the query language cannot yet express, so
+  [derivation](derivation.hmd) computes it in Python.
+- The Lean file proves that every chain is an upper bound on a distance that
+  respects the steps. It does not prove that the cheapest chain is itself
+  such a distance, and the largest one. That needs a least upper bound in
+  `V`, which the file does not assume.
+- The costs proved over are the natural numbers and the two truth values.
+  The cost `−log₂ p` is a real number, and the instance for real numbers is
+  not given, because it needs Mathlib and the file uses core Lean only. The
+  rules apply to it once the instance exists.
+- A distance proves nothing by being small. A measured or learned distance
+  near zero is a proposal that an atom holds, and a card still has to assert
+  it.
+- Denial is handled beside the distance, as above, and not inside it. A
+  second distance for "how far a is from excluding b" would put it inside.
+
+## Checking the proofs
+
+```
+cd scripts/lean
+lake build
+```
+
+The build fails if any proof does not check. The Lean version is fixed in
+`scripts/lean/lean-toolchain`.
+
+## Sources
+
+- F. W. Lawvere, "Metric spaces, generalized logic, and closed categories",
+  1973. The construction.
+- T.-D. Bradley, J. Terilla, Y. Vlassopoulos, "An enriched category theory of
+  language", 2021. The same construction on text, with `−log` of a
+  probability as the distance.
+- I. Vendrov, R. Kiros, S. Fidler, R. Urtasun, "Order-embeddings of images
+  and language", 2016. A learned distance that is zero exactly on entailment.
+- P. Hájek, "Metamathematics of Fuzzy Logic", 1998. The logics of graded
+  truth, and the two additions named under the heading on beliefs.

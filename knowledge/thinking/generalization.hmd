@@ -7,6 +7,50 @@ metadata:
   established: true
   questions: [learning-the-formalism, ai-support-in-hql]
   sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Generalization is not induction: generalization widens the scope of a concept or claim and may be carried out with no observations at all, whereas induction is an inference based on evidence."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 2
+      text: "Generalization is not abstraction, although the discussion's first table put them on one line: abstraction identifies a structure apart from detail, whereas generalization extends a structure already identified."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, generalization)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Generalization differs from analogy: a generalization goes upward to a wider domain and keeps the original cases as special cases, whereas an analogy goes sideways to another domain."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, generalization)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Specialization, which narrows a concept by adding constraints, is the inverse of generalization."
+      evidence: established
+      credence: 0.9
+      atom: inverse-of(generalization, specialization)
+      star: no-operation-alone
+    - id: 5
+      text: "Generation is the little brother of generalization in the sense that generation goes from a rule to instances and needs the rule to exist already, so it spends what generalization earned."
+      evidence: argued
+      credence: 0.75
+      star: no-operation-alone
+    - id: 6
+      text: "A generalization made in mathematics is a definition or theorem that recovers the old cases exactly as special cases, whereas a generalization proposed by a language model is a candidate that evaluation has to check."
+      evidence: argued
+      credence: 0.75
+      atom: uses(generalization, evaluation)
+      star: candidate-until-checked
+    - id: 7
+      text: "Generalization carries a risk shown by the definitions of the strange loop: a definition generalized far enough to cover every dynamic system no longer picks out anything."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
 ---
 # Generalization
 

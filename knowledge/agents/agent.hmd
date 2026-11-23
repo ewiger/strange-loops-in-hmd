@@ -7,6 +7,44 @@ metadata:
   established: true
   questions: [ai-oriented-language, ai-support-in-hql, learning-the-formalism]
   sources: [03-hmd-hql-executable-documents, 08-humans-extend-axioms, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "An agent is whatever can perform the cognitive operations in a list, which makes it a capability and not a particular machine: a person, a program and a language model are all agents to the extent that they can perform those operations."
+      evidence: argued
+      credence: 0.75
+      atom: uses(agent, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "The list of operations that defines an agent is open: an agent that can perform the seventeen catalogued operations can perform an eighteenth without being rebuilt, provided the operation is given to it as a definition and not built into it."
+      evidence: argued
+      credence: 0.75
+      atom: has(agent, open-operation-list)
+      star: operation-by-signature
+    - id: 3
+      text: "The generic agent, which can perform every operation and has no speciality, comes first, and every other agent is that one plus a restriction or an addition."
+      evidence: argued
+      credence: 0.75
+    - id: 4
+      text: "The word agent has three senses that are different things: the role of whoever interprets a result and proposes a change, the capability of performing the operations in a list, and the construct of a language type whose values can be asked to perform an operation."
+      evidence: argued
+      credence: 0.75
+    - id: 5
+      text: "The role of interpreting a result and proposing a change does not require a human, since a person adding axioms to a theory can be replaced by a program that does the same."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 6
+      text: "An agent is not the language model: it is the model together with its instructions, the operations it is given and the tools it may call."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(agent, language-model)
+      holds: false
+    - id: 7
+      text: "An agent's result is not trusted by default, since asking an agent to deduce is not a checked deduction, which is why every operation it performs is a typed transformation that carries its support."
+      evidence: argued
+      credence: 0.75
+      atom: uses(agent, typed-transformation)
+      star: candidate-until-checked
 ---
 # Agent
 

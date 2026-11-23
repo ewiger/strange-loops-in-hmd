@@ -7,6 +7,47 @@ metadata:
   established: true
   questions: [strange-loop-meaning, learning-the-formalism]
   sources: [05-not-every-dynamic-system, 06-formal-definition-godel, 09-taxonomy-self-reference, 10-operations-dualities-generalization]
+  claims:
+    - id: 1
+      text: "Recursion is not a strange loop: it descends to a base case and crosses no level."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 2
+      text: "Recursion is the weakest form of self-reference: a definition that mentions itself, with nothing referring to anything."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(recursion, self-reference)
+    - id: 3
+      text: "A recursive definition involves no change of level: it does not encode a description of itself or treat its definition as an object, and each call is the same kind of thing as the one before."
+      evidence: argued
+      credence: 0.75
+      atom: has(recursion, level-crossing)
+      holds: false
+      star: levels-not-cycles
+    - id: 4
+      text: "Recursion requires a base case to stand on, whereas a strange loop has no bottom and closes instead of ending."
+      evidence: argued
+      credence: 0.75
+      atom: requires(recursion, base-case)
+    - id: 5
+      text: "Mathematical induction is the proof-side twin of recursion: recursion defines the object for n+1 from the object for n, and induction proves the property for n+1 from the property for n."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(mathematical-induction, recursion)
+    - id: 6
+      text: "Recursion can be an ingredient of genuine self-reference without supplying it: in Gödel's construction the self-reference comes from the encoding and the diagonal step, not from the recursive definitions."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 7
+      text: "Recursion is not a feedback loop: recursion is a definition outside time that descends and terminates, while feedback is a causal cycle in time that may run indefinitely."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(feedback-loop, recursion)
+      holds: false
 ---
 # Recursion
 

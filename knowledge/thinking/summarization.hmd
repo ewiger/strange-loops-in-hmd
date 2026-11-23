@@ -7,6 +7,51 @@ metadata:
   established: true
   questions: [ai-support-in-hql, learning-the-formalism]
   sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Summarization is lossy on purpose and relative to a purpose, so there is no summary without a reader in mind."
+      evidence: argued
+      credence: 0.75
+      atom: requires(summarization, purpose)
+      star: operation-by-signature
+    - id: 2
+      text: "Summarization is not abstraction: a summary shortens a text about the same subject, whereas an abstraction identifies a structure that applies beyond the source, and the abstract of a paper need not contain a single abstraction."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Summarization is not generalization, because a summary covers the same cases in fewer words while a generalization covers more cases."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Summarization is not compression in the technical sense, because compression shortens the encoding and loses nothing while a summary cannot be expanded back into its source."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(compression, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Summarization is not simplification, because a summary stays true to its source by omitting while a simplification replaces the source with an easier, approximate model."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(simplification, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "Among the cognitive operations summarization has the weakest built-in check, since a summary reads well whether or not it is faithful and can only be compared with its source against a stated purpose."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 7
+      text: "A lens that generates the neighbouring-concept texts of cards produces summaries and should not be expected to discover the relations between cards, which is a matter of abstraction and analogy."
+      evidence: proposed
+      credence: 0.6
+      star: candidate-until-checked
 ---
 # Summarization
 

@@ -7,6 +7,48 @@ metadata:
   established: true
   questions: [strange-loop-meaning, learning-the-formalism]
   sources: [07-constructible-universe, 09-taxonomy-self-reference, 11-analogy-vs-summarization, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "An analogy is a partial mapping from one domain to another that preserves selected relations."
+      evidence: established
+      credence: 0.9
+      star: operation-by-signature
+    - id: 2
+      text: "An analogy is not an equivalence: it keeps the relations it was chosen for and is silent or wrong about the rest, and a mapping that preserved everything in both directions would be an isomorphism and no longer an analogy."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, isomorphism)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "The output of an analogy is a hypothesis that must be tested to find where the analogy holds and where it breaks; an analogy proposes and does not prove."
+      evidence: argued
+      credence: 0.75
+      atom: produces(analogy, hypothesis)
+      star: candidate-until-checked
+    - id: 4
+      text: "Analogy depends on abstraction, because the structure of each domain has to be seen apart from its incidental detail before one domain can be mapped onto the other."
+      evidence: argued
+      credence: 0.75
+      atom: requires(analogy, abstraction)
+      star: no-operation-alone
+    - id: 5
+      text: "Analogy sits on the upward arc of the reasoning cycle beside induction and abduction, and differs from induction in importing its hypothesis from another domain instead of drawing it from cases in the same domain."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(analogy, reasoning-cycle)
+      star: no-operation-alone
+    - id: 6
+      text: "The strange loop was defined by analogy, case by case across a theorem, a drawing and a canon, which is why the term never became a formal class."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 7
+      text: "Analogy is weaker than diagonalization, for which it is often mistaken: an analogy is a suggestive mapping, whereas diagonalization is a proof method."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, diagonalization)
+      holds: false
 ---
 # Analogy
 

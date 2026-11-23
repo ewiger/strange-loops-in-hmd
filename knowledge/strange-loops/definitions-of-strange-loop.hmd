@@ -7,6 +7,48 @@ metadata:
   established: false
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [06-formal-definition-godel, 07-constructible-universe, 08-humans-extend-axioms, 13-seven-definitions, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "Of the seven candidate definitions of a strange loop, only Hofstadter's original is established usage; the other six were proposed in the discussion and none is a standard technical term."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 2
+      text: "The seven definitions of a strange loop are not rival answers to one question: each keeps self-representation and changes one other thing."
+      evidence: proposed
+      credence: 0.6
+      star: notion-not-class
+    - id: 3
+      text: "The Gödelian and the generative definitions are the two rigorous cases of a strange loop and work by different mechanisms: the constructible universe reconstructs itself by definability and absoluteness in a well-founded hierarchy, with no diagonal sentence and no feedback."
+      evidence: argued
+      credence: 0.75
+      atom: uses(constructible-universe, diagonalization)
+      holds: false
+      star: notion-not-class
+    - id: 4
+      text: "An evolving reflective strange loop does not require a human who extends the axioms, because a program can run a progression of theories."
+      evidence: argued
+      credence: 0.75
+      atom: requires(reflection-progression, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 5
+      text: "The claim that every sufficiently reflective intelligence faces a limit analogous to incompleteness is a conjecture that follows from neither Gödel's nor Tarski's theorem."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 6
+      text: "The definition of a strange loop preferred for work combines the reflective, generative and epistemically bounded definitions: a reflective structure in which a system becomes an object of its own representation, potentially exposing intrinsic limitations of its framework."
+      evidence: proposed
+      credence: 0.6
+      star: notion-not-class
+    - id: 7
+      text: "It is false that every self-referential cycle is incomplete or inconsistent, which is why the working definition of a strange loop says limitations are only potentially exposed."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(self-reference, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
 ---
 # Definitions of a strange loop
 

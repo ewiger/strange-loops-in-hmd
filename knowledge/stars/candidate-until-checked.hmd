@@ -1,0 +1,55 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "What an operation generates is a candidate, and it becomes a result only when something other than its fluency has checked it."
+      evidence: proposed
+      credence: 0.6
+---
+# A candidate until checked
+
+**A candidate until checked** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. What an operation generates is a candidate, and it becomes a result only when something other than its fluency has checked it. It is the vault's standing objection to trusting generated text.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+The claims here come from the operations that produce something new:
+abduction, induction, analogy, generalization, generation, summarization.
+Each says its output is a hypothesis: `produces(induction, hypothesis)`,
+`produces(analogy, hypothesis)`, `uses(generation, evaluation)`,
+`uses(abduction, evaluation)`. Beside them stands one sentence repeated on
+several cards in nearly the same words: asking a language model to deduce is
+not a checked deduction.
+
+The star is the common form: *the operation proposes, a separate step
+disposes*.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "candidate-until-checked")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+Few of these claims carry an atom, eight of twenty, so this star is held
+together more by reading than by logic. Its territory lies inside that of
+the star "An operation is its signature", which the cover check reports. Either it is a
+part of that star, or its claims need predicates the vocabulary does not have
+yet.

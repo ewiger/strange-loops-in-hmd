@@ -7,6 +7,42 @@ metadata:
   established: true
   questions: [strange-loop-meaning, building-a-loop-in-hmd]
   sources: [10-operations-dualities-generalization, 06-formal-definition-godel, 09-taxonomy-self-reference, 13-seven-definitions, 04-markdown-as-output]
+  claims:
+    - id: 1
+      text: "A fixed point, read as folding a transformation onto its representation, is the formal shape that self-reference takes: the place where applying an operation to a description gives back the thing described."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+    - id: 2
+      text: "The term fixed point covers two situations that behave differently: one reached by iterating a process in time until it converges, which crosses no level and refers to nothing, and one built by a single self-application in a system that can name its own members."
+      evidence: argued
+      credence: 0.75
+    - id: 3
+      text: "A vault that is left unchanged by evaluating it and integrating the result is a fixed point of the iterative kind, which is stability and not self-reference, whereas a self-referential fixed point would be a card whose evaluated content is a statement about that card's own evaluation."
+      evidence: argued
+      credence: 0.75
+    - id: 4
+      text: "The diagonal lemma is the fixed point in logic, and it, the fixed-point combinator of the lambda calculus, Kleene's recursion theorem and the quine are one construction in four settings."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(diagonal-lemma, fixed-point)
+    - id: 5
+      text: "A quine is a fixed point of the transformation of printing a text, obtained by applying Kleene's recursion theorem to that transformation."
+      evidence: established
+      credence: 0.9
+      atom: example-of(quine, fixed-point)
+    - id: 6
+      text: "A fixed point gives the existence of self-reference and not yet a consequence of it: the Gödel sentence yields incompleteness only under hypotheses on the theory, and a quine implies nothing about the limits of its language."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(fixed-point, incompleteness-theorems)
+      holds: false
+      star: limits-from-inside
+    - id: 7
+      text: "The identity at the centre of the constructible universe has the form of a fixed point but is reached by absoluteness and not by diagonalization."
+      evidence: established
+      credence: 0.9
+      atom: analogous-to(constructible-universe, fixed-point)
 ---
 # Fixed point
 

@@ -7,6 +7,49 @@ metadata:
   established: true
   questions: [building-a-loop-in-hmd, ai-oriented-language, learning-the-formalism]
   sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 08-humans-extend-axioms, 12-llm-cognitive-operations, 13-seven-definitions, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Revision names both the operation of updating a model in the light of evidence and the recorded version of a document that the operation leaves behind, and in a vault under version control these are the two ends of one act."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 2
+      text: "Revision is the step that closes each turn of the reasoning cycle, following evaluation: a prediction fails and the hypothesis that produced it is changed."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(revision, reasoning-cycle)
+      star: no-operation-alone
+    - id: 3
+      text: "Revising a formal theory by adding axioms is not safe by construction: the progression of theories is an idealised example, not a procedure that preserves consistency or truth for arbitrary theories."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 4
+      text: "Revision of a formal theory never finishes, because every consistent, effectively axiomatized, sufficiently strong stage is incomplete again."
+      evidence: proved
+      credence: 0.99
+      atom: has(revision, last-step)
+      holds: false
+      star: limits-from-inside
+    - id: 5
+      text: "The reviser of a theory need not be a person, because a program can carry out the same progression of added axioms."
+      evidence: argued
+      credence: 0.75
+      atom: requires(revision, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 6
+      text: "Revising a model in response to evidence is only a feedback loop, whereas revising the criteria of revision requires those criteria to be represented inside the system and is a crossing of levels."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(revision, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 7
+      text: "In the proposed document system, changes enter as revisions or patches and never as silent edits, and generated content becomes a revision only after approval."
+      evidence: proposed
+      credence: 0.6
+      star: step-from-outside
 ---
 # Revision
 

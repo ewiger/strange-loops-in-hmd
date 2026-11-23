@@ -7,6 +7,48 @@ metadata:
   established: true
   questions: [learning-the-formalism]
   sources: [06-formal-definition-godel, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Specialization is a cognitive operation that narrows a general principle, under added constraints, to a more specific rule or application."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(specialization, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "Specialization is the inverse of generalization."
+      evidence: established
+      credence: 0.9
+      atom: inverse-of(generalization, specialization)
+      star: no-operation-alone
+    - id: 3
+      text: "Specialization needs constraints as well as a principle, because a principle alone specializes to nothing in particular."
+      evidence: argued
+      credence: 0.75
+      atom: requires(specialization, constraints)
+      star: operation-by-signature
+    - id: 4
+      text: "Specialization is not the same as deduction: an instance follows deductively from a principle, but specialization gives generality up on purpose and its choice of constraints is a judgement not derived from anything."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(deduction, specialization)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Specialization differs from generation, because specialization returns a narrower rule while generation returns instances."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generation, specialization)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "The Gödel sentence is the diagonal lemma specialized to the formula \"is not provable\", and all the interest lies in that choice."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(godel-sentence, specialization)
+    - id: 7
+      text: "The Gödelian subclass specializes the proposed reflective formal system by adding one requirement, a diagonal fixed point with a provable limitation."
+      evidence: proposed
+      credence: 0.6
 ---
 # Specialization
 
