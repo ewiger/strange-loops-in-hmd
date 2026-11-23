@@ -1,6 +1,6 @@
 # SLH-S-0002 — The Pythagoras classroom
 
-Status: in progress, Act 1 done, Act 2 waits for the user
+Status: in progress, Act 2 done, Act 3 waits for the user
 Started: 2026-11-23
 Branch: `pythagorean`
 Discussion: [SLH-D-0005](../discussion/SLH-D-0005-2026-11-23-0315-pear/alice.hmd)
@@ -71,7 +71,7 @@ for the user's word before the next begins.
 | Act | What happens | State |
 |---|---|---|
 | 1. Common ground | Each student says what the theorem states and what they need to take for granted. The observer puts the lists side by side: what all agree on, and where they differ. | done |
-| 2. Three proofs | Bob, Dave and Carol each prove it, in their own way and voice. Percy reads. | |
+| 2. Three proofs | Bob, Dave and Carol each prove it, in their own way and voice. Percy reads. | done |
 | 3. Cross-examination | Each proof is attacked by the others. Percy asks every prover what was assumed and tries the theorem where it should fail. | |
 | 4. Down the ladder | The agreed facts become cards with claims. The proofs become formulas and derivations, and the core of one becomes a proof in Lean. What will not fit is written down. | |
 | 5. The false statement | Someone asserts something false. The health figure for this domain is computed before and after. | |
@@ -89,11 +89,27 @@ from topology alone, a proof from coordinates alone does not seem to exist
 at school level, and all three students refuse the distance formula,
 because it is the theorem in other clothes.
 
+**2026-11-23, 03:31.** Act 2 is done. Three proofs are written in one
+fixed form, each step naming the fact it rests on, and the three lists are
+merged into a common ground of 37 facts. The difference between the proofs
+can now be read off a table: five facts are used by all three, and the
+rest fall into two families, one that needs area and side-angle-side, and
+one that needs similarity. All three provers had called their lists
+complete, and all three were wrong: seven facts were missing, every one of
+them something a picture supplies without being asked.
+
 ## Where it stands
 
-Act 1 is done and Act 2 has not started. Nothing about geometry is in the
-knowledge base yet. One fact is on all three lists: the angles of a
-triangle make two right angles.
+Acts 1 and 2 are done. Nothing about geometry is in the knowledge base
+yet: the proofs and the common ground are in the discussion.
+
+| Measure | Value |
+|---|---|
+| Facts in the common ground | 37, and 7 more the proofs forced |
+| Facts used by all three proofs | 5 |
+| Shared ground, Bob and Dave | 0.33 |
+| Shared ground, Dave and Carol | 0.25 |
+| Shared ground, Bob and Carol | 0.23 |
 
 ## Open
 

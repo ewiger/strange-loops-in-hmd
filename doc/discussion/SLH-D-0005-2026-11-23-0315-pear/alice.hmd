@@ -181,3 +181,173 @@ definition, A an axiom, K a known result.
 3. **The three proofs will stand on three different things:** Bob on a
    grid and area, Dave on area and motion, Carol on ratios alone, with no
    area at all.
+
+## Act 2: three proofs
+
+Opened 2026-11-23 03:26, on the user's word.
+
+### What the user said after Act 1
+
+The user is skeptical, and said so: much of this is prepared in advance,
+and the difference between the proofs cannot be seen. Both are fair. All
+of us are sessions of one model that has read every textbook proof of this
+theorem, so that we agreed in Act 1 shows little. And two of the three
+proofs may turn out to be one proof told twice.
+
+So Act 2 has one aim above the others: **make the difference between the
+proofs something that can be seen and checked,** not something a reader
+has to take from the voices.
+
+### Settled for this act
+
+- Bob may use area. He says exactly which step needs it.
+- Carol proves by similarity, and it is not called topological.
+- For the common ground each fact has one status: side-angle-side, the
+  angles along a straight line, the rules of area and the parallel axiom
+  are axioms. That the angles of a triangle make two right angles is a
+  known result, resting on the parallel axiom.
+
+### To Bob, Dave and Carol
+
+Prove the theorem, in your own way and voice, under `## Act 2` in your
+file. Write without reading the others' Act 2. The form is fixed, so that
+the three can be laid side by side.
+
+1. **The idea in two sentences.** What your proof does, said to someone
+   who will not read the steps.
+2. **The steps, numbered.** Each step is one statement and its reason.
+   The reason names the item of your own Act 1 list it rests on, as
+   "item 9", or an earlier step, as "step 3". No step rests on a picture.
+   A picture may stand beside the steps.
+3. **Where the right angle is used.** Name the step. Say what happens at
+   that step for an angle of 60° at C.
+4. **Where flatness is used.** Name the step and the item.
+5. **Used.** The items of your list that the steps cite, as a plain list of
+   numbers.
+6. **Not used.** The items of your list that no step cites. If your list
+   was missing something the proof needed, add it here as a new numbered
+   item and say that it is new.
+7. **The one thing my proof needs that I expect the others can do
+   without.** One sentence.
+
+For Bob, one thing more. Having given up the distance formula and taken
+area, your proof may come out as Dave's proof with coordinates laid over
+it. Make the coordinates do real work: every "the pieces fit" and every
+"this is a square" is to be shown by coordinates and inequalities, not by
+a figure. At the end say honestly what in your proof is not a proof by
+cutting and moving.
+
+### To Percy
+
+You do not read the proofs yet. Build the **common ground** in your file,
+under `## Act 2`: one list of every fact on the three lists of Act 1,
+each fact once, numbered G1, G2 and so on, each with the one status settled
+above, and beside it the item numbers it has on Bob's, Dave's and Carol's
+lists. Mark each fact that is false on a ball, and each fact that is false
+in your town of square blocks. That list is what the proofs will be
+measured against in Act 3.
+
+When your part is written, send me one line: "Act 2 done".
+
+## Act 2 closed: the proofs, side by side
+
+Written 2026-11-23 03:31. Bob, Dave and Carol each wrote a proof without
+reading the others. Percy merged the three lists of Act 1 into one common
+ground of 37 facts, G1 to G37. I have read all four and translated each
+proof's "Used" list into Percy's numbers. The translation is mine, and a
+prover who finds an item placed wrongly should say so in Act 3.
+
+### A correction to my closing of Act 1
+
+I wrote that Bob's grid helps to fix which length is meant. Percy shows
+that it does not: every fact about the grid is true in his town of square
+blocks, because along a street the town's length is the difference of the
+coordinates. What keeps the town out is side-angle-side, G19, for Bob and
+Dave, and "two equal angles make similar triangles", G23, for Carol.
+Percy is right and I was wrong.
+
+### The three proofs
+
+| | Bob | Dave | Carol |
+|---|---|---|---|
+| Idea | four triangles in a square of side a + b on a grid, the middle shown to be a square of side c by coordinates, the area counted twice | a square of side a + b cut in two ways, each with four copies of the triangle, so what is left is equal | the perpendicular from C cuts the triangle into two of its own shape, and equal ratios give a² and b² as c times a piece of c |
+| Steps | 22 | 25 | 21 |
+| Facts of the common ground used | 19 | 17 | 13 |
+| New items the proof forced | 3 | 1 | 3 |
+| Uses area | steps 18 to 21 only | throughout | never |
+| Moves a figure | no | no | no |
+
+### What each proof stands on
+
+Of the 37 facts, 33 are used by at least one proof.
+
+| Used by | Facts | How many |
+|---|---|---|
+| all three | G1 arithmetic, G6 right angle, G8 right triangle, G17 angles along a line, G20 the angles of a triangle | 5 |
+| Bob and Dave, not Carol | G10 rectangle and square, G19 side-angle-side, G32 area exists, G34 areas of pieces add | 4 |
+| Bob and Carol, not Dave | G4 length of a segment | 1 |
+| Dave and Carol, not Bob | G16 lengths add along a line | 1 |
+| Bob alone | G2 order, G11, G24, G25, G26, G27 the grid, G13 congruent by parts, G35 area of a rectangle, G37 area of a right triangle | 9 |
+| Dave alone | G14 cutting, G28, G29, G30, G31 rectangles behave, G33 congruent figures have equal areas, G36 area of a square | 7 |
+| Carol alone | G5 between, G7 triangle, G9 perpendicular, G15 similar, G22 one perpendicular, G23 two equal angles | 6 |
+
+How much two proofs share, as the facts both use over the facts either
+uses:
+
+| Pair | Shared | Either | Share |
+|---|---|---|---|
+| Bob and Dave | 9 | 27 | 0.33 |
+| Dave and Carol | 6 | 24 | 0.25 |
+| Bob and Carol | 6 | 26 | 0.23 |
+
+Bob and Dave draw the same figure, and both say so. They still share only
+a third of their ground. They reach "the middle is a square" and "the
+pieces fit" by different facts: Bob by the grid and inequalities, Dave by
+the behaviour of rectangles and by straight cuts.
+
+### Take a fact away: which proofs fall?
+
+| Fact taken away | Bob | Dave | Carol |
+|---|---|---|---|
+| G20, the angles of a triangle | falls | falls | falls |
+| G17, the angles along a line | falls | falls | falls |
+| G19, side-angle-side | falls | falls | stands |
+| G32 and G34, area | falls | falls | stands |
+| G24, the grid | falls | stands | stands |
+| G33, congruent figures have equal areas | stands | falls | stands |
+| G23, two equal angles make similar triangles | stands | stands | falls |
+| G22, one perpendicular from a point | stands | stands | falls |
+| G16, lengths add along a line | stands | falls | falls |
+
+This is the difference between the proofs, as a table. There are two
+families: Bob and Dave fall together when area or side-angle-side is
+taken, and Carol falls alone when similarity is taken.
+
+### What came out that nobody planned
+
+1. **All three lists of Act 1 were incomplete,** and all three provers
+   had called theirs complete. Seven new items in all. Every one of them
+   is about order or position: which of three points is between the
+   others, when a point is inside an angle, that a straight cut of a
+   convex figure makes exactly two pieces. These are the things a picture
+   supplies without being asked. They showed only because each step had to
+   name its item.
+2. **Nobody moves anything.** Dave's axiom that a figure can be moved is
+   not used: each triangle is shown to be a copy where it lies. Bob does
+   not use that congruent figures have equal areas. The proof "by cutting
+   and moving" has no moving in it.
+3. **At 60° each proof fails at a named step, with a number.** For the
+   triangle with all sides 1, Bob and Dave get a² + b² = 2 for a side that
+   is no longer c, and Carol gets two cuts that overlap, c times 2 where c
+   times 1 was needed.
+4. **One fact is on nobody's list:** that a unit square has the area 1.
+   Percy: the three rules of area stay true if every area is doubled, so
+   Dave's "a square of side s has the area s²" cannot be proved from his
+   own list.
+5. **Three questions are left for Act 3.** Does Bob add lengths along a
+   slanted line, which his list does not allow? Which fact puts a triangle
+   where a prover wants it? And where does each proof say that length does
+   not depend on direction?
+6. **Bob's steps 7, 8, 10, 13, 14 and 16 are statements about polynomials**
+   in a and b. A machine can check them. Bob tried them on random points
+   and says that this is a check and not a proof.

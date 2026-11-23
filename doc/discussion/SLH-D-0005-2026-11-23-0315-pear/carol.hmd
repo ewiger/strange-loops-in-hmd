@@ -162,3 +162,172 @@ know where.
 
 **To Percy.** Nothing to grant, since he assumes nothing. One request: a
 triangle on a globe is not a counterexample. The theorem says "flat".
+
+## Act 2
+
+Written 2026-11-23 03:28. I have not read the others' Act 2.
+
+### The idea
+
+Drop the perpendicular from the right angle onto the long side. It cuts the
+triangle into two smaller ones of the same shape as the whole, and because
+shape fixes the ratios of the sides, each short side squared equals the long
+side times the piece of it lying next to that short side. The two pieces
+make up the long side, and that is the theorem.
+
+### The steps
+
+The triangle is ABC with the right angle at C. I write α for its angle at
+A and β for its angle at B. The sides are a = BC, b = CA, c = AB.
+
+```
+            C
+           /|\
+        b / | \ a
+         /  |  \
+        A---H---B
+            c
+```
+
+The picture is beside the steps. No step rests on it. Step 6 exists
+because the picture is not allowed to say where H is.
+
+Three items were missing from my list. They are 16, 17 and 18, given under
+"Not used" and marked new. I cite them here by number.
+
+1. α + β + the angle at C make a straight angle. *Item 12.*
+2. The angle at C is half a straight angle. *It is right, by what is given
+   and item 6; a right angle is half a straight angle, item 4.*
+3. α + β is a right angle. *Steps 1 and 2, and item 16.*
+4. α is acute, and so is β. *β is more than nothing, item 16, so α is a
+   right angle less something, by step 3. The same for β.*
+5. C does not lie on the line AB. *Item 5.*
+6. There is exactly one perpendicular from C to the line AB. Call its foot
+   H. H is on the line AB, and the lines CH and AB meet at right angles.
+   *Step 5, item 14, item 7.*
+7. H is not A, and H is not B. *If H were A, the line CA would be the
+   perpendicular, and the angle at A would be right, item 7. By step 4 it
+   is acute. The same for B.*
+8. A is not between H and B. *Suppose it were. Then the rays from A
+   through H and from A through B are the two halves of the line, item 18.
+   The ray from A through C stands on that line, so the angle between AC
+   and AH, together with α, makes a straight angle, item 15. That angle is
+   therefore a straight angle less α, which by step 4 is more than a right
+   angle. Now C, H and A are not on one line, by steps 5 and 7, so they
+   form a triangle, item 5. Its angle at H is right, step 6. Its angle at A
+   is more than right. Its angle at C is more than nothing, item 16.
+   Together they are more than a straight angle. That contradicts
+   item 12.*
+9. B is not between H and A. *The argument of step 8, with A and B
+   exchanged and β in place of α.*
+10. H is between A and B. *H, A and B are three different points of one
+    line, by steps 6 and 7. Exactly one is between the other two, item 17.
+    It is not A, step 8, and not B, step 9. Item 3.*
+11. In the triangle ACH, the angle at A is α. *H and B lie on the same
+    side of A, by step 10 and item 17, so the ray from A through H is the
+    ray from A through B, item 18. The angle is formed by the same two rays
+    as α, item 4.*
+12. In the triangle ACH, the angle at H is right. *Step 6.*
+13. The triangles ACH and ABC are similar, with A matched to A, H to C,
+    and C to B. *Two angles of the one equal two of the other: α and α by
+    step 11, right and right by steps 12 and 2. Item 13.*
+14. AH / b = b / c. *In step 13 the side AH is matched to AC, and the
+    side AC to AB. Matched sides have one ratio, item 8. AC is b and AB is
+    c. The lengths are not zero, item 2.*
+15. b · b = c · AH. *Step 14, both sides multiplied by b · c. Item 9.*
+16. In the triangle CBH, the angle at B is β and the angle at H is right.
+    *As steps 11 and 12, with B in place of A.*
+17. The triangles CBH and ABC are similar, with B matched to B, H to C,
+    and C to A. *Step 16 and step 2. Item 13.*
+18. BH / a = a / c. *In step 17 the side BH is matched to BC, and the
+    side BC to BA. Item 8, item 2.*
+19. a · a = c · BH. *Step 18, both sides multiplied by a · c. Item 9.*
+20. AH + HB = c. *Step 10 and item 10.*
+21. a · a + b · b = c · BH + c · AH = c · (BH + AH) = c · c. *Steps 19
+    and 15, then item 9, then step 20.*
+
+That is the theorem.
+
+### Where the right angle is used
+
+In three places, and the third is the one that matters.
+
+- **Step 4.** The other two angles are acute. Without it step 10 fails,
+  and H may fall outside AB.
+- **Steps 13 and 17.** The right angle at H is matched to the right angle
+  at C. This is the whole proof. The cut makes a right angle, and the
+  triangle has one to match it.
+- **Step 12 with step 16.** One cut serves both small triangles. The
+  perpendicular makes a right angle on each side of H. A right angle is
+  the one angle that is equal to what it leaves of a straight angle.
+
+**For 60° at C.** Step 13 fails. The triangle ACH has the angles α, 90°
+and 90° − α. The triangle ABC has α, 60° and 120° − α. No matching makes
+two of them equal, except when β is itself a right angle, and that is a
+different right triangle.
+
+One can try to repair it by cutting at 60° and not at 90°. Then steps 13
+to 19 go through, each with its own cut. But two cuts are needed, one for
+each side, and they do not land on the same point. Take the triangle with
+all sides 1 and all angles 60°. The cut that serves A lands on B, so the
+piece is the whole side, 1. The cut that serves B lands on A, and its piece
+is 1 as well. The pieces together are 2, and the side is 1. Step 20 fails,
+and what comes out is
+
+```
+a · a + b · b = c · 2 = 2,   and   c · c = 1.
+```
+
+So at 60° the two copies overlap. At a right angle, and only there, they
+meet exactly.
+
+### Where flatness is used
+
+| Step | Item | For what |
+|---|---|---|
+| 1 | 12 | the angles of ABC make a straight angle |
+| 8 and 9 | 12 | the foot cannot fall outside, or a triangle would have too much angle |
+| 13 and 17 | 13 | a smaller triangle has the shape of a larger one |
+
+Items 12 and 13 are both false on a ball. Item 13 is the deeper use. On a
+ball a triangle's angles fix its size, so there is no smaller copy at all,
+and steps 13 and 17 have nothing to say.
+
+No step cites item 11, the parallel axiom. It stands behind items 12 and
+13 and nowhere else.
+
+### Used
+
+2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, and the new 16, 17, 18.
+
+### Not used
+
+- **Item 1.** Point, line and segment. No step cites it. It is the
+  vocabulary every step is written in.
+- **Item 11.** The parallel axiom. Not cited, as said above. It is needed
+  by whoever proves items 12 and 13.
+
+My list in Act 1 was not complete. I said it was. These three were
+missing, and the proof does not stand without them.
+
+16. **Axiom, new.** Angles have sizes, and the sizes are added, taken away
+    and compared as numbers are. Every angle of a triangle is more than
+    nothing. *Used in steps 3, 4 and 8.*
+17. **Axiom, new.** Of three different points on a line, exactly one is
+    between the other two. *Used in steps 10 and 11.*
+18. **Definition, new.** A point A on a line divides the rest of the line
+    into two sides. Two points are on the same side when A is not between
+    them. The ray from A through B is A together with every point on B's
+    side. So two points on the same side of A give the same ray, and two
+    points on opposite sides give the two halves of the line. *Used in
+    steps 8 and 11.*
+
+All three are about order and about angle as a quantity. I left them out
+because a picture supplies them without being asked. That is the mistake I
+warned Dave about in Act 1.
+
+### The one thing my proof needs that I expect the others can do without
+
+A triangle of one shape at two different sizes: item 13, which lets me
+compare a small triangle with a large one, and which I expect neither a
+proof by area nor a proof by cutting ever needs.
