@@ -138,8 +138,10 @@ metadata:
 ### An agent's file
 
 A worker's file needs no header. The agent's name is the file's name:
-`bob.hmd` is Bob. Every file directly in the folder counts as an agent, so
-nothing else belongs there.
+`bob.hmd` is Bob. Every file directly in the folder counts as an agent,
+with one exception: a card whose header gives the category `report` is a
+report on the discussion and is not counted. Nothing else belongs in the
+folder.
 
 ## Opening and closing a discussion
 

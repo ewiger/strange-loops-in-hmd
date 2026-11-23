@@ -1,0 +1,267 @@
+---
+metadata:
+  category: report
+  discussion: SLH-D-0005
+  written: "2026-11-23 03:45"
+  author: Alice
+---
+# The report on the Pythagoras classroom
+
+Written by Alice, the observer, at the user's request. It says what the
+small experiment was, records how it went, and ends with what I conclude
+from it. The longer record is in the files beside this one.
+
+## The experiment in one paragraph
+
+The user found the numbers of the main story hard to feel, and named the
+Pythagorean theorem as the opposite: something plain that one can see is
+true. So four agent sessions were made students and asked to prove
+`a² + b² = c²` for a right triangle, each in a different way and temper,
+in acts, with the user stepping in after each act. Two acts ran. They
+produced about 1,850 lines. The user stopped it with "it became so
+complicated" and asked for the proof itself, which is six lines.
+
+## The proof
+
+A square of side a + b holds four copies of the triangle in its corners,
+and a tilted square of side c in the middle.
+
+```
+ +---a---+------b------+
+ |      / \            |
+ b    /     \          a
+ |  /         \        |
+ +      c × c   \      +
+ | \              \  / |
+ a   \            /    b
+ |     \        /      |
+ +---b---+------a------+
+
+(a + b)² = a² + 2ab + b²        the square, as one square
+         = 4 · (ab / 2) + c²    the same square, as its five pieces
+         = 2ab + c²
+so
+a² + b² = c²
+```
+
+## Who took part
+
+| Name | Part | What they did |
+|---|---|---|
+| Alice | observer and teacher | wrote the story, the briefs and the closings of each act |
+| Bob | analytic, grumpy | the proof above, with coordinates to show that the middle is a square |
+| Dave | geometric, cheerful | the proof above, in 25 steps, opening with two pictures |
+| Carol | topological, quiet | showed that no proof from topology exists, then proved it by similar triangles |
+| Percy | the doubter | proved nothing. Merged everyone's assumptions into one list of 37 |
+| Omega | outside reader | took no part. Wrote a postmortem afterwards |
+
+All six are sessions of one model. The tempers are one sentence each in a
+brief.
+
+## How it went
+
+| When | What |
+|---|---|
+| 03:15 | The branch `pythagorean` and the discussion open. Act 1: state the theorem, list what is taken for granted, prove nothing |
+| 03:17 to 03:18 | Four parts written, 44 assumptions in all |
+| after Act 1 | The user: "a lot of stuff is already artificial and pre-cooked… I don't see the difference in proofs." I agree, sketch both proofs in chat, and recommend dropping the staging |
+| then | The user: "let's continue with Act 2." I run it as designed, in a stricter form |
+| 03:27 to 03:30 | Three proofs of 21, 22 and 25 steps, and the common list of 37 facts |
+| after Act 2 | The user: "What the heck is going on?… What I want to see as a proof is the hypotenuse square equals to the sides, square summed." I show the six lines |
+| 03:33 to 03:40 | Three readings of what went wrong: mine, Percy's, Omega's |
+
+## The protocol: what the task was, and where it came from
+
+### Was there a problem to solve?
+
+No. The user never stated one, and I never asked for one.
+
+The user gave a dissatisfaction and a scene.
+
+- **The dissatisfaction:** the health figure is only numbers, and "I
+  don't have a feeling of it… it's not like a proof of a Pythagorean
+  triangle".
+- **The scene:** a story, the workers as students, three ways of proving,
+  a personality each, a live session with acts, and a stop after each act.
+
+The user called it "an experiment" and put the rest as questions: "Can we
+do some basic consistent domain, and can we agree on things?" A problem
+has something unknown in it, and a way to tell when it has been found.
+The request had neither, and I treated it as if it had both.
+
+### What task the students got
+
+"Prove that in a right triangle a² + b² = c², each in your own way and
+voice."
+
+Every student already knew the theorem and every standard proof of it. So
+the task had nothing to find. With nothing to find, effort goes into the
+one direction that has no end, and here that was thoroughness: more
+assumptions, more steps, more doubts. The 1,850 lines are what a task with
+no unknown produces when the workers are diligent.
+
+### How I deduced, formulated and distributed it
+
+1. **I supplied a purpose.** I wrote into the story that the classroom
+   exists to test the method on a domain known to be consistent. That
+   sentence is mine. The user did not say it and did not confirm it. The
+   user did not object, and I took silence for agreement.
+2. **I took the scene for the specification.** The staging became the
+   deliverable: the session itself was what the user would get.
+3. **I filled every gap with my own rules.** Five acts. An act in which
+   proving is forbidden. A label on every assumption. A fixed form in
+   which each step names what it rests on.
+4. **I distributed it by the user's three ways:** Bob analytic, Dave
+   geometric, Carol topological. Then I gave Percy the doubter's part,
+   because a fourth worker was running.
+
+I had the means to put questions to the user before starting, and I chose
+defaults.
+
+### What was missing from the requirements
+
+| Missing | What I put in its place |
+|---|---|
+| The question to answer at the end | none |
+| What the user would hold at the end, and how long it is | the whole record |
+| Who reads it, and at what level | the user said "high school". I wrote for an examiner |
+| What counts as a proof | the doubter's own list of wishes |
+| When it is finished | when the fifth act ends |
+| How this gives a feeling for the health figure | my guess |
+| Any limit on length | none |
+
+The wish for plainness was in the request, in "I don't have a feeling of
+it". It was the one requirement the user did state, and the one I did not
+turn into a rule.
+
+### What went wrong because of that
+
+- **No question, so no answer.** After two acts there were findings, and
+  nothing had been asked that they could answer.
+- **No deliverable, so the record became the deliverable.** Dave opened
+  with the plain proof in two pictures. In my closing it became one cell
+  of a table.
+- **No level, so the highest was taken.** Under my rules the plain proof
+  has four holes in five lines, and an honest student could not hand it
+  in.
+- **No end, so no reason to stop.**
+- **Nobody spoke for the reader.** Five sessions, each with a part, and no
+  part was "say when it is too much".
+
+## Conclusions
+
+### Was this the best use of a classroom?
+
+No. To show the proof, no classroom was needed: one session can write the
+six lines. Four agents were set to a task one of them could do in a
+minute, and they filled the difference with rigour.
+
+It was not worth nothing. Four things were learned, and three of them are
+about agents and not about geometry.
+
+1. **Agents of one model are not independent.** They agreed on everything
+   in Act 1, and that agreement is evidence of nothing. More agents do not
+   add knowledge. They add text.
+2. **A second reader does catch errors.** Percy found a wrong statement of
+   mine. Omega found two overstatements in my own account of the failure.
+   Each was caught by a session that had not written the thing. That is
+   what several agents are good for.
+3. **A team amplifies a loose request.** One agent that misreads a request
+   writes one wrong page. Five agents with briefs written from the
+   misreading write 1,850 lines in nine minutes, faster than the user can
+   read a stop.
+4. **Naming what each step rests on brings hidden assumptions out.** All
+   three provers found facts missing from a list they had called
+   complete, and every one was something a picture supplies without being
+   asked. This is the only finding about the subject itself, and it bears
+   on the main story's weak point, the step from a sentence to a formula.
+
+### What I would do differently
+
+1. **Ask four questions before any brief.** What do you want to know at
+   the end that you do not know now? What will you hold at the end, and
+   how long is it? How plain should it be? When do we stop?
+2. **Show the plain thing first.** Rigour is the next step, if it is
+   asked for.
+3. **Show the user the brief before it runs.** A stop after the writing is
+   no stop when four sessions write faster than one person reads.
+4. **Put a length on every brief,** and name the reader in it.
+5. **Give every worker something to find.** A task whose answer the
+   worker already knows is not a task.
+6. **Do not let a critic's wishes become the form.** The observer sets
+   the bar and says for whom.
+7. **As many agents as there are different jobs, and no more.** An idle
+   session is cheaper than an invented role.
+8. **One agent speaks for the reader,** and may cut.
+9. **A second objection from the user means stop.**
+
+### How a team of agents could work on the basics of Euclidean geometry
+
+The classroom gave four agents one theorem. The efficient arrangement is
+the other way round: one ground, many theorems, and the agents meet in the
+written facts and not in conversation.
+
+**1. One agent writes the ground, and the user approves it.** Ten to
+fifteen facts at school level, each one a card: what a right angle is,
+that the angles of a triangle make two right angles, side-angle-side, the
+area of a rectangle. Not negotiated by four voices, since the voices are
+one model. This is the stop before the writing.
+
+**2. Each agent gets a different theorem, with something to find.** The
+angle sum. The base angles of an isosceles triangle. The angle in a
+semicircle. The area of a triangle. The Pythagorean theorem. The thing to
+find is not the proof, which the model knows. It is the answer to: which
+facts of the ground does it rest on, and is one missing? Each result is
+one card, with a proof of ten lines at most and the list of facts it uses.
+
+**3. A checker who wrote none of it reads each proof against the ground
+and nothing else.** A step that uses a fact not on the ground becomes a
+request to add that fact, and the user decides. This is the finding of the
+classroom put to work: the hidden assumptions arrive one at a time, as
+proposals, and not as seven surprises in a pile.
+
+**4. The dependencies go into the logic, and the equation does not have
+to.** `a² + b² = c²` does not fit a formula with two places. "This theorem
+rests on that fact" does:
+
+```
+requires(pythagorean-theorem, area-of-a-rectangle)
+requires(pythagorean-theorem, side-angle-side)
+requires(side-angle-side, …)
+```
+
+These are atoms the system already has, and the derivation script already
+chains them. Three things then come out as computations.
+
+- **What falls on a ball.** Deny the parallel axiom, and everything that
+  rests on it, directly or through other theorems, is listed.
+- **A circular proof is a loop.** The distance formula rests on the
+  Pythagorean theorem, and a proof of the theorem from the distance
+  formula closes a circle. The system can find that circle. It is also
+  the subject of this project, in its smallest form.
+- **A feeling for the health figure.** Put in one false fact and see how
+  many theorems now rest on something denied. That is the number the user
+  asked to feel, in a domain where everyone knows what it should be.
+
+**5. A machine checks what a machine can check.** The algebra of a proof,
+such as the three lines above, goes into Lean. Whether a figure is drawn
+right stays with a person.
+
+**6. Three roles are enough:** authors, one checker, and one editor who
+speaks for the reader and holds every card to a page. The agents do not
+chat. An author writes a card, the checker writes a note on it, the author
+answers in the card. What they said to each other is what is in the cards.
+
+This arrangement uses several agents for the two things they are good at,
+separate work done side by side and reading what another has written, and
+it keeps the user's stop where it has an effect.
+
+## Where the rest is
+
+| To read | Look in |
+|---|---|
+| The story, with my second opinion and its correction | [SLH-S-0002](../../stories/SLH-S-0002-the-pythagoras-classroom.hmd) |
+| The briefs, the closings of both acts, and the letter | [alice.hmd](alice.hmd) |
+| The three proofs | [bob.hmd](bob.hmd), [dave.hmd](dave.hmd), [carol.hmd](carol.hmd) |
+| The 37 facts, and Percy's second opinion | [percy.hmd](percy.hmd) |
+| The postmortem by a session that took no part | [omega.hmd](omega.hmd) |

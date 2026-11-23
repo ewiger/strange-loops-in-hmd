@@ -114,9 +114,11 @@ fn folders(all: List<Card>) : List<String> =
 fn members(all: List<Card>, f: String) : List<Card> = all | filter(c => folder(c) == f) | List
 
 /// The agents of a discussion: one for each file in its folder, named by
-/// the file, without the consolidation.
+/// the file, without the consolidation and without any card whose category
+/// is `report`.
 fn agents(m: List<Card>) : List<String> =
     m
+    | filter(c => category(c) != "report")
     | map(stem)
     | filter(s => s != "consolidation")
     | map(s => capitalize(s))
