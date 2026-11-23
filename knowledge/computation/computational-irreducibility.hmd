@@ -1,0 +1,172 @@
+---
+tags: [computation/limits]
+metadata:
+  category: concept
+  cluster: computation
+  status: draft
+  established: true
+  questions: [ai-oriented-language, strange-loop-meaning]
+  sources: [06-formal-definition-godel, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Computational irreducibility is the property of a computation that has no substantial shortcut, so that the only general way to learn its outcome is to carry it out step by step."
+      evidence: established
+      credence: 0.9
+      atom: has(computational-irreducibility, no-shortcut)
+    - id: 2
+      text: "Computational irreducibility is not undecidability: a computation can be irreducible and perfectly decidable, since one simply runs it."
+      evidence: established
+      credence: 0.9
+      atom: same-as(computational-irreducibility, undecidability)
+      holds: false
+      star: limits-from-inside
+    - id: 3
+      text: "Computational irreducibility, which concerns the cost of predicting a computation, is not algorithmic incompressibility, which concerns the length of the shortest description of data."
+      evidence: established
+      credence: 0.9
+      atom: same-as(algorithmic-incompressibility, computational-irreducibility)
+      holds: false
+      star: limits-from-inside
+    - id: 4
+      text: "Gödel's incompleteness theorems concern what a theory can prove and establish neither computational irreducibility nor a general impossibility of compression."
+      evidence: established
+      credence: 0.9
+      star: limits-from-inside
+    - id: 5
+      text: "Irreducibility is neither necessary nor sufficient for a strange loop, and was proposed and then withdrawn as a criterion for one."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, computational-irreducibility)
+      holds: false
+      star: notion-not-class
+    - id: 6
+      text: "The view that classical programming solves reducible problems and language models solve irreducible ones is wrong, because a language model is itself a computational system bound by the limits of computation, and what it is actually good for is problems whose requirements are ambiguous or incomplete."
+      evidence: argued
+      credence: 0.75
+    - id: 7
+      text: "The distinction that survives between programs and language models is a practical one, between executing an established formalization, which is deduction, and discovering or revising the formalization itself, which is induction and abduction."
+      evidence: argued
+      credence: 0.75
+---
+# Computational irreducibility
+
+**Computational irreducibility** is the property of a computation that has no
+substantial shortcut: the only general way to learn its outcome is to carry it
+out, step by step. The term is Stephen Wolfram's. In this vault it matters
+mostly for what it is not. "Irreducible" was proposed as a mark of a
+[[strange-loop]], and as the mark of problems suited to language models, and
+in both places the word turned out to cover several different ideas.
+
+## Description
+
+### Three concepts under one word
+
+One of the criteria first proposed for a formal strange loop was that the
+system be "irreducible in some sense": it cannot be compressed to rudimentary
+computations, yet it can capture the patterns it is trying to describe. The
+correction was that irreducibility is ambiguous, and that three concepts have
+to be kept apart.
+
+| Concept | What is lacking | About |
+|---|---|---|
+| Computational irreducibility | A faster way to get the result | The cost of predicting a computation |
+| Algorithmic incompressibility | A shorter description of the data | The length of the shortest program that outputs a string |
+| [[undecidability]] | Any algorithm at all that always answers | A whole class of questions |
+
+A computation can be irreducible and perfectly decidable: one simply runs it.
+A string can be incompressible without any computation being in question.
+Gödel's result is about none of these directly. It concerns formal
+incompleteness, what a theory can prove, and not a general impossibility of
+compression.
+
+### The temptation and its correction
+
+The essay on AI-oriented programming reaches the same word from the other
+side. A program solves a problem that is reducible to the algorithm written in
+it. A language model is useful exactly when the problem is not fully
+specified. The tempting conclusion is:
+
+- classical programming solves reducible problems;
+- language models solve irreducible problems.
+
+The essay rejects it on two grounds. A language model is itself a
+computational system and does not escape the limits of computation. And
+irreducibility has the specific meaning above, which differs from
+undecidability, and both differ from a third thing: a problem whose
+requirements are ambiguous or incomplete. That third thing, not either of the
+formal ones, is where language models earn their keep.
+
+### Two overlapping sets
+
+In place of the opposition the essay puts two sets.
+
+- **P:** problems solvable by explicitly specified programs and algorithms.
+- **L:** problems for which generative inference, interpretation or synthesis
+  is a useful strategy.
+
+Their intersection is enormous. A model writes the SQL that removes
+duplicates, and once the rules are fixed an ordinary program applies them
+perfectly. A program calls a model to classify a document. Tasks move from L
+toward P as knowledge grows and specifications sharpen. Some problems neither
+approach solves reliably, and the formal limits bind both.
+
+### The distinction that survives
+
+What is left is a practical line, not a line between computable and
+uncomputable problems:
+
+> executing an established formalization, against discovering or revising the
+> formalization itself.
+
+Executing is [[deduction]]: given the rules, the result follows. Discovering
+is [[induction]] and [[abduction]]: the rules are what is sought. The essay's
+closing question, what is reducible with AI, asks which problems can be moved
+from the second activity into the first.
+
+## Relations
+
+- It is not [[undecidability]] {relation: distinguished-from}: no shortcut, against no algorithm.
+- It is not the incompressibility discussed under [[compression-and-prediction]] {relation: distinguished-from}: cost of a computation, against length of a description.
+- It is not what the [[incompleteness-theorems]] {relation: distinguished-from} establish; they concern provability.
+- It was proposed and withdrawn as a criterion for the [[strange-loop]] {relation: contrasts}.
+- The side of its surviving distinction that executes a formalization is [[deduction]] {relation: uses}.
+- The side that discovers one is [[induction]] {relation: uses}.
+- It bears on [[prediction]] {relation: contrasts}: an irreducible process can be predicted only by simulating it.
+- It bears on the question [[ai-oriented-language]] {relation: answers}, as the argument against sorting problems into reducible and irreducible.
+
+## Neighbouring concepts
+
+- **[[undecidability]].** The absence of any algorithm that answers every
+  instance of a question. It is the strongest of the three limits, and the
+  only one tied to Gödel-style arguments.
+- **[[compression-and-prediction]].** The link between how well a model
+  predicts a sequence and how short a code it yields. Incompressible data is
+  data no model predicts better than chance.
+- **[[induction]].** Inference from observations to a hypothesis, always paired
+  with deduction. It is the name this vault gives to discovering a
+  formalization.
+- **[[strange-loop]].** A hierarchy of levels crossed and returned through.
+  Irreducibility is neither necessary nor sufficient for one.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[computational-irreducibility]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[computational-irreducibility]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Essay: "From Rust to English to Strange Loops: What Is an AI-Oriented
+  Programming Language?", the summary and the part asking whether programming
+  languages and LLMs solve different kinds of problems [ai-oriented-pl].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  question's fourth criterion and its correction [06-formal-definition-godel].
+- Stephen Wolfram, *A New Kind of Science* (2002), for the term.

@@ -1,0 +1,73 @@
+---
+tags: [lenses/future]
+metadata:
+  category: lens
+  status: design
+  future: true
+  query: .hql/queries/future/find-level-crossings.hql
+  questions: [building-a-loop-in-hmd, strange-loop-meaning]
+---
+# Find level crossings
+
+**Find level crossings** is a future lens: a query that walks the link cycles
+of this vault and asks, for each one, whether it crosses from object level to
+meta level and returns. It separates the cycles that are candidate strange
+loops from those that are ordinary feedback. It is a design and does not run
+on the current HQL; this card must not be rendered.
+
+## What it would do
+
+The vault is full of cycles. The card for induction links deduction, which
+links induction. That is a cycle of links and nothing more: both cards are
+about reasoning, and neither is about the other card.
+
+The discussion's criterion for a [[strange-loop]] is stricter. A cycle counts
+only if somewhere on it a card describes the mechanism that interprets the
+cycle, so that following the links leads from the things described to the
+describing and back. A cycle through the card on [[level-crossing]], this
+lens, and the query that reads them both is a candidate. A cycle between two
+concept cards is a [[feedback-loop]] at most.
+
+The lens gives an agent each cycle together with the vault's own definitions
+and asks for a typed verdict: which cards are at the object level, which at
+the meta level, and why. The definitions it judges by are cards it may itself
+be judging, which is the point of the experiment.
+
+## The design
+
+```hql
+import future
+import ai
+
+type Verdict = {
+  crosses_level: Bool,
+  object_level: List<Card>,
+  meta_level: List<Card>,
+  reason: String
+}
+
+judge = Agent(@[[level-judge]])
+graph
+| cycles(max_length = 6)
+| map(cycle => {
+    cycle: cycle | map(c => c.name),
+    verdict: judge | ask(
+      Prompt("Using the definitions given, does this cycle of cards cross from object level to meta level and return?"),
+      Context(cycle = cycle, definitions = [@[[level-crossing]], @[[object-and-meta-level]], @[[feedback-loop]]])
+    ) | validate<Verdict>
+  })
+| filter(r => r.verdict.crosses_level)
+```
+
+## What current HQL lacks
+
+- A `cycles` step on a graph.
+- The `ai` module and typed agent answers.
+
+## Relations
+
+- It tests cycles against the definition of [[level-crossing]] {relation: uses}.
+- It relies on the distinction of [[object-and-meta-level]] {relation: uses}.
+- It separates a [[strange-loop]] {relation: distinguished-from} from a [[feedback-loop]] {relation: distinguished-from}.
+- It is a step of the [[observer-card-experiment]] {relation: part-of}: a card that inspects the net it belongs to.
+- It serves the question [[building-a-loop-in-hmd]] {relation: answers}.

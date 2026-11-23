@@ -1,0 +1,268 @@
+---
+tags: [logic/foundations]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, learning-the-formalism, ai-oriented-language]
+  sources: [06-formal-definition-godel, 08-humans-extend-axioms, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A formal system is a language, a set of axioms and rules of inference, each decidable by a procedure, and its theorems are exactly the formulas that a finite derivation ends in."
+      evidence: established
+      credence: 0.9
+      atom: requires(formal-system, inference-rule)
+    - id: 2
+      text: "What makes a system formal is that checking a derivation is mechanical and not that its statements are precise: a definition written with the rigour of a textbook is still prose until its language and its rules are fixed."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(formal-system, rigorous-definition)
+      holds: false
+      star: candidate-until-checked
+    - id: 3
+      text: "Consistency and completeness are properties of what a system derives, so neither can be asked of a system whose axioms and rules are not fixed; consistency is a hypothesis of the incompleteness theorems and completeness is what they rule out."
+      evidence: established
+      credence: 0.9
+      atom: requires(incompleteness-theorems, consistency)
+      star: limits-from-inside
+    - id: 4
+      text: "Derivability is not truth: a derivation shows that a formula follows from the axioms by the rules, and it shows the formula true only where the axioms are true and the rules keep truth."
+      evidence: established
+      credence: 0.9
+      atom: same-as(derivability, truth)
+      holds: false
+      star: limits-from-inside
+    - id: 5
+      text: "A reflective formal system is a formal system with two further components, an encoding of its own syntax and formulas for its own proof relations, and the encoding is possible only because checking a derivation is mechanical."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(reflective-formal-system, formal-system)
+      star: representation-before-reference
+    - id: 6
+      text: "Translating a sentence into a formula is not a step of any formal system, so no derivation shows that the formula says what the sentence meant."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(translation, formal-system)
+      holds: false
+      star: candidate-until-checked
+    - id: 7
+      text: "The partial logic of this vault had a language and a valuation and was not a formal system until rules of inference were written for it; with them it is a small one, in which a claim is proved when it is derived from named claims by named rules."
+      evidence: proposed
+      credence: 0.6
+      atom: instance-of(partial-logic, formal-system)
+---
+# Formal system
+
+A **formal system** is a language, a set of axioms and a set of rules of
+inference, each fixed so exactly that a procedure can decide what is a
+formula, what is an axiom and what is a correct step. Its **theorems** are
+the formulas that a finite derivation ends in. In this vault it is the
+concept the others were already leaning on: the cards speak of theories,
+proofs, consistency and completeness, and all four are defined only inside
+one.
+
+## Description
+
+### A concept the vault used before it had it
+
+The discussion asked for a definition of a strange loop "as formal as a set
+theory textbook", and listed among the properties wanted a system that is
+"well defined formally" and "complete and consistent or at least tries to be".
+The reply answered with a tuple of four components for a
+[[reflective-formal-system]] and said of the first two, a language and a
+theory, that they are any formal system. That was the whole account of the
+concept. Everything after it was built on top: the encoding, the provability
+formula, the diagonal sentence.
+
+This card states what was assumed there.
+
+| Part | What it fixes | In Peano arithmetic |
+|---|---|---|
+| Language | which strings of symbols are formulas | the formulas of first-order arithmetic |
+| Axioms | which formulas are taken as given | the Peano axioms, an infinite set a procedure can recognise |
+| Rules of inference | which formula may be written after which | the rules of first-order logic |
+| Derivability | follows from the three above: a formula is a theorem when a finite sequence of formulas ends in it, each an axiom or the result of a rule applied to earlier ones | $T \vdash \varphi$ |
+
+The fourth row is not a separate choice. It is what the first three define.
+
+### Two senses of "formal"
+
+The word is used for two things, and the discussion moved between them.
+
+- **Formal as rigorous.** A definition is written carefully, with its terms
+  defined and its hypotheses stated. The definition of a reflective formal
+  system is formal in this sense. It is mathematical prose, and a reader
+  judges whether an argument that uses it is correct.
+- **Formal as formalised.** The language and the rules are fixed, and whether
+  a given sequence of formulas is a derivation is decided by a procedure. No
+  reader's judgment enters. A proof checker can do it.
+
+The first is a property of how something is written. The second is a property
+of what can be done with it. A statement in the first sense can be discussed
+and cannot be derived. Only the second supports "prove it" as an operation
+with a result that does not depend on who performs it.
+
+The vault's own definitions are formal in the first sense only. The card on
+the reflective formal system calls itself the most formal answer the vault
+has, and it is a definition in prose about formal systems. Nothing in the
+vault is derived inside one.
+
+### Mechanical checking is the property everything else uses
+
+The discussion's reply writes the proof relation of a theory as a formula of
+arithmetic, $\operatorname{Proof}_T(p, x)$. That step is available for one
+reason: whether $p$ is a proof of $x$ is decided by a procedure, and a
+relation a procedure decides is one that arithmetic can represent. A
+[[godel-numbering]] encodes formulas and proofs as numbers, and the encoding
+has something to say about proofs only because proofs are checkable in this
+way.
+
+So the mechanical character of a formal system is not a convenience. It is
+what lets the system be turned into an object the system can talk about. A
+body of rigorous prose has no proof relation to encode.
+
+It is also the reason the discussion's warning has two sides. A program that
+checks proofs executes the system from outside. A theory that represents its
+own proof relation holds it inside. Both depend on the checking being
+mechanical, and they are still different things.
+
+### Consistency and completeness are about derivations
+
+The request for a system that is "complete and consistent" was corrected in
+the discussion: consistency is a hypothesis of the
+[[incompleteness-theorems]], and completeness is what the theorems rule out
+for a consistent, effectively axiomatized, sufficiently strong system.
+
+Both words are defined by derivability. A system is consistent when it does
+not derive a formula and its negation. It is complete when, of every sentence
+and its negation, it derives one. Neither can be asked of something that has
+no rules of inference, because there is nothing it derives. This is why the
+correction could be made exactly for arithmetic and for nothing else in the
+list of examples.
+
+### Derivable is not true
+
+A derivation shows that a formula follows from the axioms by the rules. Truth
+is a relation between a formula and an interpretation of the language, and it
+is a separate matter. Two properties connect them. A system is *sound* when
+everything it derives is true in the intended interpretation. It is *complete
+for its semantics* when everything true in every interpretation is derivable.
+
+The [[godel-sentence]] is the case where the two come apart inside one
+theory: under the usual hypotheses it is true in the standard interpretation
+of arithmetic and is not derivable. A derivation therefore never shows more
+than this: if the axioms hold, so does the conclusion. That is what
+[[deduction]] claims, with the rules written down.
+
+### A formal system does not change
+
+The discussion added a human who can add more axioms and so expand the
+formalism. Adding an axiom does not change a formal system. It gives another
+one, with more theorems. The choice of the new axiom is not a derivation in
+either system, and that is the step the [[reflection-progression]] is built
+from. A formal system is one stage of such a progression taken alone.
+
+### What stays outside every formal system
+
+Stating something in words and then deriving it involves a step before the
+derivation: the sentence has to be turned into a formula. That step is a
+[[translation]], and it is not an application of any rule of the system. No
+derivation shows that the formula says what the sentence meant.
+
+The essay on programming languages for agents meets the same limit from
+the other side: proving that a program follows a specification is not proving
+that the specification is what was wanted. It also names the division of
+labour that follows. Executing an established formalization is one kind of
+work, and a checker can do it. Discovering or revising the formalization is
+another kind, and it is where the judgment is.
+
+The translation can still be tested, though not proved. A formula can be
+translated back into a sentence and compared with the original, and two
+formulas written independently for one sentence can be tested for
+equivalence, which is a question a prover can answer.
+
+### The vault's own case
+
+The claims of this vault are sentences. About two thirds of them are also
+written as atoms, such as `requires(strange-loop, level-crossing)`. For a
+time that was a language with a valuation: each atom was asserted, denied,
+both or unsaid, and atoms were compared only when they were the same string.
+Nothing was derived, so the partial logic was not a formal system.
+
+It is one now, and a small one.
+
+- The language is the atomic formulas, the second of the two lanes the card
+  [[atom]] separates.
+- The axioms are the atoms that some claim asserts, each with the address of
+  its claim.
+- The rules are a short list of Horn rules, held as data in the header of the
+  card [[knowledge-graph]], next to the schema.
+- A theorem is an atom that the rules yield from the axioms.
+
+"Proved" in this system means derived from named claims by named rules. It
+does not mean true. Most of the axioms are positions reached by argument, and
+a derivation passes their uncertainty on to its conclusion. The system also
+keeps a contradiction where it is found. An atom derived from some claims and
+denied by another is a fact about those claims, and nothing more is concluded
+from it.
+
+## Relations
+
+- It is the wider concept of which a [[reflective-formal-system]] {relation: generalizes} is the kind that encodes its own syntax.
+- Its language is built from the [[atom]] {relation: uses}, the statement it gives a value to without looking inside.
+- Its derivations are [[deduction]] {relation: uses} with the rules written down.
+- It is what a [[godel-numbering]] encodes, and what the [[incompleteness-theorems]] are about.
+- It is fixed, against a [[reflection-progression]] {relation: contrasts}, which is a sequence of formal systems.
+- Putting a sentence into its language is a [[translation]] {relation: distinguished-from}, which is not one of its steps.
+- Statements about what it derives are made at the meta level of [[object-and-meta-level]] {relation: uses}.
+- The rules of the vault's own small formal system are held by the card [[knowledge-graph]].
+- It bears on the question [[strange-loop-meaning]] {relation: answers}: the exact case of a strange loop is exact because it happens inside one.
+- It bears on the question [[learning-the-formalism]] {relation: answers}: it marks where discussion in words ends and derivation begins.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: a requirement that is formalised can be enforced by a checker.
+
+## Neighbouring concepts
+
+- **[[reflective-formal-system]].** A formal system that carries an encoding
+  of its own syntax and formulas for its own proofs. It adds two components to
+  the three defined here.
+- **[[deduction]].** Inference from premises to what must follow. A formal
+  system is deduction with every permitted step listed in advance.
+- **[[translation]].** The change of one representation into another. It is
+  how a sentence enters a formal system, and the system cannot vouch for it.
+- **[[reflection-progression]].** A sequence of theories, each extending the
+  last. Each member is a formal system, and the passage between them is not a
+  derivation.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[formal-system]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[formal-system]] | downlinks | map(e => e.source)
+```
+
+The rules of the vault's own formal system are data on the card
+[[knowledge-graph]], and the script `scripts/derive.py` applies them.
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  demand for a formal definition, the tuple whose first two components are any
+  formal system, the correction on consistency and completeness, and the
+  difference between executing a construction and representing it
+  [06-formal-definition-godel].
+- Discussion: "Human in the loop and evolving formal theories", for adding
+  axioms and expanding the formalism [08-humans-extend-axioms].
+- Essay: "What is an AI-oriented programming language?", for formalising
+  requirements so that a checker enforces them, and for the gap between a
+  specification and what was wanted [ai-oriented-pl].
+- The part on the vault's own case comes from the design of the claims and
+  the rules, recorded in the proposal "A formal system for claims: from stated
+  to derived" under `doc/proposals/`.

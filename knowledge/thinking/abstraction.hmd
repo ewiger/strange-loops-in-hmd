@@ -1,0 +1,185 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql]
+  sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Abstraction identifies a structure apart from the incidental details of the things that have it, and its result is a new object of thought that the starting material did not contain as a part."
+      evidence: established
+      credence: 0.9
+      atom: produces(abstraction, common-structure)
+      star: operation-by-signature
+    - id: 2
+      text: "Abstraction is not summarization: abstraction finds a structure that applies beyond its inputs, whereas summarization shortens a text about the same thing and adds nothing new."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Abstraction is distinct from generalization, with which the discussion's first table had merged it: abstraction finds the structure, whereas generalization widens the range of things a concept or claim covers."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, generalization)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Abstraction is not simplification or idealization, because an abstraction is true of everything it was abstracted from, whereas a simplification or idealization replaces a system with an easier one that is strictly false of the original."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, simplification)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Abstraction comes before analogy, because both structures have to be identified before one can be mapped onto the other."
+      evidence: argued
+      credence: 0.75
+      atom: precedes(abstraction, analogy)
+      star: no-operation-alone
+    - id: 6
+      text: "A strange loop needs levels of description before it can cross them, and abstraction is how such levels come to exist, so abstraction is a precondition of a strange loop and not one of its forms."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, abstraction)
+      star: levels-not-cycles
+    - id: 7
+      text: "A system that offers both abstraction and summarization should give them different types, with summarization returning a shorter text and abstraction returning a structure together with a checkable mapping from each case onto it."
+      evidence: proposed
+      credence: 0.6
+      star: operation-by-signature
+---
+# Abstraction
+
+**Abstraction** is the identification of a structure apart from the incidental
+details of the things that have it. From permutations and from rotations it
+extracts the notion of a group. Its result is a new object of thought, the
+structure, which the starting material did not contain as a part. The word is
+also used for something else, the abstract of a paper, and the discussion
+insists the two are different operations.
+
+| | Abstraction | Writing an abstract |
+|---|---|---|
+| Input | several concrete structures | one large source |
+| Output | the structure they share | a shorter text with the same content |
+| What is dropped | whatever is not structure | whatever matters less for the purpose |
+| What is new | a concept that applies beyond the inputs | nothing |
+| Card | this one | [[summarization]] |
+
+## Description
+
+### Lane one: abstract thinking
+
+The thesis that opened this thread of the discussion was short: simplification,
+abstract thinking and generating an abstract summary of a paper are not the
+same thing. The reply sorted them into separate operations, each with its own
+example.
+
+| Operation | Example |
+|---|---|
+| Simplification | Point-mass approximation of a physical system |
+| Summarization | A shorter abstract of a technical paper |
+| Abstraction | Identifying group structure across permutations and rotations |
+| Generalization | Extending vector spaces to modules |
+| Analogy | Mapping structure between electrical and hydraulic systems |
+| Idealization | Frictionless planes or ideal gases |
+| Synthesis | New framework integrating established ideas |
+
+Abstraction differs from each neighbour in a specific way.
+
+- **From summarization.** A summary is about the same thing as its source and
+  says less. An abstraction is about something else, the structure, and says
+  it once for every case that has it.
+- **From simplification and idealization.** Those replace a system with an
+  easier one that is strictly false of the original: no body is a point mass.
+  An abstraction is true of everything it was abstracted from.
+- **From generalization.** Abstraction finds the structure; generalization
+  widens the range of things a concept or claim covers. The discussion's
+  earlier table lists them together, with groups, modules and categories as
+  examples, and the later one separates them.
+- **From analogy.** Analogy maps one structure onto another. It needs both
+  structures identified first, so abstraction comes before it.
+
+In the three-layer organisation proposed in the discussion, abstraction is on
+the first layer, among the operations, next to iteration, inversion, induction
+and generation. What it produces lives on the second layer: invariance,
+equivalence, the structural relationships.
+
+### Lane two: the abstract of a paper
+
+An abstract condenses. It is a product of [[summarization]] and is judged by
+whether it keeps what matters for its reader. Nothing in it has to be more
+abstract, in the first sense, than the paper it shortens. The shared word is
+the whole connection.
+
+The distinction matters for work with language models, which is where the
+discussion raised it. Summarization is a task such a model performs routinely.
+Being asked for the structure common to several cases is a different request,
+and a fluent paragraph that mentions all the cases is not an answer to it. A
+system that offers both operations should give them different types: one
+returns a shorter text, the other returns a structure together with the
+mapping from each case onto it, which can be checked.
+
+### Levels
+
+Abstraction is how levels of description come to exist. A formula is an
+abstraction over its instances, a theory over its formulas, a statement about
+theories over theories. A [[strange-loop]] needs such levels before it can
+cross them, so abstraction is one of its preconditions and not one of its
+forms.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: concrete structures in, common abstract structure out.
+- It is not [[summarization]] {relation: distinguished-from}: one finds a structure, the other shortens a text.
+- It is distinct from [[generalization]] {relation: distinguished-from}, with which the first table of the discussion had merged it.
+- It comes before [[analogy]] {relation: part-of}: the structures have to be identified before they are mapped.
+- It is not [[simplification]] {relation: distinguished-from} or [[idealization]] {relation: distinguished-from}: an abstraction stays true of its cases.
+- It produces the levels that [[object-and-meta-level]] {relation: uses} names and that [[level-crossing]] {relation: uses} crosses.
+- It is close to [[induction]] {relation: contrasts}: induction infers a rule from cases on evidence, abstraction extracts a structure the cases demonstrably have.
+- As an operation of an agent it should be a [[typed-transformation]] {relation: is-a}.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[summarization]].** Condensing a source while keeping what matters for a
+  purpose. It is what the word "abstract" means on the first page of a paper,
+  and nothing more.
+- **[[generalization]].** Extending a concept or claim to a wider domain, as
+  vector spaces extend to modules. It works on the reach of a concept, where
+  abstraction works on its content.
+- **[[analogy]].** A partial mapping between two domains that preserves chosen
+  relations. It is abstraction applied twice and then compared.
+- **[[object-and-meta-level]].** The distinction between a system and
+  statements about it. Each step up is an act of abstraction.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[abstraction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[abstraction]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] would have to
+tell this operation from summarization, which is the test case for that lens.
+
+## Sources
+
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  table of transformation classes and the three layers
+  [10-operations-dualities-generalization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].

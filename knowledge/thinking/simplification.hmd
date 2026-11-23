@@ -1,0 +1,138 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism]
+  sources: [11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Simplification is a cognitive operation that replaces a complex problem or representation by a less complex approximation or formulation."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(simplification, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "A simplification deliberately gives up accuracy, so its result is easier to work with and is no longer exactly the original."
+      evidence: argued
+      credence: 0.75
+      atom: has(simplification, loss-of-accuracy)
+      star: operation-by-signature
+    - id: 3
+      text: "Simplification is not abstraction, because a simplification is an approximation while what an abstraction says is exactly true of every instance."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, simplification)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Simplification is not summarization, because a simplification is a cruder model of the thing while a summary is a shorter account of a text."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(simplification, summarization)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "On the examples given, an idealization removes one named factor entirely, whereas a simplification replaces the whole description by a cruder one."
+      evidence: argued
+      credence: 0.65
+      atom: same-as(idealization, simplification)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "A simplification holds only within a range and fails outside it, so its output should come with the conditions under which it was acceptable."
+      evidence: argued
+      credence: 0.75
+      atom: has(simplification, range-of-validity)
+      star: operation-by-signature
+    - id: 7
+      text: "As an agent's operation, simplification should be a typed transformation that states where the approximation holds."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(simplification, typed-transformation)
+      star: operation-by-signature
+---
+# Simplification
+
+**Simplification** is the replacement of a complex problem or representation
+by a less complex approximation or formulation. The result is easier to work
+with and is no longer exactly the original. That deliberate loss of accuracy
+is what separates it from [[abstraction]] and from [[summarization]], the two
+operations it was named alongside.
+
+## Description
+
+| | Input | Output |
+|---|---|---|
+| Simplification | complex problem or representation | less complex approximation or formulation |
+
+The question that opened this part of the discussion begins with the word:
+"simplification.. abstract thinking and generating abstract summary for the
+paper is not the same thing". It lists three things that are easily run
+together, and the reply gives each its own line with an example.
+
+| Operation | Example | What is given up |
+|---|---|---|
+| Simplification | point-mass approximation of a physical system | accuracy |
+| Summarization | a shorter abstract of a technical paper | length and detail |
+| Abstraction | group structure across permutations and rotations | nothing true of the structure |
+| Idealization | frictionless planes, ideal gases | a factor known to be present |
+
+Treating a planet as a point mass is a simplification. The planet is not a
+point, and the model says so only by working well enough. An abstraction makes
+no such trade: what is said about a group is exactly true of every instance. A
+summary shortens a text and tries to keep what matters in it. It is about the
+text, where a simplification is about the thing.
+
+[[idealization]] stands next to simplification in the same table. The
+discussion does not separate them further. On the examples given, an
+idealization removes one named factor entirely, where a simplification
+replaces the whole description by a cruder one.
+
+A simplification has a range in which it holds, and outside it fails. So its
+output should come with the conditions under which it was acceptable, which
+is the kind of evidence a [[typed-transformation]] is meant to carry.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: a complex representation in, a less complex approximation out.
+- It is not [[abstraction]] {relation: distinguished-from}: an approximation, against an exact structure.
+- It is not [[summarization]] {relation: distinguished-from}: a cruder model of the thing, against a shorter account of a text.
+- It stands beside [[idealization]] {relation: distinguished-from}, which removes one factor outright.
+- Whether a simplification is good enough is a matter for [[evaluation]] {relation: uses}.
+- As an agent's operation it should be a [[typed-transformation]] {relation: is-a} that states where the approximation holds.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[abstraction]].** Identifying structure independent of incidental detail.
+  It loses detail without losing truth, which a simplification does not
+  promise.
+- **[[summarization]].** Condensing content while keeping what matters for a
+  purpose. It shortens the telling and leaves the thing told alone.
+- **[[evaluation]].** Assessing a claim against a criterion. For a
+  simplification the criterion is whether the lost accuracy matters for the
+  use.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[simplification]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[simplification]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Abstraction is not summarization: the role of analogy", the
+  question and the table of operations [11-analogy-vs-summarization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].

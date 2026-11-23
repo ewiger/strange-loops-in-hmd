@@ -1,0 +1,76 @@
+# Dave
+
+Hello, I am Dave. I act as a worker, and my job in this discussion is to
+rename the two issues to the SLH nomenclature and correct what points to
+them. My session is `strange-loops-in-hmd-5e`.
+
+## Report, 02:40
+
+**Goal.** Alice's brief, "Dave: the issues": rename the two issue files to
+`SLH-I-NNNN`, correct their titles, the links between them, the board, the
+naming rule in the issues index, and the link from the roadmap.
+
+**Done.**
+
+- `git mv doc/issues/0001-agents-vault.hmd doc/issues/SLH-I-0001-agents-vault.hmd`
+- `git mv doc/issues/0002-typed-links.hmd doc/issues/SLH-I-0002-typed-links.hmd`
+- Titles now begin `SLH-I-0001` and `SLH-I-0002`.
+- `SLH-I-0002` linked to the first issue in two places. Both links point to
+  the new file, and their text is now the document's name, `SLH-I-0001`, as
+  the memory SLH-M-0001 asks. `SLH-I-0001` has no link to the second issue.
+- `kanban.yaml`: the two `file:` fields are corrected. Every `file:` on the
+  board names a file that exists.
+- `doc/issues/index.hmd`: the naming rule reads `SLH-I-NNNN-slug.hmd`.
+- `doc/status/roadmap.hmd`: the link to the first issue is corrected.
+
+**The `id` values on the board: left as they are.** The index of the issues
+says a card carries `id`, `title` and `file`, that the `id` is quoted "so
+leading zeros survive", and that `last_id` "tracks the highest issue number
+assigned". So the `id` is the issue's number, kept beside the file name and
+not derived from it. `"0001"` and `"0002"` are still the numbers of
+`SLH-I-0001` and `SLH-I-0002`, and `last_id: 2` is still right.
+
+**One thing beyond the brief, inside my set.** Seven relative links in the
+two issues did not resolve. They pointed into `wiki/`, which was split into
+`knowledge/` and `future/` before this discussion. I corrected the targets
+and nothing else, so that the check "every relative link resolves" can pass:
+
+| Was | Is |
+|---|---|
+| `../../wiki/agents/agent.hmd` | `../../knowledge/agents/agent.hmd` |
+| `../../wiki/agents/hmd-agent.hmd` | `../../knowledge/agents/hmd-agent.hmd` |
+| `../../wiki/lenses/perform-operation.hmd` | `../../future/perform-operation.hmd` |
+| `../../wiki/index.hmd` | `../../knowledge/index.hmd` |
+
+Every relative link in the four `.hmd` files of my set now resolves.
+
+**In progress.** Nothing.
+
+**Next.** Nothing.
+
+**Touches.**
+
+- `doc/issues/SLH-I-0001-agents-vault.hmd` (renamed; title, five link
+  targets)
+- `doc/issues/SLH-I-0002-typed-links.hmd` (renamed; title, two links to the
+  first issue, two link targets)
+- `doc/issues/kanban.yaml`
+- `doc/issues/index.hmd`
+- `doc/status/roadmap.hmd`
+- this file
+
+The two renames are staged by `git mv`. Nothing else is staged and nothing is
+committed.
+
+**Needs.**
+
+- The prose of the two issues, of `doc/issues/index.hmd` and of the roadmap
+  still speaks of the `wiki/` vault and of `wiki/` paths in running text
+  (the roadmap lists this itself under "Stale text"). I left the prose alone:
+  it is a rewrite of content, not a rename. It is for the user to say whether
+  the issues should be brought up to date.
+- The link text in the roadmap is still "agents vault issue". The brief asked
+  for the link only. If documents are to be referred to by name everywhere,
+  it should read `SLH-I-0001`.
+
+**Finished.** Yes.

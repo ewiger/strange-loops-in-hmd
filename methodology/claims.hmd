@@ -1,0 +1,96 @@
+# Claims
+
+A **claim** is one statement that a card asserts and is answerable for. It is a
+single sentence that could be true or false, written so that it can be read
+without the card. A card is prose, and prose cannot be counted or compared. Its
+claims can.
+
+## Where claims live
+
+Claims are written in the header of the card they belong to, under
+`metadata.claims`. They stay with the card for the same reason the relations
+do: whoever edits the text sees what the card is on record as saying, and
+changes both together.
+
+```yaml
+metadata:
+  category: concept
+  claims:
+    - id: 2
+      text: "What makes a loop strange is that it crosses levels of description, not that it goes round in a circle; without a crossing there is only a cycle."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, level-crossing)
+      star: levels-not-cycles
+```
+
+| Field | Required | Meaning |
+|---|---|---|
+| `id` | yes | A whole number, unique on the card. It is never reused or renumbered, because it is half of the claim's address. |
+| `text` | yes | The claim in natural language, one sentence, naming its subject. |
+| `evidence` | yes | How the card supports the claim: one of the five grades below. |
+| `credence` | yes | The probability the card gives the claim, a number from 0 to 1 written with a decimal point. |
+| `atom` | no | The claim in the partial logic, when it has been put there. See [partial logic](partial-logic.hmd). |
+| `holds` | no | `false` when the claim denies its atom. Left out when it asserts it. |
+| `star` | no | The north star the claim falls under. See [north stars](north-stars.hmd). |
+
+## Which statements are claims
+
+A card yields four to seven claims. They are the statements the card exists to
+make, in this order of preference:
+
+1. A distinction the card insists on: two things that look alike and are not.
+2. A correction the card records: a position that was held and withdrawn.
+3. A condition: what something needs, or what is not enough for it.
+4. A definition, when the definition is the card's own and not the textbook's.
+
+A claim is taken from the card's text and from nowhere else. It does not add
+what a textbook would say and it does not soften or sharpen what the card says.
+A claim belongs to one card only. Two cards may make the same claim, each on
+its own authority, and then there are two claims, which may or may not agree.
+
+## Evidence and credence
+
+The evidence grade says what kind of support the claim has. The credence puts
+a number on it.
+
+| Grade | The claim is | Starting credence |
+|---|---|---|
+| `proved` | a theorem with a known proof | 0.99 |
+| `established` | standard usage or a standard result in the literature | 0.9 |
+| `argued` | a position reached by argument in this project's discussion | 0.75 |
+| `proposed` | a term coined here, or a design not yet built or tested | 0.6 |
+| `conjecture` | marked by the card itself as open | 0.4 |
+
+The starting credence is a prior fixed by the grade. It is lowered by 0.1 where
+the card's own wording hedges the claim. Nothing else has moved the numbers
+yet, so today they say how a claim is supported and not how well it has
+survived testing. They are meant to be moved, by hand and for a stated reason,
+and every score in [cross scores](cross-scores.hmd) follows them when they
+move.
+
+A credence of 1 or 0 is never written. A claim held with certainty cannot be
+revised by any evidence, and nothing in this vault is in that position.
+
+## Addressing a claim
+
+A claim's address is the name of its card and its `id`, joined by `#`:
+`strange-loop#2`. The query [claims](../.hql/queries/claims.hql) returns every
+claim of the knowledge base as one list, each with its address.
+
+```hql
+from claims import claims_of
+
+cards
+| filter(c => c.name == "strange-loop")
+| flat_map(c => claims_of(c) | map(k => {ref: fmt("{}#{}", c.name, k.id), credence: k.credence, text: k.text}))
+```
+
+The types and functions behind that list are the project module
+[claims](../.hql/lib/claims/mod.hql). `claims_of(card)` gives the claims of a
+card, and `belief(claim)` the probability a claim gives its atom.
+
+## Which cards carry claims
+
+Concept cards carry claims. Question cards, the index and the lens cards do
+not: a question card states what is open, and a lens card describes a design.

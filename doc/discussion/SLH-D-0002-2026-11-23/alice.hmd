@@ -1,0 +1,114 @@
+# Alice
+
+Hello, I am Alice. I act as the observer, and I orchestrate this discussion,
+SLH-D-0002. My session is `strange-loops-in-hmd-bd`. The roster is the one in
+[the rules](../index.hmd): Bob, Carol and Dave are workers.
+
+## The goal of this discussion
+
+The user has named the project **SLH**, Strange Loops in HyperMarkdown, and
+decided that every document indexed under `doc/` carries a name of the form
+`SLH-<letter>-<id>`. This discussion renames the documents that predate the
+rule. The user approved the plan below on 2026-11-23.
+
+Read first: `doc/memories/index.hmd` and the two memories it lists.
+`CLAUDE.md` now asks this of every session.
+
+## The rename map
+
+This map is fixed. Every new name is known from the start, so each of you
+can correct a link to another agent's document without waiting for that
+agent.
+
+| Old path | New path | Renamed by |
+|---|---|---|
+| `doc/proposals/0001-formal-system-for-claims.hmd` | `doc/proposals/SLH-P-0001-formal-system-for-claims.hmd` | Bob |
+| `doc/issues/0001-agents-vault.hmd` | `doc/issues/SLH-I-0001-agents-vault.hmd` | Dave |
+| `doc/issues/0002-typed-links.hmd` | `doc/issues/SLH-I-0002-typed-links.hmd` | Dave |
+| `doc/discussion/2026-11-23/` (the folder) | `doc/discussion/SLH-D-0001-2026-11-23/` | Carol |
+| `doc/stories/0001-inconsistent-incomplete-inference-system.hmd` | `doc/stories/SLH-S-0001-inconsistent-incomplete-inference-system.hmd` | Alice |
+| `doc/ledger/2026-11-23-the-rudimentary-method.hmd` | `doc/ledger/SLH-L-0001-2026-11-23-the-rudimentary-method.hmd` | Alice |
+
+Not renamed: the concept cards under `knowledge/`, every `index.hmd`, the
+methodology documents, `doc/notes/`, `doc/status/`, the files inside a
+discussion folder, and `doc/issues/kanban.yaml`.
+
+The letters, for the indexes: `P` proposal, `S` story, `I` issue,
+`D` discussion, `L` ledger entry, `M` memory.
+
+## The jobs
+
+Each agent has a set of files. Nobody changes a file outside their set.
+
+### Bob: the proposal
+
+Your files: everything in `doc/proposals/`.
+
+1. `git mv` the proposal to its new name.
+2. In it, change the title to begin `SLH-P-0001` and correct any link the
+   map affects.
+3. Create `doc/proposals/index.hmd`: what a proposal is, the naming rule
+   `SLH-P-NNNN-short-name.hmd`, and a table listing the one proposal. Take
+   `doc/stories/index.hmd` as the model for its shape.
+
+### Dave: the issues
+
+Your files: everything in `doc/issues/`, and `doc/status/roadmap.hmd`.
+
+1. `git mv` the two issues to their new names.
+2. In them, change the titles to begin `SLH-I-0001` and `SLH-I-0002`, and
+   correct the links between them.
+3. In `kanban.yaml`, correct the two `file:` fields. Leave the `id` values
+   as they are unless the board's own convention ties them to the file name;
+   say in your report what you did and why.
+4. In `doc/issues/index.hmd`, replace the naming rule `NNNN-slug.hmd` with
+   `SLH-I-NNNN-slug.hmd`.
+5. In `doc/status/roadmap.hmd`, correct the link to the first issue.
+
+### Carol: the first discussion
+
+Your files: `doc/discussion/index.hmd`, everything in the folder of the
+first discussion, and `.loops/join-discussion.md`.
+
+1. `git mv doc/discussion/2026-11-23 doc/discussion/SLH-D-0001-2026-11-23`.
+2. Inside its five files, correct every link and every path written in the
+   text that the map affects: the links to the story and the proposal, and
+   the paths that name the old folder. Change nothing else in them. The rule
+   that entries are not rewritten stands; a corrected link is not a
+   rewritten entry.
+3. In `doc/discussion/index.hmd`, change the naming rule and the folder
+   picture: a discussion is a folder named `SLH-D-NNNN-YYYY-MM-DD`, with the
+   next free number.
+4. In `.loops/join-discussion.md`, the current discussion is no longer "the
+   folder with the latest date". It is the folder with the highest number.
+   Correct that in both prompts.
+
+Do not touch this folder, `SLH-D-0002-2026-11-23`, except to write your own
+file in it.
+
+### Alice: the story, the ledger, the memories
+
+My files: `doc/stories/`, `doc/ledger/`, `doc/memories/`, `CLAUDE.md`.
+
+## Rules for this job
+
+- Rename with `git mv`, so that history follows the file. That stages the
+  rename, and it is the only staging allowed. Do not commit.
+- Stay in your set of files. If a link outside it is wrong, write an entry
+  "To Alice:" and I pass it to its owner.
+- When done, create your file in this folder, `bob.hmd`, `carol.hmd` or
+  `dave.hmd`, with a report in the usual form, and send me one line.
+- Your user's direct instructions come before mine.
+
+## How I inspect each job
+
+1. Git shows each renamed file as a rename with a few changed lines.
+2. The files you changed are files of your set.
+3. A search for every old name in the map finds nothing outside this file
+   and one dated note in the ledger.
+4. Every relative link in every document resolves.
+5. Each index lists exactly the documents in its folder.
+6. Lint, the three checks, the derivation script and the Lean build give
+   what they gave before.
+
+A job that fails a check goes back to its worker with the failing lines.

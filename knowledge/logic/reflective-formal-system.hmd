@@ -1,0 +1,204 @@
+---
+tags: [logic/godel, strange-loops/definitions]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: false
+  questions: [strange-loop-meaning, ai-support-in-hql]
+  sources: [06-formal-definition-godel, 13-seven-definitions, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "A reflective formal system is a formal theory with computable axioms that carries an effective encoding of its own syntax, such as a Gödel numbering, and formulas representing its own syntactic and proof relations."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(godel-numbering, reflective-formal-system)
+      star: representation-before-reference
+    - id: 2
+      text: "A Gödelian strange loop is a reflective formal system that additionally has a diagonal fixed point producing a provable limitation of the system, such as incompleteness under precise hypotheses."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(godelian-strange-loop, reflective-formal-system)
+      star: limits-from-inside
+    - id: 3
+      text: "Strange loop is not a standard mathematical class, and forcing all its examples under one formal heading would conflate them, so the formalization defines a class by its machinery and a subclass by a theorem, neither term being established mathematical vocabulary."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+    - id: 4
+      text: "A reflective formal system is static reflection, in which nothing changes over time and nothing is fed back, so a theory revised over time by a person or an agent is not one such system but a sequence of them."
+      evidence: proposed
+      credence: 0.6
+      atom: part-of(reflective-formal-system, reflection-progression)
+    - id: 5
+      text: "The definition of a reflective formal system fits the one example it was written for and leaves out Escher's hands and Bach's canon, which remain strange loops in Hofstadter's sense, and the constructible universe, whose self-description has no diagonal sentence."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(constructible-universe, reflective-formal-system)
+      holds: false
+      star: notion-not-class
+    - id: 6
+      text: "Human intelligence is a conjectural analogy to a reflective formal system and satisfies no clause of its definition."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(human-intelligence, reflective-formal-system)
+      holds: false
+      star: limits-from-inside
+    - id: 7
+      text: "Executing Gödel's construction in a programming language shows that the encoding and the diagonal sentence can be computed but does not show that the theory represents those computations internally, which is what the theorems use."
+      evidence: argued
+      credence: 0.75
+      star: representation-before-reference
+---
+# Reflective formal system
+
+A **reflective formal system** is a formal theory that carries an effective
+encoding of its own syntax and represents its own proof relations internally.
+The term, and the narrower **Gödelian strange loop** defined from it, were
+proposed in the discussion behind this vault. Neither is established
+mathematical vocabulary. They are the result of an attempt to replace
+Hofstadter's informal notion by a definition "as formal as a set theory
+textbook", and they define a class by its machinery and a subclass by a
+theorem.
+
+## Description
+
+### The thesis and the move
+
+The starting position was that the only precise and mathematical strange loop
+is Gödel numbering with the incompleteness proof, and that a definition
+should reproduce Gödel's steps. Five properties were proposed: a
+self-referencing, formally well-defined system; completeness and consistency;
+definition by example; irreducibility; and a list of anti-examples.
+
+The reply did not turn those five into one definition. It observed that
+"strange loop" is not a standard mathematical class and that forcing all the
+examples under one formal heading would conflate them. It defined two
+things in sequence.
+
+### Step one: the class
+
+A reflective formal system is described schematically by a tuple
+
+$$(\mathcal L,\ T,\ \gamma,\ \mathcal R).$$
+
+| Component | What it is | In Peano arithmetic |
+|---|---|---|
+| $\mathcal L$ | a formal language | the language of arithmetic |
+| $T$ | a theory in that language, with a computable set of axioms | the Peano axioms |
+| $\gamma$ | an effective encoding of the syntax of $\mathcal L$ by objects $T$ talks about | a [[godel-numbering]] |
+| $\mathcal R$ | formulas of $\mathcal L$ that represent syntactic and proof relations on the codes | $\operatorname{Proof}_T(p,x)$ and $\operatorname{Prov}_T(x)$ |
+
+The first two components are any [[formal-system]]. The last two are what make
+it reflective: the system has names for its own expressions, and it can
+state, in its own language, which of them are proofs of which.
+
+This is *static* reflection. The system expresses properties of its own
+syntax. Nothing changes over time, and nothing is fed back.
+
+### Step two: the subclass
+
+A **Gödelian strange loop** is a reflective formal system that additionally
+has a diagonal [[fixed-point]] producing a *provable limitation* of the
+system, such as incompleteness under precise hypotheses. For arithmetic that
+fixed point is the [[godel-sentence]], and the limitation is the first of the
+[[incompleteness-theorems]].
+
+The two steps correspond to the two distinctions drawn later in the
+discussion. Step one is the existence of self-reference. Step two is a
+theorem about its consequences.
+
+### What happened to the five properties
+
+- **Self-referencing and formally well defined:** kept, and made exact as the
+  components $\gamma$ and $\mathcal R$.
+- **Complete and consistent:** corrected. Consistency is a hypothesis.
+  Completeness is what the theorem excludes for such systems.
+- **By example, including human intelligence:** the Gödel case is an instance.
+  Human intelligence is a conjectural analogy and satisfies no clause of the
+  definition.
+- **Irreducible:** replaced by "provable limitation", after the word was found
+  to cover three unrelated notions. See [[undecidability]].
+- **Anti-examples:** confirmed. Factorial, fractals and ordinary cyclic
+  feedback have neither $\gamma$ nor $\mathcal R$.
+
+### What the definition leaves out
+
+It was written for one example and fits that example.
+
+- Escher's hands and Bach's canon have no language, theory or encoding. They
+  remain strange loops in Hofstadter's sense and are outside this definition.
+- The [[constructible-universe]] describes itself through definability and
+  absoluteness, with no diagonal sentence. The discussion calls it a second
+  rigorous example of a different form.
+- A theory revised over time by a person or an agent is not one system of
+  this kind but a sequence of them. See [[reflection-progression]].
+
+Among the seven candidate definitions collected at the end of the discussion,
+this card supplies the third, "reflective", and the fourth, "Gödelian".
+
+### Running it and proving it are different things
+
+The discussion sketches a formal experiment in HQL: implement syntax trees,
+an effective encoding, substitution, proof checking and the diagonal
+construction. It attaches one warning. Executing the construction in a
+programming language shows that the encoding and the diagonal sentence can be
+computed. It does not show that the theory *represents* those computations
+internally, which is what the component $\mathcal R$ asserts and what the
+theorems use. The first is a program run from outside. The second is a proof
+about the theory. A vault that executes a description of itself is in the
+same position: execution from outside is not yet internal representation.
+
+## Relations
+
+- It is a [[formal-system]] {relation: is-a} with two further components, the encoding and the represented proof relations.
+- It requires a [[godel-numbering]] {relation: uses} as its encoding component.
+- Its Gödelian subclass is defined by a [[fixed-point]] {relation: uses} with a provable consequence.
+- That fixed point is, for arithmetic, the [[godel-sentence]] {relation: example-of}.
+- The provable limitation it asks for is given by the [[incompleteness-theorems]] {relation: uses}.
+- Its representation component includes the [[provability-predicate]] {relation: part-of}.
+- It is one proposed sharpening of [[strange-loop]] {relation: is-a}, narrower than Hofstadter's notion.
+- It supplies two entries of [[definitions-of-strange-loop]] {relation: part-of}.
+- It is the static case, against the evolving case of a [[reflection-progression]] {relation: contrasts}.
+- It does not cover the [[constructible-universe]] {relation: distinguished-from}, whose self-description has another mechanism.
+- It is a formal instance of the split between [[object-and-meta-level]] {relation: uses}: the encoding brings the meta level inside.
+- It bears on the question [[strange-loop-meaning]] {relation: answers}: it is the most formal answer the vault has, and it covers one case.
+
+## Neighbouring concepts
+
+- **[[godel-sentence]].** A sentence provably equivalent to its own
+  unprovability. It is the object that promotes a reflective system to a
+  Gödelian one.
+- **[[godel-numbering]].** The assignment of numbers to formulas and proofs.
+  It is the component of the tuple without which the others have nothing to
+  speak about.
+- **[[reflection-progression]].** A sequence of theories, each extending the
+  last. It is what the discussion turned to when it noticed that this
+  definition contains no time and no revision.
+- **[[definitions-of-strange-loop]].** Seven candidates from Hofstadter's to
+  an epistemically bounded one. This card is where the two formal ones are
+  worked out.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[reflective-formal-system]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[reflective-formal-system]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  question, the candidate definitions and the formal experiment
+  [06-formal-definition-godel].
+- Discussion: "Seven candidate definitions of a strange loop", the reflective
+  and Gödelian entries [13-seven-definitions].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?", for
+  existence against consequence [14-diagonalization-distinction].

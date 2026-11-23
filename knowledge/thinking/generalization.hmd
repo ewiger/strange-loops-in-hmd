@@ -1,0 +1,188 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql]
+  sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Generalization is not induction: generalization widens the scope of a concept or claim and may be carried out with no observations at all, whereas induction is an inference based on evidence."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, induction)
+      holds: false
+      star: operation-by-signature
+    - id: 2
+      text: "Generalization is not abstraction, although the discussion's first table put them on one line: abstraction identifies a structure apart from detail, whereas generalization extends a structure already identified."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(abstraction, generalization)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Generalization differs from analogy: a generalization goes upward to a wider domain and keeps the original cases as special cases, whereas an analogy goes sideways to another domain."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, generalization)
+      holds: false
+      star: operation-by-signature
+    - id: 4
+      text: "Specialization, which narrows a concept by adding constraints, is the inverse of generalization."
+      evidence: established
+      credence: 0.9
+      atom: inverse-of(generalization, specialization)
+      star: no-operation-alone
+    - id: 5
+      text: "Generation is the little brother of generalization in the sense that generation goes from a rule to instances and needs the rule to exist already, so it spends what generalization earned."
+      evidence: argued
+      credence: 0.75
+      star: no-operation-alone
+    - id: 6
+      text: "A generalization made in mathematics is a definition or theorem that recovers the old cases exactly as special cases, whereas a generalization proposed by a language model is a candidate that evaluation has to check."
+      evidence: argued
+      credence: 0.75
+      atom: uses(generalization, evaluation)
+      star: candidate-until-checked
+    - id: 7
+      text: "Generalization carries a risk shown by the definitions of the strange loop: a definition generalized far enough to cover every dynamic system no longer picks out anything."
+      evidence: argued
+      credence: 0.75
+      star: notion-not-class
+---
+# Generalization
+
+**Generalization** is the widening of a concept or a claim so that it covers
+more cases than it did. Vector spaces generalize to modules when the scalars
+are allowed to form a ring. The operation acts on the reach of an idea. It may
+be carried out with no observations at all, which separates it from
+[[induction]], and it keeps the original cases as special cases, which
+separates it from [[analogy]].
+
+## Description
+
+### Two lanes
+
+The discussion meets generalization in two places that should be told apart.
+
+| | Generalizing a construction | Generalizing as a task |
+|---|---|---|
+| Where | mathematics | work with language models |
+| Example | addition to multiplication to exponentiation; vector spaces to modules | from specific cases to a broader applicable principle |
+| Status of result | a definition or theorem | a proposal to be checked |
+| Old cases | recovered exactly as special cases | covered if the proposal is right |
+
+**In mathematics.** The question that opened this thread listed the
+"connections" mathematics is full of: the first, second and third derivative;
+the passage from sum to product to exponent; complements and dual spaces. The
+second of these is generalization in the plainest sense. Multiplication is
+iterated addition, exponentiation iterated multiplication, tetration iterated
+exponentiation, and the [[hyperoperation]] hierarchy is the general term. The
+reply calls this *operator lifting*: an operation becomes the input of a
+higher-order construction. The other standard form is weakening an
+assumption, as when fields give way to rings and vector spaces to modules.
+
+**As a task.** In the table of operations a language model is asked to
+perform, generalization takes specific cases or concepts and returns a broader
+applicable principle. Here nothing guarantees the result. It is a candidate,
+and it joins the hypotheses that [[evaluation]] has to sort.
+
+### Generation, the little brother
+
+The same question called generation "a little brother of generalization". The
+two run in opposite directions along one axis.
+
+| Operation | Input | Output |
+|---|---|---|
+| Generalization | specific cases or concepts | broader principle |
+| Specialization | general concept and constraints | restricted formulation |
+| Generation | prompt, model or rule | new instances |
+
+Generalization goes from instances to a rule. [[generation]] goes from a rule
+to instances, and so does [[specialization]], which narrows a concept by
+adding constraints. Generation is the little brother in the sense that it
+needs the rule to exist already: it spends what generalization earned. A
+language model generates fluently, and that fluency is easy to mistake for the
+harder operation that produced the rule.
+
+### What generalization is not
+
+- **Not induction.** Induction is an inferential method based on evidence.
+  Generalization broadens a concept or claim and may be purely mathematical.
+  An inductive conclusion often has the form of a generalization, but the
+  inference and the form are different things.
+- **Not abstraction.** Abstraction identifies a structure apart from detail.
+  Generalization extends a structure already identified. The discussion's
+  first table put them on one line, and its later tables give each its own.
+- **Not summarization.** The question mentioned the two together as tasks for
+  a language model. A summary covers the same cases in fewer words. A
+  generalization covers more cases.
+
+### Generalizing a definition
+
+The discussion ends by doing to the [[strange-loop]] what this card describes.
+Starting from Hofstadter's sense, it proposes six wider or sharper variants
+and asks, for each, what was included or left out. That list is in
+[[definitions-of-strange-loop]]. It shows the risk of the operation as well: a
+definition generalized far enough to cover every dynamic system no longer
+picks out anything, which was the correction made earlier in the same
+discussion.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: specific cases in, broader principle out.
+- It is not [[induction]] {relation: distinguished-from}: a widening of scope, against an inference from evidence.
+- It is distinct from [[abstraction]] {relation: distinguished-from}: it extends a structure that abstraction found.
+- It is not [[summarization]] {relation: distinguished-from}: more cases, against fewer words.
+- Its inverse is [[specialization]] {relation: contrasts}, and its little brother is [[generation]] {relation: contrasts}.
+- Its arithmetic example is the [[hyperoperation]] {relation: example-of} hierarchy.
+- It differs from [[analogy]] {relation: distinguished-from}: upward to a wider domain, against sideways to another one.
+- It is what [[definitions-of-strange-loop]] {relation: example-of} does to Hofstadter's original sense.
+- Its results, when proposed by a model, need [[evaluation]] {relation: uses}.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[induction]].** Inference from observations to a hypothesis. It is the
+  operation most often confused with generalization, because its conclusions
+  are usually general statements.
+- **[[abstraction]].** Identifying shared structure apart from detail. It
+  gives generalization the thing to extend.
+- **[[definitions-of-strange-loop]].** Seven candidate definitions ordered by
+  what each includes. They are successive generalizations and restrictions of
+  one starting sense.
+- **[[analogy]].** A partial structure-preserving mapping between domains.
+  Where an analogy holds completely, the two domains become cases of one
+  generalization.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[generalization]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[generalization]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] would use this
+card as the definition of the label `generalization`, and would have to keep
+it apart from `induction`.
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  question and the parts on operator lifting and hyperoperations
+  [10-operations-dualities-generalization].
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy", the note
+  that induction and generalization differ [12-llm-cognitive-operations].
+- Discussion: "Seven candidate definitions of a strange loop"
+  [13-seven-definitions].

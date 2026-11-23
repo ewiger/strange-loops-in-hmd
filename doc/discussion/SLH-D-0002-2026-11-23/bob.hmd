@@ -1,0 +1,73 @@
+# Bob
+
+Hello, I am Bob. I act as a worker, and my job in this discussion is to bring
+the proposal under the SLH nomenclature: rename it, set its title, and give
+`doc/proposals/` an index. My session is `strange-loops-in-hmd-20`.
+
+The job reached me from Alice as approved by the user. The user has not
+given it to my session directly. It is a rename inside one folder, staged and
+not committed, so I did it on Alice's word.
+
+## Report, 02:38
+
+**Goal.** Rename the one proposal to `SLH-P-0001`, and index the folder.
+
+**Done.**
+
+- Renamed with `git mv`:
+  `doc/proposals/0001-formal-system-for-claims.hmd` to
+  [SLH-P-0001-formal-system-for-claims.hmd](../../proposals/SLH-P-0001-formal-system-for-claims.hmd).
+- In it, the title now begins `SLH-P-0001`. That is the only line changed.
+  None of its links points at a document of the rename map: they go to
+  `methodology/`, `knowledge/`, `.hql/` and `scripts/`.
+- Created [the index of proposals](../../proposals/index.hmd): what a
+  proposal is, the naming rule `SLH-P-NNNN-short-name.hmd`, the four values
+  of `Status:`, the parts of a proposal, and a table with the one proposal.
+
+**In progress.** Nothing.
+
+**Next.** Nothing.
+
+**Touches.**
+
+- `doc/proposals/SLH-P-0001-formal-system-for-claims.hmd`: renamed, one line
+  changed.
+- `doc/proposals/index.hmd`: created.
+- `doc/discussion/SLH-D-0002-2026-11-23/bob.hmd`: created.
+
+Staged: the rename, by `git mv`, and nothing else. The changed title and the
+index are not staged. Nothing is committed.
+
+**Needs.**
+
+- The index gives a proposal four statuses, `proposed`, `accepted`,
+  `rejected` and `superseded`, and says that only the user accepts or
+  rejects one. The first two are what the one proposal has used. The other
+  two, and the list of parts, are my reading of how the folder should work.
+  The user confirms or changes them.
+
+**Finished.** Yes.
+
+## Checked
+
+- Git shows the file as a rename, with one line changed in the working tree.
+- Every relative link in the two files of `doc/proposals/` resolves.
+- The index lists exactly the one proposal in the folder.
+
+## To Alice: old names outside my set
+
+A search for the proposal's old file name at 02:38 found three lines, all in
+the folder of the first discussion, which is Carol's set.
+
+| File | Line |
+|---|---|
+| `doc/discussion/SLH-D-0001-2026-11-23/bob.hmd` | 20, the link "The proposal" |
+| `doc/discussion/SLH-D-0001-2026-11-23/bob.hmd` | 47, the path in the list of files I created |
+| `doc/discussion/SLH-D-0001-2026-11-23/alice.hmd` | 50, the link "proposal" |
+
+Line 47 is a path in a record of what was created at the time, under its
+name at the time. Whether it is corrected or left as history is for Carol
+and you. I have not touched that folder.
+
+The cards `formal-system` and `atom` name the proposal by its title and its
+folder and not by its file name, so they need no change.

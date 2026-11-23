@@ -1,0 +1,167 @@
+---
+tags: [logic/godel]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [strange-loop-meaning]
+  sources: [01-hofstadter-definition, 06-formal-definition-godel, 08-humans-extend-axioms, 13-seven-definitions, 14-diagonalization-distinction]
+  claims:
+    - id: 1
+      text: "A Gödel sentence for a theory is the instance of the diagonal lemma for the property of not being provable: a sentence of arithmetic that the theory proves equivalent to the statement of its own unprovability."
+      evidence: proved
+      credence: 0.99
+      atom: instance-of(godel-sentence, diagonal-lemma)
+    - id: 2
+      text: "The Gödel sentence is the one example of a strange loop in which every level, every crossing and the return can be written down and checked, which makes it the reference case for every other candidate."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(godel-sentence, strange-loop)
+      star: notion-not-class
+    - id: 3
+      text: "Consistency of a theory suffices for it not to prove its Gödel sentence but not for it not to prove the negation, which needs omega-consistency or Rosser's modified sentence, so speaking of 'the usual hypotheses' compresses too much."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 4
+      text: "The Gödel sentence of a consistent theory is true, but this is seen from outside the theory, in a theory that assumes its consistency, and is not a proof within the theory."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+    - id: 5
+      text: "A Gödel sentence is relative to its theory: there is no single Gödel sentence, and adding one as an axiom gives a new theory with its own provability predicate and its own undecided sentence."
+      evidence: proved
+      credence: 0.99
+      atom: has(godel-sentence, theory-relative)
+      star: limits-from-inside
+    - id: 6
+      text: "The Gödel sentence is where diagonalization and the strange loop coincide, a level-crossing loop realised by a formal diagonal fixed point, whereas Escher's hands and Bach's canon cross levels without a diagonal lemma and Cantor's argument diagonalizes without self-reference."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 7
+      text: "The Gödel sentence is not a liar paradox, because it speaks of provability, which is definable in arithmetic, and not of truth, which is not."
+      evidence: established
+      credence: 0.9
+      atom: same-as(godel-sentence, liar-paradox)
+      holds: false
+      star: limits-from-inside
+---
+# Gödel sentence
+
+A **Gödel sentence** for a theory $T$ is a sentence $G$ of arithmetic that $T$
+proves equivalent to the statement that $G$ is not provable in $T$. It is the
+one example of a [[strange-loop]] in which every level, every crossing and the
+return can be written down and checked, and it is the reference case against
+which the discussion measured every other candidate.
+
+## Description
+
+Take a consistent, computably axiomatizable theory $T$ extending Robinson
+arithmetic, with its provability predicate $\operatorname{Prov}_T$. The
+[[diagonal-lemma]] applied to $\neg\operatorname{Prov}_T(x)$ gives a sentence
+$G$ with
+
+$$T\vdash G\leftrightarrow\neg\operatorname{Prov}_T(\ulcorner G\urcorner).$$
+
+Read from outside, $G$ says "I am not provable in $T$". Read from inside, it
+is a statement about natural numbers and nothing else. Both readings are
+correct, and the loop consists in their being the same sentence.
+
+What follows depends on what is assumed about $T$.
+
+| Assumption on $T$ | Conclusion |
+|---|---|
+| consistent | $T$ does not prove $G$ |
+| $\omega$-consistent, or merely sound for existential statements | $T$ does not prove $\neg G$ |
+| consistent, using Rosser's sentence in place of $G$ | $T$ proves neither the sentence nor its negation |
+
+The first row is short. If $T$ proved $G$, the proof would have a code, $T$
+would verify that code and so prove $\operatorname{Prov}_T(\ulcorner
+G\urcorner)$, and by the equivalence also $\neg G$. That contradicts
+consistency.
+
+The second row is where the reconstructed reply in the discussion compresses
+too much, with its phrase "the usual hypotheses". Consistency alone does not
+stop $T$ from proving $\neg G$: a consistent theory can wrongly "believe" that
+a proof exists while no actual number codes one. Gödel assumed
+$\omega$-consistency to exclude this. Rosser removed the assumption in 1936 by
+changing the sentence. The [[rosser-trick]] diagonalizes on "if there is a
+proof of me, there is a shorter proof of my negation", and for that sentence
+consistency suffices in both directions.
+
+Three properties place the sentence among the concepts of this vault.
+
+- **It is true if $T$ is consistent.** $G$ is equivalent to a statement of the
+  form "no number codes a proof of $G$", and the first row says that statement
+  holds. This is seen from outside $T$, in a theory that assumes $T$'s
+  consistency. It is not a proof in $T$.
+- **It is relative to $T$.** There is no single Gödel sentence. Add $G$ to $T$
+  as an axiom and the new theory has its own provability predicate and its
+  own undecided sentence. The discussion builds a whole sequence on this, the
+  [[reflection-progression]].
+- **It is where diagonalization and the strange loop coincide.** Escher's
+  hands and Bach's canon cross levels without any diagonal lemma. Cantor's
+  argument diagonalizes without any self-reference. The Gödel sentence is in
+  the overlap: a level-crossing loop realised by a formal diagonal fixed
+  point.
+
+The loop has the three ingredients of Hofstadter's definition. The levels are
+numbers and statements about proofs. The crossing is [[godel-numbering]]. The
+return is the fixed point, which makes a statement about proofs be a
+statement about one particular number, its own code.
+
+## Relations
+
+- It is the canonical formal [[strange-loop]] {relation: example-of}.
+- It is the instance of the [[diagonal-lemma]] {relation: instance-of} for the property "not provable".
+- It is a [[fixed-point]] {relation: instance-of} of negated provability.
+- It rests on [[godel-numbering]] {relation: uses} for its crossing of levels.
+- It is the witness in the first of the [[incompleteness-theorems]] {relation: part-of}.
+- It is an independent sentence in the first sense of [[undecidability]] {relation: example-of}.
+- It is the axiom added at each stage of a [[reflection-progression]] {relation: part-of}.
+- It is refined by the [[rosser-trick]] {relation: generalizes}, which needs only consistency.
+- It is not a [[liar-paradox]] {relation: distinguished-from}: it speaks of provability, which is definable in arithmetic, and not of truth, which is not.
+- It is the formal [[self-reference]] {relation: example-of} that has a provable consequence.
+
+## Neighbouring concepts
+
+- **[[diagonal-lemma]].** Every property of codes has a sentence asserting it
+  of itself. The Gödel sentence is that lemma with unprovability as the
+  property.
+- **[[incompleteness-theorems]].** No consistent, effective, sufficiently
+  strong theory decides every sentence of arithmetic. The Gödel sentence is
+  the undecided sentence the proof exhibits.
+- **[[reflection-progression]].** A sequence of theories each adding the
+  previous one's Gödel sentence. It shows the sentence is a moving target, not
+  a single gap to be filled.
+- **[[diagonalization]].** A proof method that applies a family to its own
+  index. Here it produces self-reference; in Cantor's hands it does not.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[godel-sentence]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[godel-sentence]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  boxed equivalence and the remark on Rosser [06-formal-definition-godel].
+- Discussion: "Is Hofstadter's strange loop just diagonalization?"
+  [14-diagonalization-distinction].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Discussion: "Seven candidate definitions of a strange loop", the core
+  equations [13-seven-definitions].
+- Kurt Gödel (1931), and J. Barkley Rosser, "Extensions of some theorems of
+  Gödel and Church" (1936).

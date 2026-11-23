@@ -1,0 +1,199 @@
+---
+tags: [thinking/control]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [strange-loop-meaning, building-a-loop-in-hmd, learning-the-formalism]
+  sources: [06-formal-definition-godel, 08-humans-extend-axioms, 09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Reflection names two different things, an operation of self-analysis performed in time and a structural property of a system that can represent its own syntax, proofs or programs, and the property is what a strange loop is made of while the operation is how an agent would use one."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 2
+      text: "Reflection differs from evaluation in its object: evaluation judges a claim, whereas reflection judges the way claims were produced."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(evaluation, reflection)
+      holds: false
+      star: operation-by-signature
+    - id: 3
+      text: "Reflection is the operation that makes the outer loop of the reasoning cycle, the step that builds a model of the modelling process."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(reflection, reasoning-cycle)
+      star: no-operation-alone
+    - id: 4
+      text: "A language model asked to reflect produces text about its process with no guarantee that the text describes the process that actually ran, so a reflection worth acting on needs the process to be recorded."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 5
+      text: "Static reflection, in which a theory expresses properties of its own syntax and proofs, is a fact about a structure that changes nothing over time, whereas evolving reflection is a process in which the results of reflection revise the rules or the criteria of revision."
+      evidence: argued
+      credence: 0.75
+    - id: 6
+      text: "Reflection is necessary for a strange loop but not sufficient for a paradox, since a reflective interpreter can reason about a description of itself without any incompleteness following."
+      evidence: argued
+      credence: 0.75
+      atom: requires(strange-loop, reflection)
+      star: limits-from-inside
+    - id: 7
+      text: "Any system that represents itself, and not only a formal theory, is limited in what it can prove or define about itself."
+      evidence: conjecture
+      credence: 0.4
+      star: limits-from-inside
+---
+# Reflection
+
+**Reflection** is the operation in which a system takes its own process and
+its outcomes as the thing to be analysed. In the discussion the word does two
+jobs. As an operation of thought it is self-analysis, one entry in a list
+beside induction and summarization. As a property of formal and computational
+systems it is the ability to represent one's own syntax, proofs or programs
+internally. The second is what a [[strange-loop]] is made of, and the first is
+how an agent would use one.
+
+| | Reflection as an operation | Reflection as a property of a system |
+|---|---|---|
+| Input | a process and its outcomes | the system's own syntax or code |
+| Output | a self-analysis | an internal representation of itself |
+| Happens | in time, after acting | in the structure, whether or not anything runs |
+| Examples | a scientist reviewing a method; an agent reviewing a run | provability predicate; metacircular interpreter |
+| Discussed as | row of the operations table | static and evolving reflection |
+
+## Description
+
+### Lane one: the operation
+
+In the table of operations a language model may be asked to perform,
+reflection takes a process together with its outcomes and returns
+self-analysis. It differs from [[evaluation]] in its object. Evaluation judges
+a claim. Reflection judges the way claims were produced, and so it is the
+operation that makes the outer loop of the [[reasoning-cycle]]: the box
+labelled "build a model of the modeling process" in one drawing, and "reflect
+on criteria for revision" in another.
+
+The caution that applies to every operation in that table applies here with
+more force. A model asked to reflect produces text about its process, and
+there is no guarantee the text describes the process that actually ran. A
+reflection worth acting on needs the process to be recorded, which is one
+reason the discussion insists on provenance for every output.
+
+### Lane two: the property
+
+A system is reflective, in the second sense, when it can encode and interpret
+aspects of its own structure or operation. This is the third of the seven
+candidate definitions of a strange loop, and the discussion's examples of it
+span several classes of its taxonomy: arithmetic representing its own proof
+relation, a universe of sets that reconstructs its own construction, programs
+that treat programs as data.
+
+The discussion divides the property in two.
+
+- **Static reflection.** A theory internally expresses some properties of its
+  own syntax and proofs. A [[godel-sentence]] is the product. Nothing changes
+  over time: the theory is what it was.
+- **Evolving reflection.** The results of reflection revise the rules, or the
+  criteria by which rules are revised. This was introduced when the question
+  of a human adding axioms came up, and it is written
+
+$$(T_n,R_n)\longrightarrow(T_{n+1},R_{n+1}),$$
+
+where $R_n$ stands for the current criteria of revision. The sequence of
+theories is a [[reflection-progression]].
+
+The distinction answered an observation in the discussion: neither Gödel's
+sentence nor the constructible universe involves self-modification or feedback
+over time. Static reflection is a fact about a structure. Evolving reflection
+is a process, and it is where the two lanes join, because the step from one
+stage to the next is reflection in the first sense, performed by a
+mathematician, a program or an agent.
+
+### Reflection and its limits
+
+Reflection is the top layer of the three-layer organisation proposed in the
+discussion: operations, then structural relationships, then reflective
+phenomena, the last comprising self-description, diagonalization, semantic
+limits and reflective revision. The layer is defined as much by its limits as
+by its powers. A consistent, effectively axiomatized, sufficiently strong
+theory can represent its own provability and cannot prove every truth about
+it. It cannot define its own truth at all. The discussion's seventh
+definition generalizes this to any system that represents itself, and marks
+the generalization as a conjecture and not a theorem.
+
+Reflection is therefore necessary for a strange loop and not sufficient for a
+paradox. The preferred definition says a reflective structure makes a system
+an object of its own representation, *potentially* exposing limitations of its
+framework. A reflective interpreter can reason about a description of itself
+without any incompleteness following.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: process and outcomes in, self-analysis out.
+- It is the outer loop of the [[reasoning-cycle]] {relation: part-of}.
+- It differs from [[evaluation]] {relation: distinguished-from}: evaluation judges a claim, reflection judges how claims are made.
+- It feeds [[revision]] {relation: uses}, and in its evolving form revises the criteria of revision too.
+- As a property it is what a [[reflective-formal-system]] {relation: part-of} has by definition.
+- Its static form produces the [[godel-sentence]] {relation: example-of}.
+- Its evolving form is a [[reflection-progression]] {relation: example-of}.
+- In computation it is the [[metacircular-interpreter]] {relation: example-of}: a program that takes programs, including itself, as data.
+- It is the precondition of a [[strange-loop]] {relation: part-of} and of [[self-reference]] {relation: uses} generally.
+- It is what distinguishes a [[reflective-agent]] {relation: uses} from one that only acts.
+- It is bounded by the [[incompleteness-theorems]] {relation: contrasts} and by [[tarski-undefinability]] {relation: contrasts}.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: a card must represent what interprets it, not only be interpreted.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[reflection-progression]].** A sequence of theories, each extending the
+  last by a statement the last could not decide. It is reflection made into a
+  process, with or without a human taking the steps.
+- **[[reflective-formal-system]].** A language, a theory, an encoding of
+  syntax and internally represented proof relations. It is the discussion's
+  schematic for a system that has reflection as a property.
+- **[[evaluation]].** Assessment of a claim against a criterion. Reflection is
+  the same act one level up, with the method of assessment as the claim.
+- **[[strange-loop]].** A structure that returns to its start by crossing
+  levels. Reflection supplies the crossing: the system appears inside its own
+  representation.
+- **[[reflective-agent]].** An agent that revises its models and rules using
+  the results of its own activity. It performs lane one in order to have the
+  property of lane two.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[reflection]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[reflection]] | downlinks | map(e => e.source)
+```
+
+The first cell is a small instance of lane two: a card containing a query
+whose subject is the card. It is static, since nothing in the card changes as
+a result.
+
+Future lens that applies to this card: [[find-level-crossings]] asks which
+link cycles in the vault pass through a card that represents the cycle.
+
+## Sources
+
+- Discussion: "Human in the loop and evolving formal theories", the
+  distinction between static and evolving reflection [08-humans-extend-axioms].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  three-layer organisation [10-operations-dualities-generalization].
+- Discussion: "Seven candidate definitions of a strange loop"
+  [13-seven-definitions].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence"
+  [09-taxonomy-self-reference].

@@ -1,0 +1,132 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism]
+  sources: [06-formal-definition-godel, 12-llm-cognitive-operations, 13-seven-definitions]
+  claims:
+    - id: 1
+      text: "Specialization is a cognitive operation that narrows a general principle, under added constraints, to a more specific rule or application."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(specialization, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "Specialization is the inverse of generalization."
+      evidence: established
+      credence: 0.9
+      atom: inverse-of(generalization, specialization)
+      star: no-operation-alone
+    - id: 3
+      text: "Specialization needs constraints as well as a principle, because a principle alone specializes to nothing in particular."
+      evidence: argued
+      credence: 0.75
+      atom: requires(specialization, constraints)
+      star: operation-by-signature
+    - id: 4
+      text: "Specialization is not the same as deduction: an instance follows deductively from a principle, but specialization gives generality up on purpose and its choice of constraints is a judgement not derived from anything."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(deduction, specialization)
+      holds: false
+      star: operation-by-signature
+    - id: 5
+      text: "Specialization differs from generation, because specialization returns a narrower rule while generation returns instances."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generation, specialization)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "The Gödel sentence is the diagonal lemma specialized to the formula \"is not provable\", and all the interest lies in that choice."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(godel-sentence, specialization)
+    - id: 7
+      text: "The Gödelian subclass specializes the proposed reflective formal system by adding one requirement, a diagonal fixed point with a provable limitation."
+      evidence: proposed
+      credence: 0.6
+---
+# Specialization
+
+**Specialization** is the narrowing of a general principle, under added
+constraints, to a more specific rule or application. It is the inverse of
+[[generalization]]. The discussion gives it one table row; what follows places
+it among its neighbours.
+
+## Description
+
+| | Input | Output |
+|---|---|---|
+| Specialization | general principle and constraints | more specific rule or application |
+
+The input has two parts, and the second is what distinguishes the operation.
+A principle alone specializes to nothing in particular. The constraints say
+which narrower case is wanted.
+
+**Close to deduction, and different.** Applying a general principle to a case
+looks like [[deduction]], and when the principle is a formal statement and the
+constraint a substitution, it is one: an instance of a theorem follows from
+the theorem. The operations come apart elsewhere. Deduction derives
+consequences and keeps the statement's generality where it can. Specialization
+aims at a restricted formulation and gives generality up on purpose. And the
+choice of constraints is not derived from anything: which special case is
+worth stating is a judgement.
+
+**Close to generation, and different.** Both run from the general to the
+particular. Specialization returns a narrower rule. [[generation]] returns
+instances.
+
+The discussion specializes twice in its main line of argument.
+
+- The **diagonal lemma** holds for every formula with one free variable.
+  Choosing the formula "is not provable" specializes it to the
+  [[godel-sentence]]. All the interest lies in the choice.
+- The proposed *reflective formal system* is a wide class. The *Gödelian*
+  subclass adds one requirement, a diagonal fixed point with a provable
+  limitation, and so specializes it.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: a principle and constraints in, a narrower rule out.
+- Its inverse is [[generalization]] {relation: contrasts}.
+- It is close to [[deduction]] {relation: distinguished-from}: an instance follows deductively, but the choice of constraints does not.
+- It differs from [[generation]] {relation: distinguished-from}: a narrower rule, against instances.
+- The [[godel-sentence]] {relation: example-of} is the diagonal lemma specialized to unprovability.
+- The Gödelian subclass specializes the [[reflective-formal-system]] {relation: example-of}.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[generalization]].** Widening a concept or claim to cover more cases.
+  Specialization recovers the old cases from the wider one.
+- **[[deduction]].** Inference from premises and rules to what must follow.
+  It supplies the step from principle to instance, without choosing the
+  instance.
+- **[[godel-sentence]].** A sentence equivalent to the statement of its own
+  unprovability. It is one particular choice inside a lemma that holds for
+  every formula.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[specialization]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[specialization]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", for
+  the two examples [06-formal-definition-godel].

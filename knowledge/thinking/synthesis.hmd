@@ -1,0 +1,135 @@
+---
+tags: [thinking/structure]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism]
+  sources: [10-operations-dualities-generalization, 11-analogy-vs-summarization, 12-llm-cognitive-operations]
+  claims:
+    - id: 1
+      text: "Synthesis, or composition, is a cognitive operation that combines several concepts or structures into one combined structure or new framework."
+      evidence: argued
+      credence: 0.75
+      atom: instance-of(synthesis, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "Composition and synthesis are two ends of one range: a composition is determined by its parts and checked by whether types fit, whereas a synthesis is more than its parts fix and has to be argued."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 3
+      text: "In a synthesis the joining of established ideas into a new framework is a choice, because nothing in the parts says how they go together."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 4
+      text: "Synthesis runs opposite to decomposition, and whether putting solved parts back together solves the problem depends on whether the parts were independent."
+      evidence: argued
+      credence: 0.75
+      atom: inverse-of(decomposition, synthesis)
+      star: no-operation-alone
+    - id: 5
+      text: "Synthesis differs from summarization, because a summary condenses one source while a synthesis joins several into something new."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(summarization, synthesis)
+      holds: false
+      star: operation-by-signature
+    - id: 6
+      text: "Synthesis differs from generalization, because a generalization contains its cases while a synthesis combines unlike parts."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(generalization, synthesis)
+      holds: false
+      star: operation-by-signature
+    - id: 7
+      text: "The three-layer organisation of operations, structural relationships and reflective phenomena is itself a synthesis of everything the discussion had listed."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(three-layer-organisation, synthesis)
+      star: notion-not-class
+---
+# Synthesis
+
+**Synthesis**, or composition, is the combining of several concepts or
+structures into one combined structure or new framework. The discussion uses
+the two words for one row of its table, and they name two ends of a range:
+composing parts mechanically, and integrating ideas into something none of
+them was.
+
+## Description
+
+| | Input | Output |
+|---|---|---|
+| Composition / Synthesis | multiple concepts or structures | combined structure or new framework |
+
+### Two lanes
+
+| | Composition | Synthesis |
+|---|---|---|
+| Discussion's example | functions, pipelines: "combine maps" | "new framework integrating established ideas" |
+| Result | determined by the parts | more than the parts fix |
+| Check | types fit or do not | has to be argued |
+
+**Composition** appears among the transformation classes that come "before
+recursion". Applying one map after another is a mechanical step, like
+iterating or inverting. A query pipeline is the nearest example in this vault:
+each step's output type is the next step's input type, and the whole is fixed
+once the steps are.
+
+**Synthesis** appears in the list of operations set beside abstraction and
+summarization. A new framework joins established ideas, and the joining is a
+choice. Nothing in the parts says how they go together.
+
+The discussion does not develop either lane further. It does practise the
+second: the three-layer organisation of operations, structural relationships
+and reflective phenomena is a synthesis of everything it had listed.
+
+Synthesis runs opposite to [[decomposition]]. A problem taken apart is solved
+by putting the solved parts back together, and whether that works depends on
+whether the parts were independent.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: several structures in, one combined structure out.
+- Its inverse is [[decomposition]] {relation: contrasts}.
+- It differs from [[summarization]] {relation: distinguished-from}: a summary condenses one source, a synthesis joins several into something new.
+- It differs from [[generalization]] {relation: distinguished-from}: a generalization contains its cases, a synthesis combines unlike parts.
+- Its mechanical lane is how a [[typed-transformation]] {relation: uses} chains with another.
+- It often starts from an [[analogy]] {relation: uses} that shows two ideas fit together.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[decomposition]].** Splitting a system or problem into components. It
+  produces what synthesis recombines.
+- **[[typed-transformation]].** An operation with declared input and output.
+  Declared types are what let two operations be composed safely.
+- **[[analogy]].** A correspondence between the structures of two domains. It
+  is a common first step toward a framework covering both.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[synthesis]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[synthesis]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  transformation class called composition
+  [10-operations-dualities-generalization].
+- Discussion: "Abstraction is not summarization: the role of analogy"
+  [11-analogy-vs-summarization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].

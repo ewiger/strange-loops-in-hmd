@@ -1,0 +1,205 @@
+---
+tags: [thinking/control]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [building-a-loop-in-hmd, ai-oriented-language, learning-the-formalism]
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 08-humans-extend-axioms, 12-llm-cognitive-operations, 13-seven-definitions, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Revision names both the operation of updating a model in the light of evidence and the recorded version of a document that the operation leaves behind, and in a vault under version control these are the two ends of one act."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 2
+      text: "Revision is the step that closes each turn of the reasoning cycle, following evaluation: a prediction fails and the hypothesis that produced it is changed."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(revision, reasoning-cycle)
+      star: no-operation-alone
+    - id: 3
+      text: "Revising a formal theory by adding axioms is not safe by construction: the progression of theories is an idealised example, not a procedure that preserves consistency or truth for arbitrary theories."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 4
+      text: "Revision of a formal theory never finishes, because every consistent, effectively axiomatized, sufficiently strong stage is incomplete again."
+      evidence: proved
+      credence: 0.99
+      atom: has(revision, last-step)
+      holds: false
+      star: limits-from-inside
+    - id: 5
+      text: "The reviser of a theory need not be a person, because a program can carry out the same progression of added axioms."
+      evidence: argued
+      credence: 0.75
+      atom: requires(revision, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 6
+      text: "Revising a model in response to evidence is only a feedback loop, whereas revising the criteria of revision requires those criteria to be represented inside the system and is a crossing of levels."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(revision, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 7
+      text: "In the proposed document system, changes enter as revisions or patches and never as silent edits, and generated content becomes a revision only after approval."
+      evidence: proposed
+      credence: 0.6
+      star: step-from-outside
+---
+# Revision
+
+**Revision** is the updating of a model in the light of evidence. It takes
+what was believed and what has been found, and returns what is believed next.
+It is the step that closes every loop described in this vault. The word also
+names the thing the step leaves behind, a recorded version of a document, and
+in a vault kept under version control the two senses are the two ends of one
+act.
+
+| | Revision as an operation | A revision as a record |
+|---|---|---|
+| What it is | changing a model, theory or specification | one stored state of a card |
+| Input | model and evidence | the previous state and a patch |
+| Decided by | whoever evaluates the evidence | whoever accepts the patch |
+| In the discussion | row of the operations table; $T_n\to T_{n+1}$ | "new revision in Git"; pinned revision |
+
+## Description
+
+### Lane one: the operation
+
+In the table of operations, revision takes a model and evidence and returns an
+updated model. In the [[reasoning-cycle]] it follows [[evaluation]]: a
+prediction fails, and the hypothesis that produced it is changed.
+
+The discussion's most developed case is the revision of a formal theory. A
+mathematician recognises that a theory leaves a statement undecided, weighs
+reasons from outside the theory, and adopts a new axiom:
+
+$$T_0\subseteq T_1\subseteq T_2\subseteq\cdots,\qquad T_{n+1}=T_n+\{G_n\}.$$
+
+Two things are said about this.
+
+- **It is not safe by construction.** The progression is an idealised
+  example, not a procedure that preserves consistency or truth for arbitrary
+  theories. A revision can make things worse.
+- **It never finishes.** Every consistent, effectively axiomatized,
+  sufficiently strong stage is incomplete again. Revision is permanent.
+
+The thesis behind this part of the discussion was that a human adding axioms
+might be what makes a strange loop essential. The reply accepted the
+construction and declined the necessity: a program can carry out the same
+progression, so the reviser need not be a person.
+
+### Revising the rules of revision
+
+The step the discussion calls more interesting is one level up. A human or
+agent may change not the theory but the way new axioms are chosen:
+
+$$(T_n,R_n)\longrightarrow(T_{n+1},R_{n+1}),$$
+
+where $R_n$ encodes the current criteria of revision. This is evolving
+[[reflection]], and it is the sixth of the seven candidate definitions of a
+strange loop: a system uses a self-model to revise future models, rules, or
+criteria for revision.
+
+The difference between the two levels is the difference this vault keeps
+returning to. Revising a model in response to evidence is a
+[[feedback-loop]]. Revising the criteria by which one revises requires the
+criteria to be represented inside the system, where they can be inspected and
+changed, and that is a crossing of levels.
+
+### Lane two: the record
+
+In the proposed document system, changes by a person or an agent enter as
+revisions or patches, never as silent edits, and Git records each accepted
+one. The discussion's formal model makes the operation explicit:
+
+$$H_{n+1}=\operatorname{Integrate}(H_n,\operatorname{Eval}(H_n)).$$
+
+$H_n$ is a revision in the second sense. Passing from $H_n$ to $H_{n+1}$ is a
+revision in the first. Three rules from the discussion govern the passage.
+
+- An evaluation reads a *pinned* revision, so that a card is never judged
+  while it is changing.
+- An output records the revision it was computed from.
+- Generated content becomes a revision only after approval; until then it is
+  inert output.
+
+The essay describes the same passage in programming: observations from
+execution lead to a revised specification, and in a system where
+specification, program and agent instructions are all inspectable artifacts,
+the system can revise its own specifications and the programs that produced
+its results. The essay adds the questions this raises, of validation,
+permissions, provenance, versioning and the limits of self-modification.
+
+A recorded history is what makes the higher level possible. Criteria of
+revision can only be revised if earlier revisions and the reasons for them
+can be read back.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: model and evidence in, updated model out.
+- It closes each turn of the [[reasoning-cycle]] {relation: part-of}.
+- It acts on what [[evaluation]] {relation: uses} returns.
+- Applied to its own criteria it is evolving [[reflection]] {relation: uses}.
+- Its formal case is the [[reflection-progression]] {relation: example-of}, one new axiom per stage.
+- It is made necessary without end by the [[incompleteness-theorems]] {relation: uses}.
+- By itself it gives only a [[feedback-loop]] {relation: is-a}, not a [[strange-loop]] {relation: distinguished-from}.
+- In documents it is the Integrate step of [[render-integrate-execute]] {relation: part-of} and the closing step of the [[hmd-feedback-loop]] {relation: part-of}.
+- The party who accepts a revision is the [[human-in-the-loop]] {relation: uses}, though a program may take that place.
+- Its record is kept as described in [[git-as-memory]] {relation: uses}, with [[provenance]] {relation: uses} for each output.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: the loop is built when a card's revisions revise the rules for revising it.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[reflection-progression]].** Theories extended one undecided statement at
+  a time. It is revision stripped down to its formal skeleton, and it shows
+  that the process has no last step.
+- **[[evaluation]].** Assessment of a claim against a criterion. A revision is
+  what an unfavourable evaluation calls for.
+- **[[reflection]].** A system analysing its own process. It supplies the
+  self-model without which only the theory, never the criteria, can be
+  revised.
+- **[[render-integrate-execute]].** Three operations kept apart in an
+  executable document. Integration is the one that creates a revision, and it
+  is gated by approval.
+- **[[human-in-the-loop]].** A person who inspects and approves. In the
+  discussion that person selects axioms and accepts patches, and is replaceable
+  in principle.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[revision]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[revision]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[neighbour-summary]] proposes cached
+generated text inside cards, which would be a revision made by an agent and
+so subject to the three rules above.
+
+## Sources
+
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "HMD and HQL as executable documents", the minimal experimental
+  design and the execution boundaries [03-hmd-hql-executable-documents].
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].
+- Discussion: "Seven candidate definitions of a strange loop", the evolving
+  reflective definition [13-seven-definitions].
+- Essay: "What is an AI-oriented programming language?", the part leading to
+  Hofstadter and strange loops [ai-oriented-pl].

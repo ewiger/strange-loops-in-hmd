@@ -1,0 +1,180 @@
+# SLH-P-0001 — A formal system for claims: from stated to derived
+
+Status: accepted
+Date: 2026-11-23
+Related: [claims](../../methodology/claims.hmd),
+[partial logic](../../methodology/partial-logic.hmd),
+[cross scores](../../methodology/cross-scores.hmd),
+[reflective formal system](../../knowledge/logic/reflective-formal-system.hmd),
+[derivation](../../methodology/derivation.hmd),
+[from distance to logic](../../methodology/distance-to-logic.hmd),
+[claims module](../../.hql/lib/claims/mod.hql),
+[derivation script](../../scripts/derive.py),
+[claim distance script](../../scripts/claim_distance.py)
+
+This record proposes how the vault gets from a claim stated in natural
+language to a claim that is derived, and what has to exist first. It was
+accepted on the day it was written. What was built, and what was not, is
+under "Outcome" at the end.
+
+## Context
+
+The goal is to state something in natural language, translate it into a
+formula, and prove it. Three things stand in the way today.
+
+**The vault has no concept of a formal system.** No card defines one. The
+card [reflective formal system](../../knowledge/logic/reflective-formal-system.hmd)
+defines a special kind and says of its first two components, a language and a
+theory, that they "are any formal system", which presupposes the concept
+without stating it. Eleven cards use the phrase and none of them owns it.
+
+**The partial logic is not a formal system.** A formal system has four parts,
+and each must be checkable by a procedure:
+
+| Part | What it is | In the partial logic today |
+|---|---|---|
+| Language | An alphabet and formation rules that decide which strings are formulas | Present: `predicate(first, second)` over fourteen predicates, with `holds: false` for denial |
+| Axioms | A decidable set of formulas taken as given | Absent: every atom is a card's assertion, and none is marked as a premise |
+| Inference rules | Decidable rules that produce a formula from formulas | Absent: "Nothing is derived" |
+| Derivability | The relation the first three define: a formula is a theorem when a finite derivation ends in it | Absent, since it follows from the two above |
+
+What the partial logic does have is a valuation: the four statuses asserted,
+denied, unsaid and contradicted. That is semantics, a way of assigning values
+to formulas. It is a different thing from a proof system, and a formal system
+needs the proof system. Atoms are compared only when they are the same
+string.
+
+**Translation and derivation carry different guarantees.** Whether a formula
+says what a sentence meant is a judgment and cannot be proved. Whether a
+formula follows from others is mechanical. A proof is also always a proof from
+premises. For the 23 claims graded `proved` the premises are mathematics. For
+the 242 graded `argued`, "proved" can only mean "follows from other claims of
+the vault", which is consistency and not truth.
+
+## Decision
+
+1. **Define the concept.** Add a concept card `formal-system` to
+   `knowledge/logic/`, stating the four parts above and keeping syntax
+   (derivability) apart from semantics (truth in an interpretation, with
+   soundness and completeness as the two bridges between them).
+   `reflective-formal-system` then links to it with the relation `is-a`. The
+   card is written by hand, like every concept card.
+
+2. **Make the partial logic a formal system by adding rules over the atoms
+   it already has.** The language stays as it is. The axioms are the atoms
+   that claims assert. The inference rules are a short, written list of Horn
+   rules over the fourteen predicates. A derived atom carries its derivation:
+   the rule used and the addresses of the claims it rests on.
+
+3. **Keep the four-valued scheme.** Rules derive assertions. A contradiction
+   arises when a derived assertion meets a stated denial, and it stays a
+   located fact about named claims. It does not make every atom derivable.
+
+4. **Pilot the two heavier routes before committing to either.** Take a
+   handful of `proved` claims into a proof assistant, and a handful of
+   `argued` claims too rich for a two-place atom into first-order logic with
+   an automated prover. Record what each cost.
+
+5. **Check every translation in both directions.** A formula written for a
+   claim is translated back into a sentence and compared with the claim's
+   text, or it is formalised twice independently and the two formulas are
+   tested for equivalence by a prover.
+
+### Candidate rules
+
+These were the starting list. The set in force is in
+[derivation](../../methodology/derivation.hmd). Each rule
+must be justified by the readings of the predicates in
+[partial logic](../../methodology/partial-logic.hmd).
+
+| Rule | Reading |
+|---|---|
+| `is-a(x, y)`, `is-a(y, z)` gives `is-a(x, z)` | every x is a y, every y is a z |
+| `instance-of(x, y)`, `is-a(y, z)` gives `instance-of(x, z)` | a member of a class is a member of the wider class |
+| `requires(x, y)`, `requires(y, z)` gives `requires(x, z)` | need is passed along |
+| `part-of(x, y)`, `part-of(y, z)` gives `part-of(x, z)` | a part of a part is a part |
+| `precedes(x, y)`, `precedes(y, z)` gives `precedes(x, z)` | order is passed along |
+| `same-as(x, y)` gives `is-a(x, y)` and `is-a(y, x)` | the same concept is each a kind of the other |
+| `precedes(x, y)` clashes with `precedes(y, x)` | nothing comes before what comes before it |
+
+Two rules are tempting and need a decision before they are added:
+`generalizes(x, y)` giving `is-a(y, x)`, which holds only if "a wider form
+of" is read as class inclusion; and substitution under `same-as`, which
+copies every atom of one thing onto the other and would spread any wrongly
+asserted `same-as` across the vault.
+
+## Options considered
+
+| Option | What it gives | Why it is or is not the first step |
+|---|---|---|
+| Rules over the existing atoms | Derived atoms with derivations and new contradictions; always terminates | Chosen: needs no new translation and keeps the four-valued scheme |
+| Description logic with a reasoner | Classification and inconsistency with explanations, decidable | Covers only the taxonomic predicates, and one contradiction makes the whole ontology inconsistent |
+| First-order logic with an automated prover | A proof or a countermodel, for claims with quantifiers | Piloted: needs every claim re-translated, and the search may not terminate |
+| Proof assistant | A machine-checked proof, the strongest guarantee | Piloted for `proved` claims only: very costly per claim and no use for `argued` ones |
+| Probabilistic logic | A computed probability for each derived claim | Deferred: it needs the rules first, and its inputs are still chosen priors |
+| Controlled natural language | A translation step with no judgment in it | Deferred: it means rewriting every claim in a restricted English |
+
+## Consequences
+
+- The vault can say what it means by "proved": derivable from named claims
+  by named rules. That is weaker than true, and the methodology must say so.
+- Contradictions that are invisible to string comparison become findable,
+  so the count of atoms with the status `both` is expected to rise.
+- The rule list becomes a third thing to keep honest, next to the claims and
+  the schema. A wrong rule manufactures wrong atoms at scale.
+- About a third of the claims carry no atom and stay outside the system.
+  That remains intended.
+- Cross scores can be computed over derived atoms as well as stated ones,
+  which widens what two cards can be compared on.
+
+## Not decided here
+
+- **Where the rules run.** A Python script under `scripts/` works today. An
+  HQL module under `.hql/lib/` keeps one language, if recursion over rules is
+  expressible in it.
+- **Whether derived atoms are stored or computed on each run.**
+- **Credence.** Every credence is currently the prior of its evidence grade,
+  lowered by 0.1 where the card hedges. Whether a derived atom gets a number,
+  and from what, waits on the probabilistic option.
+- **Similarity by meaning.** The claim distance script compares strings and
+  vocabulary. A measure that reads meaning needs a learned model and is a
+  separate proposal.
+
+## Outcome
+
+Built on acceptance:
+
+- **The concept.** The card `formal-system` in `knowledge/logic/`, linked
+  from `reflective-formal-system` with the relation `is-a`.
+- **The rules.** Nine rules, held as data under `metadata.rules` in the
+  header of the card `knowledge-graph`, beside the schema.
+- **The engine.** [derive.py](../../scripts/derive.py), which applies the
+  rules to a fixed point, keeps the cheapest derivation of each atom, sets
+  every derived atom against the denials, and prints the derivation of one
+  atom on request.
+- **The method.** [Derivation](../../methodology/derivation.hmd).
+
+Settled along the way:
+
+- **Where the rules run.** In a Python script. They are computed on each run
+  and nothing derived is stored.
+- **`generalizes` as `is-a` read backwards.** Tried and left out. Of the four
+  atoms it gave, two were false, among them
+  `is-a(godel-sentence, diagonal-lemma)`.
+- **Substitution under `same-as`.** Left out, for the reason given above.
+- **A number for a derived atom.** Its cost in bits and two beliefs, by the
+  definitions of [from distance to logic](../../methodology/distance-to-logic.hmd).
+  The credences under them are still priors.
+
+What it found: seven derived atoms, no derived contradiction and no clash.
+The atoms seldom chain, and 51 of the 52 claims that carry a `same-as` are
+denials, which are never premises.
+
+Not done:
+
+- **The two pilots.** No `proved` claim has been taken into a proof
+  assistant and no `argued` claim into first-order logic. The Lean file under
+  `scripts/lean/` proves the rules of entailment, which is a different thing
+  from proving a claim of the vault.
+- **Checking translations.** The two checks are described in
+  [derivation](../../methodology/derivation.hmd) and neither is automated.

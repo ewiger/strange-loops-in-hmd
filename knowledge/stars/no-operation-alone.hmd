@@ -1,0 +1,53 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "The operations of reasoning are positions on a cycle and depend on one another, so none of them is complete or usable in isolation."
+      evidence: proposed
+      credence: 0.6
+---
+# No operation alone
+
+**No operation alone** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. The operations of reasoning are positions on a cycle and depend on one another, so none of them is complete or usable in isolation. It is the thesis the induction card was rewritten around: induction is always done in the context of deduction.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+The atoms under this star are structural: `part-of(x, reasoning-cycle)` for
+induction, deduction, abduction, analogy, evaluation, prediction, reflection
+and revision; `requires(induction, deduction)` and
+`requires(deduction, induction)`, each stated by the card of the operation that
+needs the other; `inverse-of` for the pairs that undo one another;
+`precedes(abstraction, analogy)`.
+
+The star is what the cycle means for any single operation: its input is
+another's output and its result is another's to test.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "no-operation-alone")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+`requires(induction, deduction)` and `requires(deduction, induction)` together
+are a circle of dependence, which is the point of the star and would be a
+defect in a hierarchy. Nothing in the queries yet treats mutual `requires` as
+anything special.

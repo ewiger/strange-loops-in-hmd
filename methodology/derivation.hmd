@@ -1,0 +1,171 @@
+# Derivation
+
+The [partial logic](partial-logic.hmd) gives each atom a status and compares
+atoms only when they are the same string. This document adds the step that
+makes it a formal system: rules of inference over the atoms, and a script
+that applies them. The concept is defined by the card `formal-system` in the
+knowledge base. The reading of the rules as distances, and their proofs, are
+in [from distance to logic](distance-to-logic.hmd).
+
+## The four parts
+
+| Part | In this vault |
+|---|---|
+| Language | the atoms `predicate(first, second)` over the fourteen predicates |
+| Axioms | the atoms that some claim asserts, each with the address of its claim |
+| Rules of inference | the list under `metadata.rules` in the header of the card `knowledge-graph` |
+| Theorems | the atoms the rules yield from the axioms in finitely many steps |
+
+A denied atom is not an axiom and is never a premise. It takes part at the
+end, when a derived atom is compared with it.
+
+"Proved" here means derived from named claims by named rules. It does not
+mean true. Most axioms are graded `argued`, and a derivation passes their
+uncertainty on to its conclusion.
+
+## The rules
+
+Rules are data, held beside the schema of the graph. Each is a list of atoms
+with the variables `x`, `y` and `z`, and either the atom they give or the
+statement that they clash. Two variables of one rule never take the same
+value.
+
+| Rule | From | Gives | Why it holds |
+|---|---|---|---|
+| `is-a-chain` | `is-a(x, y)`, `is-a(y, z)` | `is-a(x, z)` | every x is a y and every y is a z |
+| `instance-up` | `instance-of(x, y)`, `is-a(y, z)` | `instance-of(x, z)` | a member of a class is a member of every wider class |
+| `requires-chain` | `requires(x, y)`, `requires(y, z)` | `requires(x, z)` | what is needed by something needed is needed |
+| `suffices-chain` | `suffices-for(x, y)`, `suffices-for(y, z)` | `suffices-for(x, z)` | what is enough for something that is enough is enough |
+| `part-of-chain` | `part-of(x, y)`, `part-of(y, z)` | `part-of(x, z)` | a part of a part is a part |
+| `precedes-chain` | `precedes(x, y)`, `precedes(y, z)` | `precedes(x, z)` | order is passed along |
+| `same-is-a` | `same-as(x, y)` | `is-a(x, y)`, in both directions | the same concept is a kind of itself under its other name |
+| `same-chain` | `same-as(x, y)`, `same-as(y, z)` | `same-as(x, z)` | two things the same as a third are the same |
+| `precedes-one-way` | `precedes(x, y)`, `precedes(y, x)` | a clash | nothing comes before what comes before it |
+
+The chain rules for `is-a`, `requires` and `suffices-for`, and the two rules
+for `same-as`, are the transitivity of entailment and of equivalence, proved
+in [from distance to logic](distance-to-logic.hmd). `part-of-chain` and
+`precedes-chain` are the two further transitive predicates that document
+names. `instance-up` is a rule between two predicates and rests on the
+readings of `instance-of` and `is-a` alone.
+
+A symmetric predicate is matched in both orders of its arguments, and what a
+rule gives is written back in alphabetical order.
+
+### A rule that was tried and left out
+
+`generalizes(x, y)` gives `is-a(y, x)` reads "a wider form of" as class
+inclusion. Applied to the vault it gave four atoms, and two of them are
+wrong:
+
+```
+generalizes(diagonal-lemma, godel-sentence)      gives   is-a(godel-sentence, diagonal-lemma)
+generalizes(render-integrate-execute, observer-card-experiment)
+                                                 gives   is-a(observer-card-experiment, render-integrate-execute)
+```
+
+A Gödel sentence is a sentence the diagonal lemma produces. It is not a kind
+of lemma. The cards use `generalizes` for "is the general construction
+behind" as well as for "is the wider class of", and only the second is
+inclusion. The rule stays out until the two uses are told apart in the atoms.
+This bears on the table of readings in
+[from distance to logic](distance-to-logic.hmd), which places `generalizes`
+in the distance of `is-a`.
+
+A rule earns its place the way this one lost it: apply it, read every atom it
+gives, and keep it only if none of them is false.
+
+## Cost and belief
+
+Every derivation has a cost, as [from distance to logic](distance-to-logic.hmd)
+defines it. An axiom believed at `p` costs `−log₂ p` bits, and the costs of
+the steps add. An atom that several claims assert is taken at the highest of
+their credences. Where an atom has more than one derivation, the cheapest is
+kept.
+
+Two beliefs are read off a derivation.
+
+| Number | How it is computed | What it assumes |
+|---|---|---|
+| `product` | `2^(−cost)`, the product of the beliefs of the axioms used | that the claims hold or fail independently |
+| `bound` | one minus the sum of the doubts of the axioms used, never below 0 | nothing |
+
+The claims of this vault come from one line of discussion and are not
+independent, so `product` is an estimate and `bound` is the number that can
+be defended. Both are computed from credences that are still the priors of
+their evidence grades.
+
+## Contradictions
+
+A derived atom that some claim denies has the status `both`, and its address
+is the derivation together with the denial. A match of a rule that declares a
+clash is reported in the same way. Nothing is concluded from either: a
+contradiction stays a fact about the claims it names.
+
+A derivation may start from an axiom that another claim denies. It is still
+given, and the contested axiom is named beside it.
+
+## Running it
+
+```
+python3 scripts/derive.py                        summary and all sections
+python3 scripts/derive.py --contradictions       derived contradictions and clashes
+python3 scripts/derive.py --derived              atoms that follow and no claim states
+python3 scripts/derive.py --prove "is-a(a, b)"   the derivation of one atom
+```
+
+`--prove` prints the derivation down to the claims and exits with a failure
+when the atom is not derivable.
+
+```
+is-a(simplification, cognitive-operation)   by is-a-chain
+  is-a(simplification, typed-transformation)   asserted by simplification#7 at 0.6
+  is-a(typed-transformation, cognitive-operation)   asserted by cognitive-operation#5 at 0.6, typed-transformation#1 at 0.6
+cost 1.474 bits, belief 0.360 as a product, at least 0.200
+```
+
+The script is Python and reads the card headers directly. The derivation is a
+fixed point over the atoms, and it moves into the query library when the
+query language can express one.
+
+## What it finds today
+
+- 9 rules, 122 asserted atoms, 85 denied atoms.
+- 7 atoms are derived that no claim states.
+- No derived atom is denied by a claim, and no rule reports a clash. The one
+  contradiction of the vault is still the stated one, on
+  `same-as(compression, intelligence)`.
+
+The yield is small, and the reason is in the atoms. Most of them do not
+chain: an atom's second argument is seldom another atom's first under the
+same predicate. Of the 52 claims that carry a `same-as`, 51 deny it, and a
+denial is no premise. The rules are sound and have little to work on. More
+will follow from them as the atoms are written with shared arguments, and
+that, not a longer list of rules, is where the next gain is.
+
+## Checking a translation
+
+A derivation shows that an atom follows. It does not show that the atom says
+what its sentence meant. That step is a translation and is checked in one of
+two ways, neither of which is a proof.
+
+- **Back.** The atom is read out as a sentence by its predicate's reading
+  and compared with the claim's `text`.
+- **Twice.** The claim is put into the logic by two hands independently, and
+  the two results are compared. For atoms they must be the same string. For
+  richer formulas the comparison is a question for a prover.
+
+Neither check is automated here.
+
+## What this does not do
+
+- It derives no denials. From an asserted `is-a(x, y)` and a denied
+  `instance-of(a, y)` nothing is concluded about `instance-of(a, x)`.
+- It has no rule between `requires` and `suffices-for`, and none that copies
+  the atoms of one thing onto another thing that is the `same-as` it. The
+  second would spread any wrongly asserted `same-as` across the vault.
+- It does not reach the claims that have no atomic formula, about a third of
+  them.
+- It does not prove that the cheapest derivation gives the largest distance
+  that respects the steps. [From distance to logic](distance-to-logic.hmd)
+  says what that proof still needs.

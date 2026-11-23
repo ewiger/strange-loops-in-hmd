@@ -1,0 +1,202 @@
+---
+tags: [logic/language]
+metadata:
+  category: concept
+  cluster: logic
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql]
+  sources: []
+  claims:
+    - id: 1
+      text: "An atom is a statement that a logic gives a truth value to without looking inside it, so being atomic is a matter of not being analysed and not of being short."
+      evidence: established
+      credence: 0.9
+    - id: 2
+      text: "A claim written as a long sentence of natural language is an atom, because it is given a value as a whole."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(claim, atom)
+    - id: 3
+      text: "Seen from its meaning, an atom is a string in the domain of a mapping from strings to truth values, and the mapping, not anything in the string, is what gives it a value."
+      evidence: established
+      credence: 0.9
+    - id: 4
+      text: "A propositional atom and an atomic formula are two things under one word: the first has no inner structure and the second is a predicate applied to terms."
+      evidence: established
+      credence: 0.9
+      atom: same-as(atomic-formula, propositional-atom)
+      holds: false
+    - id: 5
+      text: "Writing a natural-language atom as an atomic formula is a translation whose correctness is a judgement and cannot be proved."
+      evidence: argued
+      credence: 0.75
+      atom: uses(atom, translation)
+      star: candidate-until-checked
+    - id: 6
+      text: "In this vault the mapping from atoms to values has four values and not two, asserted, denied, both and unsaid, and beside it each atom carries a credence between 0 and 1."
+      evidence: proposed
+      credence: 0.6
+    - id: 7
+      text: "An atom belongs to the language of a formal system and its value does not: assigning values to atoms is semantics, and no assignment of values is a proof."
+      evidence: established
+      credence: 0.9
+      atom: part-of(atom, formal-system)
+      star: limits-from-inside
+---
+# Atom
+
+An **atom** is a statement taken whole: the smallest thing a logic gives a
+truth value to, because the logic does not look inside it. What makes it
+atomic is that it is not analysed. Its length has nothing to do with it. A
+long sentence of natural language is an atom as soon as it is treated as one
+unit that is true or false, and that is what a claim of this vault is.
+
+Seen from its meaning, an atom is a point of a mapping from strings to truth
+values:
+
+```
+String -> Bool
+```
+
+The string is the atom. The mapping is what gives it a value, and nothing in
+the string does.
+
+## Description
+
+### Why the vault needs the concept
+
+The vault spoke of formal systems and of atoms before it defined either. They
+are needed together and they are different needs.
+
+A [[formal-system]] is a language, axioms, rules and the derivations these
+allow. It is what lets something be *proved*. An atom is what the language is
+built from, and it is also something a formal system does not require one to
+analyse. A person can hold three hundred sentences, give each a value, and ask
+which pairs cannot both be true, with no rule of inference in sight. That is
+already work with atoms, and it is the work this vault does first.
+
+So the order is: atoms first, as soon as statements are separated and counted;
+a formal system later, when rules are added over them. The vault went in that
+order.
+
+### Two lanes under one word
+
+The word covers two things, and the vault uses both.
+
+| | Propositional atom | Atomic formula |
+|---|---|---|
+| What it is | a statement with no inner structure the logic can see | a predicate applied to terms |
+| Example | "What makes a loop strange is that it crosses levels of description." | `requires(strange-loop, level-crossing)` |
+| Compared with another by | being the same string, or by a judgement of meaning | being the same string, or by rules over its parts |
+| What can be asked of it | is it true | is it true, and what does it share with other formulas |
+| In a claim | the `text` | the field named `atom` |
+
+Both are atomic in the same sense: neither contains "and", "or", "not" or
+"if". They differ in what is inside. The propositional atom is opaque. The
+atomic formula has a predicate and arguments, and those are what let two
+formulas from different cards meet, or one follow from another.
+
+Every claim of the vault is an atom in the first lane. About two thirds have
+also been written in the second. The method's phrase "a claim without an
+atom" therefore means a claim that is a propositional atom and has no atomic
+formula yet. It does not mean a claim outside the logic.
+
+Passing from the first lane to the second is a [[translation]], out of
+natural language. Whether the formula says what the sentence meant is a
+judgement. It can be checked by translating back, or by formalising twice and
+comparing, and it cannot be proved.
+
+### An atom as a mapping
+
+In two-valued logic a valuation is a function from atoms to `true` and
+`false`. Everything else follows from it: the value of "A and B" is computed
+from the values of A and B, and the atoms are where the computing stops and
+something has to be given.
+
+That is why "a mapping from string to bool" is the right short description.
+It also shows what an atom is not. An atom does not carry its truth. Two
+valuations can disagree on every atom while the atoms stay the same strings.
+
+The vault changes the mapping in three ways and keeps the atoms.
+
+- **Many sources.** There is one mapping per card, not one for the vault. A
+  card gives values only to the atoms it speaks on.
+- **Four values.** Collected over the cards, an atom is asserted, denied,
+  both, or unsaid. The two extra values are what classical logic has no room
+  for: a gap where no card speaks, and a glut where two cards speak against
+  each other.
+- **Degrees.** Beside the status each claim carries a credence, so the
+  mapping is also from strings to numbers between 0 and 1.
+
+### Syntax and meaning
+
+An atom is a piece of syntax, part of the language of a formal system. Its
+value is meaning and belongs to no formal system as such. Giving values to
+atoms, however carefully, proves nothing. Proof is derivation by rules. The
+vault has both, a valuation with four values and many sources and a short
+list of rules over the atomic formulas, and they remain two things: an atom
+can be derived and denied.
+
+Because atoms are strings, they can themselves be named, counted and encoded.
+That is the opening [[godel-numbering]] uses: once statements are objects, a
+system can make statements about its own statements. The addresses of the
+claims, such as `strange-loop#2`, are a small case of the same move.
+
+## Relations
+
+- It is the unit of the language of a [[formal-system]] {relation: part-of}, and it can be used before any rules exist.
+- Writing a natural-language atom as an atomic formula is a [[translation]] {relation: uses} whose result is a judgement.
+- Atoms are what [[deduction]] {relation: uses} starts from and does not look into, in the propositional lane.
+- Being strings, atoms can be encoded, which is what [[godel-numbering]] {relation: uses} does with the formulas of arithmetic.
+- A [[reflective-formal-system]] {relation: uses} is a formal system whose atoms can be about its own atoms.
+- Giving an atom a value is [[evaluation]] {relation: uses} in its sense of assessment, and it is not a proof.
+- It bears on the question [[learning-the-formalism]] {relation: answers}: it is the first thing the formalism needs.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: claims read from headers are atoms held as typed data.
+
+## Neighbouring concepts
+
+- **[[formal-system]].** A language, axioms, rules of inference and the
+  derivations they allow. Atoms are the ground of its language.
+- **[[translation]].** Carrying a statement from one language into another.
+  From a sentence to an atomic formula it leaves natural language, where no
+  proof of correctness is available.
+- **[[godel-numbering]].** The encoding of formulas as numbers. It depends on
+  formulas being finite strings, which atoms are.
+- **[[deduction]].** Inference from premises by rules. It adds no atoms of its
+  own and rearranges the ones it was given.
+
+## Queries
+
+The atoms of one card in both lanes: the sentence, and the atomic formula
+where there is one.
+
+```hql
+from claims import claims_of
+
+cards
+| filter(c => c.name == "atom")
+| flat_map(c => claims_of(c) | map(k => {claim: fmt("{}#{}", c.name, k.id), formula: k.atom.unwrap_or("(none)"), sentence: k.text}))
+```
+
+How many claims of the vault are atoms in the first lane only, and how many
+in both:
+
+```hql
+from claims import claims_of
+
+all = cards | flat_map(claims_of) | List
+{claims: size(all), with_formula: all | filter(k => is_some(k.atom)) | size, sentence_only: all | filter(k => is_none(k.atom)) | size}
+```
+
+## Sources
+
+- This card does not come from the discussion files. It was asked for when
+  the claims were added: the method used the word "atom" for the atomic
+  formula only, and the reading given here, that an atom is any statement
+  taken whole and is a mapping from a string to a truth value, corrects that.
+- The method documents `claims.hmd` and `partial-logic.hmd` in the
+  `methodology/` folder, for how atoms are written and compared.
+- The proposal "A formal system for claims: from stated to derived" in
+  `doc/proposals/`, for what has to be added to atoms before anything is
+  proved.

@@ -1,0 +1,71 @@
+# Roadmap
+
+Status as of 2026-11-22. Based on the README, the index and five question
+cards, the base agent, the lenses and the two issues. The concept cards and
+the discussion files were not all re-read for this note, and no queries were
+run.
+
+## The top goal
+
+The project is trying to build one thing and use it as evidence for the other
+questions: **a vault that contains a working description of its own agent,
+where that agent's work can change the description under human approval.**
+
+The five README questions collapse into that:
+
+- **AI-oriented language:** the question card's answer is that it is not a
+  syntax but an environment where formal computation and informal reasoning
+  revise each other. HMD plus HQL is the candidate environment.
+- **Strange loop:** this is the test for that environment. Feedback alone
+  doesn't count; a representation of the system has to take part in changing
+  what it represents.
+- **Cognitive operations:** they are the schema. Operation cards define what
+  an agent may do, so editing a card changes the agent.
+- **HQL AI support:** this is whatever the above turns out to need.
+
+## Where we stand
+
+| Layer | State |
+|---|---|
+| The argument | Mostly there: about 60 concept cards, 17 operations, typed relations, five question cards that each list what is still open |
+| Graph queries | Nine queries in the library carry no `import future`, though typed links still need boilerplate and nothing checks the vocabulary |
+| The agent | Design only: the base agent card and coverage query exist (17 of 17 operations matched), but no agent has ever run |
+| The loop | Nothing built |
+
+## What is not there
+
+- **A running agent.** It is blocked on the HQL `ai` module, which sits on the
+  `feat/ai-ext` branch, and then on typed results and the trait. The
+  [agents vault issue](../issues/SLH-I-0001-agents-vault.hmd) has the order of work.
+- **The observer card.** The experiment is described in the
+  [observer card experiment](../../knowledge/hmd/observer-card-experiment.hmd)
+  card, but none of its parts exist: pinned revisions, provenance, the
+  approval step, a termination policy.
+- **The criterion.** No card says precisely what "a card represents its own
+  interpreter" means. This is the real gap, and it is conceptual, not
+  engineering: without it, a running loop cannot be judged strange or merely
+  feedback.
+- **Backlog cards** that the loop depends on: `execution-boundaries`,
+  `provenance`, `git-as-memory`, `duality`.
+
+## Assessment
+
+The knowledge base is growing faster than the experiment. The shortest path to
+a real result is:
+
+1. Get the base agent to perform one operation.
+2. Have it perform `revision` on an operation card, or on its own card.
+3. Put the result through human approval.
+
+That is the first moment the project's own test can be applied to something
+that exists.
+
+## Stale text
+
+Some text is stale after the `wiki` to `knowledge` split:
+
+- The issue files still point at `wiki/` paths.
+- The [AI support in HQL](../../knowledge/questions/ai-support-in-hql.hmd)
+  question card says four lenses where there are five.
+- The [learning the formalism](../../knowledge/questions/learning-the-formalism.hmd)
+  question card lists six operation cards as unwritten that now exist.

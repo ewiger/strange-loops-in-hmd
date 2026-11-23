@@ -1,0 +1,78 @@
+---
+tags: [questions]
+metadata:
+  category: question
+  status: open
+  order: 1
+  sources: [ai-oriented-pl, 12-llm-cognitive-operations]
+---
+# What is an AI-oriented programming language?
+
+**The question.** Anticipate a practical answer to "What is an AI-oriented
+programming language?", or define one. This is the first of the five questions
+in the project README.
+
+## Where the answer stands
+
+The essay that opens the project collects the answers people give and finds
+that they answer different questions.
+
+| Answer | What it really answers | What it leaves out |
+|---|---|---|
+| The language models already know | Which language today's models write best | What a language designed for the purpose would be; popularity feeds training data, which feeds popularity |
+| Rust, Lean, a verifier | How well the environment catches a model's mistakes | Whether the requirement was right: proving a program meets a specification is not proving the specification is what was wanted |
+| Laws and proofs beside agent instructions | Which instructions can become checkable contracts | The instructions that cannot be formalized |
+| Syntax trees in place of source text | What interface a machine should write to | Models are trained on text |
+| English | How to express an intention | Saying something does not make it executable, consistent or verifiable |
+
+The essay then sets aside a tempting summary, that programs solve reducible
+problems and language models irreducible ones. A model is itself a
+computation and escapes no limit of computation. Irreducible, undecidable and
+underspecified are three different conditions.
+
+What survives is a different line: **executing an established formalization
+versus discovering or revising the formalization itself**. A conventional
+language serves the first. A language model is useful for the second. In the
+terms of this vault the first is the deductive arc of the reasoning cycle and
+the second the inductive arc, and neither works alone.
+
+So the proposed answer is that an AI-oriented language is not a syntax that
+models find easy to emit. It is an environment in which formal computation and
+informal reasoning interact continuously: specifications, contracts, code,
+observations and generated knowledge are all inspectable and executable
+artifacts, an agent can run a program, inspect the result and revise its own
+description of the problem, and a person can inspect, interrupt and redirect.
+The essay's closing sentence states the aim: systems in which knowledge
+becomes code, code produces knowledge, and both take part in revising their
+own representations.
+
+That last clause is where this question meets the one about strange loops.
+
+## Cards that bear on it
+
+- The line between the two kinds of tool: [[computational-irreducibility]], [[undecidability]], [[induction]], [[deduction]].
+- The cycle a verifier closes: [[feedback-loop]], [[reasoning-cycle]], [[evaluation]], [[revision]].
+- Operations with declared types and evidence: [[typed-transformation]], [[cognitive-operation]].
+- The environment proposed: [[hmd-feedback-loop]], [[render-integrate-execute]], [[human-in-the-loop]], [[reflective-agent]].
+- Not yet written: [[verifier-as-feedback]], [[specification-intent-gap]].
+
+## Still open
+
+- "What is reducible with AI?", the question the essay ends its summary on.
+- Which agent instructions can become verifiable contracts.
+- Whether such an environment is a language at all, or a document system
+  with a language inside it.
+
+## Queries
+
+Cards that declare they bear on this question:
+
+```hql
+@[[ai-oriented-language]] | downlinks | filter(e => match e.data.relation { some(String r) => r == "answers", _ => false }) | map(e => e.source)
+```
+
+## Sources
+
+- Project README, the first listed reason for the project.
+- Essay: "From Rust to English to Strange Loops: What Is an AI-Oriented
+  Programming Language?" [ai-oriented-pl].

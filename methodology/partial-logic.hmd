@@ -1,0 +1,125 @@
+# Partial logic
+
+Claims are written in natural language first. Some of them are then also
+written as an **atom**: a predicate applied to named things, in a fixed
+spelling, so that two cards saying the same thing say it in the same string.
+
+```
+requires(strange-loop, level-crossing)
+```
+
+The concept is defined by the card `atom` in the knowledge base, and it is
+wider than this spelling. Every claim is an atom: a statement taken whole and
+given a value. The fixed spelling is an **atomic formula**, the same atom with
+its inside made visible as a predicate and two arguments. The field named
+`atom` in a claim holds the atomic formula, and in this folder "atom" on its
+own means that.
+
+The logic is partial in two ways, and both are intended.
+
+## Partial in coverage
+
+Only a claim that fits a predicate without distortion gets an atom. The rest
+stay in natural language, and that is not a defect to be worked off. A claim
+such as "the seven definitions are not rival answers to one question" has no
+honest rendering in fourteen predicates, and forcing one would put a false
+precision into every number computed from it. About two thirds of the claims
+carry an atom.
+
+What is formalised is what recurs. A predicate earns its place by being needed
+on many cards, and a thing earns a fixed name by being spoken of from several
+sides. The query [recurring terms](../.hql/queries/recurring-terms.hql) counts
+both.
+
+## Partial in truth
+
+No card decides an atom for the vault. A card asserts an atom, denies it, or
+says nothing about it. Collected over all cards, each atom therefore has one of
+four statuses.
+
+| Status | Meaning | Listed as |
+|---|---|---|
+| asserted | some claim asserts it and none denies it | `asserted` |
+| denied | some claim denies it and none asserts it | `denied` |
+| unsaid | no claim speaks on it | not listed |
+| contradicted | one claim asserts what another denies | `both` |
+
+This is the four-valued scheme Belnap proposed for a reasoner whose
+information comes from several sources that need not agree. Two properties of
+it matter here.
+
+- A contradiction stays where it is. An atom with the status `both` does not
+  make every other atom derivable, as it would in classical logic. It is a
+  located fact about two claims, with their addresses.
+- Silence is not denial. A card that says nothing about an atom has not said
+  it is false, and no score treats it as if it had.
+
+The query [atom status](../.hql/queries/atom-status.hql) lists every atom with
+its status and the claims on each side, contradictions first.
+
+```hql
+from claims import said
+
+cards
+| flat_map(said)
+| filter(s => s.atom == "requires(strange-loop, level-crossing)")
+| map(s => {claim: s.ref, asserts: s.asserts, belief: s.belief})
+```
+
+## Writing an atom
+
+An atom is `predicate(first, second)`: lower case, one space after the comma.
+
+An argument is the name of a card whenever the thing has a card or is linked
+as one, and otherwise a short term in the same spelling, such as `base-case`.
+
+A claim that denies something uses the positive atom and adds `holds: false`.
+There are no negative predicates. "Abstraction is not summarization" is
+
+```yaml
+atom: same-as(abstraction, summarization)
+holds: false
+```
+
+## The predicates
+
+| Predicate | Reading |
+|---|---|
+| `is-a(x, y)` | every x is a y |
+| `instance-of(x, y)` | x is one member of the class y |
+| `part-of(x, y)` | x is a component or step of y |
+| `example-of(x, y)` | x is an example of y |
+| `same-as(x, y)` | x and y are the same concept or operation |
+| `requires(x, y)` | x cannot be or happen without y |
+| `suffices-for(x, y)` | having x is enough for y |
+| `produces(x, y)` | x yields y as its result |
+| `uses(x, y)` | x relies on y |
+| `precedes(x, y)` | x comes before y |
+| `generalizes(x, y)` | x is a wider form of y |
+| `analogous-to(x, y)` | x and y correspond in structure |
+| `inverse-of(x, y)` | x undoes or runs opposite to y |
+| `has(x, p)` | x has the property p |
+
+`same-as`, `analogous-to` and `inverse-of` are symmetric, and their arguments
+are written in alphabetical order. Without that rule `same-as(a, b)` and
+`same-as(b, a)` would be two atoms and the cards on either side would never be
+compared.
+
+Several predicates repeat a relation kind of the links (`is-a`, `part-of`,
+`uses`). A link says that two cards are connected and how. An atom on a claim
+says the same with a probability attached and with a card answerable for it,
+and it can be denied, which a link cannot.
+
+## What the logic does not do
+
+No query derives anything. The statuses above compare atoms only when they
+are the same string: if one card asserts `is-a(a, b)` and another
+`is-a(b, c)`, no status records `is-a(a, c)`.
+
+Derivation is a separate step, described in [derivation](derivation.hmd). A
+short list of rules over the atoms is applied by a script, and an atom that
+is derived from some claims and denied by another is a contradiction no
+comparison of strings could find.
+
+The rules for deriving along one predicate, and their proofs, are in
+[from distance to logic](distance-to-logic.hmd).

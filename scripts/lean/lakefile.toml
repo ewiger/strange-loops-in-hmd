@@ -1,0 +1,5 @@
+name = "distance-logic"
+defaultTargets = ["DistanceLogic"]
+
+[[lean_lib]]
+name = "DistanceLogic"

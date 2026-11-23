@@ -1,0 +1,182 @@
+---
+tags: [thinking/reasoning]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-support-in-hql, ai-oriented-language]
+  sources: [06-formal-definition-godel, 08-humans-extend-axioms, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Deduction is the inference from premises and rules to what must follow from them, so that if the premises hold the conclusion holds."
+      evidence: established
+      credence: 0.9
+      atom: has(deduction, truth-preservation)
+      star: operation-by-signature
+    - id: 2
+      text: "Deduction adds certainty and no new content, whereas induction adds content and no certainty."
+      evidence: argued
+      credence: 0.75
+      star: operation-by-signature
+    - id: 3
+      text: "Deduction cannot supply its own frame and works only in a cycle with induction: the premises of any deduction about the world were reached by induction or abduction."
+      evidence: argued
+      credence: 0.75
+      atom: requires(deduction, induction)
+      star: no-operation-alone
+    - id: 4
+      text: "Deduction is the downward arc of the reasoning cycle, the step from a hypothesis to predictions that the next observations can confirm or refute."
+      evidence: argued
+      credence: 0.75
+      atom: part-of(deduction, reasoning-cycle)
+      star: no-operation-alone
+    - id: 5
+      text: "Asking a language model to deduce is not a checked deduction: the model produces text that resembles a derivation and carries no guarantee until an independent checker accepts a proof of the result."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 6
+      text: "Mathematical induction is a deductive method, an ordinary derivation with a certain conclusion, in spite of its name."
+      evidence: established
+      credence: 0.9
+      atom: is-a(mathematical-induction, deduction)
+      star: operation-by-signature
+    - id: 7
+      text: "The incompleteness theorems mark the limit of deduction inside a theory: a consistent, effectively axiomatized, sufficiently strong theory leaves some statements undecided, and no deduction inside it reaches them."
+      evidence: proved
+      credence: 0.99
+      star: limits-from-inside
+---
+# Deduction
+
+**Deduction** is the inference from premises and rules to what must follow
+from them. If the premises hold, the conclusion holds. In this vault it is the
+second half of a cycle whose first half is [[induction]]: induction supplies a
+model, and deduction unfolds the model into consequences that can be tested.
+Deduction adds certainty and no new content; induction adds content and no
+certainty.
+
+The word covers two things that should be kept apart.
+
+| | Deduction as a checked derivation | "Deduce" as a request to a model |
+|---|---|---|
+| Carried out by | a proof checker, a compiler, a program | a language model |
+| Result | follows from the premises, verifiably | text that resembles a derivation |
+| Guarantee | truth is preserved | none until checked |
+| Card | this one | [[typed-transformation]] |
+
+## Description
+
+### Lane one: deduction is always done in the context of induction
+
+Deduction works inside a fixed frame: a theory, a set of rules, a
+specification. Inside that frame it is complete in its own way, since nothing
+but the premises is needed. What it cannot do is supply the frame. The
+premises of any deduction about the world were reached by induction or
+[[abduction]], and the reason to deduce anything from them is to obtain
+predictions that the next observations can confirm or refute. This is the
+downward arc of the [[reasoning-cycle]].
+
+The same arc appears in three places in the discussion.
+
+- **Executing an established formalization.** A conventional program is
+  deduction made mechanical: given inputs, rules and a model of computation,
+  the result follows. Once a language model has helped establish the rules for
+  deduplicating a table, an ordinary program applies them perfectly well. The
+  useful line between programs and language models is the line between this
+  arc and the other one, between executing a formalization and discovering or
+  revising it.
+- **Proof inside a theory.** In a formal theory, provability is deduction
+  written down exactly. Arithmetic can even represent its own proof relation
+  as a formula, which is what makes a [[godel-sentence]] possible. The
+  [[incompleteness-theorems]] then mark the edge of this lane: a consistent,
+  effectively axiomatized, sufficiently strong theory leaves some statements
+  undecided, and no deduction inside it reaches them.
+- **Resuming after an extension.** When a new axiom is adopted, the adoption
+  is not a deduction, but everything after it is. Each stage of a
+  [[reflection-progression]] is a deductive system; only the passage between
+  stages is not.
+
+[[mathematical-induction]] belongs to this lane. A proof by base case and step
+is an ordinary derivation, certain in its conclusion, in spite of its name.
+
+### Lane two: asking a model to deduce is not a checked deduction
+
+A language model asked to deduce produces a sequence of steps that reads like
+a derivation. Whether each step follows is a separate question that the output
+does not answer. The discussion's caution is that the two must not be
+confused, and its proposal is to model the operation with a type,
+
+```text
+Deduce: (Theory, Premises) -> Conclusions
+```
+
+and to attach to the result a proof that an independent checker accepts. A
+compiler, a type checker or a proof assistant plays that role. Where such a
+checker exists, lane two can be converted into lane one; where it does not,
+the result remains a claim with a confidence.
+
+## Relations
+
+- It works only in a cycle with [[induction]] {relation: contrasts}: deduction unfolds what induction proposes.
+- It is the downward arc of the [[reasoning-cycle]] {relation: part-of}.
+- It contrasts with [[abduction]] {relation: contrasts}: from rule and case to result, against from result and rule to a possible case.
+- [[mathematical-induction]] {relation: example-of} is a deductive method that carries a misleading name.
+- Its formal limit is stated by the [[incompleteness-theorems]] {relation: uses}.
+- It is what each stage of a [[reflection-progression]] {relation: part-of} does between extensions.
+- It produces what [[prediction]] {relation: uses} needs: consequences of a model for cases not yet seen.
+- It is one [[cognitive-operation]] {relation: instance-of}.
+- As an operation offered by an agent it should be a [[typed-transformation]] {relation: is-a} with a proof requirement.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: executing a formalization is the deductive half of programming.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[induction]].** Inference from observations to a hypothesis that may be
+  false. It supplies the premises deduction starts from and receives the
+  observations deduction leads to.
+- **[[reasoning-cycle]].** Observations, hypothesis, predictions, test,
+  repeated. Deduction is the step from hypothesis to predictions.
+- **[[incompleteness-theorems]].** Gödel's results that a consistent,
+  effective, sufficiently strong theory cannot prove every truth of
+  arithmetic. They locate the boundary of what deduction inside one theory
+  can reach.
+- **[[typed-transformation]].** An operation with a declared signature whose
+  result carries evidence or proof. It is the device that separates a checked
+  deduction from a model's imitation of one.
+- **[[mathematical-induction]].** The proof scheme of base case and step. It
+  is deduction along the natural numbers.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[deduction]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[deduction]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[classify-operation]] labels a passage
+with the cognitive operation it performs and would use lane one of this card
+as the definition of the label `deduction`.
+
+## Sources
+
+- Discussion: "Before recursion: operators, dualities and inference", the
+  part on the reasoning triad [10-operations-dualities-generalization].
+- Discussion: "Induction and the LLM cognitive-operation taxonomy", the
+  reasoning cycle and the caution about models
+  [12-llm-cognitive-operations].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", for
+  provability inside a theory [06-formal-definition-godel].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].
+- Essay: "What is an AI-oriented programming language?", the part asking
+  whether programming languages and LLMs solve different kinds of problems
+  [ai-oriented-pl].

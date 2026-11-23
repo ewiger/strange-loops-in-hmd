@@ -1,0 +1,364 @@
+---
+tags: [meta/graph]
+metadata:
+  category: meta
+  cluster: meta
+  status: draft
+  established: false
+  questions: [building-a-loop-in-hmd, ai-support-in-hql]
+  schema:
+    nodes:
+      - {type: concept, is: "a card that defines one concept"}
+      - {type: question, is: "a card that states one of the project's questions"}
+      - {type: star, is: "a card that states an abstraction over claims of several concepts"}
+      - {type: meta, is: "a card that describes the graph; this one"}
+      - {type: index, is: "the card that lists the others"}
+      - {type: claim, is: "one statement in a card's header, named card#id"}
+      - {type: term, is: "a name used in an atom that has no card"}
+    arrows:
+      - {type: claims, written: header, from: [concept, star, meta], to: [claim], is: "the card is answerable for the claim"}
+      - {type: under, written: header, from: [claim], to: [star], is: "the claim is a case of the star"}
+      - {type: mentions, written: link, from: [concept, question, index, star, meta], to: [concept, question, star, meta], is: "a link with no relation"}
+      - {type: answers, written: link, from: [concept, meta], to: [question], is: "the card bears on the question"}
+      - {type: is-a, written: link, from: [concept], to: [concept], is: "every one of the first is one of the second"}
+      - {type: instance-of, written: link, from: [concept], to: [concept], is: "the first is one member of the second"}
+      - {type: part-of, written: link, from: [concept], to: [concept], is: "the first is a component or step of the second"}
+      - {type: example-of, written: link, from: [concept, meta], to: [concept], is: "the first is an example of the second"}
+      - {type: contrasts, written: link, from: [concept], to: [concept], is: "the two are set against each other"}
+      - {type: distinguished-from, written: link, from: [concept, meta], to: [concept], is: "the first is not the second, though it may be taken for it"}
+      - {type: generalizes, written: link, from: [concept], to: [concept], is: "the first is a wider form of the second"}
+      - {type: uses, written: link, from: [concept, meta], to: [concept], is: "the first relies on the second"}
+      - {type: analogous-to, written: link, from: [concept, meta], to: [concept], is: "the two correspond in structure"}
+      - {type: is-a, written: atom, from: [concept, term, meta], to: [concept], is: "every one of the first is one of the second"}
+      - {type: instance-of, written: atom, from: [concept, term], to: [concept], is: "the first is one member of the second"}
+      - {type: part-of, written: atom, from: [concept], to: [concept], is: "the first is a component or step of the second"}
+      - {type: example-of, written: atom, from: [concept, term], to: [concept], is: "the first is an example of the second"}
+      - {type: same-as, written: atom, from: [concept, term], to: [concept, term], is: "the two are one concept or operation"}
+      - {type: requires, written: atom, from: [concept], to: [concept, term], is: "the first cannot be without the second"}
+      - {type: suffices-for, written: atom, from: [concept, term], to: [concept, term], is: "having the first is enough for the second"}
+      - {type: produces, written: atom, from: [concept], to: [concept, term], is: "the first yields the second"}
+      - {type: uses, written: atom, from: [concept], to: [concept], is: "the first relies on the second"}
+      - {type: precedes, written: atom, from: [concept], to: [concept], is: "the first comes before the second"}
+      - {type: generalizes, written: atom, from: [concept], to: [concept], is: "the first is a wider form of the second"}
+      - {type: analogous-to, written: atom, from: [concept, term], to: [concept, term], is: "the two correspond in structure"}
+      - {type: inverse-of, written: atom, from: [concept], to: [concept], is: "the first undoes the second"}
+      - {type: has, written: atom, from: [concept, term, meta], to: [concept, term], is: "the first has the second as a property"}
+  rules:
+    - {id: is-a-chain, from: ["is-a(x, y)", "is-a(y, z)"], gives: "is-a(x, z)", is: "every x is a y and every y is a z, so every x is a z"}
+    - {id: instance-up, from: ["instance-of(x, y)", "is-a(y, z)"], gives: "instance-of(x, z)", is: "a member of a class is a member of every wider class"}
+    - {id: requires-chain, from: ["requires(x, y)", "requires(y, z)"], gives: "requires(x, z)", is: "what is needed by something needed is needed"}
+    - {id: part-of-chain, from: ["part-of(x, y)", "part-of(y, z)"], gives: "part-of(x, z)", is: "a part of a part is a part"}
+    - {id: precedes-chain, from: ["precedes(x, y)", "precedes(y, z)"], gives: "precedes(x, z)", is: "what comes before an earlier thing comes before the later one"}
+    - {id: suffices-chain, from: ["suffices-for(x, y)", "suffices-for(y, z)"], gives: "suffices-for(x, z)", is: "what is enough for something that is enough is enough"}
+    - {id: same-is-a, from: ["same-as(x, y)"], gives: "is-a(x, y)", is: "the same concept is a kind of itself under its other name, in both directions"}
+    - {id: same-chain, from: ["same-as(x, y)", "same-as(y, z)"], gives: "same-as(x, z)", is: "two things the same as a third are the same"}
+    - {id: precedes-one-way, from: ["precedes(x, y)", "precedes(y, x)"], clash: true, is: "nothing comes before what comes before it"}
+  claims:
+    - id: 1
+      text: "The knowledge graph of this vault has typed nodes and typed arrows, and the type of an arrow fixes which types of node it may run from and to."
+      evidence: proposed
+      credence: 0.6
+    - id: 2
+      text: "Checking the type of a node checks membership of a domain, checking an arrow checks a mapping between two domains, and the second finds errors the first cannot."
+      evidence: argued
+      credence: 0.75
+    - id: 3
+      text: "The schema of the knowledge graph is held as data in the header of a card of that graph, so the description of the graph is one of the things it describes."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(knowledge-graph, self-reference)
+      star: representation-before-reference
+    - id: 4
+      text: "The check of the knowledge graph reads its rules from a card that the same check is applied to, which is a crossing between the level of the cards and the level of the rules about cards."
+      evidence: proposed
+      credence: 0.5
+      atom: has(knowledge-graph, level-crossing)
+      star: levels-not-cycles
+    - id: 5
+      text: "The knowledge graph that describes itself is not a strange loop: the result of its check changes nothing, a person edits the schema, and what it has is static reflection."
+      evidence: argued
+      credence: 0.75
+      atom: is-a(knowledge-graph, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 6
+      text: "The knowledge graph would become a candidate strange loop when the result of its check leads, through a reviewed revision, to a change of the schema that produced the result."
+      evidence: proposed
+      credence: 0.6
+      star: step-from-outside
+    - id: 7
+      text: "A schema can report that an arrow breaks its signature and cannot report that the signature is the right one."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 8
+      text: "The rules of inference over the atoms are held as data in the header of the same card as the schema, so the card states both what an arrow may be and what follows from the arrows there are."
+      evidence: proposed
+      credence: 0.6
+---
+# The knowledge graph of the knowledge graph
+
+The **knowledge graph** of this vault is what the cards are once their headers
+and links are read as data: nodes of a few types, joined by arrows of a few
+types. This card describes that graph. It is also a node of it, of the type
+`meta`, and its header holds the schema that the rest of the graph is checked
+against. The schema therefore has to allow for the card that states it.
+The term and the design are proposed here and are not established usage.
+
+## Description
+
+### The graph
+
+Every card is a node, typed by the `category` in its header. Every claim in a
+header is a node as well, named by its address, such as `strange-loop#2`. A
+name that appears in an atom and has no card is a node of the type `term`.
+
+| Node type | What it is |
+|---|---|
+| `concept` | a card that defines one concept |
+| `question` | a card that states one of the project's questions |
+| `star` | a card that states an abstraction over claims of several concepts |
+| `meta` | a card that describes the graph; this one |
+| `index` | the card that lists the others |
+| `claim` | one statement in a card's header |
+| `term` | a name used in an atom that has no card |
+
+Arrows come from three places.
+
+- **From a link.** `[[level-crossing]] {relation: uses}` in a card is an arrow
+  of the type `uses` from that card. A link with no relation is a `mentions`.
+- **From an atom.** A claim with the atom
+  `requires(strange-loop, level-crossing)` is an arrow of the type `requires`
+  from `strange-loop` to `level-crossing`. It carries the belief of its claim,
+  and a denied atom is an arrow believed at less than one half.
+- **From the header itself.** A card `claims` each of its claims, and a claim
+  is `under` its north star.
+
+One fact can be written twice, once as a link and once as an atom. The link
+says the cards are connected and how. The atom says a card answers for it with
+a probability, and it can be denied. They are kept as two arrow types with the
+same name and different signatures.
+
+The same graph drawn at both levels. Below are a few of its nodes. Above are
+the types those nodes have. This card is a node below, and it holds the level
+above.
+
+```d2
+direction: up
+
+graph: The graph {
+  strange-loop: strange-loop
+  level-crossing: level-crossing
+  claim: "strange-loop#2"
+  star: levels-not-cycles
+  question: building-a-loop-in-hmd
+  knowledge-graph: knowledge-graph {
+    style.bold: true
+  }
+
+  strange-loop -> claim: claims
+  claim -> star: under
+  strange-loop -> level-crossing: requires
+  knowledge-graph -> question: answers
+  knowledge-graph -> strange-loop: distinguished-from
+}
+
+schema: The schema {
+  concept
+  claim
+  star
+  question
+  meta
+  term
+
+  concept -> claim: claims
+  claim -> star: under
+  concept -> concept: "13 link and atom types"
+  concept -> question: answers
+  concept -> term: "requires, produces, has"
+  meta -> concept: "uses, distinguished-from"
+  meta -> question: answers
+  meta -> claim: claims
+}
+
+graph.strange-loop -> schema.concept: is typed by {
+  style.stroke-dash: 3
+}
+graph.knowledge-graph -> schema.meta: is typed by {
+  style.stroke-dash: 3
+}
+graph.knowledge-graph -> schema: holds in its header
+schema -> graph: checks {
+  style.stroke-dash: 3
+}
+```
+
+### Arrows are functions
+
+Typing the nodes says what kinds of thing exist. That is a statement about
+domains, and it catches little: nearly any card is a valid `concept`.
+
+Typing the arrows says which mappings between domains are allowed. An arrow
+type is a signature, a set of node types it may start from and a set it may
+end at. `answers` runs from a `concept` to a `question` and nowhere else.
+`under` runs from a `claim` to a `star`. A card that declares it `answers`
+another concept is a well-typed node making an ill-typed arrow, and only the
+check of the arrow sees it.
+
+This is why the arrow type is the important one. The content of the vault is
+on its arrows: the relations, and the atoms of the claims. A check that stops
+at the nodes validates the nouns and leaves every sentence unread.
+
+The signatures are loose today. Most of them say `concept` to `concept`,
+because that is what the cards do. They are a record of present usage that can
+be tightened, and each tightening is a claim about the vault that the check
+will then hold it to.
+
+### Rules of inference
+
+The header holds a second kind of rule, under `rules`. A signature says what
+an arrow may be. A rule of inference says what follows from the arrows there
+are: from `is-a(x, y)` and `is-a(y, z)` it gives `is-a(x, z)`. Each rule is a
+list of atoms with variables, and either the atom they give or the statement
+that they clash.
+
+With these rules the atoms are a small [[formal-system]]: the asserted atoms
+are its axioms, and an atom the rules yield is a theorem, carried with the
+claims it rests on. The rules apply to arrows written as atoms only. A link
+is not a premise, since no claim answers for it.
+
+The rules are not applied by a query. The script `scripts/derive.py` reads
+them from this header, which leaves this card in the position it already had
+with the schema: it represents the rules, and what applies them is outside
+the vault.
+
+### The loop
+
+The schema is not in the query that checks the graph. It is in the header of
+this card, and the query reads it from there. The check then runs over every
+node and arrow, this card's among them.
+
+So the card is in two positions at once.
+
+- At the level of the cards it is one node among some four hundred, with
+  links, claims and a type, checked like any other.
+- At the level of the rules it is where the rules are. Its header says what a
+  node and an arrow may be.
+
+Each position constrains the other. This card links to
+[[building-a-loop-in-hmd]] with the relation `answers`. That link is valid
+only because the entry for `answers` in this card's header lists `meta` among
+the types it may start from. Remove `meta` from that entry, and the check,
+reading its rules from this card, reports this card. The card can make itself
+invalid by editing itself.
+
+### What kind of loop this is
+
+The vault has a test for a strange loop and this card has to pass it or say
+that it does not. Taking the test from the cards that state it:
+
+- **A representation the system can operate on.** Present. The schema is data
+  in a header, a query reads it as a typed value, and the thing represented is
+  the graph that contains the header.
+- **A crossing of levels.** Present in a limited sense. A rule about cards is
+  read off a card, and the card is judged by the rule. Whether that is the
+  crossing the vault means has to be shown and is not shown by saying so. The
+  claim is carried at a credence of one half.
+- **The interpretation changes the mechanism.** Absent. The check reports and
+  stops. Nothing in the vault turns a violation into a change of the schema. A
+  person edits the header.
+
+By that test this is static reflection: a system that can state and check some
+of its own properties. It is a [[self-reference]] and it is not a
+[[strange-loop]]. A check that runs every day and changes nothing is not even
+a [[feedback-loop]].
+
+It becomes a candidate when the third condition is met: an agent reads the
+violations, proposes a change to the schema as a revision, the revision passes
+the gates of [[render-integrate-execute]], and the next check runs under the
+schema it helped to change. Then the graph's description of itself takes part
+in changing what it describes.
+
+Two limits hold even then.
+
+- The schema checks the form of arrows and not whether its own signatures are
+  the right ones. A signature that is wrong and consistently followed raises
+  nothing.
+- The query language that runs the check is outside the vault. This card
+  represents the rules of the graph and not the interpreter that applies them,
+  which is the distinction [[object-and-meta-level]] draws between
+  representing a construction inside and executing it from outside.
+
+## Relations
+
+- It is a case of [[self-reference]] {relation: example-of}: a description that is among the things it describes.
+- It is not a [[strange-loop]] {relation: distinguished-from}: its check changes nothing.
+- It depends on [[object-and-meta-level]] {relation: uses}: the cards are one level and the rules about cards another, and this card is on both.
+- Its claim to a [[level-crossing]] {relation: uses} is the open part, held at one half.
+- It corresponds to a [[reflective-formal-system]] {relation: analogous-to}: a system carrying an encoding of its own syntax, with nothing fed back.
+- It corresponds to a [[metacircular-interpreter]] {relation: analogous-to} in what it lacks: the rules are represented, the interpreter is not.
+- Its rules of inference make the atoms a [[formal-system]] {relation: uses}, of which it holds the rules and not the engine.
+- An arrow type is a signature, as a [[typed-transformation]] {relation: analogous-to} is for an operation.
+- It would be changed by [[revision]] {relation: uses} through the gates of [[render-integrate-execute]] {relation: uses}, and by nothing else.
+- It bears on the question [[building-a-loop-in-hmd]] {relation: answers}: it is the smallest structure in the vault on which the loop could close.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: header data read as declared types is what the check needs from the language.
+
+## Neighbouring concepts
+
+- **[[object-and-meta-level]].** The distinction between a system and
+  statements about it. This card is a statement about the graph that the graph
+  contains.
+- **[[reflective-formal-system]].** A theory that carries an encoding of its
+  own syntax. It is the static case, and so is this.
+- **[[observer-card-experiment]].** A card that retrieves itself as a value.
+  This card is retrieved as a value by the check, and what is retrieved is a
+  schema and not only a text.
+- **[[typed-transformation]].** An operation given a signature. An arrow type
+  is the same idea applied to a relation.
+
+## Queries
+
+The arrow types, read from this card's own header:
+
+```hql
+from kg import schema_of
+
+cards
+| filter(c => c.name == "knowledge-graph")
+| flat_map(c => match schema_of(c) { some(s) => s.arrows, _ => [] })
+| map(t => fmt("{} ({}): {} -> {}", t.type, t.written, t.from | join(" | "), t.to | join(" | ")))
+```
+
+The arrows that start from this card, each with the verdict of the schema this
+card holds:
+
+```hql
+from kg import Schema, Node, node_of, claim_nodes, header_arrows, atom_arrows, link_arrow, schema_of, check
+
+nodes = [cards | map(node_of) | List, cards | flat_map(claim_nodes) | List] | concat_all
+here = cards | filter(c => c.name == "knowledge-graph") | List
+arrows = [
+    here | flat_map(header_arrows) | List,
+    here | flat_map(atom_arrows) | List,
+    graph.edges | filter(e => e.source == "knowledge-graph") | sort(by = e => e.target) | map(link_arrow) | List,
+] | concat_all
+
+fn verdicts(s: Schema) : List<String> =
+    arrows | map(a => fmt("{} -> {} ({}): {}", a.from, a.to, a.type, check(s, nodes, a).unwrap_or("conforms")))
+
+here | flat_map(c => match schema_of(c) { some(s) => verdicts(s), _ => [] })
+```
+
+The whole graph against the schema is the query `schema-check.hql` in the
+query library.
+
+## Sources
+
+- This card comes from the design of the claims and scores and from no single
+  discussion. Its test for a strange loop is the one stated by the cards it
+  links: a representation, a crossing of levels, and an interpretation that
+  changes the mechanism.
+- Discussion: "Not every dynamic system", the withdrawal of the equation of
+  self-modification with a strange loop [05-not-every-dynamic-system].
+- Discussion: "HMD and HQL as executable documents"
+  [03-hmd-hql-executable-documents].

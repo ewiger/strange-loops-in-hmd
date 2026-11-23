@@ -1,0 +1,191 @@
+---
+tags: [agents/core]
+metadata:
+  category: concept
+  cluster: agents
+  status: draft
+  established: true
+  questions: [ai-oriented-language, ai-support-in-hql, learning-the-formalism]
+  sources: [03-hmd-hql-executable-documents, 08-humans-extend-axioms, 09-taxonomy-self-reference, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "An agent is whatever can perform the cognitive operations in a list, which makes it a capability and not a particular machine: a person, a program and a language model are all agents to the extent that they can perform those operations."
+      evidence: argued
+      credence: 0.75
+      atom: uses(agent, cognitive-operation)
+      star: operation-by-signature
+    - id: 2
+      text: "The list of operations that defines an agent is open: an agent that can perform the seventeen catalogued operations can perform an eighteenth without being rebuilt, provided the operation is given to it as a definition and not built into it."
+      evidence: argued
+      credence: 0.75
+      atom: has(agent, open-operation-list)
+      star: operation-by-signature
+    - id: 3
+      text: "The generic agent, which can perform every operation and has no speciality, comes first, and every other agent is that one plus a restriction or an addition."
+      evidence: argued
+      credence: 0.75
+    - id: 4
+      text: "The word agent has three senses that are different things: the role of whoever interprets a result and proposes a change, the capability of performing the operations in a list, and the construct of a language type whose values can be asked to perform an operation."
+      evidence: argued
+      credence: 0.75
+    - id: 5
+      text: "The role of interpreting a result and proposing a change does not require a human, since a person adding axioms to a theory can be replaced by a program that does the same."
+      evidence: argued
+      credence: 0.75
+      star: step-from-outside
+    - id: 6
+      text: "An agent is not the language model: it is the model together with its instructions, the operations it is given and the tools it may call."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(agent, language-model)
+      holds: false
+    - id: 7
+      text: "An agent's result is not trusted by default, since asking an agent to deduce is not a checked deduction, which is why every operation it performs is a typed transformation that carries its support."
+      evidence: argued
+      credence: 0.75
+      atom: uses(agent, typed-transformation)
+      star: candidate-until-checked
+---
+# Agent
+
+An **agent** is whatever performs cognitive operations: it takes an input,
+applies an operation such as induction, evaluation or revision, and returns a
+result that something else can use. The word is in general use; the
+definition by operations is this project's. It makes the agent a capability
+and not a particular machine: a person, a program and a language model are
+all agents to the extent that they can perform the operations on the list.
+
+## Description
+
+### The thesis: the operations are what an agent is
+
+The seventeen operations catalogued as [[cognitive-operation]] were first
+listed as things a language model does. Read the other way round, the list is
+a definition. Every item on it is a capability of an agent, and nothing else
+in the vault has those capabilities: a card holds knowledge, a query computes,
+a revision records. Only an agent infers, explains, compares, condenses,
+judges and corrects.
+
+So an agent is defined here by one property: it can perform the operations in
+a list. Two consequences follow.
+
+- **The list is open.** Seventeen is where the discussion stopped. Whoever
+  uses the agent can add an operation, and an agent that could perform the
+  seventeen can perform the eighteenth without being rebuilt, provided the
+  operation is given to it as a definition and not built into it.
+- **The generic case comes first.** Before any specialised agent there is the
+  plain one that can perform every operation and has no speciality. Other
+  agents are that one plus a restriction or an addition.
+
+### Three senses kept apart
+
+The word is used in three ways, and they are different things.
+
+| Sense | What it names | Where it appears |
+|---|---|---|
+| The role | whoever stands at the step where a result is interpreted and a change proposed | "a human or agent" in the designs for executable documents |
+| The capability | being able to perform the operations in a list | this card's definition |
+| The construct | an element of a language: a type whose values can be asked to perform an operation | the design for the query language |
+
+**The role.** In every loop the discussion draws there is a step that is not
+mechanical: someone reads the output and decides what it means and what to
+change. The discussion writes "human or agent" at that step each time and
+means it. A person adding axioms to a theory can be replaced by a program that
+does the same, so the role does not require a human. Who fills it, and who
+approves what it proposes, is the subject of [[human-in-the-loop]].
+
+**The capability.** This is the sense defined above. It says what the
+occupant of the role must be able to do, whoever it is.
+
+**The construct.** If operations are what an agent does, a language that
+works with agents needs the agent as one of its elements, in the way it has
+numbers and records. The natural shape is a type with a capability attached,
+a trait in the language's terms: a value of the type can be asked to perform
+any operation, and the answer comes back typed. The operations themselves stay
+outside the type, as data, which is what keeps the list open.
+
+### What an agent is not
+
+- **Not the model.** A language model is one thing that can fill the role.
+  The agent is the model together with its instructions, the operations it is
+  given and the tools it may call.
+- **Not a function.** A function has one signature. An agent accepts any
+  operation, including ones defined after it was.
+- **Not trusted by default.** Asking an agent to deduce is not a checked
+  deduction. Each result is owed its support, which is why every operation is
+  a [[typed-transformation]].
+- **Not self-acting.** In the designs of this vault an agent proposes. What
+  is integrated and what is run are separate decisions.
+
+### Instructions as documents
+
+Today an agent's instructions are usually a natural-language file read at the
+start of a session. The essay behind this project asks what happens when some
+of those instructions become executable or verifiable contracts. This vault's
+answer is one step further: the instructions are a card in the same system as
+the knowledge the agent works on, so that they can be linked, queried and
+revised like anything else, and so that the agent can read a description of
+itself. That specification is the [[hmd-agent]].
+
+## Relations
+
+- It is defined by being able to perform each [[cognitive-operation]] {relation: uses}, and any operation added to that list.
+- Its sub-specification in this project is the [[hmd-agent]] {relation: generalizes}: an agent defined as a card.
+- A [[reflective-agent]] {relation: generalizes} is an agent that uses a model of itself to revise itself.
+- It fills the role that [[human-in-the-loop]] {relation: contrasts} reserves a part of for a person.
+- Its results are each a [[typed-transformation]] {relation: uses}, with support attached.
+- It is the occupant of the interpreting step in the [[hmd-feedback-loop]] {relation: part-of}.
+- It is what turns the [[reasoning-cycle]] {relation: uses}: none of the cycle's steps performs itself.
+- It bears on the question [[ai-oriented-language]] {relation: answers}: such a language has the agent as one of its elements.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}.
+
+## Neighbouring concepts
+
+- **[[hmd-agent]].** The sub-specification: an agent whose instructions are
+  the text of a card and whose operations are other cards. It is the form in
+  which this project builds agents.
+- **[[cognitive-operation]].** The catalogue of seventeen operations with
+  their inputs and outputs. Seen from this card it is the agent's interface.
+- **[[reflective-agent]].** An agent that models its own reasoning and uses
+  the model to change its rules. Every reflective agent is an agent; an agent
+  need not be reflective.
+- **[[human-in-the-loop]].** The arrangement in which a person interprets
+  results and approves changes. It is the same role as the agent's, held by a
+  person at the points where a decision must not be automatic.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[agent]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[agent]] | downlinks | map(e => e.source)
+```
+
+The agent cards that exist, in the agents vault:
+
+```hql
+source("agents").cards | map(c => {agent: c.name, title: c.title})
+```
+
+Future lens that applies to this card: [[perform-operation]] gives the third
+sense, the construct, as a trait and a result type.
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "HMD and HQL as executable documents", for "a human or agent"
+  at the interpreting step [03-hmd-hql-executable-documents].
+- Discussion: "Human in the loop and evolving formal theories", for the point
+  that a program can fill the role [08-humans-extend-axioms].
+- Essay: "What is an AI-oriented programming language?", the parts on agent
+  instructions as contracts and on an environment an agent works in
+  [ai-oriented-pl].
+- Project notes of 22 November 2026: the operations as agent capabilities,
+  the generic agent, and the agent as a type or trait with an open list.

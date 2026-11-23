@@ -37,6 +37,13 @@ $RECYCLE.BIN/
 # Claude Code local settings
 .claude/settings.local.json
 
+# Lean build output
+.lake/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
 # Logs and temporary files
 *.log
 *.tmp

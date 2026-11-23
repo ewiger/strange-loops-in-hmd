@@ -1,0 +1,87 @@
+---
+tags: [questions]
+metadata:
+  category: question
+  status: open
+  order: 3
+  sources: [03-hmd-hql-executable-documents, 04-markdown-as-output, 06-formal-definition-godel, 07-constructible-universe, 08-humans-extend-axioms]
+---
+# Can a strange loop be built from HMD cards?
+
+**The question.** Attempt to build a strange loop using HyperMarkDown cards
+that can be dynamically executed with human feedback. This is the third of the
+five questions in the project README.
+
+## Where the answer stands
+
+The starting proposal was direct: cards hold knowledge, cells in the cards
+compute, the output is written beside the cell, and Git records each revision.
+Run that repeatedly and the document changes itself.
+
+The discussion's first finding is that this is not yet a strange loop. A cycle
+of document, code, output and document again is ordinary feedback, however
+often it runs. The second finding sharpens the target. Output can itself be
+Markdown containing new cells, so data becomes code and code becomes data. That
+makes the system a reflective programming substrate. It still qualifies as a
+strange loop only when cross-level self-reference is actually shown.
+
+What would have to be shown is that a card represents the mechanism that
+interprets it, and that the interpretation feeds back into that same
+mechanism. Three designs approach this from different sides.
+
+- **The observer card.** A card refers to itself, a cell inspects a pinned
+  revision of it, the evaluation emits structured observations, a person or
+  agent proposes an edit to the card or to its rules of interpretation, and
+  Git records the accepted revision.
+- **Render, integrate, execute.** Three operations kept apart, with approval
+  between them, so that generated text never runs itself.
+- **The Gödel construction in HQL.** Syntax trees, an encoding, substitution,
+  proof checking and diagonalization, implemented as a program. The warning
+  attached is that executing the construction from outside is not the same as
+  proving that a theory represents it from inside.
+
+Two results from the mathematics shape the experiment. Neither exact example
+of self-description needs feedback over time, so a loop that merely runs is
+beside the point. And a human who adds axioms, or revises the criteria for
+adding them, gives a loop that evolves, though a program could play that part.
+
+This vault is itself the first material for the experiment. Its cards define
+level crossing and feedback, and its future lenses would ask whether its own
+link cycles satisfy those definitions.
+
+## Cards that bear on it
+
+- The baseline to exceed: [[feedback-loop]], [[hmd-feedback-loop]].
+- The designs: [[observer-card-experiment]], [[render-integrate-execute]].
+- The criterion: [[strange-loop]], [[level-crossing]], [[object-and-meta-level]].
+- The evolving version: [[reflection-progression]], [[human-in-the-loop]], [[reflective-agent]].
+- The analogy with a world that reconstructs itself: [[constructible-universe]].
+- Program-level relatives: [[quine]], [[metacircular-interpreter]].
+- The lenses that would run the test: [[find-level-crossings]], [[neighbour-summary]].
+- Not yet written: [[execution-boundaries]], [[provenance]], [[git-as-memory]].
+
+## Still open
+
+- A precise criterion for "the card represents its own interpreter". The
+  analogy with the constructible universe needs one before it means anything.
+- A policy for evaluating cycles and for stopping.
+- Whether the approval step is part of the loop or outside it.
+
+## Queries
+
+Cards that declare they bear on this question:
+
+```hql
+@[[building-a-loop-in-hmd]] | downlinks | filter(e => match e.data.relation { some(String r) => r == "answers", _ => false }) | map(e => e.source)
+```
+
+## Sources
+
+- Project README, the third listed reason for the project.
+- Discussion: "HMD and HQL as executable documents"
+  [03-hmd-hql-executable-documents].
+- Discussion: "HQL output can itself be Markdown" [04-markdown-as-output].
+- Discussion: "Formalizing strange loops with Gödelian diagonalization", the
+  part on a formal experiment in HQL [06-formal-definition-godel].
+- Discussion: "Human in the loop and evolving formal theories"
+  [08-humans-extend-axioms].

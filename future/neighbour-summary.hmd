@@ -1,0 +1,68 @@
+---
+tags: [lenses/future]
+metadata:
+  category: lens
+  status: design
+  future: true
+  query: .hql/queries/future/neighbour-summary.hql
+  questions: [ai-support-in-hql, building-a-loop-in-hmd]
+---
+# Neighbour summary
+
+**Neighbour summary** is a future lens: a query that restates each card linked
+from the current card in two sentences, written from the current card's point
+of view. It would generate what the section "Neighbouring concepts" on every
+card now holds by hand. It is a design and does not run on the current HQL;
+this card must not be rendered.
+
+## What it would do
+
+Each concept card ends its account with short summaries of its neighbours. A
+summary there is not a copy of the neighbour's definition. It says what the
+neighbour is *as seen from here*: on the card for induction, deduction is "the
+half of the cycle that gives a hypothesis something to be tested on". Written
+by hand, these summaries go stale when the neighbour changes.
+
+The lens gives an agent the description of the current card, the description
+of the neighbour and the declared relation, and asks for the restatement. The
+cell is cached, so the agent runs again only when one of the two cards
+changes.
+
+This is [[summarization]] under a constraint, and it is also the smallest case
+of a card whose content depends on a reading of other cards. Once the
+generated text is integrated and a later run reads it, the cycle of
+[[render-integrate-execute]] is closed.
+
+## The design
+
+```hql
+import future
+import ai
+
+summarizer = Agent(@[[summarizer]])
+this
+| uplinks
+| filter(e => e.data.relation != none)
+| map(e => {
+    card: e.target,
+    relation: e.data.relation,
+    summary: summarizer | ask(
+      Prompt("Restate {target} in two sentences for a reader of {source}, given that the relation is {relation}."),
+      Context(source = this.sections["Description"], target = @[[e.target]].sections["Description"], relation = e.data.relation)
+    )
+  })
+```
+
+## What current HQL lacks
+
+- `this`, and access to one section of a card.
+- The `ai` module: an agent defined by a card, a prompt, a context, `ask`.
+- `cached` cells, so that a generated summary is kept and not regenerated on
+  every render.
+
+## Relations
+
+- It is an application of [[summarization]] {relation: uses} with a fixed point of view.
+- Its generated text enters a card through [[render-integrate-execute]] {relation: uses}.
+- It would be run by a [[reflective-agent]] {relation: uses} reading the vault it writes into.
+- It serves the question [[ai-support-in-hql]] {relation: answers}.

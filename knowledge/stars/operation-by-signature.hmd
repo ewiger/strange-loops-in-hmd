@@ -1,0 +1,54 @@
+---
+tags: [stars]
+metadata:
+  category: star
+  status: draft
+  claims:
+    - id: 1
+      text: "An operation of thinking is identified by what goes in, what comes out and what is kept or lost on the way, and never by its name."
+      evidence: proposed
+      credence: 0.6
+---
+# An operation is its signature
+
+**An operation is its signature** is a north star: an abstraction over claims that several concept cards
+make each in its own terms. An operation of thinking is identified by what goes in, what comes out and what is kept or lost on the way, and never by its name. It is how the vault tells operations apart, and the reason it can.
+
+A north star is proposed and not found in the discussion. Its own claim is
+graded `proposed`. How stars are chosen and checked is described in the
+project's `methodology/` folder.
+
+## What it abstracts
+
+This is the largest group of claims and the most uniform. Twenty-eight of them
+deny a `same-as` between two operations that share a word or a habit of use:
+abstraction and summarization, induction and mathematical induction,
+generalization and induction, simplification and abstraction. Each denial is
+argued the same way, by pointing at an input, an output or something
+preserved: a summary is about the same subject in fewer words, an abstraction
+is true of everything it came from, a simplification is false of the original.
+
+The star is that method of telling apart. It is why the cards with two lanes
+exist: one word, two signatures, therefore two operations.
+
+## Territory
+
+The cards with a claim under this star, and the claims:
+
+```hql
+from claims import under
+
+cards
+| flat_map(under)
+| filter(u => u.star == "operation-by-signature")
+| group(by = u => u.card)
+| sort(by = g => g.key)
+| map(g => {card: g.key, claims: g.items | map(u => u.ref)})
+```
+
+## Where it strains
+
+A signature fixes the form of a result and not its worth. The typed
+transformation card says so itself: types do not make an induction correct.
+This star therefore leans on the star "Candidate until checked", whose whole territory
+lies inside this one.

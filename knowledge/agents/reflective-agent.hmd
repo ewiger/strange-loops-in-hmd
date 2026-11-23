@@ -1,0 +1,185 @@
+---
+tags: [agents/reflection]
+metadata:
+  category: concept
+  cluster: agents
+  status: draft
+  established: false
+  questions: [strange-loop-meaning, ai-support-in-hql, ai-oriented-language]
+  sources: [08-humans-extend-axioms, 09-taxonomy-self-reference, 13-seven-definitions, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "A reflective agent is an agent that holds a representation of its own models, rules or behaviour and uses the results of its activity to revise them."
+      evidence: proposed
+      credence: 0.6
+      atom: is-a(reflective-agent, agent)
+      star: representation-before-reference
+    - id: 2
+      text: "Static reflection, in which a system can express some of its own properties, differs from evolving reflection, in which those reflective results change the rules, and a reflective agent is whatever drives the evolving kind."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(evolving-reflection, static-reflection)
+      holds: false
+    - id: 3
+      text: "A reflective agent can revise at two depths, the model itself or the criteria by which it decides what to change, and the second depth is what the evolving reflective definition of the strange loop describes."
+      evidence: argued
+      credence: 0.75
+      star: levels-not-cycles
+    - id: 4
+      text: "A reflective agent need not be human, since a program can carry out a progression of theories."
+      evidence: argued
+      credence: 0.75
+      atom: requires(reflective-agent, human-in-the-loop)
+      holds: false
+      star: step-from-outside
+    - id: 5
+      text: "An agent that can read and propose changes to its own instructions does not automatically make a strange loop."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(reflective-agent, strange-loop)
+      holds: false
+      star: levels-not-cycles
+    - id: 6
+      text: "A reflective agent is not thereby incomplete in Gödel's sense, and the claim that every sufficiently reflective intelligence meets an analogous limit is a conjecture and not a theorem."
+      evidence: argued
+      credence: 0.75
+      star: limits-from-inside
+    - id: 7
+      text: "An agent that merely repeats a cycle of act and observe is a feedback loop and not a reflective agent; reflection starts when the cycle passes through a representation of the agent."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(feedback-loop, reflective-agent)
+      holds: false
+      star: levels-not-cycles
+---
+# Reflective agent
+
+A **reflective agent** is a system that holds a representation of its own
+models, rules or behaviour and uses the results of its activity to revise
+them. The term is used in this vault for two neighbouring classes of the
+discussion's taxonomy, reflective adaptive systems and self-modeling
+cognition. It is a working term of the discussion and not an established
+technical one.
+
+## Description
+
+### Two classes, one card
+
+The [[taxonomy-of-self-reference]] ends with two classes that concern agents.
+
+| Class | Mechanism | Examples |
+|---|---|---|
+| Reflective adaptive systems | Models and rules are revised using results | Scientists, reflective agents |
+| Self-modeling cognition | The reasoner represents itself in its own model | Human self-models, hypothetical AI architectures |
+
+The first is about what gets changed, the second about what gets represented.
+An agent in the first class may revise its rules without any explicit picture
+of itself. An agent in the second has such a picture, whether or not it acts
+on it. The interesting case is both at once: the self-model is what the
+revision works from.
+
+### Evolving reflection applied to agents
+
+The discussion separates static reflection, where a system can express some
+of its own properties, from evolving reflection, where those reflective
+results change the rules. A formal theory that encodes its own proofs is the
+first. A [[reflection-progression]] is the second, and a reflective agent is
+whatever drives it.
+
+Two depths of revision are distinguished.
+
+1. **Revising the model.** The agent changes what it believes or how it acts:
+   the next theory, the next version of a program.
+2. **Revising the criteria of revision.** The agent changes how it decides
+   what to change. In the notation of the discussion a stage is a pair
+   $(T_n, R_n)$, a theory together with the rule for extending it, and both
+   move.
+
+The second depth is what the sixth of the [[definitions-of-strange-loop]]
+describes: a system that uses a self-model to revise future models, rules, or
+criteria for revision.
+
+The same shape appears in the cycle that links compression to prediction.
+That cycle has an outer loop of observing, modelling, predicting and
+evaluating, and a second loop in which the system builds "a model of the
+modeling process" and feeds it back into how regularities are found. The
+second loop is the reflective one.
+
+### The agent of the essay
+
+The essay on AI-oriented languages describes the same thing without the
+vocabulary. It asks for an environment where an agent can reason about a
+program, execute it, inspect the result, and revise its own description of
+the problem. Specification, program, observations and agent instructions are
+all inspectable artifacts, so the agent's instructions are among the things
+it can read and propose to change. The essay is careful that this does not
+automatically make a [[strange-loop]], and that it overcomes no
+incompleteness result.
+
+### What is not claimed
+
+- A reflective agent need not be human. A program can carry out a progression
+  of theories. See [[human-in-the-loop]].
+- A reflective agent is not thereby incomplete in Gödel's sense. The claim
+  that every sufficiently reflective intelligence meets an analogous limit is
+  a conjecture, the seventh definition, and not a theorem.
+- An agent that merely repeats a cycle of act and observe is a
+  [[feedback-loop]]. Reflection starts when the cycle passes through a
+  representation of the agent.
+
+## Relations
+
+- It covers two classes of the [[taxonomy-of-self-reference]] {relation: instance-of}, adaptive systems and self-modeling cognition.
+- It is what drives a [[reflection-progression]] {relation: uses} when no human does.
+- It can take the seat of the [[human-in-the-loop]] {relation: contrasts}.
+- Its defining operations are [[reflection]] {relation: uses} on its own process and [[revision]] {relation: uses} of its rules.
+- It is more than a [[feedback-loop]] {relation: distinguished-from}: the cycle passes through a self-model.
+- It is the sixth of the [[definitions-of-strange-loop]] {relation: example-of}, the evolving reflective one.
+- The second loop of [[compression-and-prediction]] {relation: example-of} is a reflective agent in miniature.
+- Its operations should be offered as a [[typed-transformation]] {relation: uses} so that revisions carry evidence.
+- It bears on the question [[ai-support-in-hql]] {relation: answers}: this is the kind of agent a card would host.
+- It is a kind of [[agent]] {relation: is-a}: one that uses a model of itself to revise itself.
+
+## Neighbouring concepts
+
+- **[[reflection-progression]].** Theories extended one undecided statement
+  at a time, possibly with changing criteria. It is the formal skeleton of
+  what a reflective agent does.
+- **[[human-in-the-loop]].** A person at the step where results are
+  interpreted. The discussion's correction is that the step matters and the
+  person is optional.
+- **[[taxonomy-of-self-reference]].** Eight classes from recursive
+  generation to self-modeling cognition. Reflective agents are its last two,
+  the only ones that change over time.
+- **[[reflection]].** The operation that takes a process and its outcomes and
+  returns an analysis of them. An agent is reflective when the process
+  analysed is its own.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[reflective-agent]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[reflective-agent]] | downlinks | map(e => e.source)
+```
+
+Future lens that applies to this card: [[find-level-crossings]] is itself a
+small reflective agent, asked to examine the vault it runs in.
+
+## Sources
+
+- Discussion: "Taxonomy: recursion, quines, diagonalization and
+  intelligence", the last two classes and the cycle diagram
+  [09-taxonomy-self-reference].
+- Discussion: "Human in the loop and evolving formal theories", static and
+  evolving reflection [08-humans-extend-axioms].
+- Discussion: "Seven candidate definitions of a strange loop", the sixth and
+  seventh [13-seven-definitions].
+- Essay: "What is an AI-oriented programming language?", the parts on
+  strange loops and on asking the wrong question [ai-oriented-pl].

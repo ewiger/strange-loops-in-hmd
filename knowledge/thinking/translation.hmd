@@ -1,0 +1,139 @@
+---
+tags: [thinking/representation]
+metadata:
+  category: concept
+  cluster: thinking
+  status: draft
+  established: true
+  questions: [learning-the-formalism, ai-oriented-language, strange-loop-meaning]
+  sources: [09-taxonomy-self-reference, 10-operations-dualities-generalization, 12-llm-cognitive-operations, ai-oriented-pl]
+  claims:
+    - id: 1
+      text: "Self-reference in a formal system requires translation, because the system's statements must first be translated into the system's own objects."
+      evidence: argued
+      credence: 0.75
+      atom: requires(self-reference, translation)
+      star: representation-before-reference
+    - id: 2
+      text: "Gödel numbering is a translation of the formulas and proofs of arithmetic into numbers, which lets arithmetic speak about its own formulas."
+      evidence: established
+      credence: 0.9
+      atom: example-of(godel-numbering, translation)
+      star: representation-before-reference
+    - id: 3
+      text: "The loop in Gödel's construction is not in the Gödel-numbering translation itself, although the loop cannot be built without it."
+      evidence: argued
+      credence: 0.75
+      atom: suffices-for(godel-numbering, strange-loop)
+      holds: false
+      star: representation-before-reference
+    - id: 4
+      text: "A cross-language quine is two translations composed into a cycle, and the cycle reproduces a description and reasons about nothing."
+      evidence: argued
+      credence: 0.75
+      atom: example-of(cross-language-quine, translation)
+      star: representation-before-reference
+    - id: 5
+      text: "In the chain from intention to specification to program, the translation from natural-language intention to formal specification is the one that can fail silently, because proving a program meets a specification does not prove the specification says what was wanted."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 6
+      text: "A translation between formal languages can be checked, but a translation out of natural language cannot be checked the same way, because the source has no exact meaning to compare against."
+      evidence: argued
+      credence: 0.75
+      star: candidate-until-checked
+    - id: 7
+      text: "Translation differs from analogy, because translation keeps the same subject in a new language while analogy maps one subject onto another."
+      evidence: argued
+      credence: 0.75
+      atom: same-as(analogy, translation)
+      holds: false
+      star: operation-by-signature
+---
+# Translation
+
+**Translation** is the carrying of a representation from one language or
+formalism into a corresponding representation in another. What is translated
+stays the same; the language describing it changes. In this vault it matters
+for a particular reason: a translation of a system's statements into the
+system's own objects is what makes [[self-reference]] possible.
+
+## Description
+
+| | Input | Output |
+|---|---|---|
+| Translation | representation in one language or formalism | corresponding representation in another |
+
+The discussion gives translation one row in its table of operations. It meets
+the same operation under another name in its list of transformation classes:
+*representation*, "encode objects in a new language", with Gödel numbering and
+the Fourier transform as examples. Three places show what it does.
+
+- **Formulas into numbers.** [[godel-numbering]] translates the formulas and
+  proofs of arithmetic into numbers. Because arithmetic is about numbers, the
+  translation lets arithmetic speak about its own formulas. The loop in
+  Gödel's construction is not in the translation, but it cannot be built
+  without it.
+- **Program into program.** A program in one language prints a program in a
+  second, which prints the first. This is the [[cross-language-quine]]: two
+  translations composed into a cycle. The discussion notes that the cycle
+  reproduces a description and reasons about nothing.
+- **Intention into specification into program.** The essay's chain starts
+  from an intention in natural language, moves to a formal specification, and
+  then to a program. Each arrow is a translation, and the first is the one
+  that can fail silently: proving a program meets a specification does not
+  prove the specification says what was wanted. The same essay asks why a
+  model should write source text only for it to be parsed into a tree, which
+  is a question about which representation to translate into.
+
+A translation between formal languages can be checked. A translation out of
+natural language cannot be checked the same way, because the source has no
+exact meaning to compare against.
+
+## Relations
+
+- It is one [[cognitive-operation]] {relation: instance-of}: one representation in, a corresponding one out.
+- [[godel-numbering]] {relation: example-of} is a translation of syntax into numbers.
+- It is a precondition of [[self-reference]] {relation: part-of} in formal systems: a system must be translated into its own objects first.
+- It differs from [[analogy]] {relation: distinguished-from}: translation keeps the same subject in a new language, analogy maps one subject onto another.
+- It differs from [[summarization]] {relation: distinguished-from}: translation aims to lose nothing.
+- The [[cross-language-quine]] {relation: example-of} composes two translations into a cycle.
+- Its unchecked case is the [[specification-intent-gap]] {relation: uses}.
+- It bears on the question [[learning-the-formalism]] {relation: answers}, as one of the operations mapped there.
+
+## Neighbouring concepts
+
+- **[[godel-numbering]].** An effective coding of formulas and proofs as
+  natural numbers. It is the translation on which the exact case of a strange
+  loop rests.
+- **[[analogy]].** A partial mapping that preserves selected relations between
+  two domains. It crosses subjects, where translation crosses languages.
+- **[[self-reference]].** A structure that refers to itself. In a formal
+  system it is reached by way of a translation into the system's own terms.
+
+## Queries
+
+The relations declared on this card, as edges:
+
+```hql
+@[[translation]] | uplinks | map(e => {to: e.target, how: e.data})
+```
+
+The cards that point here:
+
+```hql
+@[[translation]] | downlinks | map(e => e.source)
+```
+
+## Sources
+
+- Discussion: "Induction and the LLM cognitive-operation taxonomy"
+  [12-llm-cognitive-operations].
+- Discussion: "Before recursion: operators, dualities and inference", the
+  transformation class called representation
+  [10-operations-dualities-generalization].
+- Discussion: "Taxonomy: recursion, quines, diagonalization and intelligence",
+  the part on cross-language quines [09-taxonomy-self-reference].
+- Essay: "What is an AI-oriented programming language?", the parts on
+  generating syntax trees and on English [ai-oriented-pl].
