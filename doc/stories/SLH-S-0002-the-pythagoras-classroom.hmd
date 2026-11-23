@@ -1,0 +1,98 @@
+# SLH-S-0002 — The Pythagoras classroom
+
+Status: in progress, Act 1
+Started: 2026-11-23
+Branch: `pythagorean`
+Discussion: [SLH-D-0005](../discussion/SLH-D-0005-2026-11-23-0315-pear/alice.hmd)
+
+A part of the main story,
+[SLH-S-0001](SLH-S-0001-inconsistent-incomplete-inference-system.hmd).
+
+## In plain words
+
+The main story ends on numbers nobody can feel. One contradiction in 206
+formulas: is that good? Nobody knows, because nobody knows what the right
+answer for a pile of ideas about strange loops would be.
+
+So we take a place where everybody knows the right answer. A right
+triangle with the sides a, b and c, and the oldest formula there is:
+
+```
+a² + b² = c²
+```
+
+Four students are asked to prove it, each in their own way and their own
+temper. They first have to agree on what they may take for granted. Then
+each proves it. Then they pick each other's proofs apart. Then everything
+they said is taken down the ladder, from sentences to claims to formulas
+to derivations to a machine-checked proof. At the end somebody says
+something false on purpose, and we watch whether the system notices.
+
+If the method works anywhere, it works here. If it cannot hold a proof
+that every schoolchild meets, we learn what it lacks before we trust it on
+anything vague.
+
+## What we are inventing
+
+A small domain that is known to be consistent, high-school Euclidean
+geometry around the right triangle, written into the vault the same way as
+everything else, so that the numbers of the system can be read against a
+truth that is not in doubt.
+
+## Why
+
+- **To get a feeling for the health figure.** In a domain that is
+  consistent, the figure should read clean. When a false statement is put
+  in, it should move. Seeing both is what a number alone does not give.
+- **To see proofs as evidence.** Three proofs of one theorem, from three
+  sides, are three chains that must end in the same statement.
+- **To find what the fourteen predicates cannot say.** `a² + b² = c²` is
+  not a relation between two named things. Something has to give.
+- **To try the talking.** Agreement, argument and doubt, in natural
+  language, between agents, with the user reading along and stepping in.
+
+## The students
+
+| Student | Way of proving | Temper |
+|---|---|---|
+| Bob | **Analytic.** Coordinates and algebra. | Grumpy. Trusts symbols, distrusts pictures, and says so. |
+| Dave | **Geometric.** Squares, triangles, cutting and moving. | Cheerful. Wants to draw it and show it. |
+| Carol | **Topological.** What survives when a figure is bent, sheared or scaled. | Quiet and exact. Asks what really changes and what does not. |
+| Percy | **The doubter.** Proves nothing. Asks each of the others what they assumed, and looks for a place where the theorem fails. | New, curious, and not easily satisfied. |
+
+A temper is a voice, and it changes nothing about the standard. A grumpy
+proof still has every step, and a cheerful one may not skip any.
+
+## The acts
+
+After each act the observer stops, tells the user what happened, and asks
+for the user's word before the next begins.
+
+| Act | What happens | State |
+|---|---|---|
+| 1. Common ground | Each student says what the theorem states and what they need to take for granted. The observer puts the lists side by side: what all agree on, and where they differ. | running |
+| 2. Three proofs | Bob, Dave and Carol each prove it, in their own way and voice. Percy reads. | |
+| 3. Cross-examination | Each proof is attacked by the others. Percy asks every prover what was assumed and tries the theorem where it should fail. | |
+| 4. Down the ladder | The agreed facts become cards with claims. The proofs become formulas and derivations, and the core of one becomes a proof in Lean. What will not fit is written down. | |
+| 5. The false statement | Someone asserts something false. The health figure for this domain is computed before and after. | |
+
+## So far
+
+**2026-11-23, 03:15.** The branch `pythagorean` is cut from
+`feat/rudimentary`. The discussion SLH-D-0005 opens, with the token pear.
+Act 1 begins.
+
+## Where it stands
+
+Act 1 is running. Nothing about geometry is in the knowledge base yet.
+
+## Open
+
+- **Can the partial logic say it at all?** The theorem is an equation
+  between three quantities, and an atom relates two named things.
+- **Is there a topological proof?** The theorem is about lengths, and
+  topology forgets lengths. Carol is asked to find out honestly, and "no"
+  with a reason is an answer.
+- **Where the new facts go.** High-school facts about triangles will
+  become cards in the knowledge base in Act 4, with the user's agreement
+  on which.

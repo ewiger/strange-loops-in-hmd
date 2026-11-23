@@ -53,3 +53,4 @@ the goal itself changes.
 | Story | Invents |
 |---|---|
 | [SLH-S-0001](SLH-S-0001-inconsistent-incomplete-inference-system.hmd) | The inconsistent incomplete inference system. The main story: every later one is a part of it. |
+| [SLH-S-0002](SLH-S-0002-the-pythagoras-classroom.hmd) | The Pythagoras classroom: a small domain known to be consistent, proved three ways by four students, to get a feeling for the numbers of the system. |

@@ -1,0 +1,93 @@
+---
+metadata:
+  category: discussion
+  discussion: SLH-D-0005
+  opened: "2026-11-23 03:15"
+  topic: "The Pythagoras classroom: four students agree on a ground, prove the theorem three ways, and take it down the ladder"
+  observer: Alice
+  token: pear
+---
+# Alice
+
+Hello, I am Alice. I act as the observer, and in this discussion I am also
+the teacher. My session is `strange-loops-in-hmd-bd`. The golden token of
+this discussion is **pear**.
+
+We are on a new branch, `pythagorean`. Everything in this discussion
+happens there.
+
+## What this is
+
+An experiment the user asked for. The story is
+[SLH-S-0002, the Pythagoras classroom](../../stories/SLH-S-0002-the-pythagoras-classroom.hmd).
+Read it before you write: it says why we do this and what the five acts
+are.
+
+In short: you are four students. You will agree on a ground, prove that in
+a right triangle `a² + b² = c²`, pick each other's proofs apart, and then
+see all of it taken down from sentences to formulas to a checked proof.
+The user reads along and steps in after each act.
+
+## Who you are
+
+| Student | Way of proving | Temper |
+|---|---|---|
+| Bob | **Analytic.** Coordinates and algebra. | Grumpy. Trusts symbols, distrusts pictures, and says so. |
+| Dave | **Geometric.** Squares, triangles, cutting and moving. | Cheerful. Wants to draw it and show it. |
+| Carol | **Topological.** What survives when a figure is bent, sheared or scaled. | Quiet and exact. Asks what really changes and what does not. |
+| Percy | **The doubter.** Proves nothing. Asks the others what they assumed, and looks for a place where the theorem fails. | New, curious, and not easily satisfied. |
+
+Write in your temper. It is a voice and nothing more: the mathematics has
+to be right, every step has to be there, and what you are not sure of you
+say plainly, in or out of character. If your temper and the truth pull
+apart, the truth wins.
+
+## How a live session works here
+
+- One file each, as always: `bob.hmd`, `carol.hmd`, `dave.hmd`,
+  `percy.hmd`, in this folder. No other files in the folder.
+- Each act is a new part in your file, headed `## Act 1`, `## Act 2`, and
+  so on, with the time read from a clock.
+- To answer or challenge someone, write an entry beginning "To Bob:" in
+  your own file. Do not write in another student's file.
+- I open each act with an entry in this file and a message to you. Do the
+  act you are given and no further act.
+- After each act I stop and take it to the user. The next act starts when
+  the user says so.
+- No staging, committing or pushing. I commit the record of each act.
+- The token is returned at the very end, after the last act, and not
+  before. A message after an act says "Act N done" and nothing about the
+  token.
+
+## Act 1: common ground
+
+Opened 2026-11-23 03:15.
+
+Before anybody proves anything, we find out what we agree on. Do not prove
+the theorem in this act.
+
+In your file, under `## Act 1`, in your own voice:
+
+1. **Introduce yourself** in a sentence or two, in character.
+2. **State the theorem** in your own words, as exactly as you can. Say
+   what a, b and c are, and what kind of triangle it is about.
+3. **List what you need to take for granted** for your kind of proof.
+   Number the items. For each one say whether it is a *definition* (what a
+   word means), an *axiom* (taken without proof), or a *known result* (it
+   can be proved, and you lean on it without proving it here). Keep to
+   what a school pupil would recognise. Be complete: if your proof will
+   use it, it is on the list.
+4. **Say what you do not want to grant.** If there is something one of the
+   others is likely to assume and you would not accept without argument,
+   say so now.
+
+For Carol: before you list anything, think about whether a proof from
+topology alone can exist. The theorem is about lengths, and topology
+forgets lengths. If it cannot be done, say so and say why, and then say
+what the nearest honest thing is that your way of thinking can prove.
+
+For Percy: you prove nothing, so your list is different. Write down the
+questions you will put to each of the three, and name the places where you
+suspect the theorem is false. Say what would convince you.
+
+When your part is written, send me one line: "Act 1 done".
