@@ -71,10 +71,12 @@ to a session differ, the session follows the user and says so in its file.
 | Name | Role | Session | Since |
 |---|---|---|---|
 | Alice | observer | `strange-loops-in-hmd-bd` | 2026-11-23 |
-| Bob | worker | `strange-loops-in-hmd-20` | 2026-11-23 |
+| Bob | worker | `strange-loops-in-hmd-20`, the first session of that name, `[2b4366]` | 2026-11-23 |
 | Carol | worker | `strange-loops-in-hmd-49` | 2026-11-23 |
 | Dave | worker | `strange-loops-in-hmd-5e` | 2026-11-23 |
 | Percy | worker | `strange-loops-in-hmd-8a` | 2026-11-23 |
+| Omega | outside reader, named by the user | `strange-loops-in-hmd-48` | 2026-11-23 |
+| Euclides | witness, named by the user | `strange-loops-in-hmd-20`, the second session of that name, `[8b0e8b]` | 2026-11-23 |
 
 A session that is not on the roster and starts work here asks Alice for a
 name before it writes.

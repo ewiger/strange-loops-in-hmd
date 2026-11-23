@@ -54,8 +54,9 @@ a² + b² = c²
 | Carol | topological, quiet | showed that no proof from topology exists, then proved it by similar triangles |
 | Percy | the doubter | proved nothing. Merged everyone's assumptions into one list of 37 |
 | Omega | outside reader | took no part. Wrote a postmortem afterwards |
+| Euclides | witness | took no part. Read every step of the three proofs afterwards and testified that they hold |
 
-All six are sessions of one model. The tempers are one sentence each in a
+All seven are sessions of one model. The tempers are one sentence each in a
 brief.
 
 ## How it went
@@ -194,6 +195,11 @@ about agents and not about geometry.
    session is cheaper than an invented role.
 8. **One agent speaks for the reader,** and may cut.
 9. **A second objection from the user means stop.**
+10. **Every brief opens with one sentence saying what is given and what is
+    to be shown, and closes by repeating it.** If that sentence cannot be
+    written, the brief is not ready. This one is from Euclides, the
+    witness, who notes that every proposition of the Elements opens so,
+    and that the task of this classroom never did.
 
 ### How a team of agents could work on the basics of Euclidean geometry
 
@@ -265,3 +271,4 @@ it keeps the user's stop where it has an effect.
 | The three proofs | [bob.hmd](bob.hmd), [dave.hmd](dave.hmd), [carol.hmd](carol.hmd) |
 | The 37 facts, and Percy's second opinion | [percy.hmd](percy.hmd) |
 | The postmortem by a session that took no part | [omega.hmd](omega.hmd) |
+| The testimony that the three proofs hold, and the history behind them | [euclides.hmd](euclides.hmd) |
