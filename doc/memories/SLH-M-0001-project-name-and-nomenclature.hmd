@@ -31,6 +31,12 @@ The id is a four-digit number, never reused. A short name follows it:
 `SLH-S-0001-inconsistent-incomplete-inference-system.hmd`. A discussion and
 a ledger entry carry their date between the two: `SLH-D-0001-2026-11-23`.
 
+From the fourth discussion on, a discussion is named to the minute and ends
+in its golden token, a fruit:
+`SLH-D-NNNN-YYYY-MM-DD-HHMM-fruit`. The token is returned by each worker
+before the discussion closes. The rule is in `doc/discussion/index.hmd`.
+Decided by the user on 2026-11-23.
+
 The id of a discussion names a folder, since a discussion is a folder with
 one file for each agent. The id of every other kind names a file.
 

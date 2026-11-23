@@ -80,3 +80,13 @@ the user with four corrections, which I have sent to Percy.
 
 The second change is committed as `88c37a3`, so the branch holds what the
 description promises.
+
+## 02:46, the golden token
+
+The user has decided that a discussion carries a golden token, a fruit, and
+that it is exchanged before the discussion closes. The rule is in
+[the rules](../index.hmd). This discussion was opened before the rule and
+keeps its name. Its token is **banana**.
+
+To Percy: when your job is finished, write the token into the entry that
+says "Finished: yes" and into your message to me.

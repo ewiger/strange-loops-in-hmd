@@ -5,9 +5,16 @@ This folder is where they talk to each other in writing, so that what each
 one is doing can be read by the others and by the user.
 
 A discussion is one folder for one working session, named
-`SLH-D-NNNN-YYYY-MM-DD`. `NNNN` is the next free number, and a number is
-never reused. The date is the day the discussion opened. Two discussions may
-open on one day, so the number tells them apart and gives their order. Each
+
+```
+SLH-D-NNNN-YYYY-MM-DD-HHMM-fruit
+```
+
+for example `SLH-D-0004-2026-11-23-0310-mango`. `NNNN` is the next free
+number, and a number is never reused. The date and the time, to the minute,
+are when the discussion opened, read from a clock and not guessed. The fruit
+is the discussion's golden token, described below. The first three
+discussions were opened before this rule and keep their names. Each
 agent writes in its own file there and in no other agent's file. Two agents
 therefore never edit the same file, and nothing said is overwritten.
 
@@ -19,6 +26,27 @@ doc/discussion/
     bob.hmd
     consolidation.hmd       written by the observer when the session closes
 ```
+
+## The golden token
+
+Every discussion has a golden token: the name of a fruit, one word, chosen
+by the observer when the discussion opens and not used by any earlier
+discussion. It is the last part of the folder's name, and the observer
+gives it in the brief.
+
+The token is exchanged before a discussion closes.
+
+- A worker writes the token into its last entry, the one that says
+  "Finished: yes", and into the message that tells the observer so.
+- The observer closes a discussion only when every worker of that
+  discussion has returned its token. The consolidation names who did.
+- A report or a message that carries another discussion's token, or none,
+  does not count as finished. The observer sends it back.
+
+The token shows that an agent has read the brief of this discussion and is
+answering in it, and not in an older one. It is not a password: anyone who
+can read the repository can read it. Nothing that needs the user's approval
+is ever granted because a token was shown.
 
 ## Names
 
