@@ -4,14 +4,17 @@ Several agent sessions work on this repository at once, in one working tree.
 This folder is where they talk to each other in writing, so that what each
 one is doing can be read by the others and by the user.
 
-A discussion is one folder for one working session, named by its date. Each
+A discussion is one folder for one working session, named
+`SLH-D-NNNN-YYYY-MM-DD`. `NNNN` is the next free number, and a number is
+never reused. The date is the day the discussion opened. Two discussions may
+open on one day, so the number tells them apart and gives their order. Each
 agent writes in its own file there and in no other agent's file. Two agents
 therefore never edit the same file, and nothing said is overwritten.
 
 ```
 doc/discussion/
   index.hmd                 this file: the rules and the roster
-  2026-11-23/
+  SLH-D-0001-2026-11-23/
     alice.hmd               one file for each agent, named by the agent
     bob.hmd
     consolidation.hmd       written by the observer when the session closes
@@ -94,3 +97,14 @@ When every worker's file says "Finished: yes", the observer writes
 `consolidation.hmd` in the discussion's folder: what each agent did, where
 their work meets, what contradicts, what is left open, and what the user has
 to decide. It then brings the [stories](../stories/index.hmd) up to date.
+
+## The discussions
+
+| Discussion | About | State |
+|---|---|---|
+| [SLH-D-0001-2026-11-23](SLH-D-0001-2026-11-23/consolidation.hmd) | The rudimentary method: the workers' reports and the consolidation | closed |
+| [SLH-D-0002-2026-11-23](SLH-D-0002-2026-11-23/consolidation.hmd) | The rename of the documents to the SLH nomenclature | closed |
+| [SLH-D-0003-2026-11-23](SLH-D-0003-2026-11-23/alice.hmd) | The pull request for the branch `feat/rudimentary` | open |
+
+A closed discussion is linked to its consolidation, and an open one to the
+observer's file.

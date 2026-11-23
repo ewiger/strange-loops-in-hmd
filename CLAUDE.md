@@ -4,7 +4,31 @@ This repository is a HyperMarkDown (HMD) vault and an HQL project. We design HQL
 syntax as we go, so some queries are written for a version of HQL that does not
 exist yet.
 
+## Before anything else: read the memories
+
+The project is Strange Loops in HyperMarkdown, **SLH**.
+
+At the start of every session, and before any task, read
+`doc/memories/index.hmd` and every memory it lists. They hold what the user
+has decided for good: names, conventions and standing instructions. A memory
+outranks a habit, and where a memory and this file differ, say so to the
+user.
+
+Write a memory only when the user states something meant to hold from now
+on, or asks for it to be remembered. The form is in `doc/memories/index.hmd`.
+
+`doc/memories/` is the primary memory of this project. An agent's own
+private memory, kept outside the repository by its tool, is secondary:
+
+- Something meant to hold goes into `doc/memories/` first. The private
+  memory may keep a short pointer to it and nothing more.
+- Where the two disagree, `doc/memories/` is right, and the private entry is
+  corrected or deleted.
+- The private memory is for what cannot live in the repository.
+
 ## Layout
+
+- `doc/memories/` holds the memories described above.
 
 - `.hmd/` marks the root as an HMD vault.
 - `.hql/` is the HQL project directory (configuration lives in

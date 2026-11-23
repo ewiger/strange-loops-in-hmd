@@ -22,17 +22,21 @@ is about the project, not about strange loops.
 A story is one file, named
 
 ```
-NNNN-name-of-the-invention.hmd
+SLH-S-NNNN-name-of-the-invention.hmd
 ```
 
 - `NNNN` is the next free number, four digits. A number is never reused.
 - The name is the thing the story invents, as a noun phrase in lower case
   with hyphens. It names the invention, not the work done on it:
   `inconsistent-incomplete-inference-system`, not `adding-derivation`.
+- `SLH-S` marks it as a story of this project. The letters of the other
+  kinds of document are in the memory `SLH-M-0001`.
 - The title inside the file is the same name, written out.
 
 ## Parts of a story
 
+0. **In plain words.** The whole thing as one would say it aloud, with no
+   term that needs looking up.
 1. **What we are inventing.** One paragraph a newcomer can repeat.
 2. **Why.** The need it answers.
 3. **Properties.** What must be true of the thing for it to count.
@@ -48,4 +52,4 @@ the goal itself changes.
 
 | Story | Invents |
 |---|---|
-| [0001](0001-inconsistent-incomplete-inference-system.hmd) | The inconsistent incomplete inference system. The main story: every later one is a part of it. |
+| [SLH-S-0001](SLH-S-0001-inconsistent-incomplete-inference-system.hmd) | The inconsistent incomplete inference system. The main story: every later one is a part of it. |

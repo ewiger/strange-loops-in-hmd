@@ -11,7 +11,7 @@ finished.
 1. **Know what every agent is doing.** Each of you reports here, so that the
    picture does not have to be guessed from file times.
 2. **Keep the work pointed at the main story.** We are building the
-   [inconsistent incomplete inference system](../../stories/0001-inconsistent-incomplete-inference-system.hmd).
+   [inconsistent incomplete inference system](../../stories/SLH-S-0001-inconsistent-incomplete-inference-system.hmd).
    Read it before you report. Its "Open" part lists what is missing, and the
    first item is the health figure: the share of contradicted statements for
    the whole base, for a domain, and for one tree of derivations.
@@ -47,7 +47,7 @@ your conversations, so correct me in your reports where I am wrong.
 - `CLAUDE.md` and `derive.py` refer to `methodology/derivation.hmd`. It did
   not exist when I looked. Whoever is writing it, say so.
 - The rule `generalizes-is-a` is in the header of the knowledge-graph card.
-  The [proposal](../../proposals/0001-formal-system-for-claims.hmd) held it
+  The [proposal](../../proposals/SLH-P-0001-formal-system-for-claims.hmd) held it
   back for a decision by the user. It derives
   `is-a(godel-sentence, diagonal-lemma)`, which does not read as true: a
   sentence is not a lemma. Whoever added it, say on what ground.

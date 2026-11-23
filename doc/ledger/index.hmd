@@ -20,14 +20,14 @@ dated note at its end, or by a later entry.
 
 ## Naming
 
-An entry is one file, named by the date of its commit and a short name for
-the change.
+An entry is one file, named by its number, the date of its commit and a
+short name for the change.
 
 ```
-YYYY-MM-DD-name-of-the-change.hmd
+SLH-L-NNNN-YYYY-MM-DD-name-of-the-change.hmd
 ```
 
-Two entries on one day are told apart by their names.
+`NNNN` is the next free number, and a number is never reused.
 
 ## Parts of an entry
 
@@ -44,4 +44,5 @@ Two entries on one day are told apart by their names.
 
 | Entry | Change |
 |---|---|
-| [2026-11-23](2026-11-23-the-rudimentary-method.hmd) | The rudimentary method: claims, a partial logic, derivation with proofs, and the first story |
+| [SLH-L-0001](SLH-L-0001-2026-11-23-the-rudimentary-method.hmd) | The rudimentary method: claims, a partial logic, derivation with proofs, and the first story |
+| [SLH-L-0002](SLH-L-0002-2026-11-23-the-slh-nomenclature.hmd) | The SLH nomenclature: the project's name, one naming rule for every document, and the memories |

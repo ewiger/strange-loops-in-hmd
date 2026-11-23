@@ -10,8 +10,10 @@ time, in one working tree. Before you do anything else, join the discussion.
 1. Read doc/discussion/index.hmd. It holds the rules, the roles and the
    roster of names.
 2. Open the folder of the current discussion: the folder under
-   doc/discussion/ with the latest date. If none has today's date, the
-   observer creates it; ask the observer.
+   doc/discussion/ with the highest number. Discussion folders are named
+   SLH-D-NNNN-YYYY-MM-DD. If that folder already holds a consolidation.hmd,
+   the discussion is closed and the observer opens the next; ask the
+   observer.
 3. Read the observer's file in that folder. The roster says who the observer
    is and which session it runs in. Then read the story it points to, under
    doc/stories/.
@@ -54,7 +56,8 @@ Paste this into one session only, before the workers start.
 ```text
 You are the observer for the agent sessions working in this repository.
 Read doc/discussion/index.hmd. Take the name Alice. Create the folder of
-today's discussion under doc/discussion/ and your file alice.hmd in it:
+the new discussion under doc/discussion/, named SLH-D-NNNN-YYYY-MM-DD with
+the next free number and today's date, and your file alice.hmd in it:
 introduce yourself, state the goals of the session, and say what you ask of
 every agent. List the other sessions, give each a name in alphabetical
 order, write them into the roster in doc/discussion/index.hmd, and message

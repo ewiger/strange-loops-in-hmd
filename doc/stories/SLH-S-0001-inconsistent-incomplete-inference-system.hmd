@@ -1,10 +1,57 @@
-# 0001 — The inconsistent incomplete inference system
+# SLH-S-0001 — The inconsistent incomplete inference system
 
 Status: in progress
 Started: 2026-11-19
 Last brought up to date: 2026-11-23
 
 This is the main story. Every later story is a part of it.
+
+## In plain words
+
+**What we have.** A pile of texts about one subject, where each text also
+carries structured data in its header. The text is for a person to read. The
+header is for a machine to count. HyperMarkDown is the container that keeps
+the two in one file, so that they cannot drift apart.
+
+**The problem.** A language model can produce plausible text about anything,
+without end. Fifty cards written with its help look like knowledge. Nobody
+can tell which parts are solid, which are guesses, and which quietly
+contradict each other. Reading it all again does not scale, and asking the
+model whether it is consistent only produces more plausible text.
+
+**The move.** Make every card say, in a form that can be checked, what it
+commits to.
+
+1. Cut the prose into single claims.
+2. Label each claim with how it is supported and how far it is believed.
+3. Where a claim is simple enough, write it a second time as a small
+   formula, `requires(strange-loop, level-crossing)`.
+
+The third step is the trick. Two cards written weeks apart, by different
+sessions, can now collide mechanically, because they said the same thing in
+the same string, one asserting it and one denying it.
+
+**Why the logic.** The same string catches only the obvious collisions.
+Rules derive what nobody wrote: if a is a b, and b is a c, then a is a c. If
+some card denies that, a contradiction has been found that no single card
+contains. The proofs in Lean are there so that the rules are not one more
+thing taken on faith.
+
+**Why the evidence and the numbers.** Each claim has a belief, so a derived
+statement gets a belief from the chain it rests on. A conclusion built on
+three shaky claims comes out visibly shaky.
+
+**Where it goes.** A dashboard for a body of knowledge, of the kind a
+running service has. This domain is 4% contradicted. That one is 60%
+untested. This conclusion rests on two claims that are only half believed.
+Last week's edits made it worse. Then the loop closes: the model writes, the
+system measures, and the measurement says where to look next.
+
+**The weak point.** The step from a sentence to a formula is a judgment,
+made by a model, and it is the one place nothing checks yet.
+
+**The twist.** The subject of the knowledge base is systems that describe
+themselves. What is being built is a knowledge base that measures itself.
 
 ## What we are inventing
 
@@ -102,7 +149,7 @@ rudimentary method, described in the
 
 **2026-11-23. Atoms become a formal system.**
 
-- A [proposal](../proposals/0001-formal-system-for-claims.hmd) observes that
+- A [proposal](../proposals/SLH-P-0001-formal-system-for-claims.hmd) observes that
   the atoms had a language and a valuation and no rules, so nothing could be
   derived and two atoms were compared only when they were the same string.
 - The concepts the method had been using without owning get cards:
@@ -163,7 +210,7 @@ reach than about how consistent the base is.
   for the whole base, for a domain, or for one tree of derivations. This is
   the measure the story is for, and it is the next thing to build. A first
   reading by hand is in the
-  [consolidation of 2026-11-23](../discussion/2026-11-23/consolidation.hmd).
+  [consolidation of 2026-11-23](../discussion/SLH-D-0001-2026-11-23/consolidation.hmd).
   It shows that one percentage is not enough: the figure is a small table of
   contradiction, coverage and reach.
 - **Coverage beside consistency.** A base with few atoms is trivially

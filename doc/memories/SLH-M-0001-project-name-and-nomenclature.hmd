@@ -1,0 +1,47 @@
+# SLH-M-0001 — The project name and the nomenclature
+
+Decided by the user on 2026-11-23.
+
+## The name
+
+The project is **Strange Loops in HyperMarkdown**, written **SLH**. What it
+invents is the inconsistent incomplete inference system, which is the
+subject of the main story.
+
+## The nomenclature
+
+Every document that is indexed under `doc/` carries a name of the form
+
+```
+SLH-<purpose>-<id>
+```
+
+The purpose is one letter.
+
+| Letter | Purpose | Folder | Set by |
+|---|---|---|---|
+| `P` | proposal | `doc/proposals/` | the user |
+| `S` | story | `doc/stories/` | the user |
+| `I` | issue | `doc/issues/` | the user |
+| `D` | discussion | `doc/discussion/` | the user |
+| `M` | memory | `doc/memories/` | proposed by the observer, approved by the user |
+| `L` | ledger entry | `doc/ledger/` | proposed by the observer, approved by the user |
+
+The id is a four-digit number, never reused. A short name follows it:
+`SLH-S-0001-inconsistent-incomplete-inference-system.hmd`. A discussion and
+a ledger entry carry their date between the two: `SLH-D-0001-2026-11-23`.
+
+The id of a discussion names a folder, since a discussion is a folder with
+one file for each agent. The id of every other kind names a file.
+
+Not renamed: the concept cards, every `index.hmd`, the methodology
+documents, and the notes and the roadmap under `doc/`.
+
+## How to act on it
+
+- Name a new document by this rule from the start.
+- Refer to a document by its name, `SLH-S-0001`, and link it.
+- The concept cards under `knowledge/` are not renamed. A card's name is its
+  address in every link and in every claim `card#id`.
+- Do not rename a document on your own: links to it have to change in the
+  same step.

@@ -1,4 +1,4 @@
-# 2026-11-23 — The rudimentary method
+# SLH-L-0001 — The rudimentary method, 2026-11-23
 
 The first entry of the ledger. It records the change that turned a knowledge
 base of prose cards into one that can be counted, derived from and checked,
@@ -146,7 +146,7 @@ each checked against their card by hand.
 
 - **The health figure.** No query or script computes a share of
   contradicted statements. A first reading by hand, in the
-  [consolidation](../discussion/2026-11-23/consolidation.hmd), suggests it
+  [consolidation](../discussion/SLH-D-0001-2026-11-23/consolidation.hmd), suggests it
   has to be a small table of contradiction, coverage and reach.
 - **Proofs as evidence for claims.** Lean proves the rules of the logic. No
   claim graded `proved` is tied to a checked proof. The two pilots of the
@@ -157,3 +157,9 @@ each checked against their card by hand.
 - **Open questions put to the user:** renaming the field `atom` to
   `formula`, a rule joining `requires` and `suffices-for`, bringing in
   Mathlib, and whether "A candidate until checked" is a star of its own.
+
+## Note, 2026-11-23
+
+This entry was renamed from `2026-11-23-the-rudimentary-method.hmd` when the
+project took the name SLH and its nomenclature. Its title and the link to
+the consolidation were changed to match. Nothing else in it was changed.

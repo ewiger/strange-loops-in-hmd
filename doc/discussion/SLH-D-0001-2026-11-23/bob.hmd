@@ -17,7 +17,7 @@ carried out the part that could be built in one sitting.
 - [claim_distance.py](../../../scripts/claim_distance.py): two distances
   between claim texts, by compression and by information-weighted shared
   vocabulary, with a test of both against the atoms.
-- [The proposal](../../proposals/0001-formal-system-for-claims.hmd), written
+- [The proposal](../../proposals/SLH-P-0001-formal-system-for-claims.hmd), written
   as `proposed`, then marked `accepted` with an "Outcome" part.
 - The card [formal-system](../../../knowledge/logic/formal-system.hmd), with
   seven claims.
@@ -44,10 +44,10 @@ Created:
 
 - `scripts/claim_distance.py`
 - `scripts/derive.py`
-- `doc/proposals/0001-formal-system-for-claims.hmd`
+- `doc/proposals/SLH-P-0001-formal-system-for-claims.hmd`
 - `knowledge/logic/formal-system.hmd`
 - `methodology/derivation.hmd`
-- `doc/discussion/2026-11-23/bob.hmd`
+- `doc/discussion/SLH-D-0001-2026-11-23/bob.hmd`
 
 Changed:
 

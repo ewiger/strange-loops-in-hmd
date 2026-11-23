@@ -3,7 +3,7 @@
 `doc/issues/` is this project's active-work layer: a lightweight **Kanban
 board** of numbered **issues**, following the convention of the HQL project's
 `doc/issues/`. Each issue is one flat hyper-markdown card named
-`NNNN-slug.hmd`. The folder stays flat, except `archive/`, which holds finished
+`SLH-I-NNNN-slug.hmd`. The folder stays flat, except `archive/`, which holds finished
 issues.
 
 `doc/` sits outside the `wiki/` vault, so issues are not concept cards and do

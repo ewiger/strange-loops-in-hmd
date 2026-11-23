@@ -32,7 +32,7 @@ before.
    derived formula gets a belief from its chain.
 
 This is the main story,
-[the inconsistent incomplete inference system](../../stories/0001-inconsistent-incomplete-inference-system.hmd),
+[the inconsistent incomplete inference system](../../stories/SLH-S-0001-inconsistent-incomplete-inference-system.hmd),
 from a sentence up to a derived statement with a derivation and a belief.
 
 ## What I checked myself

@@ -36,7 +36,7 @@ The five README questions collapse into that:
 
 - **A running agent.** It is blocked on the HQL `ai` module, which sits on the
   `feat/ai-ext` branch, and then on typed results and the trait. The
-  [agents vault issue](../issues/0001-agents-vault.hmd) has the order of work.
+  [agents vault issue](../issues/SLH-I-0001-agents-vault.hmd) has the order of work.
 - **The observer card.** The experiment is described in the
   [observer card experiment](../../knowledge/hmd/observer-card-experiment.hmd)
   card, but none of its parts exist: pinned revisions, provenance, the

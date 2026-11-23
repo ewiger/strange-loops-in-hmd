@@ -1,0 +1,97 @@
+# SLH-L-0002 — The SLH nomenclature, 2026-11-23
+
+The project gets its name, its documents get names that say what they are,
+and the repository gets a memory that every session reads first.
+
+## The change
+
+| | |
+|---|---|
+| Branch | `feat/rudimentary` |
+| Follows | commit `c79e3b9`, the change recorded in [SLH-L-0001](SLH-L-0001-2026-11-23-the-rudimentary-method.hmd) |
+| Size | 28 files: 10 renamed, 10 new, 8 corrected. About 800 lines added |
+| Touches | `doc/`, `.loops/` and `CLAUDE.md` only. No card, query, script or proof was changed |
+| Worked on by | Bob, Carol, Dave, and Alice as observer, in the discussion SLH-D-0002 |
+
+## Objectives
+
+1. **Name the project.** Strange Loops in HyperMarkdown, SLH.
+2. **Name every indexed document by one rule,** `SLH-<letter>-<id>`, so that
+   a name alone says which project and which kind of document.
+3. **Keep the user's standing decisions where every agent reads them,** in
+   the repository and not in a tool's private store.
+4. **Say in plain words what the project is for.**
+5. **Do it with the workers in parallel,** each job planned and inspected.
+
+## Arrived at
+
+| Kind | Letter | Documents |
+|---|---|---|
+| Proposal | `P` | `SLH-P-0001` |
+| Story | `S` | `SLH-S-0001` |
+| Issue | `I` | `SLH-I-0001`, `SLH-I-0002` |
+| Discussion | `D` | `SLH-D-0001`, `SLH-D-0002` |
+| Ledger entry | `L` | `SLH-L-0001`, `SLH-L-0002` |
+| Memory | `M` | `SLH-M-0001`, `SLH-M-0002` |
+
+Every kind has an index that lists its documents. Every relative link in the
+repository resolves. Git records each renamed file as a rename, so its
+history follows it.
+
+## Accomplished
+
+- **Bob** renamed the proposal and wrote the index of proposals, which the
+  folder did not have.
+- **Dave** renamed the two issues, corrected the board, the index and the
+  roadmap, and repaired seven links that had been dead since the wiki was
+  split into vaults.
+- **Carol** renamed the first discussion, brought the rules and both prompts
+  in line with numbered discussions, and added the list of discussions.
+- **Alice** renamed the story and the first ledger entry, created the
+  memories folder with its first two memories, put the instruction to read
+  them at the top of `CLAUDE.md`, wrote "In plain words" into the story, and
+  inspected the four jobs.
+
+## Decisions
+
+| Decision | Decided by |
+|---|---|
+| The project is called **Strange Loops in HyperMarkdown, SLH** | the user |
+| A document indexed under `doc/` is named `SLH-<letter>-<id>`, with `P`, `S`, `I` and `D` for proposal, story, issue and discussion | the user |
+| `M` for a memory and `L` for a ledger entry | proposed by the observer, approved by the user |
+| The id is a four-digit number that is never reused. A short name follows it. A discussion and a ledger entry carry their date between the two | proposed by the observer, approved by the user |
+| A discussion is a folder, and its id names the folder | the user |
+| The concept cards, the indexes and the methodology documents are not renamed | proposed by the observer, approved by the user |
+| `doc/memories/` exists, and every session reads it before anything else | the user |
+| The memories in the repository come first. An agent's private memory is secondary and gives way where the two differ | the user |
+| A memory is written only on the user's word, never from an agent's own conclusion | the observer, in the form of the folder |
+| A discussion is closed when its folder holds a consolidation | Carol, confirmed by the observer |
+| A job for several agents starts from a fixed map and from sets of files that do not overlap | the observer; approved by the user as the plan |
+
+## Sidetracks
+
+**None that cost anything.** The job was planned before it was started and
+ran without two agents meeting in one file.
+
+**Small ones.** The observer's inspection script first reported twelve old
+names that were not there. It had been written to strip the new prefix
+before searching, which turned every new name back into an old one. It was
+corrected before any job was judged by it. The index of discussions listed
+no discussions, which the inspection found and Carol repaired.
+
+**One thing done beyond the brief.** Dave repaired seven dead links in the
+issues that the rename had not caused. They were in Dave's set, the
+inspection would have failed on them, and Dave said so in the report.
+
+## Not done
+
+- **Everything left open by SLH-L-0001.** This change built nothing of the
+  system. The health figure is still not computed.
+- **Stale prose.** The issues and the roadmap still describe a `wiki/` vault
+  in running text.
+- **Link texts.** Some links still describe their target in words where the
+  memory asks for its name.
+- **The private memory about cards** has not been moved into
+  `doc/memories/`.
+- **The statuses of a proposal,** as Bob wrote them, wait for the user's
+  word.

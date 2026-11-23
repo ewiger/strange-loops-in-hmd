@@ -22,10 +22,10 @@ board:
     backlog:
       - id: "0002"
         title: "Typed links: querying and seeing the edges of the knowledge graph"
-        file: 0002-typed-links.hmd
+        file: SLH-I-0002-typed-links.hmd
     todo:
       - id: "0001"
         title: "The agents vault: from a card that is read to an agent that runs"
-        file: 0001-agents-vault.hmd
+        file: SLH-I-0001-agents-vault.hmd
     doing: []
     done: []

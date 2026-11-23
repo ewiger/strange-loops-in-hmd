@@ -1,13 +1,13 @@
-# 0002 — Typed links: querying and seeing the edges of the knowledge graph
+# SLH-I-0002 — Typed links: querying and seeing the edges of the knowledge graph
 
 Status: backlog
 Related: [base agent](../../agents/base-agent.hmd),
-[wiki index](../../wiki/index.hmd) (its part "The relations"),
+[wiki index](../../knowledge/index.hmd) (its part "The relations"),
 [relations-by-kind query](../../.hql/queries/relations-by-kind.hql),
 [question-coverage query](../../.hql/queries/question-coverage.hql),
 [agent-coverage query](../../.hql/queries/agent-coverage.hql),
 [agent-tools query](../../.hql/queries/agent-tools.hql),
-[issue 0001](0001-agents-vault.hmd) (its part on dangling `performs` links);
+[SLH-I-0001](SLH-I-0001-agents-vault.hmd) (its part on dangling `performs` links);
 in the HQL project: the book chapter "Graphs", the wiki card "The link
 operator", the `graph` extension (`uplinks`, `downlinks`, `expand`);
 in the HMD project: the VS Code extension's graph tab (HMD-0025) and the
@@ -48,7 +48,7 @@ A plain link says only that two cards are connected. The base agent links to
 `human-in-the-loop` because it relies on it, and to `strange-loop` to say it is
 *not* one. Without a type those four links are indistinguishable.
 
-The [wiki index](../../wiki/index.hmd) fixes the vocabulary: ten kinds
+The [wiki index](../../knowledge/index.hmd) fixes the vocabulary: ten kinds
 between concept cards (`is-a`, `instance-of`, `part-of`, `example-of`,
 `contrasts`, `distinguished-from`, `generalizes`, `uses`, `analogous-to`,
 `answers`), plus `performs` in the agents vault. Queries build on those
@@ -122,7 +122,7 @@ syntax. A query can only separate the two by checking whether
 
 The base agent's seventeen `performs` links point into the knowledge base,
 which is a separate vault. In the agents vault's own graph they are unwritten
-links. [Issue 0001](0001-agents-vault.hmd) owns the decision about what a
+links. [SLH-I-0001](SLH-I-0001-agents-vault.hmd) owns the decision about what a
 `performs` link is. This issue only records that, whatever that decision is,
 the graph tools must show it.
 
