@@ -400,3 +400,82 @@ not charges.
 3. **That length does not depend on direction,** said as itself. See the
    second finding above.
 
+## Second opinion
+
+Written 2026-11-23 03:33, as myself and not as the doubter. I read the
+story, Alice's brief and two closings, and the four students' files. I
+have not seen Alice's own notice.
+
+**What the user asked for and what exists.** The story says why the
+classroom was wanted: the numbers of the main story "nobody can feel", so
+take a place where everybody knows the answer and watch the system on it.
+The proof was meant to be the easy part. After two acts the folder holds
+about 1,850 lines: 44 assumptions, merged by me into 37 facts, three
+proofs of 21 to 25 steps, seven further items, and tables comparing which
+proof falls when a fact is removed. It holds no card, no claim, no
+formula and no health figure. Everything the user wanted to feel was in
+Acts 4 and 5, and the work stopped being simple in Act 1.
+
+**The proof the user meant.** Put four copies of the triangle in the
+corners of a square of side a + b. The middle is a square of side c. So
+(a + b)² = c² + 4 · (ab/2), which is a² + 2ab + b² = c² + 2ab, and
+a² + b² = c². Three lines. Dave's and Bob's 47 steps are this.
+
+**Where the wording made it bigger.** In the order it happened:
+
+- *The story, "they first have to agree on what they may take for
+  granted."* That turned a proof into a study of its axioms before
+  anything was proved.
+- *Act 1, "Be complete: if your proof will use it, it is on the list",
+  with each item marked definition, axiom or known result.* The same
+  paragraph says "keep to what a school pupil would recognise". The two
+  pull apart, and completeness won, because an incomplete list can be
+  caught and a long one cannot.
+- *Act 1, "say what you do not want to grant."* All three refused the
+  distance formula. That removed the short coordinate proof and sent Bob
+  to borrow Dave's.
+- *The roles.* A doubter "not easily satisfied" is rewarded for finding
+  doubts, and found seven. A prover who "distrusts pictures" and one who
+  works "topologically", where no such proof exists, each begin with a
+  detour built in.
+- *Act 2, "no step rests on a picture" and "the reason names the item."*
+  This is the standard of a foundations course. It is what forced the
+  seven items about which point lies between which.
+- *Act 2, the answer to the user's doubt.* The user said the difference
+  between the proofs could not be seen. The brief answered with a fixed
+  form of seven parts and with counts. The complaint asked for something
+  plainer and got more apparatus.
+
+No instruction anywhere said how long anything might be.
+
+**What was assumed.** That rigour was the point. That the user wanted the
+proofs examined, when the user wanted the system shown on something
+known. And that four sessions of one model, each told to be complete and
+exact, would stop by themselves. Each step was a fair answer to the
+instruction before it. Nobody, me included, held the result against the
+first sentence of the story.
+
+**My own part.** In Act 1 I wrote 18 questions and seven places where the
+theorem might fail, having said in the same part that I expected it to
+hold. In Act 2 I built the list of 37 facts and marked each against a
+ball and a town of square blocks. I did it that way because the brief
+asked for exactly that and the role rewarded thoroughness. As far as I
+can check, the mathematics is right, and one finding corrected Alice. But
+none of it is what the user asked for, and it made things worse in a
+particular way: my numbering is what Alice's three tables of Act 2 are
+built on. I gave the pile its index. In my reports to the user I listed
+findings as if they were progress, and I never said that the session was
+moving away from its purpose. I should have.
+
+**What is worth keeping.** One thing: when every step must name what it
+rests on, assumptions appear that nobody knew they had made. That is the
+main story's weak point, seen small. It is a by-product, and it did not
+need three proofs.
+
+**What I would have done if asked directly.** Given the three-line proof.
+Written it as one card with five or six claims. Said in one paragraph
+that `a² + b² = c²` does not fit a formula with two places, and what that
+costs. Run the queries. Then added one false claim, for instance that it
+holds for every triangle, and shown which number moves. One page, one
+sitting, and a question to the user before adding any role or act.
+
