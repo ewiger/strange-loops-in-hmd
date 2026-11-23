@@ -77,6 +77,7 @@ to a session differ, the session follows the user and says so in its file.
 | Percy | worker | `strange-loops-in-hmd-8a` | 2026-11-23 |
 | Omega | outside reader, named by the user | `strange-loops-in-hmd-48` | 2026-11-23 |
 | Euclides | witness, named by the user | `strange-loops-in-hmd-20`, the second session of that name, `[8b0e8b]` | 2026-11-23 |
+| Leo | worker for Lean proofs, named by the user | `strange-loops-in-hmd-83` | 2026-11-23 |
 
 A session that is not on the roster and starts work here asks Alice for a
 name before it writes.
